@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 const root = fileURLToPath(new URL("../", import.meta.url));
-// 指定されたHTML、または一覧と全模試のHTMLへTailwind CSSを埋め込む。
+// 指定されたHTML、または一覧・学習ページ・全模試へTailwind CSSを埋め込む。
 const directory = process.argv[2];
 if (!directory)
   throw new Error("Tailwind CSSのパッケージディレクトリを指定してね。");
@@ -23,6 +23,7 @@ const targets =
     ? process.argv.slice(3).map((target) => path.resolve(root, target))
     : [
         path.join(root, "index.html"),
+        ...(await collect(path.join(root, "study"))),
         ...(await collect(path.join(root, "exams"))),
       ];
 const theme = await fs.readFile(path.join(directory, "theme.css"), "utf8");
