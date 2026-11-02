@@ -103,7 +103,11 @@ function fieldInput(field) {
   }
   return amountInput(field.id, field.label);
 }
-function tableCell(value) {
+function tableCell(value, table, rowIndex, columnIndex) {
+  if (value === "？") {
+    const id = `work-${table.id}-${rowIndex}-${columnIndex}`;
+    return amountInput(id, `${table.caption} ${rowIndex + 1}行目 ${table.headings[columnIndex]}（計算用・採点対象外）`);
+  }
   return escapeHtml(value).replace(/\{\{([a-zA-Z0-9]+)\}\}/g, (_, id) => {
     const field = fieldsById.get(id);
     if (!field) throw new Error(`解答欄が見つからない: ${id}`);
@@ -112,7 +116,7 @@ function tableCell(value) {
 }
 function renderTable(table) {
   const wide = table.headings.length >= 8;
-  return `<div class="mt-5 min-w-0 max-w-full overflow-x-auto rounded-xl border ${wide ? "max-h-[70vh] overflow-auto" : ""}"><table id="${escapeHtml(table.id)}" class="w-full ${wide ? "min-w-[1500px]" : table.id === "source-trial" ? "min-w-[420px]" : "min-w-[650px]"} border-collapse text-sm"><caption class="bg-white p-4 text-left text-base font-bold">${escapeHtml(table.caption)}</caption><thead><tr class="bg-slate-100">${table.headings.map((heading,index) => `<th scope="col" class="border p-3 whitespace-nowrap ${wide ? "sticky top-0 z-10 bg-slate-100" : ""} ${wide && index===0 ? "sticky left-0 z-10 bg-slate-100" : ""}">${escapeHtml(heading)}</th>`).join("")}</tr></thead><tbody>${table.rows.map((row) => `<tr>${row.map((cell,index) => `<td class="border p-3 align-middle leading-7 ${wide && index===0 ? "sticky left-0 z-10 bg-white" : ""} ${/^[\d,]+$/.test(String(cell)) ? "text-right font-mono tabular-nums" : ""}">${tableCell(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  return `<div class="mt-5 min-w-0 max-w-full overflow-x-auto rounded-xl border ${wide ? "max-h-[70vh] overflow-auto" : ""}"><table id="${escapeHtml(table.id)}" class="w-full ${wide ? "min-w-[1500px]" : table.id === "source-trial" ? "min-w-[420px]" : "min-w-[650px]"} border-collapse text-sm"><caption class="bg-white p-4 text-left text-base font-bold">${escapeHtml(table.caption)}</caption><thead><tr class="bg-slate-100">${table.headings.map((heading,index) => `<th scope="col" class="border p-3 whitespace-nowrap ${wide ? "sticky top-0 z-10 bg-slate-100" : ""} ${wide && index===0 ? "sticky left-0 z-10 bg-slate-100" : ""}">${escapeHtml(heading)}</th>`).join("")}</tr></thead><tbody>${table.rows.map((row, rowIndex) => `<tr>${row.map((cell,index) => `<td class="border p-3 align-middle leading-7 ${wide && index===0 ? "sticky left-0 z-10 bg-white" : ""} ${/^[\d,]+$/.test(String(cell)) ? "text-right font-mono tabular-nums" : ""}">${tableCell(cell, table, rowIndex, index)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 }
 function gradeJournal(question, index) {
   return [
@@ -460,6 +464,9 @@ function createAnswerReport() {
   return {
     schemaVersion: 2,
     reportType: "boki3-answer-review",
+    calculationNotes: Object.entries(state.answers)
+      .filter(([id]) => id.startsWith("work-"))
+      .map(([id, raw]) => ({ id, raw, value: parseAmount(raw), graded: false })),
     exportedAt: new Date().toISOString(),
     exam: {
       id: `boki3-2026-${examConfig.number}`,

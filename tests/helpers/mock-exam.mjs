@@ -98,6 +98,13 @@ export async function verifyExam(number, verifyAccounting) {
       );
     });
     doc.getElementById("start").click();
+    // 計算用欄も通常の解答と同様に整形・保存し、採点からは独立させる。
+    const workInput = doc.querySelector('[data-answer^="work-"]');
+    assert.ok(workInput);
+    workInput.value = "１２３４";
+    workInput.dispatchEvent(new w.Event("input", { bubbles: true }));
+    workInput.dispatchEvent(new w.FocusEvent("focusout", { bubbles: true }));
+    assert.equal(workInput.value, "1,234");
     const deadline = ev("state.deadline");
     assert.ok(deadline > Date.now() + 3590000);
     assert.deepEqual(Array.from(ev("scores()")), [0, 0, 0]);
@@ -164,6 +171,7 @@ export async function verifyExam(number, verifyAccounting) {
       .dispatchEvent(new w.Event("change", { bubbles: true }));
     const saved = w.localStorage.getItem(key),
       resumed = create(saved);
+    assert.equal(resumed.document.getElementById(workInput.id).value, "1,234");
     assert.equal(resumed.window.eval("state.deadline"), deadline);
     assert.equal(resumed.window.eval("state.tab"), 2);
     assert.equal(

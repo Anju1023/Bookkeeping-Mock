@@ -1549,7 +1549,7 @@
       "title": "（1）支払家賃・前払家賃の勘定記入",
       "instructions": [
         "当期はX7年4月1日～X8年3月31日。毎年10月1日に向こう1年分の家賃を普通預金から支払い、全額を支払家賃に記帳する。前期10月1日の支払額は300,000円、当期10月1日は契約更新により360,000円となった。期首の再振替は適正に行われている。ほかに家賃の取引はない。月割計算とする。",
-        "勘定を締め切り、翌期首にも再振替を行う。表の空欄を埋めなさい。？の欄は計算用で入力不要。"
+        "勘定を締め切り、翌期首にも再振替を行う。表の空欄を埋めなさい。計算用の欄も入力できるが、採点対象外。"
       ],
       "groups": [
         {
@@ -1978,7 +1978,7 @@
   "final": {
     "instructions": [
       "次の決算整理前残高試算表、棚卸表と決算整理事項から、財務諸表の入力欄を完成しなさい。当期はX7年4月1日～X8年3月31日。単位は円。資料にない取引はない。",
-      "？は採点対象外の計算用欄。引当金・減価償却累計額は控除額を正の金額で入力する。当期損益は区分を選び、金額は絶対額を入力する。"
+      "計算用の欄も入力できるが、採点対象外。引当金・減価償却累計額は控除額を正の金額で入力する。当期損益は区分を選び、金額は絶対額を入力する。"
     ],
     "trialBalance": [
       [
@@ -2693,7 +2693,11 @@ function fieldInput(field) {
   }
   return amountInput(field.id, field.label);
 }
-function tableCell(value) {
+function tableCell(value, table, rowIndex, columnIndex) {
+  if (value === "？") {
+    const id = `work-${table.id}-${rowIndex}-${columnIndex}`;
+    return amountInput(id, `${table.caption} ${rowIndex + 1}行目 ${table.headings[columnIndex]}（計算用・採点対象外）`);
+  }
   return escapeHtml(value).replace(/\{\{([a-zA-Z0-9]+)\}\}/g, (_, id) => {
     const field = fieldsById.get(id);
     if (!field) throw new Error(`解答欄が見つからない: ${id}`);
@@ -2702,7 +2706,7 @@ function tableCell(value) {
 }
 function renderTable(table) {
   const wide = table.headings.length >= 8;
-  return `<div class="mt-5 min-w-0 max-w-full overflow-x-auto rounded-xl border ${wide ? "max-h-[70vh] overflow-auto" : ""}"><table id="${escapeHtml(table.id)}" class="w-full ${wide ? "min-w-[1500px]" : table.id === "source-trial" ? "min-w-[420px]" : "min-w-[650px]"} border-collapse text-sm"><caption class="bg-white p-4 text-left text-base font-bold">${escapeHtml(table.caption)}</caption><thead><tr class="bg-slate-100">${table.headings.map((heading,index) => `<th scope="col" class="border p-3 whitespace-nowrap ${wide ? "sticky top-0 z-10 bg-slate-100" : ""} ${wide && index===0 ? "sticky left-0 z-10 bg-slate-100" : ""}">${escapeHtml(heading)}</th>`).join("")}</tr></thead><tbody>${table.rows.map((row) => `<tr>${row.map((cell,index) => `<td class="border p-3 align-middle leading-7 ${wide && index===0 ? "sticky left-0 z-10 bg-white" : ""} ${/^[\d,]+$/.test(String(cell)) ? "text-right font-mono tabular-nums" : ""}">${tableCell(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  return `<div class="mt-5 min-w-0 max-w-full overflow-x-auto rounded-xl border ${wide ? "max-h-[70vh] overflow-auto" : ""}"><table id="${escapeHtml(table.id)}" class="w-full ${wide ? "min-w-[1500px]" : table.id === "source-trial" ? "min-w-[420px]" : "min-w-[650px]"} border-collapse text-sm"><caption class="bg-white p-4 text-left text-base font-bold">${escapeHtml(table.caption)}</caption><thead><tr class="bg-slate-100">${table.headings.map((heading,index) => `<th scope="col" class="border p-3 whitespace-nowrap ${wide ? "sticky top-0 z-10 bg-slate-100" : ""} ${wide && index===0 ? "sticky left-0 z-10 bg-slate-100" : ""}">${escapeHtml(heading)}</th>`).join("")}</tr></thead><tbody>${table.rows.map((row, rowIndex) => `<tr>${row.map((cell,index) => `<td class="border p-3 align-middle leading-7 ${wide && index===0 ? "sticky left-0 z-10 bg-white" : ""} ${/^[\d,]+$/.test(String(cell)) ? "text-right font-mono tabular-nums" : ""}">${tableCell(cell, table, rowIndex, index)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 }
 function gradeJournal(question, index) {
   return [
@@ -3050,6 +3054,9 @@ function createAnswerReport() {
   return {
     schemaVersion: 2,
     reportType: "boki3-answer-review",
+    calculationNotes: Object.entries(state.answers)
+      .filter(([id]) => id.startsWith("work-"))
+      .map(([id, raw]) => ({ id, raw, value: parseAmount(raw), graded: false })),
     exportedAt: new Date().toISOString(),
     exam: {
       id: `boki3-2026-${examConfig.number}`,
