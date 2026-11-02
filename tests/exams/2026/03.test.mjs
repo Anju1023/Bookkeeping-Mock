@@ -63,6 +63,24 @@ try {
   doc.getElementById("start").click();
   assert.equal(doc.getElementById("intro").hidden, true);
   assert.equal(doc.querySelectorAll("[data-answer]").length, 204);
+  // 解答欄が独立した一覧へ戻らず、勘定・台帳・財務諸表の中に存在することを確認する。
+  for (const [tableId, ids] of [
+    ["rent-ledger", ["s0", "s1", "s2"]],
+    ["deferred-rent-ledger", ["s3"]],
+    ["rent-reversal", ["s4"]],
+    ["asset-register", ["s5", "s6", "s7", "s8"]],
+    ["asset-sale", ["s9"]],
+    ["income-statement", ["f0", "f1", "f2", "f3", "f4", "f5", "f6"]],
+    ["balance-sheet", ["f7", "f8", "f9", "f10", "f11", "f12", "f13"]],
+  ]) {
+    for (const id of ids) {
+      assert.equal(doc.getElementById(id).closest("table").id, tableId);
+      assert.equal(doc.querySelectorAll(`[id="${id}"]`).length, 1);
+    }
+  }
+  assert.match(doc.querySelector("#balance-sheet thead").textContent, /借方.*貸方/);
+  assert.match(doc.getElementById("f12").closest("tr").textContent, /未払法人税等/);
+
   const amount = set("j0d0v", "１２３４５６７");
   amount.dispatchEvent(
     new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
