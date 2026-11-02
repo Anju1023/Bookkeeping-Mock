@@ -1,589 +1,1823 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>勘定科目と仕訳のルール帳 | 簿記の時間</title>
-<!-- TAILWIND_START -->
-<style>
-/*! tailwindcss v4.2.4 | MIT License | https://tailwindcss.com */
-@layer properties;
-@layer theme, base, components, utilities;
-@layer theme {
-  :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
-    --color-amber-50: oklch(98.7% 0.022 95.277);
-    --color-teal-50: oklch(98.4% 0.014 180.72);
-    --color-teal-800: oklch(43.7% 0.078 188.216);
-    --color-teal-900: oklch(38.6% 0.063 188.416);
-    --color-slate-50: oklch(98.4% 0.003 247.858);
-    --color-slate-200: oklch(92.9% 0.013 255.508);
-    --color-slate-600: oklch(44.6% 0.043 257.281);
-    --color-slate-800: oklch(27.9% 0.041 260.031);
-    --color-white: #fff;
-    --spacing: 0.25rem;
-    --container-3xl: 48rem;
-    --container-6xl: 72rem;
-    --text-sm: 0.875rem;
-    --text-sm--line-height: calc(1.25 / 0.875);
-    --text-lg: 1.125rem;
-    --text-lg--line-height: calc(1.75 / 1.125);
-    --text-xl: 1.25rem;
-    --text-xl--line-height: calc(1.75 / 1.25);
-    --text-2xl: 1.5rem;
-    --text-2xl--line-height: calc(2 / 1.5);
-    --text-3xl: 1.875rem;
-    --text-3xl--line-height: calc(2.25 / 1.875);
-    --text-4xl: 2.25rem;
-    --text-4xl--line-height: calc(2.5 / 2.25);
-    --font-weight-bold: 700;
-    --tracking-widest: 0.1em;
-    --leading-tight: 1.25;
-    --radius-xl: 0.75rem;
-    --radius-2xl: 1rem;
-    --default-font-family: var(--font-sans);
-    --default-mono-font-family: var(--font-mono);
-  }
-}
-@layer base {
-  *, ::after, ::before, ::backdrop, ::file-selector-button {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 0 solid;
-  }
-  html, :host {
-    line-height: 1.5;
-    -webkit-text-size-adjust: 100%;
-    tab-size: 4;
-    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji');
-    font-feature-settings: var(--default-font-feature-settings, normal);
-    font-variation-settings: var(--default-font-variation-settings, normal);
-    -webkit-tap-highlight-color: transparent;
-  }
-  hr {
-    height: 0;
-    color: inherit;
-    border-top-width: 1px;
-  }
-  abbr:where([title]) {
-    -webkit-text-decoration: underline dotted;
-    text-decoration: underline dotted;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-size: inherit;
-    font-weight: inherit;
-  }
-  a {
-    color: inherit;
-    -webkit-text-decoration: inherit;
-    text-decoration: inherit;
-  }
-  b, strong {
-    font-weight: bolder;
-  }
-  code, kbd, samp, pre {
-    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
-    font-feature-settings: var(--default-mono-font-feature-settings, normal);
-    font-variation-settings: var(--default-mono-font-variation-settings, normal);
-    font-size: 1em;
-  }
-  small {
-    font-size: 80%;
-  }
-  sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-  sub {
-    bottom: -0.25em;
-  }
-  sup {
-    top: -0.5em;
-  }
-  table {
-    text-indent: 0;
-    border-color: inherit;
-    border-collapse: collapse;
-  }
-  :-moz-focusring {
-    outline: auto;
-  }
-  progress {
-    vertical-align: baseline;
-  }
-  summary {
-    display: list-item;
-  }
-  ol, ul, menu {
-    list-style: none;
-  }
-  img, svg, video, canvas, audio, iframe, embed, object {
-    display: block;
-    vertical-align: middle;
-  }
-  img, video {
-    max-width: 100%;
-    height: auto;
-  }
-  button, input, select, optgroup, textarea, ::file-selector-button {
-    font: inherit;
-    font-feature-settings: inherit;
-    font-variation-settings: inherit;
-    letter-spacing: inherit;
-    color: inherit;
-    border-radius: 0;
-    background-color: transparent;
-    opacity: 1;
-  }
-  :where(select:is([multiple], [size])) optgroup {
-    font-weight: bolder;
-  }
-  :where(select:is([multiple], [size])) optgroup option {
-    padding-inline-start: 20px;
-  }
-  ::file-selector-button {
-    margin-inline-end: 4px;
-  }
-  ::placeholder {
-    opacity: 1;
-  }
-  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
-    ::placeholder {
-      color: currentcolor;
-      @supports (color: color-mix(in lab, red, red)) {
-        color: color-mix(in oklab, currentcolor 50%, transparent);
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>勘定科目と仕訳のルール帳 | 簿記の時間</title>
+    <!-- TAILWIND_START -->
+    <style>
+      /*! tailwindcss v4.2.4 | MIT License | https://tailwindcss.com */
+      @layer properties;
+      @layer theme, base, components, utilities;
+      @layer theme {
+        :root,
+        :host {
+          --font-sans:
+            ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+            "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+          --font-mono:
+            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+            "Liberation Mono", "Courier New", monospace;
+          --color-amber-50: oklch(98.7% 0.022 95.277);
+          --color-teal-50: oklch(98.4% 0.014 180.72);
+          --color-teal-800: oklch(43.7% 0.078 188.216);
+          --color-teal-900: oklch(38.6% 0.063 188.416);
+          --color-slate-50: oklch(98.4% 0.003 247.858);
+          --color-slate-200: oklch(92.9% 0.013 255.508);
+          --color-slate-600: oklch(44.6% 0.043 257.281);
+          --color-slate-800: oklch(27.9% 0.041 260.031);
+          --color-white: #fff;
+          --spacing: 0.25rem;
+          --container-3xl: 48rem;
+          --container-6xl: 72rem;
+          --text-sm: 0.875rem;
+          --text-sm--line-height: calc(1.25 / 0.875);
+          --text-lg: 1.125rem;
+          --text-lg--line-height: calc(1.75 / 1.125);
+          --text-xl: 1.25rem;
+          --text-xl--line-height: calc(1.75 / 1.25);
+          --text-2xl: 1.5rem;
+          --text-2xl--line-height: calc(2 / 1.5);
+          --text-3xl: 1.875rem;
+          --text-3xl--line-height: calc(2.25 / 1.875);
+          --text-4xl: 2.25rem;
+          --text-4xl--line-height: calc(2.5 / 2.25);
+          --font-weight-bold: 700;
+          --tracking-widest: 0.1em;
+          --leading-tight: 1.25;
+          --radius-xl: 0.75rem;
+          --radius-2xl: 1rem;
+          --default-font-family: var(--font-sans);
+          --default-mono-font-family: var(--font-mono);
+        }
       }
-    }
-  }
-  textarea {
-    resize: vertical;
-  }
-  ::-webkit-search-decoration {
-    -webkit-appearance: none;
-  }
-  ::-webkit-date-and-time-value {
-    min-height: 1lh;
-    text-align: inherit;
-  }
-  ::-webkit-datetime-edit {
-    display: inline-flex;
-  }
-  ::-webkit-datetime-edit-fields-wrapper {
-    padding: 0;
-  }
-  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
-    padding-block: 0;
-  }
-  ::-webkit-calendar-picker-indicator {
-    line-height: 1;
-  }
-  :-moz-ui-invalid {
-    box-shadow: none;
-  }
-  button, input:where([type='button'], [type='reset'], [type='submit']), ::file-selector-button {
-    appearance: button;
-  }
-  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
-    height: auto;
-  }
-  [hidden]:where(:not([hidden='until-found'])) {
-    display: none !important;
-  }
-  *,::before,::after {
-    border-color: var(--color-slate-200);
-  }
-}
-@layer utilities {
-  .visible {
-    visibility: visible;
-  }
-  .mx-auto {
-    margin-inline: auto;
-  }
-  .mt-2 {
-    margin-top: calc(var(--spacing) * 2);
-  }
-  .mt-3 {
-    margin-top: calc(var(--spacing) * 3);
-  }
-  .mt-4 {
-    margin-top: calc(var(--spacing) * 4);
-  }
-  .mt-5 {
-    margin-top: calc(var(--spacing) * 5);
-  }
-  .mt-7 {
-    margin-top: calc(var(--spacing) * 7);
-  }
-  .mt-8 {
-    margin-top: calc(var(--spacing) * 8);
-  }
-  .mt-12 {
-    margin-top: calc(var(--spacing) * 12);
-  }
-  .mb-3 {
-    margin-bottom: calc(var(--spacing) * 3);
-  }
-  .block {
-    display: block;
-  }
-  .flex {
-    display: flex;
-  }
-  .grid {
-    display: grid;
-  }
-  .hidden {
-    display: none;
-  }
-  .table {
-    display: table;
-  }
-  .w-full {
-    width: 100%;
-  }
-  .max-w-3xl {
-    max-width: var(--container-3xl);
-  }
-  .max-w-6xl {
-    max-width: var(--container-6xl);
-  }
-  .min-w-\[680px\] {
-    min-width: 680px;
-  }
-  .cursor-pointer {
-    cursor: pointer;
-  }
-  .scroll-mt-5 {
-    scroll-margin-top: calc(var(--spacing) * 5);
-  }
-  .list-disc {
-    list-style-type: disc;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
-  }
-  .items-center {
-    align-items: center;
-  }
-  .justify-between {
-    justify-content: space-between;
-  }
-  .gap-3 {
-    gap: calc(var(--spacing) * 3);
-  }
-  .gap-4 {
-    gap: calc(var(--spacing) * 4);
-  }
-  .gap-5 {
-    gap: calc(var(--spacing) * 5);
-  }
-  .space-y-2 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-3 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-4 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .overflow-x-auto {
-    overflow-x: auto;
-  }
-  .rounded-2xl {
-    border-radius: var(--radius-2xl);
-  }
-  .rounded-full {
-    border-radius: calc(infinity * 1px);
-  }
-  .rounded-xl {
-    border-radius: var(--radius-xl);
-  }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
-  .border-t {
-    border-top-style: var(--tw-border-style);
-    border-top-width: 1px;
-  }
-  .border-b {
-    border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 1px;
-  }
-  .bg-amber-50 {
-    background-color: var(--color-amber-50);
-  }
-  .bg-slate-50 {
-    background-color: var(--color-slate-50);
-  }
-  .bg-slate-200 {
-    background-color: var(--color-slate-200);
-  }
-  .bg-teal-50 {
-    background-color: var(--color-teal-50);
-  }
-  .bg-teal-900 {
-    background-color: var(--color-teal-900);
-  }
-  .bg-white {
-    background-color: var(--color-white);
-  }
-  .p-3 {
-    padding: calc(var(--spacing) * 3);
-  }
-  .p-4 {
-    padding: calc(var(--spacing) * 4);
-  }
-  .p-5 {
-    padding: calc(var(--spacing) * 5);
-  }
-  .p-6 {
-    padding: calc(var(--spacing) * 6);
-  }
-  .px-4 {
-    padding-inline: calc(var(--spacing) * 4);
-  }
-  .px-5 {
-    padding-inline: calc(var(--spacing) * 5);
-  }
-  .py-2 {
-    padding-block: calc(var(--spacing) * 2);
-  }
-  .py-5 {
-    padding-block: calc(var(--spacing) * 5);
-  }
-  .py-10 {
-    padding-block: calc(var(--spacing) * 10);
-  }
-  .pt-6 {
-    padding-top: calc(var(--spacing) * 6);
-  }
-  .pb-6 {
-    padding-bottom: calc(var(--spacing) * 6);
-  }
-  .pl-5 {
-    padding-left: calc(var(--spacing) * 5);
-  }
-  .text-left {
-    text-align: left;
-  }
-  .font-sans {
-    font-family: var(--font-sans);
-  }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
-  }
-  .text-3xl {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
-  }
-  .text-lg {
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
-  }
-  .text-sm {
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
-  }
-  .text-xl {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
-  }
-  .leading-7 {
-    --tw-leading: calc(var(--spacing) * 7);
-    line-height: calc(var(--spacing) * 7);
-  }
-  .leading-8 {
-    --tw-leading: calc(var(--spacing) * 8);
-    line-height: calc(var(--spacing) * 8);
-  }
-  .leading-tight {
-    --tw-leading: var(--leading-tight);
-    line-height: var(--leading-tight);
-  }
-  .font-bold {
-    --tw-font-weight: var(--font-weight-bold);
-    font-weight: var(--font-weight-bold);
-  }
-  .tracking-widest {
-    --tw-tracking: var(--tracking-widest);
-    letter-spacing: var(--tracking-widest);
-  }
-  .text-slate-600 {
-    color: var(--color-slate-600);
-  }
-  .text-slate-800 {
-    color: var(--color-slate-800);
-  }
-  .text-teal-800 {
-    color: var(--color-teal-800);
-  }
-  .text-teal-900 {
-    color: var(--color-teal-900);
-  }
-  .text-white {
-    color: var(--color-white);
-  }
-  .underline {
-    text-decoration-line: underline;
-  }
-  .antialiased {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .hover\:bg-teal-50 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-teal-50);
+      @layer base {
+        *,
+        ::after,
+        ::before,
+        ::backdrop,
+        ::file-selector-button {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          border: 0 solid;
+        }
+        html,
+        :host {
+          line-height: 1.5;
+          -webkit-text-size-adjust: 100%;
+          tab-size: 4;
+          font-family: var(
+            --default-font-family,
+            ui-sans-serif,
+            system-ui,
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji"
+          );
+          font-feature-settings: var(--default-font-feature-settings, normal);
+          font-variation-settings: var(
+            --default-font-variation-settings,
+            normal
+          );
+          -webkit-tap-highlight-color: transparent;
+        }
+        hr {
+          height: 0;
+          color: inherit;
+          border-top-width: 1px;
+        }
+        abbr:where([title]) {
+          -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-size: inherit;
+          font-weight: inherit;
+        }
+        a {
+          color: inherit;
+          -webkit-text-decoration: inherit;
+          text-decoration: inherit;
+        }
+        b,
+        strong {
+          font-weight: bolder;
+        }
+        code,
+        kbd,
+        samp,
+        pre {
+          font-family: var(
+            --default-mono-font-family,
+            ui-monospace,
+            SFMono-Regular,
+            Menlo,
+            Monaco,
+            Consolas,
+            "Liberation Mono",
+            "Courier New",
+            monospace
+          );
+          font-feature-settings: var(
+            --default-mono-font-feature-settings,
+            normal
+          );
+          font-variation-settings: var(
+            --default-mono-font-variation-settings,
+            normal
+          );
+          font-size: 1em;
+        }
+        small {
+          font-size: 80%;
+        }
+        sub,
+        sup {
+          font-size: 75%;
+          line-height: 0;
+          position: relative;
+          vertical-align: baseline;
+        }
+        sub {
+          bottom: -0.25em;
+        }
+        sup {
+          top: -0.5em;
+        }
+        table {
+          text-indent: 0;
+          border-color: inherit;
+          border-collapse: collapse;
+        }
+        :-moz-focusring {
+          outline: auto;
+        }
+        progress {
+          vertical-align: baseline;
+        }
+        summary {
+          display: list-item;
+        }
+        ol,
+        ul,
+        menu {
+          list-style: none;
+        }
+        img,
+        svg,
+        video,
+        canvas,
+        audio,
+        iframe,
+        embed,
+        object {
+          display: block;
+          vertical-align: middle;
+        }
+        img,
+        video {
+          max-width: 100%;
+          height: auto;
+        }
+        button,
+        input,
+        select,
+        optgroup,
+        textarea,
+        ::file-selector-button {
+          font: inherit;
+          font-feature-settings: inherit;
+          font-variation-settings: inherit;
+          letter-spacing: inherit;
+          color: inherit;
+          border-radius: 0;
+          background-color: transparent;
+          opacity: 1;
+        }
+        :where(select:is([multiple], [size])) optgroup {
+          font-weight: bolder;
+        }
+        :where(select:is([multiple], [size])) optgroup option {
+          padding-inline-start: 20px;
+        }
+        ::file-selector-button {
+          margin-inline-end: 4px;
+        }
+        ::placeholder {
+          opacity: 1;
+        }
+        @supports (not (-webkit-appearance: -apple-pay-button)) or
+          (contain-intrinsic-size: 1px) {
+          ::placeholder {
+            color: currentcolor;
+            @supports (color: color-mix(in lab, red, red)) {
+              color: color-mix(in oklab, currentcolor 50%, transparent);
+            }
+          }
+        }
+        textarea {
+          resize: vertical;
+        }
+        ::-webkit-search-decoration {
+          -webkit-appearance: none;
+        }
+        ::-webkit-date-and-time-value {
+          min-height: 1lh;
+          text-align: inherit;
+        }
+        ::-webkit-datetime-edit {
+          display: inline-flex;
+        }
+        ::-webkit-datetime-edit-fields-wrapper {
+          padding: 0;
+        }
+        ::-webkit-datetime-edit,
+        ::-webkit-datetime-edit-year-field,
+        ::-webkit-datetime-edit-month-field,
+        ::-webkit-datetime-edit-day-field,
+        ::-webkit-datetime-edit-hour-field,
+        ::-webkit-datetime-edit-minute-field,
+        ::-webkit-datetime-edit-second-field,
+        ::-webkit-datetime-edit-millisecond-field,
+        ::-webkit-datetime-edit-meridiem-field {
+          padding-block: 0;
+        }
+        ::-webkit-calendar-picker-indicator {
+          line-height: 1;
+        }
+        :-moz-ui-invalid {
+          box-shadow: none;
+        }
+        button,
+        input:where([type="button"], [type="reset"], [type="submit"]),
+        ::file-selector-button {
+          appearance: button;
+        }
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+          height: auto;
+        }
+        [hidden]:where(:not([hidden="until-found"])) {
+          display: none !important;
+        }
+        *,
+        ::before,
+        ::after {
+          border-color: var(--color-slate-200);
+        }
       }
-    }
-  }
-  .sm\:grid-cols-2 {
-    @media (width >= 40rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  .sm\:grid-cols-3 {
-    @media (width >= 40rem) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-  .sm\:text-4xl {
-    @media (width >= 40rem) {
-      font-size: var(--text-4xl);
-      line-height: var(--tw-leading, var(--text-4xl--line-height));
-    }
-  }
-  .lg\:grid-cols-2 {
-    @media (width >= 64rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  .print\:hidden {
-    @media print {
-      display: none;
-    }
-  }
-}
-@property --tw-space-y-reverse {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
-@property --tw-leading {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-tracking {
-  syntax: "*";
-  inherits: false;
-}
-@layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
-      --tw-space-y-reverse: 0;
-      --tw-border-style: solid;
-      --tw-leading: initial;
-      --tw-font-weight: initial;
-      --tw-tracking: initial;
-    }
-  }
-}
-
-</style>
-<!-- TAILWIND_END -->
-</head><body class="bg-slate-50 font-sans text-slate-800 antialiased leading-7">
-<header class="border-b bg-white"><div class="mx-auto max-w-6xl px-5 py-5 flex flex-wrap items-center justify-between gap-3"><a href="../index.html" class="font-bold text-teal-800 underline">← 簿記の時間・模試一覧</a><span class="text-sm text-slate-600">日商簿記3級 / 学習ノート</span></div></header>
-<main id="top" class="mx-auto max-w-6xl px-5 py-10">
-<p class="text-sm font-bold tracking-widest text-teal-800">STUDY NOTE</p><h1 class="mt-3 text-3xl font-bold leading-tight sm:text-4xl">勘定科目と<br>仕訳のルール帳</h1>
-<p class="mt-5 max-w-3xl leading-8">あんじゅ、「これ、何の仲間？」で迷ったらここへ。<br>分類 → 増減の向き → 普段のルール → 決算の順に、理由とセットで覚えよう。</p>
-<p class="mt-3 text-sm text-slate-600">2026年度の3級学習向け（2027年3月31日までの受験）・非公式のオリジナル解説。保存したこのHTMLだけで、オフラインでも読めるよ。</p>
-<nav aria-label="このページの目次" class="mt-7 flex flex-wrap gap-3 print:hidden"><a class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50" href="#basics">① 5つの仲間</a><a class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50" href="#dictionary">② 科目を調べる</a><a class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50" href="#rules">③ 普段のルール・覚え方</a><a class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50" href="#closing">④ 決算の締め方</a><a class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50" href="#review">⑤ 理解チェック</a></nav>
-<section id="basics" class="mt-12 scroll-mt-5"><h2 class="text-2xl font-bold">① まずは5つの仲間</h2><p class="mt-3">借方＝左、貸方＝右。言葉に「借りる・貸す」が入っていても、借金を意味するわけじゃないよ。</p>
-<div class="mt-5 rounded-2xl bg-teal-900 p-6 text-white"><p class="text-lg font-bold">覚え方：資産・費用は「増えたら左」。残り3つは「増えたら右」。</p><p class="mt-3">減ったときは反対側！ 「この科目はいつでも左」ではなく、増加と減少で考えよう。</p><p class="mt-3">資産 ＝ 負債 ＋ 純資産 ／ 利益 ＝ 収益 − 費用</p></div>
-<div class="mt-5 overflow-x-auto"><table class="w-full min-w-[680px] text-left"><caption class="mb-3 text-left text-sm text-slate-600">5分類の増減と、決算後の行き先</caption><thead class="bg-slate-200"><tr><th scope="col" class="p-3">分類</th><th scope="col" class="p-3">意味</th><th scope="col" class="p-3">増える側</th><th scope="col" class="p-3">減る側</th><th scope="col" class="p-3">決算後</th></tr></thead><tbody><tr class="border-b bg-white"><th scope="row" class="p-3"><a href="#assets" class="text-teal-800 underline">資産</a></th><td class="p-3">持っているもの・あとで受け取れる権利</td><td class="p-3 font-bold">借方（左）</td><td class="p-3">貸方（右）</td><td class="p-3">貸借対照表／翌期へ繰越</td></tr><tr class="border-b bg-white"><th scope="row" class="p-3"><a href="#liabilities" class="text-teal-800 underline">負債</a></th><td class="p-3">あとで支払う・返す・提供する義務</td><td class="p-3 font-bold">貸方（右）</td><td class="p-3">借方（左）</td><td class="p-3">貸借対照表／翌期へ繰越</td></tr><tr class="border-b bg-white"><th scope="row" class="p-3"><a href="#equity" class="text-teal-800 underline">純資産</a></th><td class="p-3">資産から負債を引いた、会社の持ち分</td><td class="p-3 font-bold">貸方（右）</td><td class="p-3">借方（左）</td><td class="p-3">貸借対照表／翌期へ繰越</td></tr><tr class="border-b bg-white"><th scope="row" class="p-3"><a href="#revenue" class="text-teal-800 underline">収益</a></th><td class="p-3">当期のもうけのもと</td><td class="p-3 font-bold">貸方（右）</td><td class="p-3">借方（左）</td><td class="p-3">損益計算書／損益へ振替して残高ゼロ</td></tr><tr class="border-b bg-white"><th scope="row" class="p-3"><a href="#expenses" class="text-teal-800 underline">費用</a></th><td class="p-3">当期のもうけを得るための負担</td><td class="p-3 font-bold">借方（左）</td><td class="p-3">貸方（右）</td><td class="p-3">損益計算書／損益へ振替して残高ゼロ</td></tr></tbody></table></div><p class="mt-4 rounded-xl bg-amber-50 p-4">大事：<strong>入金＝収益、出金＝費用とは限らない！</strong> 借りたお金の入金は負債の増加、備品を買った出金は資産どうしの入れ替えだよ。</p></section>
-<section id="dictionary" class="mt-12 scroll-mt-5"><h2 class="text-2xl font-bold">② 科目を調べる</h2><p class="mt-3">3級で使う主な科目をまとめたよ。似た役割の科目は同じ行に掲載。問題で科目名を指定されたら、その指示を優先してね。</p>
-<div id="search-controls" hidden class="mt-5 rounded-2xl border bg-white p-5 print:hidden"><div class="grid gap-4 sm:grid-cols-2"><div><label for="query" class="block font-bold">科目名・説明を検索</label><input id="query" type="search" placeholder="例：家賃、手付金、利息" class="mt-2 w-full rounded-xl border bg-slate-50 p-3"></div><div><label for="category" class="block font-bold">分類で絞り込み</label><select id="category" class="mt-2 w-full rounded-xl border bg-slate-50 p-3"><option value="">すべての分類</option><option value="assets">資産</option><option value="liabilities">負債</option><option value="equity">純資産</option><option value="revenue">収益</option><option value="expenses">費用</option><option value="special">評価勘定・一時的な科目</option></select></div></div><p id="search-count" role="status" class="mt-3 text-sm text-slate-600"></p><button id="clear" type="button" class="mt-2 text-teal-800 underline">絞り込みをリセット</button><p class="mt-2 text-sm text-slate-600">絞り込みはこの科目一覧だけに適用されるよ。</p></div><noscript><p class="mt-4">検索はJavaScriptが必要だけど、科目一覧と解説はそのまま読めるよ。</p></noscript>
-<section id="assets" data-group="assets" class="mt-7 scroll-mt-5"><h3 class="text-xl font-bold text-teal-900">資産 <span class="text-sm">／増えたら借方（左）</span></h3><p class="mt-2">お金・モノ・もらえる権利。払ったあとでも、未来の役に立つものは資産だよ。</p><p class="mt-2 text-sm font-bold text-teal-800">決算：貸借対照表／翌期へ繰越</p><dl class="mt-4 grid gap-3 sm:grid-cols-2"><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">現金・小口現金</dt><dd class="mt-2 text-sm leading-7">手元のお金。小口現金は日々の少額支払い用。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">普通預金・当座預金・定期預金</dt><dd class="mt-2 text-sm leading-7">銀行に預けているお金。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">売掛金</dt><dd class="mt-2 text-sm leading-7">商品を売った代金を、あとでもらう権利。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">クレジット売掛金</dt><dd class="mt-2 text-sm leading-7">カード会社などから販売代金を受け取る権利。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">受取手形・電子記録債権</dt><dd class="mt-2 text-sm leading-7">手形や電子記録にもとづき代金を受け取る権利。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">繰越商品</dt><dd class="mt-2 text-sm leading-7">まだ売れていない商品の在庫。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">貯蔵品</dt><dd class="mt-2 text-sm leading-7">決算時に残った未使用の切手・収入印紙など。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">貸付金・従業員貸付金・手形貸付金</dt><dd class="mt-2 text-sm leading-7">貸したお金を返してもらう権利。利息の収益とは別だよ。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">未収入金</dt><dd class="mt-2 text-sm leading-7">備品の売却など、通常の商品売買以外であとからもらう代金。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">前払金</dt><dd class="mt-2 text-sm leading-7">商品を受け取る前に払った手付金など。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">立替金・従業員立替金</dt><dd class="mt-2 text-sm leading-7">他の人の負担分を代わりに払い、あとで返してもらうお金。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">仮払金</dt><dd class="mt-2 text-sm leading-7">使い道や金額が確定する前に、ひとまず払ったお金。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">差入保証金</dt><dd class="mt-2 text-sm leading-7">借りた店舗の敷金など、契約終了時に返還される性質のお金。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">前払費用（前払保険料・前払家賃など）</dt><dd class="mt-2 text-sm leading-7">支払い済みだけど、翌期以降にサービスを受ける分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">未収収益（未収利息・未収家賃など）</dt><dd class="mt-2 text-sm leading-7">当期分の収益なのに、まだ受け取っていない分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">仮払法人税等</dt><dd class="mt-2 text-sm leading-7">中間納付などで先に払った法人税等。決算で精算する。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">仮払消費税</dt><dd class="mt-2 text-sm leading-7">税抜方式で、仕入れなどの際に払った消費税。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">建物・備品・車両運搬具</dt><dd class="mt-2 text-sm leading-7">長く使うために持つ固定資産。使用に応じて減価償却する。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">土地</dt><dd class="mt-2 text-sm leading-7">土地も固定資産。ただし通常、減価償却はしない。</dd></div></dl></section><section id="liabilities" data-group="liabilities" class="mt-7 scroll-mt-5"><h3 class="text-xl font-bold text-teal-900">負債 <span class="text-sm">／増えたら貸方（右）</span></h3><p class="mt-2">借りた・預かった・まだ払っていない。先にもらって、これから商品やサービスを渡す義務も負債だよ。</p><p class="mt-2 text-sm font-bold text-teal-800">決算：貸借対照表／翌期へ繰越</p><dl class="mt-4 grid gap-3 sm:grid-cols-2"><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">買掛金</dt><dd class="mt-2 text-sm leading-7">商品を仕入れた代金を、あとで払う義務。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">支払手形・電子記録債務</dt><dd class="mt-2 text-sm leading-7">手形や電子記録にもとづいて代金を払う義務。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">借入金・手形借入金</dt><dd class="mt-2 text-sm leading-7">借りたお金を返す義務。利息の費用とは別。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">当座借越</dt><dd class="mt-2 text-sm leading-7">当座預金の残高を超えて引き出した、銀行からの借入分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">未払金</dt><dd class="mt-2 text-sm leading-7">備品の購入など、通常の商品売買以外であとから払う代金。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">前受金</dt><dd class="mt-2 text-sm leading-7">商品を渡す前に受け取った手付金など。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">預り金・所得税預り金・社会保険料預り金</dt><dd class="mt-2 text-sm leading-7">他の人から預かり、あとで納付・返還するお金。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">仮受金</dt><dd class="mt-2 text-sm leading-7">内容のわからない入金を、ひとまず記録する科目。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">未払費用（未払利息・未払家賃など）</dt><dd class="mt-2 text-sm leading-7">当期分の費用なのに、まだ払っていない分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">前受収益（前受家賃・前受利息など）</dt><dd class="mt-2 text-sm leading-7">受け取り済みだけど、翌期以降のサービスに対応する分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">未払法人税等</dt><dd class="mt-2 text-sm leading-7">決算で計算した法人税等の、まだ納付していない分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">仮受消費税</dt><dd class="mt-2 text-sm leading-7">税抜方式で、販売などの際に受け取った消費税。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">未払消費税</dt><dd class="mt-2 text-sm leading-7">仮受・仮払消費税を精算して、あとで納める分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">未払配当金</dt><dd class="mt-2 text-sm leading-7">配当が決まったあと、まだ株主へ払っていない金額。</dd></div></dl></section><section id="equity" data-group="equity" class="mt-7 scroll-mt-5"><h3 class="text-xl font-bold text-teal-900">純資産 <span class="text-sm">／増えたら貸方（右）</span></h3><p class="mt-2">株主からの出資と、会社に積み重なった利益。売上とは区別しよう。</p><p class="mt-2 text-sm font-bold text-teal-800">決算：貸借対照表／翌期へ繰越</p><dl class="mt-4 grid gap-3 sm:grid-cols-2"><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">資本金</dt><dd class="mt-2 text-sm leading-7">株主からの出資のうち、資本金として記録する金額。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">利益準備金</dt><dd class="mt-2 text-sm leading-7">配当に伴い、利益から積み立てる法定の準備金。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">繰越利益剰余金</dt><dd class="mt-2 text-sm leading-7">これまでの利益や損失、配当などを反映した蓄積。赤字なら借方残高にもなる。</dd></div></dl></section><section id="revenue" data-group="revenue" class="mt-7 scroll-mt-5"><h3 class="text-xl font-bold text-teal-900">収益 <span class="text-sm">／増えたら貸方（右）</span></h3><p class="mt-2">商品やサービスを提供して得た成果。お金を受け取っただけで、いつも収益になるわけじゃないよ。</p><p class="mt-2 text-sm font-bold text-teal-800">決算：損益計算書／損益へ振替して残高ゼロ</p><dl class="mt-4 grid gap-3 sm:grid-cols-2"><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">売上</dt><dd class="mt-2 text-sm leading-7">商品を売って得た収益。掛け販売でも計上する。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">受取手数料</dt><dd class="mt-2 text-sm leading-7">仲介などのサービスに対する手数料の収益。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">受取利息</dt><dd class="mt-2 text-sm leading-7">預金や貸付金などから生じる利息の収益。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">受取家賃・受取地代</dt><dd class="mt-2 text-sm leading-7">建物や土地を貸して得る収益。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">固定資産売却益</dt><dd class="mt-2 text-sm leading-7">固定資産を帳簿価額より高く売ったときの差額。売却代金そのものではないよ。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">貸倒引当金戻入</dt><dd class="mt-2 text-sm leading-7">必要な貸倒引当金より残高が多く、取り崩した分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">償却債権取立益</dt><dd class="mt-2 text-sm leading-7">過去の期に貸倒処理した債権を回収したときの収益。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">雑益</dt><dd class="mt-2 text-sm leading-7">ほかの適切な科目に当てはまらない収益。現金過不足の原因不明の余りなど。</dd></div></dl></section><section id="expenses" data-group="expenses" class="mt-7 scroll-mt-5"><h3 class="text-xl font-bold text-teal-900">費用 <span class="text-sm">／増えたら借方（左）</span></h3><p class="mt-2">当期に使った・当期の負担になった分。支払っただけで、すべて費用になるわけじゃないよ。</p><p class="mt-2 text-sm font-bold text-teal-800">決算：損益計算書／損益へ振替して残高ゼロ</p><dl class="mt-4 grid gap-3 sm:grid-cols-2"><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">仕入</dt><dd class="mt-2 text-sm leading-7">三分法で商品購入を記録する科目。決算整理で売上原価に直す。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">給料</dt><dd class="mt-2 text-sm leading-7">従業員の働きに対する会社の負担。手取り額と区別しよう。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">法定福利費</dt><dd class="mt-2 text-sm leading-7">社会保険料などの会社負担分。従業員負担分の預り金とは別。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">広告宣伝費・通信費・旅費交通費</dt><dd class="mt-2 text-sm leading-7">広告、電話・郵便、出張や移動にかかる当期の費用。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">消耗品費・水道光熱費</dt><dd class="mt-2 text-sm leading-7">文房具などの消耗品や電気・水道・ガスの費用。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">支払家賃・支払地代・保険料</dt><dd class="mt-2 text-sm leading-7">建物・土地を借りる費用や保険の当期負担分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">支払手数料・支払利息</dt><dd class="mt-2 text-sm leading-7">手数料や借入金の利息。借入元本の返済は費用ではない。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">発送費</dt><dd class="mt-2 text-sm leading-7">商品を売る際、会社が負担する発送費用。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">修繕費</dt><dd class="mt-2 text-sm leading-7">固定資産の通常の維持・原状回復にかかる費用。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">租税公課</dt><dd class="mt-2 text-sm leading-7">固定資産税・収入印紙など。法人税等とは分ける。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">法人税等</dt><dd class="mt-2 text-sm leading-7">法人税・住民税・事業税などの当期の税負担。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">減価償却費</dt><dd class="mt-2 text-sm leading-7">建物や備品などの取得原価を、使用する期間に配分した当期分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">貸倒引当金繰入</dt><dd class="mt-2 text-sm leading-7">将来の貸倒れに備え、引当金を追加する当期の費用。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">貸倒損失</dt><dd class="mt-2 text-sm leading-7">回収不能となった債権のうち、費用として処理する部分。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">固定資産売却損</dt><dd class="mt-2 text-sm leading-7">固定資産を帳簿価額より安く売ったときの差額。</dd></div><div data-account class="rounded-xl border bg-white p-4"><dt class="font-bold">雑費・雑損</dt><dd class="mt-2 text-sm leading-7">ほかの適切な科目に当てはまらない少額の費用や損失。</dd></div></dl></section><section id="special" data-group="special" class="mt-7 scroll-mt-5"><h3 class="text-xl font-bold text-teal-900">5分類だけで覚えない、特別な科目</h3><dl class="mt-4 grid gap-3 sm:grid-cols-2"><div data-account class="rounded-xl border bg-amber-50 p-4"><dt class="font-bold">貸倒引当金</dt><dd class="mt-2 text-sm leading-7">資産のマイナスを表す評価勘定。負債ではないよ。増加は貸方、減少は借方。翌期へ繰り越す。</dd></div><div data-account class="rounded-xl border bg-amber-50 p-4"><dt class="font-bold">減価償却累計額（建物・備品など）</dt><dd class="mt-2 text-sm leading-7">固定資産のマイナスを表す評価勘定。費用そのものではなく、過去からの減価償却の累計。増加は貸方、翌期へ繰り越す。</dd></div><div data-account class="rounded-xl border bg-amber-50 p-4"><dt class="font-bold">現金過不足</dt><dd class="mt-2 text-sm leading-7">帳簿と実際の現金が合わないときの仮の置き場。不足は借方、余りは貸方。原因が判明したら正しい科目へ直し、決算でも原因不明の残りは雑損・雑益へ。</dd></div><div data-account class="rounded-xl border bg-amber-50 p-4"><dt class="font-bold">損益</dt><dd class="mt-2 text-sm leading-7">収益と費用を集め、利益・損失を計算する決算用の勘定。最後に繰越利益剰余金へ振り替えてゼロにする。</dd></div></dl></section><p id="no-results" hidden class="mt-5 rounded-xl bg-amber-50 p-5">見つからなかったよ。短い言葉にするか、分類を「すべて」に戻してみてね。</p></section>
-<section id="rules" class="mt-12 scroll-mt-5"><h2 class="text-2xl font-bold">③ 普段のルールと、忘れにくい覚え方</h2><p class="mt-3">まず「何が増減した？」を考えて、次に左右へ置く。仕訳はいつも<strong>借方合計＝貸方合計</strong>だよ。以下の金額例はすべて円。</p><div class="mt-5 grid gap-5 lg:grid-cols-2"><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">01 / 資産：買ったらすぐ費用、ではない</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：未来に役立つものは、いったん資産。</strong></p><p>備品を現金30,000で購入 → 借方：備品30,000 ／ 貸方：現金30,000。資産が増え、別の資産が減るよ。</p><p>あとで売掛金を回収したら、借方：現金 ／ 貸方：売掛金。販売時に売上を計上しているので、回収時にもう一度売上を立てないでね。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">02 / 負債：借入元本と利息は別</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：借りた本体は負債、借りる料金は費用。</strong></p><p>100,000を借りたら、借方：普通預金100,000 ／ 貸方：借入金100,000。収益にはしないよ。</p><p>元本100,000と利息1,000を返したら、借方：借入金100,000・支払利息1,000 ／ 貸方：普通預金101,000。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">03 / 掛けと未収・未払は「何の代金？」</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：商品なら「掛け」、備品などなら「未収入・未払」。</strong></p><p>商品を後払いで売る → 売掛金。商品を後払いで仕入れる → 買掛金。</p><p>使っていた備品を後払いで売る → 未収入金。自社で使う備品を後払いで買う → 未払金。</p><p>「売掛金と未収入金」「買掛金と未払金」は、あとでもらう・払うという性質は同じ。取引の中身で使い分けるよ。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">04 / 前払金と前受金：商品の手付金</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：先に払ったら「もらう権利」、先にもらったら「渡す義務」。</strong></p><p>商品の注文時に手付金10,000を支払う → 借方：前払金10,000 ／ 貸方：現金10,000。</p><p>販売する商品の手付金10,000を受け取る → 借方：現金10,000 ／ 貸方：前受金10,000。まだ商品を渡していない段階で、売上にしないよ。</p><p>商品の受け渡し時に前払金・前受金を取り崩して、仕入・売上などへつなげるよ。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">05 / 立替・預り・仮払・仮受の違い</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：立替は「返してね」、預りは「あとで渡すね」、仮は「中身がまだ不明」。</strong></p><p>従業員の私的な支払いを会社が立て替える → 立替金（資産）。給与から所得税を預かる → 所得税預り金（負債）。</p><p>出張前に概算で渡す → 仮払金（資産）。内容不明の振込 → 仮受金（負債）。内容がわかったら正しい科目へ振り替えるよ。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">06 / 給料と社会保険料：手取りと費用は違う</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：会社の費用は「額面」、預かった分は負債。</strong></p><p>給料200,000から所得税5,000、社会保険料20,000を控除して振り込む例：</p><p>借方：給料200,000 ／ 貸方：所得税預り金5,000・社会保険料預り金20,000・普通預金175,000。</p><p>社会保険料の<strong>会社負担分</strong>は法定福利費（費用）。従業員から預かる分と混ぜないでね。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">07 / 収益・費用：「今期の分？」で分ける</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：「未」はまだお金が動かない。「前」はお金が先。</strong></p><p>前払費用：払ったけど、翌期の費用 → 資産。未払費用：今期の費用だけど未払い → 負債。</p><p>未収収益：今期の収益だけど未入金 → 資産。前受収益：受け取ったけど翌期の収益 → 負債。</p><p>保険料・家賃・利息などの継続的なサービスで使うよ。商品の手付金で使う前払金・前受金とは区別しよう。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">08 / 経過勘定の具体例と再振替</h3><div class="mt-3 space-y-3 leading-8"><p>12月決算で、10月1日に翌年9月までの保険料12,000を費用処理した例。今期分は3か月＝3,000、翌期分は9か月＝9,000。</p><p>決算：借方：前払保険料9,000 ／ 貸方：保険料9,000。</p><p><strong>覚え方：今期から外した分は、来期のスタートで戻す。</strong> 翌期首の再振替：借方：保険料9,000 ／ 貸方：前払保険料9,000。</p><p>未払費用・未収収益・前受収益も、再振替は決算整理と逆の仕訳。問題の処理方法・指示を確認してね。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">09 / 商品売買：三分法と「しーくり・くりしー」</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：買う＝仕入、売る＝売上、残る＝繰越商品。</strong></p><p>仕入れの運賃など、自社負担の仕入諸掛は原則として仕入に含めるよ。販売時に自社が負担する送料は発送費。</p><p>決算（仕入勘定で売上原価を計算する方法）：<br>① 借方：仕入 ／ 貸方：繰越商品（期首在庫）＝しーくり<br>② 借方：繰越商品 ／ 貸方：仕入（期末在庫）＝くりしー</p><p>売上原価＝期首商品＋当期純仕入−期末商品。例：20,000＋100,000−30,000＝90,000。売れ残り30,000は資産に残すよ。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">10 / 減価償却：費用と累計額を分ける</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：「費」は今年分、「累計」はこれまでの合計。</strong></p><p>間接法：借方：減価償却費 ／ 貸方：備品減価償却累計額など。累計額は負債ではなく、資産の控除項目だよ。</p><p>定額法＝（取得原価−残存価額）÷耐用年数。120,000、残存価額ゼロ、5年なら年24,000。期中取得は問題の指示に従って月割り。</p><p>土地は通常、減価償却しない。使える期間を延ばす・性能を高める支出は資産に加える場合があり、通常の修繕費と区別するよ。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">11 / 固定資産を売る：比べるのは帳簿価額</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：買値ではなく「今の帳簿の値段」と比べる。</strong></p><p>取得原価100,000、売却時までの減価償却累計額70,000なら帳簿価額は30,000。40,000で売れたら売却益10,000。</p><p>間接法で現金売却：借方：現金40,000・備品減価償却累計額70,000 ／ 貸方：備品100,000・固定資産売却益10,000。</p><p>期中売却では、売却時までの減価償却が必要かも確認。売却代金を丸ごと売上にしないでね。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">12 / 貸倒れ：見積りと実際の発生は別</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：引当金は備え、繰入は今年の負担。</strong></p><p>差額補充法：必要残高−設定前の引当金残高＝追加額。売掛金100,000×2％＝2,000、引当金が500残っていれば、借方：貸倒引当金繰入1,500 ／ 貸方：貸倒引当金1,500。</p><p>前期以前に生じた債権が貸し倒れたら、まず貸倒引当金を取り崩し、不足分を貸倒損失へ。当期発生の債権の貸倒れは貸倒損失で処理するよ。</p><p>必要額より引当金が多ければ貸倒引当金戻入。過去の期に貸倒処理した債権を回収したら償却債権取立益。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">13 / 純資産：出資と配当は収益・費用にしない</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：株主とのやり取りは「会社の持ち分」の話。</strong></p><p>株式発行で出資を受け、全額資本金とするなら、借方：普通預金 ／ 貸方：資本金。売上にはしないよ。</p><p>配当が決まると、借方：繰越利益剰余金 ／ 貸方：未払配当金。支払うと、借方：未払配当金 ／ 貸方：普通預金。配当を費用にしないでね。</p><p>利益準備金の積立ては純資産内の振替。利益が出たら、決算で損益から繰越利益剰余金へ移すよ。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">14 / 税金：税金という名前でも仲間が違う</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：負担は費用、先払いは資産、未払いは負債。</strong></p><p>法人税等は費用。仮払法人税等は資産、未払法人税等は負債。年税額30,000・中間納付10,000なら、借方：法人税等30,000 ／ 貸方：仮払法人税等10,000・未払法人税等20,000。</p><p>固定資産税・収入印紙などは租税公課。法人税等とは分けよう。</p><p>消費税の<strong>税抜方式</strong>では仮払・仮受を使う。税込方式の仕訳と混ぜないでね。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">15 / 消費税：仮受と仮払を相殺する</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：受け取った税−払った税＝納める税。</strong></p><p>税抜方式の単純な例で、仮受消費税10,000、仮払消費税7,000の場合：</p><p>借方：仮受消費税10,000 ／ 貸方：仮払消費税7,000・未払消費税3,000。</p><p>仮払・仮受は決算で精算するので、そのまま機械的に翌期へ残さないよ。問題の条件によっては還付を受ける未収額になる場合もあるよ。</p></div></article><article class="rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold text-teal-900">16 / 現金・小口現金・当座預金の注意点</h3><div class="mt-3 space-y-3 leading-8"><p><strong>覚え方：現金は「本物に合わせる」、小口は「使途で費用」、借越は「借金」。</strong></p><p>帳簿より実際の現金が500少ない → 借方：現金過不足500 ／ 貸方：現金500。原因が通信費と判明 → 借方：通信費500 ／ 貸方：現金過不足500。</p><p>小口現金の支払報告では、使い道に応じた費用を記録する。補給するタイミングなどは問題の制度に従おう。</p><p>当座預金が貸方残高なら借越。決算では借入金などへ振り替えて負債として表示するよ。科目名は問題の指定を確認！</p></div></article></div></section>
-<section id="closing" class="mt-12 scroll-mt-5"><h2 class="text-2xl font-bold">④ 決算：整えてから、締める</h2><p class="mt-3"><strong>決算整理</strong>は「当期分へ直すこと」。<strong>決算振替</strong>は「収益・費用を締めて、利益を純資産へ移すこと」。順番を分けると迷いにくいよ。</p>
-<div class="mt-5 grid gap-4 sm:grid-cols-3"><div class="rounded-2xl bg-teal-50 p-5"><h3 class="font-bold">1. 決算整理</h3><p class="mt-2">在庫・減価償却・貸倒引当金・前払／未払・税金などを直す。</p></div><div class="rounded-2xl bg-teal-50 p-5"><h3 class="font-bold">2. 収益・費用 → 損益</h3><p class="mt-2">当期の収益・費用を損益へ集め、それぞれの残高をゼロにする。</p></div><div class="rounded-2xl bg-teal-50 p-5"><h3 class="font-bold">3. 損益 → 繰越利益剰余金</h3><p class="mt-2">利益なら純資産が増える。損失なら減る。損益もゼロにする。</p></div></div>
-<div class="mt-5 rounded-2xl border bg-white p-5"><h3 class="text-lg font-bold">覚え方：締めるときは、残高と「逆側」に書いてゼロに！</h3><p class="mt-3">収益は普段、貸方残高 → 借方に書いて消す。費用は普段、借方残高 → 貸方に書いて消す。</p><div class="mt-4 space-y-4"><p><strong>売上100,000を締める</strong><br>借方：売上100,000 ／ 貸方：損益100,000</p><p><strong>費用を締める（仕入60,000、給料20,000）</strong><br>借方：損益80,000 ／ 貸方：仕入60,000・給料20,000</p><p><strong>利益20,000を純資産へ移す</strong><br>借方：損益20,000 ／ 貸方：繰越利益剰余金20,000</p><p><strong>逆に損失20,000なら</strong><br>借方：繰越利益剰余金20,000 ／ 貸方：損益20,000</p></div></div>
-<div class="mt-5 rounded-2xl bg-amber-50 p-5"><h3 class="font-bold">資産・負債・純資産はどうする？</h3><p class="mt-3">決算整理後の残高を翌期へ繰り越すよ。日商3級で扱う英米式では、損益への振替はせず、元帳に「次期繰越」を記入して締め、翌期に「前期繰越」として引き継ぐ。</p><p class="mt-3">ただし、仮払・仮受消費税や現金過不足などは、先に精算・整理する科目。<strong>分類だけを見て、決算前の金額をそのまま残さないでね。</strong></p></div></section>
-<section id="review" class="mt-12 scroll-mt-5"><h2 class="text-2xl font-bold">⑤ 覚えたか、ひとくちチェック</h2><p class="mt-3">答えを考えてから開いてね。</p><div class="mt-5 space-y-3"><details class="rounded-xl border bg-white p-5"><summary class="cursor-pointer font-bold">借入金を返した。費用が増える？</summary><p class="mt-3 leading-8">元本の返済は負債の減少なので借方：借入金。利息を払った部分だけ支払利息という費用になるよ。</p></details><details class="rounded-xl border bg-white p-5"><summary class="cursor-pointer font-bold">前払保険料は、なぜ費用じゃなく資産？</summary><p class="mt-3 leading-8">翌期の保険サービスを受ける権利が残っているから。当期の費用から外して、将来の分として持ち越すよ。</p></details><details class="rounded-xl border bg-white p-5"><summary class="cursor-pointer font-bold">貸倒引当金は貸方に増えるから負債？</summary><p class="mt-3 leading-8">資産を差し引く評価勘定だよ。貸方に増える科目がすべて負債とは限らない！</p></details><details class="rounded-xl border bg-white p-5"><summary class="cursor-pointer font-bold">商品を後払いで買った場合と、自社用の机を後払いで買った場合は？</summary><p class="mt-3 leading-8">商品は貸方：買掛金。自社用の机は貸方：未払金。何の代金かで使い分けるよ。</p></details><details class="rounded-xl border bg-white p-5"><summary class="cursor-pointer font-bold">資本金が増えたら、当期の利益も増える？</summary><p class="mt-3 leading-8">増えないよ。出資は純資産の増加だけど収益ではない。利益は収益−費用で計算するよ。</p></details><details class="rounded-xl border bg-white p-5"><summary class="cursor-pointer font-bold">売上を締めるとき、売上は左右どっち？</summary><p class="mt-3 leading-8">借方！ 普段は貸方残高なので、逆側の借方に書いてゼロにする。借方：売上 ／ 貸方：損益だよ。</p></details></div></section>
-<section class="mt-12 border-t pt-6 text-sm text-slate-600"><h2 class="font-bold">参考資料と対象範囲</h2><p class="mt-3">確認日：2026年11月1日。分類・仕訳例・覚え方は学習用に独自作成。全科目・全論点を網羅するものではないよ。2027年度以降は範囲改定があるため、受験年度の公式資料を確認してね。</p><ul class="mt-3 list-disc space-y-2 pl-5">
-<li><a class="text-teal-800 underline" href="https://www.kentei.ne.jp/bookkeeping/35697-2/2022-2026">日本商工会議所：2022〜2026年度適用の出題区分表・勘定科目表</a>（対象年度・科目名の確認）</li>
-<li><a class="text-teal-800 underline" href="https://www.tac-school.co.jp/kouza_boki/boki_tips_3kyu.html">TAC：簿記 豆知識・用語集 日商3級</a>（5要素・増減・利益の基本）</li>
-<li><a class="text-teal-800 underline" href="https://www.pdca-accounting.com/epub/boki3/text/xhtml/kamoku.html">PDCA会計：簿記3級 勘定科目一覧</a>（科目分類の照合）</li>
-<li><a class="text-teal-800 underline" href="https://www.pdca-accounting.com/epub/boki3/text/xhtml/bokinyuumon13-4.html">PDCA会計：決算振替</a>（損益への振替と帳簿の締切）</li></ul><p class="mt-3">本文・検索・理解チェックはネット接続不要。外部の参考資料を開くときだけ接続が必要だよ。</p></section>
-<footer class="mt-8 flex flex-wrap gap-5 pb-6 font-bold text-teal-800 print:hidden"><a class="underline" href="../index.html">← 模試一覧へ</a><a class="underline" href="#top">ページの先頭へ ↑</a></footer>
-</main>
-<script>
-// 一覧は静的HTMLで保持し、検索だけをJavaScriptで補助する。
-const query = document.getElementById('query');
-const category = document.getElementById('category');
-const groups = [...document.querySelectorAll('[data-group]')];
-const normalize = value => value.normalize('NFKC').toLowerCase().trim();
-function filterAccounts() {
-  const words = normalize(query.value).split(/\s+/).filter(Boolean);
-  let count = 0;
-  for (const group of groups) {
-    let visible = 0;
-    for (const row of group.querySelectorAll('[data-account]')) {
-      const matches = (!category.value || category.value === group.dataset.group)
-        && words.every(word => normalize(row.textContent).includes(word));
-      row.hidden = !matches;
-      if (matches) visible++;
-    }
-    group.hidden = visible === 0;
-    count += visible;
-  }
-  document.getElementById('search-count').textContent = `${count}件の科目グループを表示中`;
-  document.getElementById('no-results').hidden = count !== 0;
-}
-query.addEventListener('input', filterAccounts);
-category.addEventListener('change', filterAccounts);
-document.getElementById('clear').addEventListener('click', () => {
-  query.value = '';
-  category.value = '';
-  filterAccounts();
-  query.focus();
-});
-// 分類リンクからは、検索条件を解除して対象の一覧を開く。
-for (const link of document.querySelectorAll('a[href^="#"]')) {
-  link.addEventListener('click', () => {
-    if (groups.some(group => `#${group.id}` === link.getAttribute('href'))) {
-      query.value = '';
-      category.value = '';
+      @layer utilities {
+        .visible {
+          visibility: visible;
+        }
+        .mx-auto {
+          margin-inline: auto;
+        }
+        .mt-2 {
+          margin-top: calc(var(--spacing) * 2);
+        }
+        .mt-3 {
+          margin-top: calc(var(--spacing) * 3);
+        }
+        .mt-4 {
+          margin-top: calc(var(--spacing) * 4);
+        }
+        .mt-5 {
+          margin-top: calc(var(--spacing) * 5);
+        }
+        .mt-7 {
+          margin-top: calc(var(--spacing) * 7);
+        }
+        .mt-8 {
+          margin-top: calc(var(--spacing) * 8);
+        }
+        .mt-12 {
+          margin-top: calc(var(--spacing) * 12);
+        }
+        .mb-3 {
+          margin-bottom: calc(var(--spacing) * 3);
+        }
+        .block {
+          display: block;
+        }
+        .flex {
+          display: flex;
+        }
+        .grid {
+          display: grid;
+        }
+        .hidden {
+          display: none;
+        }
+        .table {
+          display: table;
+        }
+        .w-full {
+          width: 100%;
+        }
+        .max-w-3xl {
+          max-width: var(--container-3xl);
+        }
+        .max-w-6xl {
+          max-width: var(--container-6xl);
+        }
+        .min-w-\[680px\] {
+          min-width: 680px;
+        }
+        .cursor-pointer {
+          cursor: pointer;
+        }
+        .scroll-mt-5 {
+          scroll-margin-top: calc(var(--spacing) * 5);
+        }
+        .list-disc {
+          list-style-type: disc;
+        }
+        .flex-wrap {
+          flex-wrap: wrap;
+        }
+        .items-center {
+          align-items: center;
+        }
+        .justify-between {
+          justify-content: space-between;
+        }
+        .gap-3 {
+          gap: calc(var(--spacing) * 3);
+        }
+        .gap-4 {
+          gap: calc(var(--spacing) * 4);
+        }
+        .gap-5 {
+          gap: calc(var(--spacing) * 5);
+        }
+        .space-y-2 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(
+              calc(var(--spacing) * 2) * var(--tw-space-y-reverse)
+            );
+            margin-block-end: calc(
+              calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse))
+            );
+          }
+        }
+        .space-y-3 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(
+              calc(var(--spacing) * 3) * var(--tw-space-y-reverse)
+            );
+            margin-block-end: calc(
+              calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse))
+            );
+          }
+        }
+        .space-y-4 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(
+              calc(var(--spacing) * 4) * var(--tw-space-y-reverse)
+            );
+            margin-block-end: calc(
+              calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse))
+            );
+          }
+        }
+        .overflow-x-auto {
+          overflow-x: auto;
+        }
+        .rounded-2xl {
+          border-radius: var(--radius-2xl);
+        }
+        .rounded-full {
+          border-radius: calc(infinity * 1px);
+        }
+        .rounded-xl {
+          border-radius: var(--radius-xl);
+        }
+        .border {
+          border-style: var(--tw-border-style);
+          border-width: 1px;
+        }
+        .border-t {
+          border-top-style: var(--tw-border-style);
+          border-top-width: 1px;
+        }
+        .border-b {
+          border-bottom-style: var(--tw-border-style);
+          border-bottom-width: 1px;
+        }
+        .bg-amber-50 {
+          background-color: var(--color-amber-50);
+        }
+        .bg-slate-50 {
+          background-color: var(--color-slate-50);
+        }
+        .bg-slate-200 {
+          background-color: var(--color-slate-200);
+        }
+        .bg-teal-50 {
+          background-color: var(--color-teal-50);
+        }
+        .bg-teal-900 {
+          background-color: var(--color-teal-900);
+        }
+        .bg-white {
+          background-color: var(--color-white);
+        }
+        .p-3 {
+          padding: calc(var(--spacing) * 3);
+        }
+        .p-4 {
+          padding: calc(var(--spacing) * 4);
+        }
+        .p-5 {
+          padding: calc(var(--spacing) * 5);
+        }
+        .p-6 {
+          padding: calc(var(--spacing) * 6);
+        }
+        .px-4 {
+          padding-inline: calc(var(--spacing) * 4);
+        }
+        .px-5 {
+          padding-inline: calc(var(--spacing) * 5);
+        }
+        .py-2 {
+          padding-block: calc(var(--spacing) * 2);
+        }
+        .py-5 {
+          padding-block: calc(var(--spacing) * 5);
+        }
+        .py-10 {
+          padding-block: calc(var(--spacing) * 10);
+        }
+        .pt-6 {
+          padding-top: calc(var(--spacing) * 6);
+        }
+        .pb-6 {
+          padding-bottom: calc(var(--spacing) * 6);
+        }
+        .pl-5 {
+          padding-left: calc(var(--spacing) * 5);
+        }
+        .text-left {
+          text-align: left;
+        }
+        .font-sans {
+          font-family: var(--font-sans);
+        }
+        .text-2xl {
+          font-size: var(--text-2xl);
+          line-height: var(--tw-leading, var(--text-2xl--line-height));
+        }
+        .text-3xl {
+          font-size: var(--text-3xl);
+          line-height: var(--tw-leading, var(--text-3xl--line-height));
+        }
+        .text-lg {
+          font-size: var(--text-lg);
+          line-height: var(--tw-leading, var(--text-lg--line-height));
+        }
+        .text-sm {
+          font-size: var(--text-sm);
+          line-height: var(--tw-leading, var(--text-sm--line-height));
+        }
+        .text-xl {
+          font-size: var(--text-xl);
+          line-height: var(--tw-leading, var(--text-xl--line-height));
+        }
+        .leading-7 {
+          --tw-leading: calc(var(--spacing) * 7);
+          line-height: calc(var(--spacing) * 7);
+        }
+        .leading-8 {
+          --tw-leading: calc(var(--spacing) * 8);
+          line-height: calc(var(--spacing) * 8);
+        }
+        .leading-tight {
+          --tw-leading: var(--leading-tight);
+          line-height: var(--leading-tight);
+        }
+        .font-bold {
+          --tw-font-weight: var(--font-weight-bold);
+          font-weight: var(--font-weight-bold);
+        }
+        .tracking-widest {
+          --tw-tracking: var(--tracking-widest);
+          letter-spacing: var(--tracking-widest);
+        }
+        .text-slate-600 {
+          color: var(--color-slate-600);
+        }
+        .text-slate-800 {
+          color: var(--color-slate-800);
+        }
+        .text-teal-800 {
+          color: var(--color-teal-800);
+        }
+        .text-teal-900 {
+          color: var(--color-teal-900);
+        }
+        .text-white {
+          color: var(--color-white);
+        }
+        .underline {
+          text-decoration-line: underline;
+        }
+        .antialiased {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        .hover\:bg-teal-50 {
+          &:hover {
+            @media (hover: hover) {
+              background-color: var(--color-teal-50);
+            }
+          }
+        }
+        .sm\:grid-cols-2 {
+          @media (width >= 40rem) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+        .sm\:grid-cols-3 {
+          @media (width >= 40rem) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+        .sm\:text-4xl {
+          @media (width >= 40rem) {
+            font-size: var(--text-4xl);
+            line-height: var(--tw-leading, var(--text-4xl--line-height));
+          }
+        }
+        .lg\:grid-cols-2 {
+          @media (width >= 64rem) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+        .print\:hidden {
+          @media print {
+            display: none;
+          }
+        }
+      }
+      @property --tw-space-y-reverse {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --tw-border-style {
+        syntax: "*";
+        inherits: false;
+        initial-value: solid;
+      }
+      @property --tw-leading {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-font-weight {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-tracking {
+        syntax: "*";
+        inherits: false;
+      }
+      @layer properties {
+        @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or
+          ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+          *,
+          ::before,
+          ::after,
+          ::backdrop {
+            --tw-space-y-reverse: 0;
+            --tw-border-style: solid;
+            --tw-leading: initial;
+            --tw-font-weight: initial;
+            --tw-tracking: initial;
+          }
+        }
+      }
+    </style>
+    <!-- TAILWIND_END -->
+  </head>
+  <body class="bg-slate-50 font-sans text-slate-800 antialiased leading-7">
+    <header class="border-b bg-white">
+      <div
+        class="mx-auto max-w-6xl px-5 py-5 flex flex-wrap items-center justify-between gap-3"
+      >
+        <a href="../index.html" class="font-bold text-teal-800 underline"
+          >← 簿記の時間・模試一覧</a
+        ><span class="text-sm text-slate-600">日商簿記3級 / 学習ノート</span>
+      </div>
+    </header>
+    <main id="top" class="mx-auto max-w-6xl px-5 py-10">
+      <p class="text-sm font-bold tracking-widest text-teal-800">STUDY NOTE</p>
+      <h1 class="mt-3 text-3xl font-bold leading-tight sm:text-4xl">
+        勘定科目と<br />仕訳のルール帳
+      </h1>
+      <p class="mt-5 max-w-3xl leading-8">
+        あんじゅ、「これ、何の仲間？」で迷ったらここへ。<br />分類 → 増減の向き
+        → 普段のルール → 決算の順に、理由とセットで覚えよう。
+      </p>
+      <p class="mt-3 text-sm text-slate-600">
+        2026年度の3級学習向け（2027年3月31日までの受験）・非公式のオリジナル解説。保存したこのHTMLだけで、オフラインでも読めるよ。
+      </p>
+      <nav
+        aria-label="このページの目次"
+        class="mt-7 flex flex-wrap gap-3 print:hidden"
+      >
+        <a
+          class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50"
+          href="#basics"
+          >① 5つの仲間</a
+        ><a
+          class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50"
+          href="#dictionary"
+          >② 科目を調べる</a
+        ><a
+          class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50"
+          href="#rules"
+          >③ 普段のルール・覚え方</a
+        ><a
+          class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50"
+          href="#closing"
+          >④ 決算の締め方</a
+        ><a
+          class="rounded-full border bg-white px-4 py-2 font-bold text-teal-800 hover:bg-teal-50"
+          href="#review"
+          >⑤ 理解チェック</a
+        >
+      </nav>
+      <section id="basics" class="mt-12 scroll-mt-5">
+        <h2 class="text-2xl font-bold">① まずは5つの仲間</h2>
+        <p class="mt-3">
+          借方＝左、貸方＝右。言葉に「借りる・貸す」が入っていても、借金を意味するわけじゃないよ。
+        </p>
+        <div class="mt-5 rounded-2xl bg-teal-900 p-6 text-white">
+          <p class="text-lg font-bold">
+            覚え方：資産・費用は「増えたら左」。残り3つは「増えたら右」。
+          </p>
+          <p class="mt-3">
+            減ったときは反対側！
+            「この科目はいつでも左」ではなく、増加と減少で考えよう。
+          </p>
+          <p class="mt-3">資産 ＝ 負債 ＋ 純資産 ／ 利益 ＝ 収益 − 費用</p>
+        </div>
+        <div class="mt-5 overflow-x-auto">
+          <table class="w-full min-w-[680px] text-left">
+            <caption class="mb-3 text-left text-sm text-slate-600">
+              5分類の増減と、決算後の行き先
+            </caption>
+            <thead class="bg-slate-200">
+              <tr>
+                <th scope="col" class="p-3">分類</th>
+                <th scope="col" class="p-3">意味</th>
+                <th scope="col" class="p-3">増える側</th>
+                <th scope="col" class="p-3">減る側</th>
+                <th scope="col" class="p-3">決算後</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b bg-white">
+                <th scope="row" class="p-3">
+                  <a href="#assets" class="text-teal-800 underline">資産</a>
+                </th>
+                <td class="p-3">持っているもの・あとで受け取れる権利</td>
+                <td class="p-3 font-bold">借方（左）</td>
+                <td class="p-3">貸方（右）</td>
+                <td class="p-3">貸借対照表／翌期へ繰越</td>
+              </tr>
+              <tr class="border-b bg-white">
+                <th scope="row" class="p-3">
+                  <a href="#liabilities" class="text-teal-800 underline"
+                    >負債</a
+                  >
+                </th>
+                <td class="p-3">あとで支払う・返す・提供する義務</td>
+                <td class="p-3 font-bold">貸方（右）</td>
+                <td class="p-3">借方（左）</td>
+                <td class="p-3">貸借対照表／翌期へ繰越</td>
+              </tr>
+              <tr class="border-b bg-white">
+                <th scope="row" class="p-3">
+                  <a href="#equity" class="text-teal-800 underline">純資産</a>
+                </th>
+                <td class="p-3">資産から負債を引いた、会社の持ち分</td>
+                <td class="p-3 font-bold">貸方（右）</td>
+                <td class="p-3">借方（左）</td>
+                <td class="p-3">貸借対照表／翌期へ繰越</td>
+              </tr>
+              <tr class="border-b bg-white">
+                <th scope="row" class="p-3">
+                  <a href="#revenue" class="text-teal-800 underline">収益</a>
+                </th>
+                <td class="p-3">当期のもうけのもと</td>
+                <td class="p-3 font-bold">貸方（右）</td>
+                <td class="p-3">借方（左）</td>
+                <td class="p-3">損益計算書／損益へ振替して残高ゼロ</td>
+              </tr>
+              <tr class="border-b bg-white">
+                <th scope="row" class="p-3">
+                  <a href="#expenses" class="text-teal-800 underline">費用</a>
+                </th>
+                <td class="p-3">当期のもうけを得るための負担</td>
+                <td class="p-3 font-bold">借方（左）</td>
+                <td class="p-3">貸方（右）</td>
+                <td class="p-3">損益計算書／損益へ振替して残高ゼロ</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 rounded-xl bg-amber-50 p-4">
+          大事：<strong>入金＝収益、出金＝費用とは限らない！</strong>
+          借りたお金の入金は負債の増加、備品を買った出金は資産どうしの入れ替えだよ。
+        </p>
+      </section>
+      <section id="dictionary" class="mt-12 scroll-mt-5">
+        <h2 class="text-2xl font-bold">② 科目を調べる</h2>
+        <p class="mt-3">
+          3級で使う主な科目をまとめたよ。似た役割の科目は同じ行に掲載。問題で科目名を指定されたら、その指示を優先してね。
+        </p>
+        <div
+          id="search-controls"
+          hidden
+          class="mt-5 rounded-2xl border bg-white p-5 print:hidden"
+        >
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="query" class="block font-bold"
+                >科目名・説明を検索</label
+              ><input
+                id="query"
+                type="search"
+                placeholder="例：家賃、手付金、利息"
+                class="mt-2 w-full rounded-xl border bg-slate-50 p-3"
+              />
+            </div>
+            <div>
+              <label for="category" class="block font-bold"
+                >分類で絞り込み</label
+              ><select
+                id="category"
+                class="mt-2 w-full rounded-xl border bg-slate-50 p-3"
+              >
+                <option value="">すべての分類</option>
+                <option value="assets">資産</option>
+                <option value="liabilities">負債</option>
+                <option value="equity">純資産</option>
+                <option value="revenue">収益</option>
+                <option value="expenses">費用</option>
+                <option value="special">評価勘定・一時的な科目</option>
+              </select>
+            </div>
+          </div>
+          <p
+            id="search-count"
+            role="status"
+            class="mt-3 text-sm text-slate-600"
+          ></p>
+          <button id="clear" type="button" class="mt-2 text-teal-800 underline">
+            絞り込みをリセット
+          </button>
+          <p class="mt-2 text-sm text-slate-600">
+            絞り込みはこの科目一覧だけに適用されるよ。
+          </p>
+        </div>
+        <noscript
+          ><p class="mt-4">
+            検索はJavaScriptが必要だけど、科目一覧と解説はそのまま読めるよ。
+          </p></noscript
+        >
+        <section id="assets" data-group="assets" class="mt-7 scroll-mt-5">
+          <h3 class="text-xl font-bold text-teal-900">
+            資産 <span class="text-sm">／増えたら借方（左）</span>
+          </h3>
+          <p class="mt-2">
+            お金・モノ・もらえる権利。払ったあとでも、未来の役に立つものは資産だよ。
+          </p>
+          <p class="mt-2 text-sm font-bold text-teal-800">
+            決算：貸借対照表／翌期へ繰越
+          </p>
+          <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">現金・小口現金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                手元のお金。小口現金は日々の少額支払い用。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">普通預金・当座預金・定期預金</dt>
+              <dd class="mt-2 text-sm leading-7">銀行に預けているお金。</dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">売掛金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                商品を売った代金を、あとでもらう権利。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">クレジット売掛金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                カード会社などから販売代金を受け取る権利。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">受取手形・電子記録債権</dt>
+              <dd class="mt-2 text-sm leading-7">
+                手形や電子記録にもとづき代金を受け取る権利。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">繰越商品</dt>
+              <dd class="mt-2 text-sm leading-7">
+                まだ売れていない商品の在庫。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">貯蔵品</dt>
+              <dd class="mt-2 text-sm leading-7">
+                決算時に残った未使用の切手・収入印紙など。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">貸付金・従業員貸付金・手形貸付金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                貸したお金を返してもらう権利。利息の収益とは別だよ。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">未収入金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                備品の売却など、通常の商品売買以外であとからもらう代金。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">前払金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                商品を受け取る前に払った手付金など。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">立替金・従業員立替金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                他の人の負担分を代わりに払い、あとで返してもらうお金。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">仮払金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                使い道や金額が確定する前に、ひとまず払ったお金。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">差入保証金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                借りた店舗の敷金など、契約終了時に返還される性質のお金。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">前払費用（前払保険料・前払家賃など）</dt>
+              <dd class="mt-2 text-sm leading-7">
+                支払い済みだけど、翌期以降にサービスを受ける分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">未収収益（未収利息・未収家賃など）</dt>
+              <dd class="mt-2 text-sm leading-7">
+                当期分の収益なのに、まだ受け取っていない分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">仮払法人税等</dt>
+              <dd class="mt-2 text-sm leading-7">
+                中間納付などで先に払った法人税等。決算で精算する。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">仮払消費税</dt>
+              <dd class="mt-2 text-sm leading-7">
+                税抜方式で、仕入れなどの際に払った消費税。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">建物・備品・車両運搬具</dt>
+              <dd class="mt-2 text-sm leading-7">
+                長く使うために持つ固定資産。使用に応じて減価償却する。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">土地</dt>
+              <dd class="mt-2 text-sm leading-7">
+                土地も固定資産。ただし通常、減価償却はしない。
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <section
+          id="liabilities"
+          data-group="liabilities"
+          class="mt-7 scroll-mt-5"
+        >
+          <h3 class="text-xl font-bold text-teal-900">
+            負債 <span class="text-sm">／増えたら貸方（右）</span>
+          </h3>
+          <p class="mt-2">
+            借りた・預かった・まだ払っていない。先にもらって、これから商品やサービスを渡す義務も負債だよ。
+          </p>
+          <p class="mt-2 text-sm font-bold text-teal-800">
+            決算：貸借対照表／翌期へ繰越
+          </p>
+          <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">買掛金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                商品を仕入れた代金を、あとで払う義務。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">支払手形・電子記録債務</dt>
+              <dd class="mt-2 text-sm leading-7">
+                手形や電子記録にもとづいて代金を払う義務。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">借入金・手形借入金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                借りたお金を返す義務。利息の費用とは別。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">当座借越</dt>
+              <dd class="mt-2 text-sm leading-7">
+                当座預金の残高を超えて引き出した、銀行からの借入分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">未払金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                備品の購入など、通常の商品売買以外であとから払う代金。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">前受金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                商品を渡す前に受け取った手付金など。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">預り金・所得税預り金・社会保険料預り金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                他の人から預かり、あとで納付・返還するお金。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">仮受金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                内容のわからない入金を、ひとまず記録する科目。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">未払費用（未払利息・未払家賃など）</dt>
+              <dd class="mt-2 text-sm leading-7">
+                当期分の費用なのに、まだ払っていない分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">前受収益（前受家賃・前受利息など）</dt>
+              <dd class="mt-2 text-sm leading-7">
+                受け取り済みだけど、翌期以降のサービスに対応する分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">未払法人税等</dt>
+              <dd class="mt-2 text-sm leading-7">
+                決算で計算した法人税等の、まだ納付していない分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">仮受消費税</dt>
+              <dd class="mt-2 text-sm leading-7">
+                税抜方式で、販売などの際に受け取った消費税。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">未払消費税</dt>
+              <dd class="mt-2 text-sm leading-7">
+                仮受・仮払消費税を精算して、あとで納める分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">未払配当金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                配当が決まったあと、まだ株主へ払っていない金額。
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <section id="equity" data-group="equity" class="mt-7 scroll-mt-5">
+          <h3 class="text-xl font-bold text-teal-900">
+            純資産 <span class="text-sm">／増えたら貸方（右）</span>
+          </h3>
+          <p class="mt-2">
+            株主からの出資と、会社に積み重なった利益。売上とは区別しよう。
+          </p>
+          <p class="mt-2 text-sm font-bold text-teal-800">
+            決算：貸借対照表／翌期へ繰越
+          </p>
+          <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">資本金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                株主からの出資のうち、資本金として記録する金額。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">利益準備金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                配当に伴い、利益から積み立てる法定の準備金。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">繰越利益剰余金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                これまでの利益や損失、配当などを反映した蓄積。赤字なら借方残高にもなる。
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <section id="revenue" data-group="revenue" class="mt-7 scroll-mt-5">
+          <h3 class="text-xl font-bold text-teal-900">
+            収益 <span class="text-sm">／増えたら貸方（右）</span>
+          </h3>
+          <p class="mt-2">
+            商品やサービスを提供して得た成果。お金を受け取っただけで、いつも収益になるわけじゃないよ。
+          </p>
+          <p class="mt-2 text-sm font-bold text-teal-800">
+            決算：損益計算書／損益へ振替して残高ゼロ
+          </p>
+          <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">売上</dt>
+              <dd class="mt-2 text-sm leading-7">
+                商品を売って得た収益。掛け販売でも計上する。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">受取手数料</dt>
+              <dd class="mt-2 text-sm leading-7">
+                仲介などのサービスに対する手数料の収益。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">受取利息</dt>
+              <dd class="mt-2 text-sm leading-7">
+                預金や貸付金などから生じる利息の収益。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">受取家賃・受取地代</dt>
+              <dd class="mt-2 text-sm leading-7">
+                建物や土地を貸して得る収益。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">固定資産売却益</dt>
+              <dd class="mt-2 text-sm leading-7">
+                固定資産を帳簿価額より高く売ったときの差額。売却代金そのものではないよ。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">貸倒引当金戻入</dt>
+              <dd class="mt-2 text-sm leading-7">
+                必要な貸倒引当金より残高が多く、取り崩した分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">償却債権取立益</dt>
+              <dd class="mt-2 text-sm leading-7">
+                過去の期に貸倒処理した債権を回収したときの収益。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">雑益</dt>
+              <dd class="mt-2 text-sm leading-7">
+                ほかの適切な科目に当てはまらない収益。現金過不足の原因不明の余りなど。
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <section id="expenses" data-group="expenses" class="mt-7 scroll-mt-5">
+          <h3 class="text-xl font-bold text-teal-900">
+            費用 <span class="text-sm">／増えたら借方（左）</span>
+          </h3>
+          <p class="mt-2">
+            当期に使った・当期の負担になった分。支払っただけで、すべて費用になるわけじゃないよ。
+          </p>
+          <p class="mt-2 text-sm font-bold text-teal-800">
+            決算：損益計算書／損益へ振替して残高ゼロ
+          </p>
+          <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">仕入</dt>
+              <dd class="mt-2 text-sm leading-7">
+                三分法で商品購入を記録する科目。決算整理で売上原価に直す。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">給料</dt>
+              <dd class="mt-2 text-sm leading-7">
+                従業員の働きに対する会社の負担。手取り額と区別しよう。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">法定福利費</dt>
+              <dd class="mt-2 text-sm leading-7">
+                社会保険料などの会社負担分。従業員負担分の預り金とは別。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">広告宣伝費・通信費・旅費交通費</dt>
+              <dd class="mt-2 text-sm leading-7">
+                広告、電話・郵便、出張や移動にかかる当期の費用。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">消耗品費・水道光熱費</dt>
+              <dd class="mt-2 text-sm leading-7">
+                文房具などの消耗品や電気・水道・ガスの費用。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">支払家賃・支払地代・保険料</dt>
+              <dd class="mt-2 text-sm leading-7">
+                建物・土地を借りる費用や保険の当期負担分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">支払手数料・支払利息</dt>
+              <dd class="mt-2 text-sm leading-7">
+                手数料や借入金の利息。借入元本の返済は費用ではない。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">発送費</dt>
+              <dd class="mt-2 text-sm leading-7">
+                商品を売る際、会社が負担する発送費用。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">修繕費</dt>
+              <dd class="mt-2 text-sm leading-7">
+                固定資産の通常の維持・原状回復にかかる費用。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">租税公課</dt>
+              <dd class="mt-2 text-sm leading-7">
+                固定資産税・収入印紙など。法人税等とは分ける。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">法人税等</dt>
+              <dd class="mt-2 text-sm leading-7">
+                法人税・住民税・事業税などの当期の税負担。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">減価償却費</dt>
+              <dd class="mt-2 text-sm leading-7">
+                建物や備品などの取得原価を、使用する期間に配分した当期分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">貸倒引当金繰入</dt>
+              <dd class="mt-2 text-sm leading-7">
+                将来の貸倒れに備え、引当金を追加する当期の費用。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">貸倒損失</dt>
+              <dd class="mt-2 text-sm leading-7">
+                回収不能となった債権のうち、費用として処理する部分。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">固定資産売却損</dt>
+              <dd class="mt-2 text-sm leading-7">
+                固定資産を帳簿価額より安く売ったときの差額。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-white p-4">
+              <dt class="font-bold">雑費・雑損</dt>
+              <dd class="mt-2 text-sm leading-7">
+                ほかの適切な科目に当てはまらない少額の費用や損失。
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <section id="special" data-group="special" class="mt-7 scroll-mt-5">
+          <h3 class="text-xl font-bold text-teal-900">
+            5分類だけで覚えない、特別な科目
+          </h3>
+          <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+            <div data-account class="rounded-xl border bg-amber-50 p-4">
+              <dt class="font-bold">貸倒引当金</dt>
+              <dd class="mt-2 text-sm leading-7">
+                資産のマイナスを表す評価勘定。負債ではないよ。増加は貸方、減少は借方。翌期へ繰り越す。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-amber-50 p-4">
+              <dt class="font-bold">減価償却累計額（建物・備品など）</dt>
+              <dd class="mt-2 text-sm leading-7">
+                固定資産のマイナスを表す評価勘定。費用そのものではなく、過去からの減価償却の累計。増加は貸方、翌期へ繰り越す。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-amber-50 p-4">
+              <dt class="font-bold">現金過不足</dt>
+              <dd class="mt-2 text-sm leading-7">
+                帳簿と実際の現金が合わないときの仮の置き場。不足は借方、余りは貸方。原因が判明したら正しい科目へ直し、決算でも原因不明の残りは雑損・雑益へ。
+              </dd>
+            </div>
+            <div data-account class="rounded-xl border bg-amber-50 p-4">
+              <dt class="font-bold">損益</dt>
+              <dd class="mt-2 text-sm leading-7">
+                収益と費用を集め、利益・損失を計算する決算用の勘定。最後に繰越利益剰余金へ振り替えてゼロにする。
+              </dd>
+            </div>
+          </dl>
+        </section>
+        <p id="no-results" hidden class="mt-5 rounded-xl bg-amber-50 p-5">
+          見つからなかったよ。短い言葉にするか、分類を「すべて」に戻してみてね。
+        </p>
+      </section>
+      <section id="rules" class="mt-12 scroll-mt-5">
+        <h2 class="text-2xl font-bold">③ 普段のルールと、忘れにくい覚え方</h2>
+        <p class="mt-3">
+          まず「何が増減した？」を考えて、次に左右へ置く。仕訳はいつも<strong>借方合計＝貸方合計</strong>だよ。以下の金額例はすべて円。
+        </p>
+        <div class="mt-5 grid gap-5 lg:grid-cols-2">
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              01 / 資産：買ったらすぐ費用、ではない
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p><strong>覚え方：未来に役立つものは、いったん資産。</strong></p>
+              <p>
+                備品を現金30,000で購入 → 借方：備品30,000 ／
+                貸方：現金30,000。資産が増え、別の資産が減るよ。
+              </p>
+              <p>
+                あとで売掛金を回収したら、借方：現金 ／
+                貸方：売掛金。販売時に売上を計上しているので、回収時にもう一度売上を立てないでね。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              02 / 負債：借入元本と利息は別
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong>覚え方：借りた本体は負債、借りる料金は費用。</strong>
+              </p>
+              <p>
+                100,000を借りたら、借方：普通預金100,000 ／
+                貸方：借入金100,000。収益にはしないよ。
+              </p>
+              <p>
+                元本100,000と利息1,000を返したら、借方：借入金100,000・支払利息1,000
+                ／ 貸方：普通預金101,000。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              03 / 掛けと未収・未払は「何の代金？」
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：商品なら「掛け」、備品などなら「未収入・未払」。</strong
+                >
+              </p>
+              <p>
+                商品を後払いで売る → 売掛金。商品を後払いで仕入れる → 買掛金。
+              </p>
+              <p>
+                使っていた備品を後払いで売る →
+                未収入金。自社で使う備品を後払いで買う → 未払金。
+              </p>
+              <p>
+                「売掛金と未収入金」「買掛金と未払金」は、あとでもらう・払うという性質は同じ。取引の中身で使い分けるよ。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              04 / 前払金と前受金：商品の手付金
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：先に払ったら「もらう権利」、先にもらったら「渡す義務」。</strong
+                >
+              </p>
+              <p>
+                商品の注文時に手付金10,000を支払う → 借方：前払金10,000 ／
+                貸方：現金10,000。
+              </p>
+              <p>
+                販売する商品の手付金10,000を受け取る → 借方：現金10,000 ／
+                貸方：前受金10,000。まだ商品を渡していない段階で、売上にしないよ。
+              </p>
+              <p>
+                商品の受け渡し時に前払金・前受金を取り崩して、仕入・売上などへつなげるよ。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              05 / 立替・預り・仮払・仮受の違い
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：立替は「返してね」、預りは「あとで渡すね」、仮は「中身がまだ不明」。</strong
+                >
+              </p>
+              <p>
+                従業員の私的な支払いを会社が立て替える →
+                立替金（資産）。給与から所得税を預かる → 所得税預り金（負債）。
+              </p>
+              <p>
+                出張前に概算で渡す → 仮払金（資産）。内容不明の振込 →
+                仮受金（負債）。内容がわかったら正しい科目へ振り替えるよ。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              06 / 給料と社会保険料：手取りと費用は違う
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：会社の費用は「額面」、預かった分は負債。</strong
+                >
+              </p>
+              <p>
+                給料200,000から所得税5,000、社会保険料20,000を控除して振り込む例：
+              </p>
+              <p>
+                借方：給料200,000 ／
+                貸方：所得税預り金5,000・社会保険料預り金20,000・普通預金175,000。
+              </p>
+              <p>
+                社会保険料の<strong>会社負担分</strong>は法定福利費（費用）。従業員から預かる分と混ぜないでね。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              07 / 収益・費用：「今期の分？」で分ける
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：「未」はまだお金が動かない。「前」はお金が先。</strong
+                >
+              </p>
+              <p>
+                前払費用：払ったけど、翌期の費用 →
+                資産。未払費用：今期の費用だけど未払い → 負債。
+              </p>
+              <p>
+                未収収益：今期の収益だけど未入金 →
+                資産。前受収益：受け取ったけど翌期の収益 → 負債。
+              </p>
+              <p>
+                保険料・家賃・利息などの継続的なサービスで使うよ。商品の手付金で使う前払金・前受金とは区別しよう。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              08 / 経過勘定の具体例と再振替
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                12月決算で、10月1日に翌年9月までの保険料12,000を費用処理した例。今期分は3か月＝3,000、翌期分は9か月＝9,000。
+              </p>
+              <p>決算：借方：前払保険料9,000 ／ 貸方：保険料9,000。</p>
+              <p>
+                <strong
+                  >覚え方：今期から外した分は、来期のスタートで戻す。</strong
+                >
+                翌期首の再振替：借方：保険料9,000 ／ 貸方：前払保険料9,000。
+              </p>
+              <p>
+                未払費用・未収収益・前受収益も、再振替は決算整理と逆の仕訳。問題の処理方法・指示を確認してね。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              09 / 商品売買：三分法と「しーくり・くりしー」
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：買う＝仕入、売る＝売上、残る＝繰越商品。</strong
+                >
+              </p>
+              <p>
+                仕入れの運賃など、自社負担の仕入諸掛は原則として仕入に含めるよ。販売時に自社が負担する送料は発送費。
+              </p>
+              <p>
+                決算（仕入勘定で売上原価を計算する方法）：<br />① 借方：仕入 ／
+                貸方：繰越商品（期首在庫）＝しーくり<br />② 借方：繰越商品 ／
+                貸方：仕入（期末在庫）＝くりしー
+              </p>
+              <p>
+                売上原価＝期首商品＋当期純仕入−期末商品。例：20,000＋100,000−30,000＝90,000。売れ残り30,000は資産に残すよ。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              10 / 減価償却：費用と累計額を分ける
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：「費」は今年分、「累計」はこれまでの合計。</strong
+                >
+              </p>
+              <p>
+                間接法：借方：減価償却費 ／
+                貸方：備品減価償却累計額など。累計額は負債ではなく、資産の控除項目だよ。
+              </p>
+              <p>
+                定額法＝（取得原価−残存価額）÷耐用年数。120,000、残存価額ゼロ、5年なら年24,000。期中取得は問題の指示に従って月割り。
+              </p>
+              <p>
+                土地は通常、減価償却しない。使える期間を延ばす・性能を高める支出は資産に加える場合があり、通常の修繕費と区別するよ。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              11 / 固定資産を売る：比べるのは帳簿価額
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：買値ではなく「今の帳簿の値段」と比べる。</strong
+                >
+              </p>
+              <p>
+                取得原価100,000、売却時までの減価償却累計額70,000なら帳簿価額は30,000。40,000で売れたら売却益10,000。
+              </p>
+              <p>
+                間接法で現金売却：借方：現金40,000・備品減価償却累計額70,000 ／
+                貸方：備品100,000・固定資産売却益10,000。
+              </p>
+              <p>
+                期中売却では、売却時までの減価償却が必要かも確認。売却代金を丸ごと売上にしないでね。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              12 / 貸倒れ：見積りと実際の発生は別
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p><strong>覚え方：引当金は備え、繰入は今年の負担。</strong></p>
+              <p>
+                差額補充法：必要残高−設定前の引当金残高＝追加額。売掛金100,000×2％＝2,000、引当金が500残っていれば、借方：貸倒引当金繰入1,500
+                ／ 貸方：貸倒引当金1,500。
+              </p>
+              <p>
+                前期以前に生じた債権が貸し倒れたら、まず貸倒引当金を取り崩し、不足分を貸倒損失へ。当期発生の債権の貸倒れは貸倒損失で処理するよ。
+              </p>
+              <p>
+                必要額より引当金が多ければ貸倒引当金戻入。過去の期に貸倒処理した債権を回収したら償却債権取立益。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              13 / 純資産：出資と配当は収益・費用にしない
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：株主とのやり取りは「会社の持ち分」の話。</strong
+                >
+              </p>
+              <p>
+                株式発行で出資を受け、全額資本金とするなら、借方：普通預金 ／
+                貸方：資本金。売上にはしないよ。
+              </p>
+              <p>
+                配当が決まると、借方：繰越利益剰余金 ／
+                貸方：未払配当金。支払うと、借方：未払配当金 ／
+                貸方：普通預金。配当を費用にしないでね。
+              </p>
+              <p>
+                利益準備金の積立ては純資産内の振替。利益が出たら、決算で損益から繰越利益剰余金へ移すよ。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              14 / 税金：税金という名前でも仲間が違う
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：負担は費用、先払いは資産、未払いは負債。</strong
+                >
+              </p>
+              <p>
+                法人税等は費用。仮払法人税等は資産、未払法人税等は負債。年税額30,000・中間納付10,000なら、借方：法人税等30,000
+                ／ 貸方：仮払法人税等10,000・未払法人税等20,000。
+              </p>
+              <p>固定資産税・収入印紙などは租税公課。法人税等とは分けよう。</p>
+              <p>
+                消費税の<strong>税抜方式</strong>では仮払・仮受を使う。税込方式の仕訳と混ぜないでね。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              15 / 消費税：仮受と仮払を相殺する
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p><strong>覚え方：受け取った税−払った税＝納める税。</strong></p>
+              <p>
+                税抜方式の単純な例で、仮受消費税10,000、仮払消費税7,000の場合：
+              </p>
+              <p>
+                借方：仮受消費税10,000 ／
+                貸方：仮払消費税7,000・未払消費税3,000。
+              </p>
+              <p>
+                仮払・仮受は決算で精算するので、そのまま機械的に翌期へ残さないよ。問題の条件によっては還付を受ける未収額になる場合もあるよ。
+              </p>
+            </div>
+          </article>
+          <article class="rounded-2xl border bg-white p-5">
+            <h3 class="text-lg font-bold text-teal-900">
+              16 / 現金・小口現金・当座預金の注意点
+            </h3>
+            <div class="mt-3 space-y-3 leading-8">
+              <p>
+                <strong
+                  >覚え方：現金は「本物に合わせる」、小口は「使途で費用」、借越は「借金」。</strong
+                >
+              </p>
+              <p>
+                帳簿より実際の現金が500少ない → 借方：現金過不足500 ／
+                貸方：現金500。原因が通信費と判明 → 借方：通信費500 ／
+                貸方：現金過不足500。
+              </p>
+              <p>
+                小口現金の支払報告では、使い道に応じた費用を記録する。補給するタイミングなどは問題の制度に従おう。
+              </p>
+              <p>
+                当座預金が貸方残高なら借越。決算では借入金などへ振り替えて負債として表示するよ。科目名は問題の指定を確認！
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section id="closing" class="mt-12 scroll-mt-5">
+        <h2 class="text-2xl font-bold">④ 決算：整えてから、締める</h2>
+        <p class="mt-3">
+          <strong>決算整理</strong
+          >は「当期分へ直すこと」。<strong>決算振替</strong>は「収益・費用を締めて、利益を純資産へ移すこと」。順番を分けると迷いにくいよ。
+        </p>
+        <div class="mt-5 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl bg-teal-50 p-5">
+            <h3 class="font-bold">1. 決算整理</h3>
+            <p class="mt-2">
+              在庫・減価償却・貸倒引当金・前払／未払・税金などを直す。
+            </p>
+          </div>
+          <div class="rounded-2xl bg-teal-50 p-5">
+            <h3 class="font-bold">2. 収益・費用 → 損益</h3>
+            <p class="mt-2">
+              当期の収益・費用を損益へ集め、それぞれの残高をゼロにする。
+            </p>
+          </div>
+          <div class="rounded-2xl bg-teal-50 p-5">
+            <h3 class="font-bold">3. 損益 → 繰越利益剰余金</h3>
+            <p class="mt-2">
+              利益なら純資産が増える。損失なら減る。損益もゼロにする。
+            </p>
+          </div>
+        </div>
+        <div class="mt-5 rounded-2xl border bg-white p-5">
+          <h3 class="text-lg font-bold">
+            覚え方：締めるときは、残高と「逆側」に書いてゼロに！
+          </h3>
+          <p class="mt-3">
+            収益は普段、貸方残高 → 借方に書いて消す。費用は普段、借方残高 →
+            貸方に書いて消す。
+          </p>
+          <div class="mt-4 space-y-4">
+            <p>
+              <strong>売上100,000を締める</strong><br />借方：売上100,000 ／
+              貸方：損益100,000
+            </p>
+            <p>
+              <strong>費用を締める（仕入60,000、給料20,000）</strong
+              ><br />借方：損益80,000 ／ 貸方：仕入60,000・給料20,000
+            </p>
+            <p>
+              <strong>利益20,000を純資産へ移す</strong><br />借方：損益20,000 ／
+              貸方：繰越利益剰余金20,000
+            </p>
+            <p>
+              <strong>逆に損失20,000なら</strong
+              ><br />借方：繰越利益剰余金20,000 ／ 貸方：損益20,000
+            </p>
+          </div>
+        </div>
+        <div class="mt-5 rounded-2xl bg-amber-50 p-5">
+          <h3 class="font-bold">資産・負債・純資産はどうする？</h3>
+          <p class="mt-3">
+            決算整理後の残高を翌期へ繰り越すよ。日商3級で扱う英米式では、損益への振替はせず、元帳に「次期繰越」を記入して締め、翌期に「前期繰越」として引き継ぐ。
+          </p>
+          <p class="mt-3">
+            ただし、仮払・仮受消費税や現金過不足などは、先に精算・整理する科目。<strong
+              >分類だけを見て、決算前の金額をそのまま残さないでね。</strong
+            >
+          </p>
+        </div>
+      </section>
+      <section id="review" class="mt-12 scroll-mt-5">
+        <h2 class="text-2xl font-bold">⑤ 覚えたか、ひとくちチェック</h2>
+        <p class="mt-3">答えを考えてから開いてね。</p>
+        <div class="mt-5 space-y-3">
+          <details class="rounded-xl border bg-white p-5">
+            <summary class="cursor-pointer font-bold">
+              借入金を返した。費用が増える？
+            </summary>
+            <p class="mt-3 leading-8">
+              元本の返済は負債の減少なので借方：借入金。利息を払った部分だけ支払利息という費用になるよ。
+            </p>
+          </details>
+          <details class="rounded-xl border bg-white p-5">
+            <summary class="cursor-pointer font-bold">
+              前払保険料は、なぜ費用じゃなく資産？
+            </summary>
+            <p class="mt-3 leading-8">
+              翌期の保険サービスを受ける権利が残っているから。当期の費用から外して、将来の分として持ち越すよ。
+            </p>
+          </details>
+          <details class="rounded-xl border bg-white p-5">
+            <summary class="cursor-pointer font-bold">
+              貸倒引当金は貸方に増えるから負債？
+            </summary>
+            <p class="mt-3 leading-8">
+              資産を差し引く評価勘定だよ。貸方に増える科目がすべて負債とは限らない！
+            </p>
+          </details>
+          <details class="rounded-xl border bg-white p-5">
+            <summary class="cursor-pointer font-bold">
+              商品を後払いで買った場合と、自社用の机を後払いで買った場合は？
+            </summary>
+            <p class="mt-3 leading-8">
+              商品は貸方：買掛金。自社用の机は貸方：未払金。何の代金かで使い分けるよ。
+            </p>
+          </details>
+          <details class="rounded-xl border bg-white p-5">
+            <summary class="cursor-pointer font-bold">
+              資本金が増えたら、当期の利益も増える？
+            </summary>
+            <p class="mt-3 leading-8">
+              増えないよ。出資は純資産の増加だけど収益ではない。利益は収益−費用で計算するよ。
+            </p>
+          </details>
+          <details class="rounded-xl border bg-white p-5">
+            <summary class="cursor-pointer font-bold">
+              売上を締めるとき、売上は左右どっち？
+            </summary>
+            <p class="mt-3 leading-8">
+              借方！
+              普段は貸方残高なので、逆側の借方に書いてゼロにする。借方：売上 ／
+              貸方：損益だよ。
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="mt-12 border-t pt-6 text-sm text-slate-600">
+        <h2 class="font-bold">参考資料と対象範囲</h2>
+        <p class="mt-3">
+          確認日：2026年11月1日。分類・仕訳例・覚え方は学習用に独自作成。全科目・全論点を網羅するものではないよ。2027年度以降は範囲改定があるため、受験年度の公式資料を確認してね。
+        </p>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>
+            <a
+              class="text-teal-800 underline"
+              href="https://www.kentei.ne.jp/bookkeeping/35697-2/2022-2026"
+              >日本商工会議所：2022〜2026年度適用の出題区分表・勘定科目表</a
+            >（対象年度・科目名の確認）
+          </li>
+          <li>
+            <a
+              class="text-teal-800 underline"
+              href="https://www.tac-school.co.jp/kouza_boki/boki_tips_3kyu.html"
+              >TAC：簿記 豆知識・用語集 日商3級</a
+            >（5要素・増減・利益の基本）
+          </li>
+          <li>
+            <a
+              class="text-teal-800 underline"
+              href="https://www.pdca-accounting.com/epub/boki3/text/xhtml/kamoku.html"
+              >PDCA会計：簿記3級 勘定科目一覧</a
+            >（科目分類の照合）
+          </li>
+          <li>
+            <a
+              class="text-teal-800 underline"
+              href="https://www.pdca-accounting.com/epub/boki3/text/xhtml/bokinyuumon13-4.html"
+              >PDCA会計：決算振替</a
+            >（損益への振替と帳簿の締切）
+          </li>
+        </ul>
+        <p class="mt-3">
+          本文・検索・理解チェックはネット接続不要。外部の参考資料を開くときだけ接続が必要だよ。
+        </p>
+      </section>
+      <footer
+        class="mt-8 flex flex-wrap gap-5 pb-6 font-bold text-teal-800 print:hidden"
+      >
+        <a class="underline" href="../index.html">← 模試一覧へ</a
+        ><a class="underline" href="#top">ページの先頭へ ↑</a>
+      </footer>
+    </main>
+    <script>
+      // 一覧は静的HTMLで保持し、検索だけをJavaScriptで補助する。
+      const query = document.getElementById("query");
+      const category = document.getElementById("category");
+      const groups = [...document.querySelectorAll("[data-group]")];
+      const normalize = (value) => value.normalize("NFKC").toLowerCase().trim();
+      function filterAccounts() {
+        const words = normalize(query.value).split(/\s+/).filter(Boolean);
+        let count = 0;
+        for (const group of groups) {
+          let visible = 0;
+          for (const row of group.querySelectorAll("[data-account]")) {
+            const matches =
+              (!category.value || category.value === group.dataset.group) &&
+              words.every((word) => normalize(row.textContent).includes(word));
+            row.hidden = !matches;
+            if (matches) visible++;
+          }
+          group.hidden = visible === 0;
+          count += visible;
+        }
+        document.getElementById("search-count").textContent =
+          `${count}件の科目グループを表示中`;
+        document.getElementById("no-results").hidden = count !== 0;
+      }
+      query.addEventListener("input", filterAccounts);
+      category.addEventListener("change", filterAccounts);
+      document.getElementById("clear").addEventListener("click", () => {
+        query.value = "";
+        category.value = "";
+        filterAccounts();
+        query.focus();
+      });
+      // 分類リンクからは、検索条件を解除して対象の一覧を開く。
+      for (const link of document.querySelectorAll('a[href^="#"]')) {
+        link.addEventListener("click", () => {
+          if (
+            groups.some((group) => `#${group.id}` === link.getAttribute("href"))
+          ) {
+            query.value = "";
+            category.value = "";
+            filterAccounts();
+          }
+        });
+      }
+      document.getElementById("search-controls").hidden = false;
       filterAccounts();
-    }
-  });
-}
-document.getElementById('search-controls').hidden = false;
-filterAccounts();
-</script></body></html>
+    </script>
+  </body>
+</html>
