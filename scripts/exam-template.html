@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>日商簿記3級 __EXAM_TITLE__｜2026年度・改訂第2版</title>
+    <!-- TAILWIND_START -->
+    <!-- TAILWIND_END -->
+  </head>
+  <body class="bg-slate-50 text-slate-800 font-sans antialiased">
+    <header class="sticky top-0 z-20 border-b bg-white">
+      <div
+        class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3"
+      >
+        <div>
+          <a
+            href="../../../index.html"
+            class="text-sm font-bold text-teal-800 underline"
+            >← 模試一覧へ</a
+          >
+          <p class="mt-1 text-sm font-bold">
+            日商簿記3級 __EXAM_TITLE__
+            <span class="text-xs font-normal text-slate-500"
+              >2026年度・改訂第2版</span
+            >
+          </p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs text-slate-500">残り時間</p>
+          <p
+            id="timer"
+            role="timer"
+            class="font-mono text-2xl font-bold tabular-nums"
+          >
+            60:00
+          </p>
+        </div>
+      </div>
+    </header>
+    <main class="mx-auto max-w-7xl px-4 pt-7 pb-36">
+      <section id="intro" class="space-y-6">
+        <div class="grid gap-5 lg:grid-cols-3">
+          <div
+            class="rounded-3xl bg-teal-900 p-7 text-white md:p-10 lg:col-span-2"
+          >
+            <p class="text-sm tracking-widest text-teal-100">
+              MOCK EXAM / __EXAM_NUMBER__
+            </p>
+            <h1 class="mt-4 text-3xl font-bold leading-relaxed">
+              資料を読み、取引をつなぐ。<br />60分の実戦練習。
+            </h1>
+            <p class="mt-5 leading-8 text-teal-100">__EXAM_SUMMARY__</p>
+            <p class="mt-6 text-sm">60分 / 全3問 / 100点満点 / 合格目安70点</p>
+          </div>
+          <aside class="rounded-3xl border bg-white p-7">
+            <h2 class="text-xl font-bold">はじめる前に</h2>
+            <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7">
+              <li>電卓と計算用紙を用意してね。</li>
+              <li>
+                開始後は再読み込み中も時間が進むよ。期限で自動提出するよ。
+              </li>
+              <li>
+                金額はEnter・フォーカス移動で桁区切りになるよ。全角数字にも対応。
+              </li>
+              <li>表は横にスクロールできるよ。PCでの受験がおすすめ。</li>
+            </ul>
+            <button
+              id="start"
+              class="mt-6 w-full rounded-xl bg-teal-800 px-5 py-4 font-bold text-white hover:bg-teal-700"
+            >
+              模試をはじめる →
+            </button>
+            <p id="storageNote" class="mt-3 text-xs leading-6 text-slate-500">
+              解答はこのブラウザーに自動保存するよ。
+            </p>
+          </aside>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border bg-white p-5">
+            <p class="text-sm text-teal-700">第1問 / 45点</p>
+            <h2 class="mt-2 font-bold">仕訳15問</h2>
+            <p class="mt-2 text-sm text-slate-500">目安20分</p>
+          </div>
+          <div class="rounded-2xl border bg-white p-5">
+            <p class="text-sm text-teal-700">第2問 / 20点</p>
+            <h2 class="mt-2 font-bold">__SECOND_TITLE__</h2>
+            <p class="mt-2 text-sm text-slate-500">目安15分</p>
+          </div>
+          <div class="rounded-2xl border bg-white p-5">
+            <p class="text-sm text-teal-700">第3問 / 35点</p>
+            <h2 class="mt-2 font-bold">__THIRD_TITLE__</h2>
+            <p class="mt-2 text-sm text-slate-500">目安20分・残り5分で見直し</p>
+          </div>
+        </div>
+        <p class="text-sm leading-7 text-slate-600">
+          2027年3月31日までの受験向け。問題を全面改訂したため、旧版の解答は引き継がず新しく開始するよ。旧版の保存領域は削除しないよ。
+        </p>
+      </section>
+      <section
+        id="result"
+        hidden
+        class="mb-7 rounded-3xl border bg-white p-6 md:p-8"
+        aria-live="polite"
+      ></section>
+      <section id="exam" hidden>
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p id="sectionEyebrow" class="text-sm font-bold text-teal-700"></p>
+            <h1 id="sectionTitle" class="mt-1 text-2xl font-bold"></h1>
+          </div>
+          <p
+            id="progress"
+            class="text-sm text-slate-500"
+            aria-live="polite"
+          ></p>
+        </div>
+        <div id="panel1" class="space-y-5"></div>
+        <div id="panel2" hidden class="space-y-5"></div>
+        <div id="panel3" hidden class="space-y-5"></div>
+      </section>
+      <p
+        id="saveWarning"
+        hidden
+        class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-7"
+      >
+        この環境では自動保存できないよ。画面を閉じずに受験を続けてね。
+      </p>
+      <details id="research" class="mt-8 rounded-2xl border bg-white p-6">
+        <summary class="cursor-pointer font-bold">
+          出題方針・採点基準・参考資料（2026年11月2日確認）
+        </summary>
+        <div class="mt-4 space-y-4 text-sm leading-7">
+          <p>
+            非公式のオリジナル模試で、採点は本模試独自。公式問題や他社問題の転載ではないよ。公開例から判断した出題構成であり、実際の出題頻度や出題予告を示すものではないよ。
+          </p>
+          <p>
+            第1問は1仕訳の完全正解で3点。借方・貸方それぞれ同一科目を1行にまとめ、未使用行は科目・金額とも空欄にする。行順は自由だよ。第2問は10採点単位×2点、第3問は11採点単位×3点＋1採点単位×2点。複数欄をまとめた採点単位はその全欄の正解が必要。配点と採点単位は提出後の解説で確認できるよ。
+          </p>
+          <p>
+            2026年度の範囲、60分、配点45・20・35点で作成。2027年4月1日からの範囲・配点改定（45・25・30点）には対応していないよ。本試験の入力仕様や非公開の採点基準を完全に再現したものではないよ。
+          </p>
+          <ul class="list-disc space-y-2 pl-5 text-teal-800 underline">
+            <li>
+              <a
+                href="https://www.kentei.ne.jp/bookkeeping/class3/exam"
+                target="_blank"
+                rel="noopener"
+                >日本商工会議所・試験時間と合格基準</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.kentei.ne.jp/bookkeeping/35697-2/2022-2026"
+                target="_blank"
+                rel="noopener"
+                >2026年度の出題区分表</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.kentei.ne.jp/bookkeeping/sample/sample_3"
+                target="_blank"
+                rel="noopener"
+                >3級公式サンプル</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.kentei.ne.jp/51504"
+                target="_blank"
+                rel="noopener"
+                >2027年度以降の配点変更</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.kentei.ne.jp/33013"
+                target="_blank"
+                rel="noopener"
+                >ネット試験の入力案内</a
+              >
+            </li>
+          </ul>
+          <p>
+            他社公開模試との比較内容と、この回の検算結果は<a
+              href="README.md"
+              class="text-teal-800 underline"
+              >出題方針・検証記録</a
+            >に記載しているよ。保存・JSONダウンロードはこの端末内で行い、解答を外部へ自動送信する機能はないよ。
+          </p>
+        </div>
+      </details>
+      <noscript
+        ><p class="mt-5">模試の実行にはJavaScriptを有効にしてね。</p></noscript
+      >
+    </main>
+    <footer
+      id="nav"
+      hidden
+      class="fixed inset-x-0 bottom-0 z-20 border-t bg-white"
+    >
+      <div
+        class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3"
+      >
+        <nav class="flex gap-2" aria-label="大問の切り替え">
+          <button data-tab="1" class="rounded-xl px-4 py-3 font-bold">
+            第1問</button
+          ><button data-tab="2" class="rounded-xl px-4 py-3 font-bold">
+            第2問</button
+          ><button data-tab="3" class="rounded-xl px-4 py-3 font-bold">
+            第3問
+          </button>
+        </nav>
+        <button
+          id="finish"
+          class="rounded-xl bg-teal-800 px-5 py-3 font-bold text-white hover:bg-teal-700"
+        >
+          解答を提出する
+        </button>
+      </div>
+    </footer>
+    <dialog
+      id="confirm"
+      class="m-auto w-11/12 max-w-md rounded-2xl p-7 shadow-xl"
+    >
+      <h2 class="text-xl font-bold">解答を提出する？</h2>
+      <p id="confirmText" class="my-5 text-sm leading-7"></p>
+      <div class="flex justify-end gap-3">
+        <button id="cancelFinish" class="rounded-xl border px-5 py-3">
+          戻る</button
+        ><button
+          id="confirmFinish"
+          class="rounded-xl bg-teal-800 px-5 py-3 text-white"
+        >
+          提出・採点する
+        </button>
+      </div>
+    </dialog>
+    <script>
+      "use strict";
+      const examConfig = __EXAM_CONFIG__;
+      __EXAM_RUNTIME__;
+    </script>
+  </body>
+</html>

@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="ja">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>簿記の時間 | 日商簿記3級 第3回 ネット試験模試（2026年度）</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>日商簿記3級 第3回 模擬試験｜2026年度・改訂第2版</title>
     <!-- TAILWIND_START -->
 <style>
 /*! tailwindcss v4.2.4 | MIT License | https://tailwindcss.com */
@@ -15,10 +15,11 @@
     'Noto Color Emoji';
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
+    --color-amber-50: oklch(98.7% 0.022 95.277);
+    --color-amber-300: oklch(87.9% 0.169 91.605);
     --color-amber-700: oklch(55.5% 0.163 48.998);
     --color-teal-50: oklch(98.4% 0.014 180.72);
     --color-teal-100: oklch(95.3% 0.051 180.801);
-    --color-teal-200: oklch(91% 0.096 180.426);
     --color-teal-600: oklch(60% 0.118 184.704);
     --color-teal-700: oklch(51.1% 0.096 186.391);
     --color-teal-800: oklch(43.7% 0.078 188.216);
@@ -28,14 +29,14 @@
     --color-slate-50: oklch(98.4% 0.003 247.858);
     --color-slate-100: oklch(96.8% 0.007 247.896);
     --color-slate-200: oklch(92.9% 0.013 255.508);
-    --color-slate-300: oklch(86.9% 0.022 252.894);
+    --color-slate-400: oklch(70.4% 0.04 256.788);
     --color-slate-500: oklch(55.4% 0.046 257.417);
     --color-slate-600: oklch(44.6% 0.043 257.281);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-md: 28rem;
-    --container-6xl: 72rem;
+    --container-7xl: 80rem;
     --text-xs: 0.75rem;
     --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
@@ -54,7 +55,6 @@
     --text-4xl--line-height: calc(2.5 / 2.25);
     --font-weight-normal: 400;
     --font-weight-bold: 700;
-    --tracking-wide: 0.025em;
     --tracking-widest: 0.1em;
     --leading-relaxed: 1.625;
     --radius-lg: 0.5rem;
@@ -217,8 +217,22 @@
   }
 }
 @layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
   .fixed {
     position: fixed;
+  }
+  .sticky {
+    position: sticky;
   }
   .inset-x-0 {
     inset-inline: calc(var(--spacing) * 0);
@@ -226,11 +240,23 @@
   .start {
     inset-inline-start: var(--spacing);
   }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
+  }
   .z-10 {
     z-index: 10;
+  }
+  .z-20 {
+    z-index: 20;
+  }
+  .m-auto {
+    margin: auto;
   }
   .mx-auto {
     margin-inline: auto;
@@ -259,17 +285,11 @@
   .mt-8 {
     margin-top: calc(var(--spacing) * 8);
   }
-  .mr-3 {
-    margin-right: calc(var(--spacing) * 3);
-  }
-  .mb-4 {
-    margin-bottom: calc(var(--spacing) * 4);
-  }
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
   }
-  .mb-6 {
-    margin-bottom: calc(var(--spacing) * 6);
+  .mb-7 {
+    margin-bottom: calc(var(--spacing) * 7);
   }
   .flex {
     display: flex;
@@ -280,14 +300,11 @@
   .hidden {
     display: none;
   }
-  .inline-block {
-    display: inline-block;
-  }
   .table {
     display: table;
   }
-  .w-1\/3 {
-    width: calc(1 / 3 * 100%);
+  .max-h-\[70vh\] {
+    max-height: 70vh;
   }
   .w-11\/12 {
     width: calc(11 / 12 * 100%);
@@ -295,8 +312,11 @@
   .w-full {
     width: 100%;
   }
-  .max-w-6xl {
-    max-width: var(--container-6xl);
+  .max-w-7xl {
+    max-width: var(--container-7xl);
+  }
+  .max-w-full {
+    max-width: 100%;
   }
   .max-w-md {
     max-width: var(--container-md);
@@ -304,14 +324,23 @@
   .min-w-0 {
     min-width: calc(var(--spacing) * 0);
   }
+  .min-w-\[100px\] {
+    min-width: 100px;
+  }
   .min-w-\[130px\] {
     min-width: 130px;
+  }
+  .min-w-\[420px\] {
+    min-width: 420px;
   }
   .min-w-\[650px\] {
     min-width: 650px;
   }
-  .min-w-\[760px\] {
-    min-width: 760px;
+  .min-w-\[680px\] {
+    min-width: 680px;
+  }
+  .min-w-\[1500px\] {
+    min-width: 1500px;
   }
   .border-collapse {
     border-collapse: collapse;
@@ -339,6 +368,12 @@
   .items-center {
     align-items: center;
   }
+  .items-end {
+    align-items: flex-end;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
   .justify-between {
     justify-content: space-between;
   }
@@ -356,9 +391,6 @@
   }
   .gap-5 {
     gap: calc(var(--spacing) * 5);
-  }
-  .gap-6 {
-    gap: calc(var(--spacing) * 6);
   }
   .space-y-2 {
     :where(& > :not(:last-child)) {
@@ -395,6 +427,9 @@
       margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
+  .overflow-auto {
+    overflow: auto;
+  }
   .overflow-x-auto {
     overflow-x: auto;
   }
@@ -406,9 +441,6 @@
   }
   .rounded-3xl {
     border-radius: var(--radius-3xl);
-  }
-  .rounded-full {
-    border-radius: calc(infinity * 1px);
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
@@ -428,14 +460,20 @@
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
   }
+  .border-amber-300 {
+    border-color: var(--color-amber-300);
+  }
   .border-slate-200 {
     border-color: var(--color-slate-200);
   }
-  .border-slate-300 {
-    border-color: var(--color-slate-300);
+  .border-slate-400 {
+    border-color: var(--color-slate-400);
   }
-  .border-teal-600 {
-    border-color: var(--color-teal-600);
+  .border-teal-800 {
+    border-color: var(--color-teal-800);
+  }
+  .bg-amber-50 {
+    background-color: var(--color-amber-50);
   }
   .bg-slate-50 {
     background-color: var(--color-slate-50);
@@ -473,9 +511,6 @@
   .p-7 {
     padding: calc(var(--spacing) * 7);
   }
-  .p-8 {
-    padding: calc(var(--spacing) * 8);
-  }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
   }
@@ -488,12 +523,6 @@
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
-  .px-6 {
-    padding-inline: calc(var(--spacing) * 6);
-  }
-  .py-1 {
-    padding-block: calc(var(--spacing) * 1);
-  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -503,23 +532,23 @@
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
-  .py-5 {
-    padding-block: calc(var(--spacing) * 5);
-  }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
   }
   .pt-5 {
     padding-top: calc(var(--spacing) * 5);
   }
-  .pt-8 {
-    padding-top: calc(var(--spacing) * 8);
+  .pt-7 {
+    padding-top: calc(var(--spacing) * 7);
   }
-  .pb-32 {
-    padding-bottom: calc(var(--spacing) * 32);
+  .pb-36 {
+    padding-bottom: calc(var(--spacing) * 36);
   }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
+  }
+  .pl-6 {
+    padding-left: calc(var(--spacing) * 6);
   }
   .text-left {
     text-align: left;
@@ -592,13 +621,12 @@
     --tw-font-weight: var(--font-weight-normal);
     font-weight: var(--font-weight-normal);
   }
-  .tracking-wide {
-    --tw-tracking: var(--tracking-wide);
-    letter-spacing: var(--tracking-wide);
-  }
   .tracking-widest {
     --tw-tracking: var(--tracking-widest);
     letter-spacing: var(--tracking-widest);
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
   }
   .text-amber-700 {
     color: var(--color-amber-700);
@@ -620,9 +648,6 @@
   }
   .text-teal-100 {
     color: var(--color-teal-100);
-  }
-  .text-teal-200 {
-    color: var(--color-teal-200);
   }
   .text-teal-700 {
     color: var(--color-teal-700);
@@ -687,11 +712,6 @@
       background-color: var(--color-slate-100);
     }
   }
-  .md\:col-span-2 {
-    @media (width >= 48rem) {
-      grid-column: span 2 / span 2;
-    }
-  }
   .md\:grid-cols-2 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -707,19 +727,28 @@
       padding: calc(var(--spacing) * 6);
     }
   }
-  .md\:p-12 {
+  .md\:p-8 {
     @media (width >= 48rem) {
-      padding: calc(var(--spacing) * 12);
+      padding: calc(var(--spacing) * 8);
     }
   }
-  .md\:text-4xl {
+  .md\:p-10 {
     @media (width >= 48rem) {
-      font-size: var(--text-4xl);
-      line-height: var(--tw-leading, var(--text-4xl--line-height));
+      padding: calc(var(--spacing) * 10);
     }
   }
-  .lg\:grid-cols-2 {
+  .lg\:col-span-2 {
     @media (width >= 64rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
+  .lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .xl\:grid-cols-2 {
+    @media (width >= 80rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
@@ -878,133 +907,105 @@
 <!-- TAILWIND_END -->
   </head>
   <body class="bg-slate-50 text-slate-800 font-sans antialiased">
-    <header class="border-b border-slate-200 bg-white">
+    <header class="sticky top-0 z-20 border-b bg-white">
       <div
-        class="max-w-6xl mx-auto px-5 py-5 flex flex-wrap items-center justify-between gap-4"
+        class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3"
       >
-        <div class="flex items-center gap-3">
-          <span
-            class="bg-teal-800 text-white rounded-xl px-3 py-2 font-bold text-xl"
-            aria-hidden="true"
-            >簿</span
+        <div>
+          <a
+            href="../../../index.html"
+            class="text-sm font-bold text-teal-800 underline"
+            >← 模試一覧へ</a
           >
-          <div>
-            <p class="text-lg font-bold tracking-wide">簿記の時間</p>
-            <p class="text-xs text-slate-500">日商簿記3級 · CBT PRACTICE</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <span class="text-xs rounded-full bg-teal-50 text-teal-800 px-3 py-2"
-            >2026年度対応</span
-          >
-          <div>
-            <p class="text-xs text-slate-500">残り時間</p>
-            <p
-              id="timer"
-              role="timer"
-              class="font-mono text-2xl font-bold tabular-nums"
+          <p class="mt-1 text-sm font-bold">
+            日商簿記3級 第3回 模擬試験
+            <span class="text-xs font-normal text-slate-500"
+              >2026年度・改訂第2版</span
             >
-              60:00
-            </p>
-          </div>
+          </p>
+        </div>
+        <div class="text-right">
+          <p class="text-xs text-slate-500">残り時間</p>
+          <p
+            id="timer"
+            role="timer"
+            class="font-mono text-2xl font-bold tabular-nums"
+          >
+            60:00
+          </p>
         </div>
       </div>
     </header>
-    <main class="max-w-6xl mx-auto px-5 pt-8 pb-32">
-      <a
-        href="../../../index.html"
-        class="inline-block mb-5 text-sm text-teal-800 underline"
-        >← 模試一覧へ</a
-      >
+    <main class="mx-auto max-w-7xl px-4 pt-7 pb-36">
       <section id="intro" class="space-y-6">
-        <p class="text-xs text-slate-500">
-          非公式オリジナル模試 · 2027年3月31日までの受験向け
-        </p>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid gap-5 lg:grid-cols-3">
           <div
-            class="md:col-span-2 bg-teal-900 text-white rounded-3xl p-8 md:p-12"
+            class="rounded-3xl bg-teal-900 p-7 text-white md:p-10 lg:col-span-2"
           >
-            <p class="text-teal-200 text-sm tracking-widest mb-5">
+            <p class="text-sm tracking-widest text-teal-100">
               MOCK EXAM / 03
             </p>
-            <h1 class="text-3xl md:text-4xl font-bold leading-relaxed">
-              いつもの練習を、<br />本番の自信に。
+            <h1 class="mt-4 text-3xl font-bold leading-relaxed">
+              資料を読み、取引をつなぐ。<br />60分の実戦練習。
             </h1>
-            <p class="mt-5 text-teal-100 leading-8">
-              仕訳から決算まで、60分の力試し。<br />入力・時間配分・見直しを、まとめて練習しよう。
-            </p>
-            <div class="mt-8 flex flex-wrap gap-3 text-sm">
-              <span class="border border-teal-600 rounded-full px-4 py-2"
-                >全3問 / 100点</span
-              ><span class="border border-teal-600 rounded-full px-4 py-2"
-                >合格ライン 70点</span
-              ><span class="border border-teal-600 rounded-full px-4 py-2"
-                >採点・全問解説付き</span
-              >
-            </div>
+            <p class="mt-5 leading-8 text-teal-100">元帳からの仕訳復元、伝票の集計・転記、頭金・未払代金と償却をつなげる精算表。</p>
+            <p class="mt-6 text-sm">60分 / 全3問 / 100点満点 / 合格目安70点</p>
           </div>
-          <aside class="bg-white rounded-3xl p-7 border border-slate-200">
-            <p class="text-xs text-teal-700 font-bold tracking-widest">
-              BEFORE YOU START
-            </p>
-            <h2 class="mt-4 text-xl font-bold">受験の準備</h2>
-            <ul class="mt-5 space-y-4 text-sm leading-7">
-              <li>電卓と計算用紙を用意しよう。</li>
+          <aside class="rounded-3xl border bg-white p-7">
+            <h2 class="text-xl font-bold">はじめる前に</h2>
+            <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7">
+              <li>電卓と計算用紙を用意してね。</li>
               <li>
-                開始すると60分の計測が始まり、時間切れで自動採点されるよ。
+                開始後は再読み込み中も時間が進むよ。期限で自動提出するよ。
               </li>
-              <li>大問は自由に行き来できるよ。</li>
               <li>
-                金額は <kbd class="border rounded px-2 py-1">Enter</kbd> で
-                <strong>1,234,567</strong> の形式に整うよ。
+                金額はEnter・フォーカス移動で桁区切りになるよ。全角数字にも対応。
               </li>
+              <li>表は横にスクロールできるよ。PCでの受験がおすすめ。</li>
             </ul>
             <button
               id="start"
-              class="mt-6 w-full bg-teal-800 hover:bg-teal-700 text-white font-bold rounded-xl px-5 py-4"
+              class="mt-6 w-full rounded-xl bg-teal-800 px-5 py-4 font-bold text-white hover:bg-teal-700"
             >
               模試をはじめる →
             </button>
-            <p id="storageNote" class="mt-3 text-xs text-slate-500 leading-6">
-              解答はこのブラウザーに自動保存。再読み込みしても時間は進むよ。
+            <p id="storageNote" class="mt-3 text-xs leading-6 text-slate-500">
+              解答はこのブラウザーに自動保存するよ。
             </p>
           </aside>
         </div>
-        <div class="grid md:grid-cols-3 gap-4">
-          <div class="bg-white p-6 rounded-2xl border">
-            <p class="text-teal-700 text-sm">01 / 45点</p>
-            <h2 class="font-bold mt-2">仕訳 15問</h2>
-            <p class="text-sm text-slate-500 mt-2">
-              目安20分 · 日常取引と決算の基礎
-            </p>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border bg-white p-5">
+            <p class="text-sm text-teal-700">第1問 / 45点</p>
+            <h2 class="mt-2 font-bold">仕訳15問</h2>
+            <p class="mt-2 text-sm text-slate-500">目安20分</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl border">
-            <p class="text-teal-700 text-sm">02 / 20点</p>
-            <h2 class="font-bold mt-2">勘定記入・固定資産台帳</h2>
-            <p class="text-sm text-slate-500 mt-2">
-              目安15分 · 経過勘定と固定資産台帳
-            </p>
+          <div class="rounded-2xl border bg-white p-5">
+            <p class="text-sm text-teal-700">第2問 / 20点</p>
+            <h2 class="mt-2 font-bold">元帳の読取り・伝票集計</h2>
+            <p class="mt-2 text-sm text-slate-500">目安15分</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl border">
-            <p class="text-teal-700 text-sm">03 / 35点</p>
-            <h2 class="font-bold mt-2">決算整理・財務諸表</h2>
-            <p class="text-sm text-slate-500 mt-2">
-              目安20分 · 残り5分で見直し
-            </p>
+          <div class="rounded-2xl border bg-white p-5">
+            <p class="text-sm text-teal-700">第3問 / 35点</p>
+            <h2 class="mt-2 font-bold">決算整理・精算表</h2>
+            <p class="mt-2 text-sm text-slate-500">目安20分・残り5分で見直し</p>
           </div>
         </div>
+        <p class="text-sm leading-7 text-slate-600">
+          2027年3月31日までの受験向け。問題を全面改訂したため、旧版の解答は引き継がず新しく開始するよ。旧版の保存領域は削除しないよ。
+        </p>
       </section>
       <section
         id="result"
         hidden
-        class="bg-white border rounded-3xl p-8 mb-6"
+        class="mb-7 rounded-3xl border bg-white p-6 md:p-8"
         aria-live="polite"
       ></section>
       <section id="exam" hidden>
-        <div class="flex flex-wrap justify-between items-center gap-3 mb-5">
+        <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p id="sectionEyebrow" class="text-teal-700 text-sm font-bold"></p>
-            <h1 id="sectionTitle" class="text-2xl font-bold mt-1"></h1>
+            <p id="sectionEyebrow" class="text-sm font-bold text-teal-700"></p>
+            <h1 id="sectionTitle" class="mt-1 text-2xl font-bold"></h1>
           </div>
           <p
             id="progress"
@@ -1016,44 +1017,34 @@
         <div id="panel2" hidden class="space-y-5"></div>
         <div id="panel3" hidden class="space-y-5"></div>
       </section>
-      <details
-        class="mt-8 rounded-2xl border border-slate-200 bg-white p-6"
-        id="research"
+      <p
+        id="saveWarning"
+        hidden
+        class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-7"
       >
+        この環境では自動保存できないよ。画面を閉じずに受験を続けてね。
+      </p>
+      <details id="research" class="mt-8 rounded-2xl border bg-white p-6">
         <summary class="cursor-pointer font-bold">
-          出題方針・最新情報・参考資料
-          <span class="text-xs font-normal text-slate-500"
-            >2026年11月2日確認</span
-          >
+          出題方針・採点基準・参考資料（2026年11月2日確認）
         </summary>
-        <div class="mt-5 space-y-4 text-sm leading-7">
+        <div class="mt-4 space-y-4 text-sm leading-7">
           <p>
-            この模試は非公式のオリジナル問題。2027年3月31日までの受験を想定し、2026年度に適用される範囲・配点（45・20・35点）で作成しているよ。実際の試験問題や非公開の採点基準を再現したものではないよ。
+            非公式のオリジナル模試で、採点は本模試独自。公式問題や他社問題の転載ではないよ。公開例から判断した出題構成であり、実際の出題頻度や出題予告を示すものではないよ。
           </p>
           <p>
-            2026年4月追加の公式サンプル5と2026年度の出題区分表を確認したよ。第3回は取得原価・債権債務・給与・締切りの仕訳、前受家賃の勘定記入、固定資産台帳、未処理事項を含む財務諸表を練習する構成だよ。公開例を参考にした独自の問題で、出題頻度の統計や本試験の出題予告ではないよ。
+            第1問は1仕訳の完全正解で3点。借方・貸方それぞれ同一科目を1行にまとめ、未使用行は科目・金額とも空欄にする。行順は自由だよ。第2問は10採点単位×2点、第3問は11採点単位×3点＋1採点単位×2点。複数欄をまとめた採点単位はその全欄の正解が必要。配点と採点単位は提出後の解説で確認できるよ。
           </p>
           <p>
-            2027年4月1日からは出題区分表が改定され、配点も<strong>第1問45点・第2問25点・第3問30点</strong>に変わるよ。この模試は2027年度版には対応していないよ。
+            2026年度の範囲、60分、配点45・20・35点で作成。2027年4月1日からの範囲・配点改定（45・25・30点）には対応していないよ。本試験の入力仕様や非公開の採点基準を完全に再現したものではないよ。
           </p>
-          <p>
-            本試験の金額入力は数字のみ・カンマ不要。ここではあんじゅの指定に合わせて、Enterまたはフォーカスを外す操作で桁区切りを表示し、採点時は数値として扱うよ。
-          </p>
-          <ul class="list-disc pl-5 space-y-2 text-teal-800 underline">
-            <li>
-              <a
-                href="https://www.kentei.ne.jp/33013"
-                target="_blank"
-                rel="noopener"
-                >日本商工会議所：ネット試験の概要・入力上の注意</a
-              >
-            </li>
+          <ul class="list-disc space-y-2 pl-5 text-teal-800 underline">
             <li>
               <a
                 href="https://www.kentei.ne.jp/bookkeeping/class3/exam"
                 target="_blank"
                 rel="noopener"
-                >日本商工会議所：3級の試験時間・合格基準</a
+                >日本商工会議所・試験時間と合格基準</a
               >
             </li>
             <li>
@@ -1061,7 +1052,7 @@
                 href="https://www.kentei.ne.jp/bookkeeping/35697-2/2022-2026"
                 target="_blank"
                 rel="noopener"
-                >日本商工会議所：2026年度適用範囲と2027年度改定</a
+                >2026年度の出題区分表</a
               >
             </li>
             <li>
@@ -1069,7 +1060,7 @@
                 href="https://www.kentei.ne.jp/bookkeeping/sample/sample_3"
                 target="_blank"
                 rel="noopener"
-                >日本商工会議所：3級サンプル問題（構成の参考）</a
+                >3級公式サンプル</a
               >
             </li>
             <li>
@@ -1077,51 +1068,68 @@
                 href="https://www.kentei.ne.jp/51504"
                 target="_blank"
                 rel="noopener"
-                >日本商工会議所：2027年度以降の配点変更</a
+                >2027年度以降の配点変更</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.kentei.ne.jp/33013"
+                target="_blank"
+                rel="noopener"
+                >ネット試験の入力案内</a
               >
             </li>
           </ul>
           <p>
-            採点は本模試独自。第1問は各仕訳の完全正解で3点、第2問は各空欄2点、第3問は各欄2～3点。仕訳の行順は自由。同じ側の同じ科目は1回にまとめ、未使用行は科目・金額とも空欄にしてね。
+            他社公開模試との比較内容と、この回の検算結果は<a
+              href="README.md"
+              class="text-teal-800 underline"
+              >出題方針・検証記録</a
+            >に記載しているよ。保存・JSONダウンロードはこの端末内で行い、解答を外部へ自動送信する機能はないよ。
           </p>
         </div>
       </details>
-      <noscript><p>模試の実行にはJavaScriptを有効にしてね。</p></noscript>
+      <noscript
+        ><p class="mt-5">模試の実行にはJavaScriptを有効にしてね。</p></noscript
+      >
     </main>
     <footer
       id="nav"
       hidden
-      class="fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 z-10"
+      class="fixed inset-x-0 bottom-0 z-20 border-t bg-white"
     >
       <div
-        class="max-w-6xl mx-auto px-5 py-4 flex flex-wrap items-center justify-between gap-3"
+        class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3"
       >
         <nav class="flex gap-2" aria-label="大問の切り替え">
-          <button data-tab="1" class="rounded-xl px-5 py-3 font-bold">
+          <button data-tab="1" class="rounded-xl px-4 py-3 font-bold">
             第1問</button
-          ><button data-tab="2" class="rounded-xl px-5 py-3 font-bold">
+          ><button data-tab="2" class="rounded-xl px-4 py-3 font-bold">
             第2問</button
-          ><button data-tab="3" class="rounded-xl px-5 py-3 font-bold">
+          ><button data-tab="3" class="rounded-xl px-4 py-3 font-bold">
             第3問
           </button>
         </nav>
         <button
           id="finish"
-          class="bg-teal-800 text-white rounded-xl px-6 py-3 font-bold hover:bg-teal-700"
+          class="rounded-xl bg-teal-800 px-5 py-3 font-bold text-white hover:bg-teal-700"
         >
           解答を提出する
         </button>
       </div>
     </footer>
-    <dialog id="confirm" class="rounded-2xl p-7 max-w-md w-11/12 shadow-xl">
+    <dialog
+      id="confirm"
+      class="m-auto w-11/12 max-w-md rounded-2xl p-7 shadow-xl"
+    >
       <h2 class="text-xl font-bold">解答を提出する？</h2>
-      <p id="confirmText" class="text-sm leading-7 my-5"></p>
+      <p id="confirmText" class="my-5 text-sm leading-7"></p>
       <div class="flex justify-end gap-3">
-        <button id="cancelFinish" class="border rounded-xl px-5 py-3">
+        <button id="cancelFinish" class="rounded-xl border px-5 py-3">
           戻る</button
         ><button
           id="confirmFinish"
-          class="bg-teal-800 text-white rounded-xl px-5 py-3"
+          class="rounded-xl bg-teal-800 px-5 py-3 text-white"
         >
           提出・採点する
         </button>
@@ -1129,914 +1137,2637 @@
     </dialog>
     <script>
       "use strict";
-      // 問題・正解はすべて本模試用に作成したもの。
-      const journals = [
+      const examConfig = {
+  "number": "03",
+  "revision": 2,
+  "title": "第3回 模擬試験",
+  "secondTitle": "元帳の読取り・伝票集計",
+  "thirdTitle": "決算整理・精算表",
+  "summary": "元帳からの仕訳復元、伝票の集計・転記、頭金・未払代金と償却をつなげる精算表。",
+  "journals": [
+    {
+      "topic": "債務の決済方法",
+      "question": "仕入先に対する買掛金248,000円のうち148,000円について電子記録債務の発生記録を行い、残額を当座預金から振り込んだ。",
+      "debit": [
+        [
+          "買掛金",
+          248000
+        ]
+      ],
+      "credit": [
+        [
+          "電子記録債務",
+          148000
+        ],
+        [
+          "当座預金",
+          100000
+        ]
+      ],
+      "explanation": "買掛金全額を減らし、電子記録債務148,000円と預金支払100,000円に分ける。",
+      "materials": []
+    },
+    {
+      "topic": "契約時の支出",
+      "question": "新しい営業所を月額家賃72,000円で借りる契約を結び、当月分の家賃、家賃3か月分の敷金、家賃1か月分の仲介手数料を普通預金から支払った。敷金は契約終了時に全額返還される。",
+      "debit": [
+        [
+          "支払家賃",
+          72000
+        ],
+        [
+          "差入保証金",
+          216000
+        ],
+        [
+          "支払手数料",
+          72000
+        ]
+      ],
+      "credit": [
+        [
+          "普通預金",
+          360000
+        ]
+      ],
+      "explanation": "家賃は費用、返還される敷金は資産、仲介手数料は費用。合計360,000円。",
+      "materials": []
+    },
+    {
+      "topic": "仮払経費の精算",
+      "question": "支払内容が分からず仮払金に計上していた普通預金の引落額63,000円は、今月の水道光熱費41,000円と通信費22,000円であることが判明した。",
+      "debit": [
+        [
+          "水道光熱費",
+          41000
+        ],
+        [
+          "通信費",
+          22000
+        ]
+      ],
+      "credit": [
+        [
+          "仮払金",
+          63000
+        ]
+      ],
+      "explanation": "預金は引落時に減額済み。仮払金を費用に振り替える。",
+      "materials": []
+    },
+    {
+      "topic": "小口現金の同日補給",
+      "question": "小口現金係から、バス代4,600円、事務用品2,900円、切手代1,400円、収入印紙6,000円の支払報告を受け、直ちに普通預金から引き出した現金で同額を補給した。支払報告と補給を一つの仕訳にまとめなさい。事務用品は消耗品費とする。",
+      "debit": [
+        [
+          "旅費交通費",
+          4600
+        ],
+        [
+          "消耗品費",
+          2900
+        ],
+        [
+          "通信費",
+          1400
+        ],
+        [
+          "租税公課",
+          6000
+        ]
+      ],
+      "credit": [
+        [
+          "普通預金",
+          14900
+        ]
+      ],
+      "explanation": "支払報告で小口現金を減らし、同日補給で同額増やすため相殺する。費用と普通預金の減少を記帳する。",
+      "materials": []
+    },
+    {
+      "topic": "給与と前貸し",
+      "question": "従業員に給料総額284,000円を支給し、以前の前貸額24,000円（従業員立替金計上済み）、所得税9,800円、社会保険料32,200円を控除して残額を当座預金から振り込んだ。税金と保険料は別の預り金勘定にする。",
+      "debit": [
+        [
+          "給料",
+          284000
+        ]
+      ],
+      "credit": [
+        [
+          "従業員立替金",
+          24000
+        ],
+        [
+          "所得税預り金",
+          9800
+        ],
+        [
+          "社会保険料預り金",
+          32200
+        ],
+        [
+          "当座預金",
+          218000
+        ]
+      ],
+      "explanation": "給料総額から立替金と預り金を差し引く。手取額は218,000円。",
+      "materials": []
+    },
+    {
+      "topic": "カード代金の回収",
+      "question": "信販会社に対するクレジット売掛金150,000円について、販売額の1％の手数料を差し引いた額が普通預金に入金された。手数料は回収時に支払手数料として記帳する。",
+      "debit": [
+        [
+          "普通預金",
+          148500
+        ],
+        [
+          "支払手数料",
+          1500
+        ]
+      ],
+      "credit": [
+        [
+          "クレジット売掛金",
+          150000
+        ]
+      ],
+      "explanation": "手数料150,000×1％＝1,500円。回収額148,500円と分ける。",
+      "materials": []
+    },
+    {
+      "topic": "金額の誤記訂正",
+      "question": "今月の広告代55,000円を現金で支払ったとき、借方広告宣伝費50,500円、貸方現金50,500円と誤記していた。本日、これを訂正する。",
+      "debit": [
+        [
+          "広告宣伝費",
+          4500
+        ]
+      ],
+      "credit": [
+        [
+          "現金",
+          4500
+        ]
+      ],
+      "explanation": "不足分55,000−50,500＝4,500円だけを追加記帳する。",
+      "materials": []
+    },
+    {
+      "topic": "手形借入れ",
+      "question": "取引銀行から借用証書の代わりに額面650,000円の約束手形を振り出して借り入れ、利息13,000円を差し引いた残額を当座預金とした。",
+      "debit": [
+        [
+          "当座預金",
+          637000
+        ],
+        [
+          "支払利息",
+          13000
+        ]
+      ],
+      "credit": [
+        [
+          "手形借入金",
+          650000
+        ]
+      ],
+      "explanation": "金銭借入れの手形は手形借入金。利息を差し引いた入金額は637,000円。",
+      "materials": []
+    },
+    {
+      "topic": "期中売却",
+      "question": "会計期間は4月1日から翌年3月31日。当期6月30日に備品（取得原価302,400円、期首減価償却累計額151,200円）を110,000円で売却し、現金で受け取った。残存価額ゼロ、耐用年数6年、定額法・間接法で、売却までの未計上の当期償却も同時に記帳する。",
+      "debit": [
+        [
+          "現金",
+          110000
+        ],
+        [
+          "備品減価償却累計額",
+          151200
+        ],
+        [
+          "減価償却費",
+          12600
+        ],
+        [
+          "固定資産売却損",
+          28600
+        ]
+      ],
+      "credit": [
+        [
+          "備品",
+          302400
+        ]
+      ],
+      "explanation": "当期償却302,400÷6×3/12＝12,600円。帳簿価額138,600円から売却額を引いた28,600円が売却損。",
+      "materials": []
+    },
+    {
+      "topic": "商品券と消費税",
+      "question": "商品を税抜84,000円で販売し、10％の消費税を含む代金のうち60,000円を共通商品券で、残額を現金で受け取った。税抜方式を用いる。",
+      "debit": [
+        [
+          "受取商品券",
+          60000
+        ],
+        [
+          "現金",
+          32400
+        ]
+      ],
+      "credit": [
+        [
+          "売上",
+          84000
+        ],
+        [
+          "仮受消費税",
+          8400
+        ]
+      ],
+      "explanation": "税込額92,400円。受取商品券60,000円と現金32,400円に分ける。",
+      "materials": []
+    },
+    {
+      "topic": "株式会社の設立",
+      "question": "株式会社の設立に際し、1株7,500円で160株を発行し、全額の払込みを普通預金に受けた。払込額の全額を資本金とする。",
+      "debit": [
+        [
+          "普通預金",
+          1200000
+        ]
+      ],
+      "credit": [
+        [
+          "資本金",
+          1200000
+        ]
+      ],
+      "explanation": "7,500×160＝1,200,000円を資本金に計上する。",
+      "materials": []
+    },
+    {
+      "topic": "前受収益の再振替",
+      "question": "前期末に前受手数料として繰り延べた18,400円について、当期首の再振替仕訳を行った。",
+      "debit": [
+        [
+          "前受手数料",
+          18400
+        ]
+      ],
+      "credit": [
+        [
+          "受取手数料",
+          18400
+        ]
+      ],
+      "explanation": "前期末の受取手数料／前受手数料の逆仕訳をする。",
+      "materials": []
+    },
+    {
+      "topic": "納付資料の読取り",
+      "question": "次の納付記録に基づき、本日の取引を仕訳しなさい。この税額は前期決算で未払計上済みである。",
+      "debit": [
+        [
+          "未払消費税",
+          176000
+        ]
+      ],
+      "credit": [
+        [
+          "当座預金",
+          176000
+        ]
+      ],
+      "explanation": "前期に計上した消費税の未払いを取り消す。当期の租税公課にはしない。",
+      "materials": [
         {
-          tag: "仕入諸掛",
-          q: "商品84,000円を掛けで仕入れ、当社負担の引取運賃3,000円を現金で支払った。三分法を用いる。",
-          d: [["仕入", 87000]],
-          c: [
-            ["買掛金", 84000],
-            ["現金", 3000],
+          "id": "j12-tax",
+          "caption": "銀行の納付記録",
+          "headings": [
+            "納付日",
+            "税目",
+            "区分",
+            "引落口座",
+            "納付額"
           ],
-          why: "仕入諸掛は取得原価に含める。84,000＋3,000＝87,000円。",
-        },
-        {
-          tag: "売上返品",
-          q: "掛けで販売済みの商品21,000円が返品され、売掛金を減額した。三分法を用いる。",
-          d: [["売上", 21000]],
-          c: [["売掛金", 21000]],
-          why: "返品は売上の減少と売掛金の減少。",
-        },
-        {
-          tag: "電子記録債務",
-          q: "買掛金176,000円について電子記録債務の発生記録を行った。",
-          d: [["買掛金", 176000]],
-          c: [["電子記録債務", 176000]],
-          why: "買掛金を電子記録債務へ振り替える。",
-        },
-        {
-          tag: "手形の受取り",
-          q: "商品235,000円を売り上げ、代金は得意先振出しの約束手形で受け取った。",
-          d: [["受取手形", 235000]],
-          c: [["売上", 235000]],
-          why: "商品代金の約束手形は受取手形。2026年度の範囲に含まれる。",
-        },
-        {
-          tag: "貸付金と利息",
-          q: "当期中に貸し付けた600,000円が満期となり、年利率2％、期間9か月の利息とともに普通預金へ入金された。利息は未計上で月割計算する。",
-          d: [["普通預金", 609000]],
-          c: [
-            ["貸付金", 600000],
-            ["受取利息", 9000],
-          ],
-          why: "利息600,000×2％×9/12＝9,000円。",
-        },
-        {
-          tag: "仮払金の精算",
-          q: "出張の概算旅費として渡した仮払金50,000円を精算した。実際の旅費交通費は46,800円で、残額は現金で返された。",
-          d: [
-            ["旅費交通費", 46800],
-            ["現金", 3200],
-          ],
-          c: [["仮払金", 50000]],
-          why: "仮払金全額を消去し、旅費と返金に分ける。",
-        },
-        {
-          tag: "前受金の充当",
-          q: "商品190,000円を販売し、受領済みの手付金40,000円を充当した。残額は掛けとした。",
-          d: [
-            ["前受金", 40000],
-            ["売掛金", 150000],
-          ],
-          c: [["売上", 190000]],
-          why: "手付金は売上時に前受金から振り替える。",
-        },
-        {
-          tag: "現金過不足",
-          q: "現金の実際有高が帳簿残高より6,000円少なかったため現金過不足で処理していた。決算時に通信費4,200円の記帳漏れが判明し、残額は原因不明のため雑損とする。",
-          d: [
-            ["通信費", 4200],
-            ["雑損", 1800],
-          ],
-          c: [["現金過不足", 6000]],
-          why: "現金はすでに減額済み。現金過不足を消去し、判明した費用と雑損に分ける。",
-        },
-        {
-          tag: "貸倒れ",
-          q: "得意先の倒産で前期発生の売掛金58,000円が回収不能となった。貸倒引当金の残高は40,000円である。",
-          d: [
-            ["貸倒引当金", 40000],
-            ["貸倒損失", 18000],
-          ],
-          c: [["売掛金", 58000]],
-          why: "引当金を優先使用し、不足18,000円を貸倒損失にする。",
-        },
-        {
-          tag: "固定資産の取得",
-          q: "備品320,000円を購入し、設置費用20,000円と合わせて普通預金から支払い、直ちに使用を始めた。",
-          d: [["備品", 340000]],
-          c: [["普通預金", 340000]],
-          why: "使用開始までの付随費用は取得原価に含める。",
-        },
-        {
-          tag: "未払金",
-          q: "以前購入した備品の未払代金145,000円を普通預金から支払った。",
-          d: [["未払金", 145000]],
-          c: [["普通預金", 145000]],
-          why: "商品以外の購入代金は未払金で処理する。",
-        },
-        {
-          tag: "消費税",
-          q: "税抜方式により商品100,000円と消費税10,000円を掛けで仕入れた。",
-          d: [
-            ["仕入", 100000],
-            ["仮払消費税", 10000],
-          ],
-          c: [["買掛金", 110000]],
-          why: "税抜仕入額と仮払消費税を区分し、買掛金は税込額。",
-        },
-        {
-          tag: "給与の支払い",
-          q: "給料総額260,000円から所得税12,000円と従業員負担の社会保険料36,000円を控除し、差額を普通預金から支払った。控除額はまとめて預り金とする。",
-          d: [["給料", 260000]],
-          c: [
-            ["預り金", 48000],
-            ["普通預金", 212000],
-          ],
-          why: "給料は総額、控除48,000円は預り金。",
-        },
-        {
-          tag: "増資",
-          q: "株式を発行し、払込金700,000円を普通預金に受け入れた。全額を資本金とする。",
-          d: [["普通預金", 700000]],
-          c: [["資本金", 700000]],
-          why: "株式の払込みは収益ではなく資本金の増加。",
-        },
-        {
-          tag: "収益の締切り",
-          q: "決算にあたり、受取手数料勘定の貸方残高63,000円を損益勘定へ振り替えた。",
-          d: [["受取手数料", 63000]],
-          c: [["損益", 63000]],
-          why: "収益勘定を借記してゼロにし、損益の貸方へ振り替える。",
-        },
-      ];
-      const accounts = [
-        ...new Set(
-          journals
-            .flatMap((q) => [...q.d, ...q.c].map((x) => x[0]))
-            .concat([
+          "rows": [
+            [
+              "5月28日",
+              "消費税及び地方消費税",
+              "前期分・確定申告",
               "当座預金",
-              "受取手形",
-              "支払手形",
-              "前払金",
-              "受取利息",
-              "固定資産売却益",
-              "通信費",
-              "租税公課",
-            ]),
-        ),
-      ].sort((a, b) => a.localeCompare(b, "ja"));
-      const short = [
-        {
-          id: "s0",
-          label: "受取家賃勘定：貸方・1月1日の摘要",
-          answer: "普通預金",
-          why: "入金時は（借）普通預金240,000／（貸）受取家賃240,000。",
-          type: "select",
-          options: ["普通預金", "前受家賃", "未収家賃", "損益", "前期繰越"],
-        },
-        {
-          id: "s1",
-          label: "受取家賃勘定：借方・3月31日の前受家賃への振替額",
-          answer: 120000,
-          why: "翌期4～6月の3か月分。240,000×3/6＝120,000円。",
-        },
-        {
-          id: "s2",
-          label: "受取家賃勘定：借方・3月31日の損益への振替額",
-          answer: 120000,
-          why: "当期1～3月の収益。240,000−120,000＝120,000円。",
-        },
-        {
-          id: "s3",
-          label: "前受家賃勘定：借方・3月31日の次期繰越額",
-          answer: 120000,
-          why: "前受家賃は貸方残高の負債。締切りは借方に次期繰越120,000円を記入する。",
-        },
-        {
-          id: "s4",
-          label: "翌期4月1日の再振替仕訳：借方の勘定科目",
-          answer: "前受家賃",
-          why: "再振替は（借）前受家賃120,000／（貸）受取家賃120,000。",
-          type: "select",
-          options: ["受取家賃", "前受家賃", "未収家賃", "普通預金", "損益"],
-        },
-        {
-          id: "s5",
-          label: "備品A：当期の減価償却費",
-          answer: 120000,
-          why: "取得原価600,000÷耐用年数5年＝120,000円。",
-        },
-        {
-          id: "s6",
-          label: "備品A：期末の減価償却累計額",
-          answer: 360000,
-          why: "期首累計240,000＋当期120,000＝360,000円。",
-        },
-        {
-          id: "s7",
-          label: "備品B：当期の減価償却費",
-          answer: 45000,
-          why: "360,000÷4年×6/12＝45,000円。",
-        },
-        {
-          id: "s8",
-          label: "備品B：期末帳簿価額",
-          answer: 315000,
-          why: "取得原価360,000−当期償却45,000＝315,000円。",
-        },
-        {
-          id: "s9",
-          label: "備品Aを期末に270,000円で売った場合の売却益",
-          answer: 30000,
-          why: "期末帳簿価額600,000−360,000＝240,000円。270,000−240,000＝30,000円の売却益。",
-        },
-      ];
-      const finalFields = [
-        {
-          id: "f0",
-          label: "損益計算書：売上原価",
-          answer: 6120000,
-          why: "期首480,000＋仕入6,200,000−期末560,000＝6,120,000円。",
-          points: 3,
-        },
-        {
-          id: "f1",
-          label: "損益計算書：給料",
-          answer: 1984000,
-          why: "1,920,000＋未払64,000＝1,984,000円。",
-          points: 2,
-        },
-        {
-          id: "f2",
-          label: "損益計算書：保険料",
-          answer: 144000,
-          why: "7～3月の9か月分。192,000×9/12＝144,000円。",
-          points: 2,
-        },
-        {
-          id: "f3",
-          label: "損益計算書：支払利息",
-          answer: 56000,
-          why: "既計上48,000＋未払8,000＝56,000円。",
-          points: 2,
-        },
-        {
-          id: "f4",
-          label: "損益計算書：貸倒引当金繰入",
-          answer: 6400,
-          why: "未記帳の回収を先に反映する。（1,280,000−160,000）×2％−16,000＝6,400円。",
-          points: 3,
-        },
-        {
-          id: "f5",
-          label: "損益計算書：減価償却費",
-          answer: 516000,
-          why: "既存備品2,400,000÷5＝480,000円と、10月取得360,000÷5×6/12＝36,000円の合計。",
-          points: 3,
-        },
-        {
-          id: "f6",
-          label: "損益計算書：当期純利益",
-          answer: 757200,
-          why: "売上10,800,000−費用合計10,042,800＝757,200円。支払家賃956,400円と法人税等260,000円も費用に含む。",
-          points: 3,
-        },
-        {
-          id: "f7",
-          label: "貸借対照表：現金",
-          answer: 423600,
-          why: "家賃の過大記帳10,800−7,200＝3,600円を現金に戻す。420,000＋3,600＝423,600円。",
-          points: 2,
-        },
-        {
-          id: "f8",
-          label: "貸借対照表：売掛金（貸倒引当金控除後）",
-          answer: 1097600,
-          why: "回収後残高1,120,000−引当金22,400＝1,097,600円。",
-          points: 3,
-        },
-        {
-          id: "f9",
-          label: "貸借対照表：商品",
-          answer: 560000,
-          why: "期末棚卸高560,000円を表示する。",
-          points: 2,
-        },
-        {
-          id: "f10",
-          label: "貸借対照表：備品（減価償却累計額控除後）",
-          answer: 1644000,
-          why: "取得原価2,760,000−期首累計600,000−当期償却516,000＝1,644,000円。",
-          points: 3,
-        },
-        {
-          id: "f11",
-          label: "貸借対照表：前払保険料",
-          answer: 48000,
-          why: "翌期4～6月の3か月分。192,000×3/12＝48,000円。",
-          points: 2,
-        },
-        {
-          id: "f12",
-          label: "貸借対照表：未払法人税等",
-          answer: 140000,
-          why: "確定税額260,000−中間納付120,000＝140,000円。",
-          points: 2,
-        },
-        {
-          id: "f13",
-          label: "貸借対照表：繰越利益剰余金（当期純利益振替後）",
-          answer: 921200,
-          why: "整理前164,000＋当期純利益757,200＝921,200円。",
-          points: 3,
-        },
-      ];
-      const trial = [
-        ["現金", 420000, 0],
-        ["普通預金", 2840000, 0],
-        ["売掛金", 1280000, 0],
-        ["繰越商品", 480000, 0],
-        ["備品", 2400000, 0],
-        ["仮払金", 360000, 0],
-        ["仮払法人税等", 120000, 0],
-        ["買掛金", 0, 1040000],
-        ["借入金", 0, 1600000],
-        ["貸倒引当金", 0, 16000],
-        ["備品減価償却累計額", 0, 600000],
-        ["資本金", 0, 3000000],
-        ["繰越利益剰余金", 0, 164000],
-        ["売上", 0, 10800000],
-        ["仕入", 6200000, 0],
-        ["給料", 1920000, 0],
-        ["支払家賃", 960000, 0],
-        ["保険料", 192000, 0],
-        ["支払利息", 48000, 0],
-      ];
-      const adjustments = [
-        "支払家賃7,200円を現金で支払った際、誤って10,800円と記帳していた。この誤りを訂正する。",
-        "得意先から売掛金160,000円が普通預金に振り込まれていたが、未記帳であった。",
-        "仮払金360,000円は当期10月1日に取得して同日から使用した備品の代金であり、取得の処理が未了である。",
-        "未処理事項の反映後の売掛金期末残高に対し2％の貸倒引当金を差額補充法で設定する。",
-        "期末商品棚卸高は560,000円。売上原価は仕入勘定で計算する。",
-        "備品は残存価額ゼロ・耐用年数5年の定額法、間接法で減価償却する。試算表に計上済みの備品はすべて期首以前に取得し通年使用している。10月取得分は6か月分を月割計算する。",
-        "保険料192,000円は当期7月1日に向こう1年分を支払ったもの。月割計算により繰り延べる。",
-        "支払利息の未払額8,000円と、給料の未払額64,000円を計上する。",
-        "法人税等は260,000円と確定した。仮払法人税等120,000円を充当し、残額を未払計上する。",
-      ];
-      const money = (n) =>
-        new Intl.NumberFormat("ja-JP", { maximumFractionDigits: 0 }).format(n);
-      const escapeHtml = (v) =>
-        String(v).replace(
-          /[&<>"']/g,
-          (c) =>
-            ({
-              "&": "&amp;",
-              "<": "&lt;",
-              ">": "&gt;",
-              '"': "&quot;",
-              "'": "&#39;",
-            })[c],
-        );
-      // 全角数字と桁区切りを正規化し、不正な入力をゼロと混同しない。
-      function parseAmount(v) {
-        const s = String(v).normalize("NFKC").replace(/,/g, "").trim();
-        if (!/^\d+$/.test(s)) return null;
-        const n = Number(s);
-        return Number.isSafeInteger(n) ? n : null;
-      }
-      const key = "boki3-mock-2026-03-v1";
-      let state = {
-        status: "ready",
-        deadline: null,
-        tab: 1,
-        answers: {},
-        marks: {},
-      };
-      let storageAvailable = true;
-      try {
-        const saved = JSON.parse(localStorage.getItem(key));
-        if (
-          saved &&
-          ["ready", "running", "done"].includes(saved.status) &&
-          saved.answers &&
-          saved.marks &&
-          [1, 2, 3].includes(saved.tab) &&
-          (saved.status === "ready" || Number.isFinite(saved.deadline))
-        )
-          state = saved;
-      } catch {
-        storageAvailable = false;
-      }
-      function save() {
-        try {
-          localStorage.setItem(key, JSON.stringify(state));
-        } catch {
-          storageAvailable = false;
-          document.getElementById("progress").textContent =
-            "この環境では自動保存できないよ。画面を閉じずに解答してね。";
+              "176,000円"
+            ]
+          ]
         }
-      }
-      const inputClass =
-        "w-full min-w-0 rounded-lg border border-slate-300 bg-white px-3 py-2 text-right font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100";
-      function amountInput(id, label) {
-        return `<input type="text" inputmode="numeric" autocomplete="off" maxlength="18" id="${id}" data-answer="${id}" data-money="true" aria-label="${escapeHtml(label)}" class="${inputClass}" value="${escapeHtml(state.answers[id] ?? "")}" ${state.status === "done" ? "disabled" : ""}>`;
-      }
-      function selectInput(id, options, label) {
-        return `<select id="${id}" data-answer="${id}" aria-label="${escapeHtml(label)}" class="w-full min-w-0 rounded-lg border border-slate-300 bg-white px-2 py-2 focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100" ${state.status === "done" ? "disabled" : ""}><option value="">選択してください</option>${options.map((a) => `<option ${state.answers[id] === a ? "selected" : ""}>${escapeHtml(a)}</option>`).join("")}</select>`;
-      }
-      function journalResult(q, i) {
-        return gradeJournal(q, i) ? 3 : 0;
-      }
-      function gradeJournal(q, i) {
-        return ["d", "c"].every((side) => {
-          const actual = [];
-          for (let r = 0; r < 3; r++) {
-            const a = state.answers[`j${i}${side}${r}a`] || "";
-            const raw = state.answers[`j${i}${side}${r}v`] || "";
-            if (!a && !raw.trim()) continue;
-            const v = parseAmount(raw);
-            if (!a || v === null || v === 0) return false;
-            actual.push([a, v]);
-          }
-          return (
-            actual.length === q[side].length &&
-            new Set(actual.map((x) => x[0])).size === actual.length &&
-            q[side].every(([a, v]) =>
-              actual.some(([b, w]) => a === b && v === w),
-            )
-          );
-        });
-      }
-      function isCorrect(f) {
-        return f.type === "select"
-          ? state.answers[f.id] === f.answer
-          : parseAmount(state.answers[f.id] ?? "") === f.answer;
-      }
-      function answerLine(f) {
-        if (state.status !== "done") return "";
-        return `<div class="mt-3 text-sm leading-7 ${isCorrect(f) ? "text-teal-800" : "text-rose-700"}">${isCorrect(f) ? "○ 正解" : "× 不正解"} · 正解：<strong>${typeof f.answer === "number" ? money(f.answer) + "円" : f.answer}</strong><p class="text-slate-600">${f.why}</p></div>`;
-      }
-      // 表の中に既存の解答欄を配置し、保存済みの解答IDと採点を維持する。
-      function tableAnswer(id) {
-        const field = [...short, ...finalFields].find((item) => item.id === id);
-        return `<div class="min-w-[130px]">${field.type === "select" ? selectInput(field.id, field.options, field.label) : amountInput(field.id, field.label)}</div>`;
-      }
-      function answerTable(title, headings, rows, id) {
-        return `<div class="overflow-x-auto mt-5"><table id="${id}" class="w-full min-w-[760px] text-sm border-collapse"><caption class="font-bold text-base p-3">${title}</caption><thead><tr class="bg-slate-100">${headings.map((heading) => `<th scope="col" class="border p-3">${heading}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td class="border p-3 align-middle">${cell}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
-      }
-      function tableExplanations(fields) {
-        return state.status === "done" ? `<div class="mt-5 space-y-3">${fields.map((field) => `<div><p class="text-sm font-bold">${field.label}</p>${answerLine(field)}</div>`).join("")}</div>` : "";
-      }
-      function rentTables() {
-        const headings = ["借方・日付", "摘要", "金額（円）", "貸方・日付", "摘要", "金額（円）"];
-        return answerTable("受取家賃", headings, [
-          ["3/31", "前受家賃", tableAnswer("s1"), "1/1", tableAnswer("s0"), "240,000"],
-          ["3/31", "損益", tableAnswer("s2"), "", "", ""],
-          ["", "合計", "240,000", "", "合計", "240,000"],
-        ], "rent-ledger") + answerTable("前受家賃", headings, [
-          ["3/31", "次期繰越", tableAnswer("s3"), "3/31", "受取家賃", "？"],
-          ["", "合計", "？", "", "合計", "？"],
-          ["", "", "", "4/1", "前期繰越", "？"],
-        ], "deferred-rent-ledger") + answerTable("翌期4月1日・再振替仕訳", ["借方科目", "借方金額（円）", "貸方科目", "貸方金額（円）"], [
-          [tableAnswer("s4"), "？", "受取家賃", "？"],
-        ], "rent-reversal") + tableExplanations(short.slice(0, 5));
-      }
-      function assetTable() {
-        return answerTable("固定資産台帳（備品）", ["名称・取得日", "取得原価（円）", "耐用年数", "期首累計額（円）", "当期償却費（円）", "期末累計額（円）", "期末帳簿価額（円）"], [
-          ["A・X5年4月1日", "600,000", "5年", "240,000", tableAnswer("s5"), tableAnswer("s6"), "？"],
-          ["B・X7年10月1日", "360,000", "4年", "0", tableAnswer("s7"), "？", tableAnswer("s8")],
-        ], "asset-register") + answerTable("備品Aを期末に270,000円で売却した場合", ["損益の区分", "金額（円）"], [
-          ["固定資産売却益", tableAnswer("s9")],
-        ], "asset-sale") + tableExplanations(short.slice(5));
-      }
-      function financialTables() {
-        const headings = ["借方科目", "金額（円）", "貸方科目", "金額（円）"];
-        return answerTable("損益計算書・X7年4月1日～X8年3月31日", headings, [
-          ["売上原価", tableAnswer("f0"), "売上高", "10,800,000"],
-          ["給料", tableAnswer("f1"), "", ""],
-          ["支払家賃", "956,400", "", ""],
-          ["保険料", tableAnswer("f2"), "", ""],
-          ["支払利息", tableAnswer("f3"), "", ""],
-          ["貸倒引当金繰入", tableAnswer("f4"), "", ""],
-          ["減価償却費", tableAnswer("f5"), "", ""],
-          ["法人税等", "260,000", "", ""],
-          ["当期純利益", tableAnswer("f6"), "", ""],
-          ["合計", "10,800,000", "合計", "10,800,000"],
-        ], "income-statement") + tableExplanations(finalFields.slice(0, 7)) + answerTable("貸借対照表・X8年3月31日", headings, [
-          ["現金", tableAnswer("f7"), "買掛金", "1,040,000"],
-          ["普通預金", "3,000,000", "借入金", "1,600,000"],
-          ["売掛金（貸倒引当金控除後）", tableAnswer("f8"), "未払給料", "64,000"],
-          ["商品", tableAnswer("f9"), "未払利息", "8,000"],
-          ["備品（減価償却累計額控除後）", tableAnswer("f10"), "未払法人税等", tableAnswer("f12")],
-          ["前払保険料", tableAnswer("f11"), "資本金", "3,000,000"],
-          ["", "", "繰越利益剰余金", tableAnswer("f13")],
-          ["合計", state.status === "done" ? "6,773,200" : "？", "合計", state.status === "done" ? "6,773,200" : "？"],
-        ], "balance-sheet") + tableExplanations(finalFields.slice(7));
-      }
-      function render() {
-        document.getElementById("panel1").innerHTML =
-          `<p class="text-sm leading-7 bg-teal-50 rounded-xl p-4">次の取引を仕訳しよう。各設問の選択肢は共通。不要な行は空欄にしてね。特に指定がない取引では消費税を考慮しないよ。各3点、行の順番は自由。</p>` +
-          journals
-            .map(
-              (q, i) =>
-                `<article class="bg-white border border-slate-200 rounded-2xl p-5 md:p-6"><div class="flex items-center justify-between gap-3"><p class="font-bold"><span class="text-teal-700 mr-3">${String(i + 1).padStart(2, "0")}</span><span class="text-xs font-normal text-slate-500">${q.tag}</span></p><label class="text-xs text-slate-500"><input type="checkbox" data-mark="${i}" ${state.marks[i] ? "checked" : ""} ${state.status === "done" ? "disabled" : ""}> あとで見直す</label></div><p class="mt-4 leading-8 text-sm">${q.q}</p><div class="overflow-x-auto mt-4"><table class="w-full min-w-[650px] text-sm border-separate border-spacing-2"><thead><tr class="text-slate-500"><th class="w-1/3">借方科目</th><th>金額（円）</th><th class="w-1/3">貸方科目</th><th>金額（円）</th></tr></thead><tbody>${Array.from({ length: 3 }, (_, r) => `<tr>${["d", "c"].map((side) => `<td>${selectInput(`j${i}${side}${r}a`, accounts, `第1問 ${i + 1} ${side === "d" ? "借方" : "貸方"}${r + 1}行目 科目`)}</td><td>${amountInput(`j${i}${side}${r}v`, `第1問 ${i + 1} ${side === "d" ? "借方" : "貸方"}${r + 1}行目 金額`)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${state.status === "done" ? `<div class="border-t mt-4 pt-4 text-sm leading-7"><p class="font-bold ${gradeJournal(q, i) ? "text-teal-800" : "text-rose-700"}">${gradeJournal(q, i) ? "○ 正解 3 / 3点" : "× 不正解 0 / 3点"}</p><div class="grid md:grid-cols-2 gap-2 mt-2"><p>借方：${q.d.map(([a, v]) => `${a} ${money(v)}`).join(" / ")}</p><p>貸方：${q.c.map(([a, v]) => `${a} ${money(v)}`).join(" / ")}</p></div><p class="mt-2 text-slate-600">${q.why}</p></div>` : ""}</article>`,
-            )
-            .join("");
-        document.getElementById("panel2").innerHTML =
-          `<article class="bg-white border rounded-2xl p-6"><h2 class="font-bold text-lg">（1）受取家賃・前受家賃の勘定記入 <span class="text-sm text-slate-500">10点</span></h2><p class="mt-4 text-sm leading-8">当期はX7年4月1日～X8年3月31日。X8年1月1日に、所有する建物の家賃として同日から6か月分240,000円を普通預金で受け取り、全額を受取家賃に計上した。表内の空欄を埋めよう。「？」は自分で計算する採点対象外の欄であり、入力不要。月割計算とする。期首の受取家賃・前受家賃残高はゼロで、ほかに家賃取引はない。決算整理、勘定の締切り、翌期首の再振替について答えよう。</p>${rentTables()}</article><article class="bg-white border rounded-2xl p-6"><h2 class="font-bold text-lg">（2）固定資産台帳 <span class="text-sm text-slate-500">10点</span></h2><p class="mt-4 text-sm leading-8">次の固定資産台帳から答えよう。当期はX7年4月1日～X8年3月31日。残存価額ゼロの定額法・間接法で、月割計算する。Aは通年使用、Bは取得日に使用開始した。台帳と売却損益の表の空欄を埋めよう。「？」は採点対象外で入力不要。売却は仮定であり、ほかの欄には反映しない。単位は円。</p>${assetTable()}</article>`;
-        const td = (n) => (n ? money(n) : "—");
-        document.getElementById("panel3").innerHTML =
-          `<div class="bg-teal-50 p-5 rounded-2xl text-sm leading-7">次の決算整理前残高試算表と決算整理事項から、財務諸表の空欄を完成しよう。会計期間はX7年4月1日～X8年3月31日。金額の単位は円、消費税は考慮しない。解答の資産額は指定のとおり控除後とし、当期純利益は正の金額で入力してね。</div><div class="grid lg:grid-cols-2 gap-5"><article class="bg-white border rounded-2xl p-5"><h2 class="font-bold mb-4">資料1 / 決算整理前残高試算表</h2><table class="w-full text-sm"><thead class="bg-slate-100"><tr><th class="p-2">借方（円）</th><th class="p-2">勘定科目</th><th class="p-2">貸方（円）</th></tr></thead><tbody>${trial.map(([a, d, c]) => `<tr class="border-b"><td class="p-2 text-right font-mono">${td(d)}</td><th class="p-2 font-normal text-left">${a}</th><td class="p-2 text-right font-mono">${td(c)}</td></tr>`).join("")}<tr class="bg-teal-50 font-bold"><td class="p-2 text-right">17,220,000</td><th>合計</th><td class="p-2 text-right">17,220,000</td></tr></tbody></table></article><article class="bg-white border rounded-2xl p-6"><h2 class="font-bold mb-4">資料2 / 決算整理事項</h2><ol class="list-decimal pl-5 text-sm space-y-5 leading-8">${adjustments.map((s) => `<li>${s}</li>`).join("")}</ol></article></div><article class="bg-white border rounded-2xl p-6"><h2 class="font-bold text-lg">答案 / 財務諸表</h2><p class="text-sm mt-3">表内の空欄に金額を入力しよう。売掛金と備品は控除後の金額とする。「？」は採点対象外。単位は円。</p>${financialTables()}</article>`;
-        switchTab(state.tab, false);
-        updateProgress();
-      }
-      function switchTab(tab, scroll = true) {
-        state.tab = Number(tab);
-        for (let i = 1; i <= 3; i++)
-          document.getElementById("panel" + i).hidden = state.tab !== i;
-        document.querySelectorAll("[data-tab]").forEach((b) => {
-          const on = Number(b.dataset.tab) === state.tab;
-          b.className = `rounded-xl px-5 py-3 font-bold ${on ? "bg-teal-800 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`;
-          b.setAttribute("aria-current", on ? "page" : "false");
-        });
-        document.getElementById("sectionEyebrow").textContent =
-          `QUESTION 0${state.tab} / ${[45, 20, 35][state.tab - 1]}点`;
-        document.getElementById("sectionTitle").textContent = [
-          "第1問 仕訳",
-          "第2問 勘定記入・固定資産台帳",
-          "第3問 決算整理・財務諸表",
-        ][state.tab - 1];
-        save();
-        if (scroll)
-          document
-            .getElementById("exam")
-            .scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      function counts() {
-        const j = journals.filter((_, i) =>
-          ["d", "c"].every((s) =>
-            [0, 1, 2].some(
-              (r) =>
-                (state.answers[`j${i}${s}${r}a`] || "") &&
-                (state.answers[`j${i}${s}${r}v`] || "").trim(),
-            ),
-          ),
-        ).length;
-        return [
-          j,
-          short.filter((f) => (state.answers[f.id] || "").trim()).length,
-          finalFields.filter((f) => (state.answers[f.id] || "").trim()).length,
-        ];
-      }
-      function updateProgress() {
-        const c = counts();
-        document.getElementById("progress").textContent =
-          `入力済み ${c[state.tab - 1]} / ${[15, 10, 14][state.tab - 1]} ${state.tab === 1 ? "問" : "欄"} · 見直し ${Object.values(state.marks).filter(Boolean).length}件`;
-      }
-      function formatInput(el) {
-        const raw = el.value;
-        if (!raw.trim()) {
-          el.setCustomValidity("");
-          el.removeAttribute("aria-invalid");
-          return;
-        }
-        const n = parseAmount(raw);
-        if (n === null) {
-          el.setCustomValidity("0以上の整数を入力してね。");
-          el.setAttribute("aria-invalid", "true");
-          el.reportValidity();
-        } else {
-          el.value = money(n);
-          el.setCustomValidity("");
-          el.removeAttribute("aria-invalid");
-        }
-        state.answers[el.dataset.answer] = el.value;
-        save();
-      }
-      document.addEventListener("input", (e) => {
-        const el = e.target;
-        if (!el.dataset.answer || state.status !== "running") return;
-        el.setCustomValidity("");
-        el.removeAttribute("aria-invalid");
-        state.answers[el.dataset.answer] = el.value;
-        save();
-        updateProgress();
-      });
-      document.addEventListener("change", (e) => {
-        const el = e.target;
-        if (state.status !== "running") return;
-        if (el.dataset.mark !== undefined) {
-          state.marks[el.dataset.mark] = el.checked;
-          save();
-          updateProgress();
-        }
-        if (el.dataset.answer) {
-          state.answers[el.dataset.answer] = el.value;
-          save();
-          updateProgress();
-        }
-      });
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.isComposing && e.target.dataset.money) {
-          e.preventDefault();
-          formatInput(e.target);
-        }
-      });
-      document.addEventListener("focusout", (e) => {
-        if (e.target.dataset.money && state.status === "running")
-          formatInput(e.target);
-      });
-      document
-        .querySelectorAll("[data-tab]")
-        .forEach((b) =>
-          b.addEventListener("click", () => switchTab(b.dataset.tab)),
-        );
-      function showExam() {
-        document.getElementById("intro").hidden = true;
-        document.getElementById("exam").hidden = false;
-        document.getElementById("nav").hidden = false;
-        render();
-      }
-      function tick() {
-        if (state.status !== "running") return;
-        const remaining = Math.max(
-          0,
-          Math.ceil((state.deadline - Date.now()) / 1000),
-        );
-        document.getElementById("timer").textContent =
-          `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`;
-        document
-          .getElementById("timer")
-          .classList.toggle("text-rose-600", remaining <= 300);
-        if (remaining === 0) finish(true);
-      }
-      document.getElementById("start").addEventListener("click", () => {
-        state.status = "running";
-        state.deadline = Date.now() + 3600000;
-        save();
-        showExam();
-        tick();
-      });
-      document.getElementById("finish").addEventListener("click", () => {
-        if (state.status === "done") {
-          if (confirm("解答と結果を消して、同じ問題をもう一度解く？")) {
-            state = {
-              status: "ready",
-              deadline: null,
-              tab: 1,
-              answers: {},
-              marks: {},
-            };
-            save();
-            location.reload();
-          }
-          return;
-        }
-        const c = counts();
-        document.getElementById("confirmText").textContent =
-          `入力済みは第1問${c[0]}/15問、第2問${c[1]}/10欄、第3問${c[2]}/14欄。未入力欄は不正解になるよ。提出後は解答を変更できないよ。`;
-        document.getElementById("confirm").showModal();
-      });
-      document
-        .getElementById("cancelFinish")
-        .addEventListener("click", () =>
-          document.getElementById("confirm").close(),
-        );
-      document
-        .getElementById("confirmFinish")
-        .addEventListener("click", () => finish(false));
-      function scores() {
-        return [
-          journals.reduce((s, q, i) => s + journalResult(q, i), 0),
-          short.reduce((s, f) => s + (isCorrect(f) ? 2 : 0), 0),
-          finalFields.reduce((s, f) => s + (isCorrect(f) ? f.points : 0), 0),
-        ];
-      }
-      function finish(expired) {
-        if (state.status === "done") return;
-        state.status = "done";
-        state.expired = expired;
-        state.finishedAt = Date.now();
-        save();
-        document.getElementById("confirm").close();
-        render();
-        showResult();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-      // 問題と解答をまとめ、HTMLを渡さなくても復習できる形式で書き出す。
-      function createAnswerReport() {
-        if (state.status !== "done") return null;
-        const sectionScores = scores();
-        const fieldReport = (field) => ({
-          id: field.id,
-          question: field.label,
-          answerType: field.type === "select" ? "account" : "amount",
-          choices: field.options || null,
-          userAnswer: {
-            raw: state.answers[field.id] ?? "",
-            value:
-              field.type === "select"
-                ? state.answers[field.id] || null
-                : parseAmount(state.answers[field.id] ?? ""),
-          },
-          correctAnswer: field.answer,
-          correct: isCorrect(field),
-          score: isCorrect(field) ? field.points || 2 : 0,
-          maxScore: field.points || 2,
-          explanation: field.why,
-        });
-        const journalRows = (index, side) =>
-          Array.from({ length: 3 }, (_, row) => {
-            const raw = state.answers[`j${index}${side}${row}v`] ?? "";
-            return {
-              account: state.answers[`j${index}${side}${row}a`] || null,
-              amountRaw: raw,
-              amount: parseAmount(raw),
-            };
-          });
-        const finishedAt = state.finishedAt || state.deadline;
-        return {
-          schemaVersion: 1,
-          reportType: "boki3-answer-review",
-          exportedAt: new Date().toISOString(),
-          exam: {
-            id: "boki3-2026-03",
-            revision: 1,
-            title: "日商簿記3級 第3回 模擬試験",
-            fiscalYear: 2026,
-            applicableUntil: "2027-03-31",
-            durationSeconds: 3600,
-            currency: "JPY",
-            official: false,
-          },
-          attempt: {
-            status: "submitted",
-            startedAt: new Date(state.deadline - 3600000).toISOString(),
-            finishedAt: new Date(finishedAt).toISOString(),
-            elapsedSeconds: Math.min(
-              3600,
-              Math.max(
-                0,
-                Math.round((finishedAt - state.deadline + 3600000) / 1000),
-              ),
-            ),
-            submittedByTimeout: Boolean(state.expired),
-            score: sectionScores.reduce((sum, score) => sum + score, 0),
-            maxScore: 100,
-            passingScore: 70,
-          },
-          reviewGuide:
-            "あんじゅの解答と正解を比較し、誤答・未解答・見直しマークを中心に、仕訳や計算の考え方を日本語で説明してね。入力された解答だけでは思考過程は分からないので、原因は断定せず必要に応じて確認してね。採点はこの非公式模試独自の基準だよ。",
-          sections: [
+      ]
+    },
+    {
+      "topic": "前期債権と不足引当金",
+      "question": "得意先に対する前期販売分の売掛金67,000円が全額回収不能となった。貸倒引当金の残高は19,000円である。",
+      "debit": [
+        [
+          "貸倒引当金",
+          19000
+        ],
+        [
+          "貸倒損失",
+          48000
+        ]
+      ],
+      "credit": [
+        [
+          "売掛金",
+          67000
+        ]
+      ],
+      "explanation": "引当金19,000円を取り崩し、不足48,000円を貸倒損失とする。",
+      "materials": []
+    },
+    {
+      "topic": "収益勘定の締切り",
+      "question": "決算整理後、受取家賃勘定は貸方残高154,000円であった。この残高を損益勘定へ振り替える。",
+      "debit": [
+        [
+          "受取家賃",
+          154000
+        ]
+      ],
+      "credit": [
+        [
+          "損益",
+          154000
+        ]
+      ],
+      "explanation": "収益勘定を借記してゼロとし、損益の貸方へ振り替える。",
+      "materials": []
+    }
+  ],
+  "parts": [
+    {
+      "title": "（1）総勘定元帳から取引を読み取る",
+      "instructions": [
+        "6月中の元帳記録は下記のとおりである。同じ日付の記録は一つの取引を転記したものであり、別々の取引ではない。商品売買は三分法、消費税は考慮しない。",
+        "元帳から取引を復元し、下の仕訳表と売掛金の次月繰越額を完成しなさい。？は入力不要。"
+      ],
+      "groups": [
+        {
+          "id": "s0",
+          "label": "6月8日の取引",
+          "points": 2,
+          "fields": [
             {
-              number: 1,
-              title: "仕訳",
-              score: sectionScores[0],
-              maxScore: 45,
-              instructions:
-                "各問完全正解で3点。行順は自由。同一側の同一科目は1回にまとめ、未使用行は科目・金額とも空欄。指定がなければ消費税は考慮しない。",
-              choices: accounts,
-              questions: journals.map((question, index) => ({
-                id: `j${index}`,
-                number: index + 1,
-                topic: question.tag,
-                question: question.q,
-                markedForReview: Boolean(state.marks[index]),
-                userAnswer: {
-                  debit: journalRows(index, "d"),
-                  credit: journalRows(index, "c"),
-                },
-                correctAnswer: {
-                  debit: question.d.map(([account, amount]) => ({
-                    account,
-                    amount,
-                  })),
-                  credit: question.c.map(([account, amount]) => ({
-                    account,
-                    amount,
-                  })),
-                },
-                correct: gradeJournal(question, index),
-                score: journalResult(question, index),
-                maxScore: 3,
-                explanation: question.why,
-              })),
-            },
-            {
-              number: 2,
-              title: "勘定記入・固定資産台帳",
-              score: sectionScores[1],
-              maxScore: 20,
-              parts: [
-                {
-                  title: "受取家賃・前受家賃の勘定記入",
-                  instructions: document.querySelector(
-                    "#panel2 article:first-child > p",
-                  ).textContent,
-                  questions: short.slice(0, 5).map(fieldReport),
-                },
-                {
-                  title: "固定資産台帳",
-                  instructions: document.querySelector(
-                    "#panel2 article:nth-child(2) > p",
-                  ).textContent,
-                  sourceData: [
-                    {
-                      asset: "備品A",
-                      acquired: "X5年4月1日",
-                      cost: 600000,
-                      usefulLife: 5,
-                      openingAccumulatedDepreciation: 240000,
-                    },
-                    {
-                      asset: "備品B",
-                      acquired: "X7年10月1日",
-                      cost: 360000,
-                      usefulLife: 4,
-                      openingAccumulatedDepreciation: 0,
-                    },
-                  ],
-                  questions: short.slice(5).map(fieldReport),
-                },
+              "id": "s0a",
+              "label": "6月8日仕訳の借方科目",
+              "answer": "仕入",
+              "options": [
+                "仕入",
+                "売上",
+                "買掛金",
+                "備品"
               ],
+              "explanation": "現金と買掛金の両方で相手科目が仕入なので、一つの仕入取引にまとめる。",
+              "type": "select"
             },
             {
-              number: 3,
-              title: "決算整理・財務諸表",
-              score: sectionScores[2],
-              maxScore: 35,
-              instructions: document.querySelector("#panel3 > div").textContent,
-              trialBalance: trial.map(([account, debit, credit]) => ({
-                account,
-                debit,
-                credit,
-              })),
-              adjustments,
-              prefilledAnswers: {
-                incomeStatement: {
-                  売上高: 10800000,
-                  支払家賃: 956400,
-                  法人税等: 260000,
-                },
-                balanceSheet: {
-                  普通預金: 3000000,
-                  買掛金: 1040000,
-                  借入金: 1600000,
-                  未払給料: 64000,
-                  未払利息: 8000,
-                  資本金: 3000000,
-                },
-              },
-              questions: finalFields.map(fieldReport),
+              "id": "s0v",
+              "label": "6月8日の借方金額",
+              "answer": 80000,
+              "explanation": "現金24,000＋買掛金56,000＝80,000円。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        },
+        {
+          "id": "s1",
+          "label": "6月18日の取引",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s1a",
+              "label": "6月18日仕訳の貸方科目",
+              "answer": "売上",
+              "options": [
+                "売上",
+                "仕入",
+                "売掛金",
+                "現金"
+              ],
+              "explanation": "現金と売掛金の借方記入を同じ日の売上としてまとめる。",
+              "type": "select"
             },
+            {
+              "id": "s1v",
+              "label": "6月18日の貸方金額",
+              "answer": 60000,
+              "explanation": "現金18,000＋売掛金42,000＝60,000円。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "label": "6月20日の取引",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s2a",
+              "label": "6月20日仕訳の借方科目",
+              "answer": "買掛金",
+              "options": [
+                "仕入",
+                "買掛金",
+                "売掛金",
+                "未払金"
+              ],
+              "explanation": "買掛金を現金で支払っている。",
+              "type": "select"
+            },
+            {
+              "id": "s2v",
+              "label": "6月20日の仕訳金額",
+              "answer": 35000,
+              "explanation": "買掛金勘定の借方35,000円を現金勘定の貸方に対応させる。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        },
+        {
+          "id": "s3",
+          "label": "6月27日の取引",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s3a",
+              "label": "6月27日仕訳の貸方科目",
+              "answer": "売掛金",
+              "options": [
+                "売上",
+                "売掛金",
+                "買掛金",
+                "普通預金"
+              ],
+              "explanation": "売掛金勘定の貸方なので、現金による売掛金の回収。",
+              "type": "select"
+            },
+            {
+              "id": "s3v",
+              "label": "6月27日の仕訳金額",
+              "answer": 63000,
+              "explanation": "売掛金勘定の貸方63,000円と現金勘定の借方を対応させる。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "label": "売掛金の繰越し",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s4v",
+              "label": "売掛金の次月繰越額",
+              "answer": 219000,
+              "explanation": "148,000＋92,000＋42,000−63,000＝219,000円。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "id": "cash-ledger",
+          "caption": "現金勘定（円）",
+          "headings": [
+            "借方日付",
+            "摘要",
+            "金額",
+            "貸方日付",
+            "摘要",
+            "金額"
           ],
-        };
+          "rows": [
+            [
+              "6/1",
+              "前月繰越",
+              "56,000",
+              "6/8",
+              "仕入",
+              "24,000"
+            ],
+            [
+              "6/18",
+              "売上",
+              "18,000",
+              "6/20",
+              "？",
+              "？"
+            ],
+            [
+              "6/27",
+              "？",
+              "？",
+              "6/30",
+              "次月繰越",
+              "78,000"
+            ]
+          ]
+        },
+        {
+          "id": "receivable-ledger",
+          "caption": "売掛金勘定（円）",
+          "headings": [
+            "借方日付",
+            "摘要",
+            "金額",
+            "貸方日付",
+            "摘要",
+            "金額"
+          ],
+          "rows": [
+            [
+              "6/1",
+              "前月繰越",
+              "148,000",
+              "6/27",
+              "現金",
+              "63,000"
+            ],
+            [
+              "6/5",
+              "売上",
+              "92,000",
+              "6/30",
+              "次月繰越",
+              "{{s4v}}"
+            ],
+            [
+              "6/18",
+              "売上",
+              "42,000",
+              "",
+              "",
+              ""
+            ]
+          ]
+        },
+        {
+          "id": "payable-ledger",
+          "caption": "買掛金勘定（円）",
+          "headings": [
+            "借方日付",
+            "摘要",
+            "金額",
+            "貸方日付",
+            "摘要",
+            "金額"
+          ],
+          "rows": [
+            [
+              "6/20",
+              "現金",
+              "35,000",
+              "6/1",
+              "前月繰越",
+              "96,000"
+            ],
+            [
+              "6/30",
+              "次月繰越",
+              "117,000",
+              "6/8",
+              "仕入",
+              "56,000"
+            ]
+          ]
+        },
+        {
+          "id": "reconstructed-journals",
+          "caption": "取引の仕訳（円）",
+          "headings": [
+            "日付",
+            "借方科目",
+            "借方金額",
+            "貸方科目",
+            "貸方金額"
+          ],
+          "rows": [
+            [
+              "6/8",
+              "{{s0a}}",
+              "{{s0v}}",
+              "現金／買掛金",
+              "24,000／56,000"
+            ],
+            [
+              "6/18",
+              "現金／売掛金",
+              "18,000／42,000",
+              "{{s1a}}",
+              "{{s1v}}"
+            ],
+            [
+              "6/20",
+              "{{s2a}}",
+              "{{s2v}}",
+              "現金",
+              "？"
+            ],
+            [
+              "6/27",
+              "現金",
+              "？",
+              "{{s3a}}",
+              "{{s3v}}"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": "（2）伝票の集計と元帳への転記",
+      "instructions": [
+        "3伝票制を採用する当社の7月3日の伝票は資料のとおりで、ほかに取引はない。日計表へ集計し、総勘定元帳と売掛金元帳に転記する。消費税は考慮しない。",
+        "転記前の残高は買掛金が貸方98,000円、A店の売掛金が借方65,000円。総勘定元帳へは日計表から合計転記、売掛金元帳へは各伝票から個別転記する。"
+      ],
+      "groups": [
+        {
+          "id": "s5",
+          "label": "現金の日計",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s5a",
+              "label": "日計表・現金借方合計",
+              "answer": 130000,
+              "explanation": "入金伝票48,000＋32,000＋50,000＝130,000円。",
+              "type": "amount",
+              "unit": "円"
+            },
+            {
+              "id": "s5b",
+              "label": "日計表・現金貸方合計",
+              "answer": 65800,
+              "explanation": "出金伝票36,000＋4,800＋25,000＝65,800円。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        },
+        {
+          "id": "s6",
+          "label": "売掛金の日計",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s6v",
+              "label": "日計表・売掛金貸方合計",
+              "answer": 93000,
+              "explanation": "A店回収48,000＋B店電子記録45,000＝93,000円。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        },
+        {
+          "id": "s7",
+          "label": "買掛金元帳",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s7v",
+              "label": "総勘定元帳・買掛金の転記後残高",
+              "answer": 146000,
+              "explanation": "期首98,000＋掛仕入84,000−支払36,000＝146,000円。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        },
+        {
+          "id": "s8",
+          "label": "得意先別元帳",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s8v",
+              "label": "売掛金元帳・A店の転記後残高",
+              "answer": 89000,
+              "explanation": "A店期首65,000＋掛売上72,000−回収48,000＝89,000円。B店を混ぜない。",
+              "type": "amount",
+              "unit": "円"
+            }
+          ]
+        },
+        {
+          "id": "s9",
+          "label": "摘要の転記方法",
+          "points": 2,
+          "fields": [
+            {
+              "id": "s9a",
+              "label": "総勘定元帳の摘要",
+              "answer": "仕訳日計表",
+              "options": [
+                "仕訳日計表",
+                "入金伝票",
+                "出金伝票",
+                "振替伝票"
+              ],
+              "explanation": "総勘定元帳へは仕訳日計表から合計転記する。",
+              "type": "select"
+            },
+            {
+              "id": "s9b",
+              "label": "A店売掛金回収行の摘要",
+              "answer": "入金伝票",
+              "options": [
+                "仕訳日計表",
+                "入金伝票",
+                "出金伝票",
+                "振替伝票"
+              ],
+              "explanation": "補助元帳へはA店の入金伝票から個別転記する。",
+              "type": "select"
+            }
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "id": "voucher-batch",
+          "caption": "7月3日の全伝票（円）",
+          "headings": [
+            "伝票",
+            "番号",
+            "科目・取引先",
+            "金額"
+          ],
+          "rows": [
+            [
+              "入金",
+              "101",
+              "売掛金・A店",
+              "48,000"
+            ],
+            [
+              "入金",
+              "102",
+              "売上",
+              "32,000"
+            ],
+            [
+              "入金",
+              "103",
+              "当座預金",
+              "50,000"
+            ],
+            [
+              "出金",
+              "201",
+              "買掛金・B店",
+              "36,000"
+            ],
+            [
+              "出金",
+              "202",
+              "消耗品費",
+              "4,800"
+            ],
+            [
+              "出金",
+              "203",
+              "当座預金",
+              "25,000"
+            ],
+            [
+              "振替",
+              "301",
+              "借：売掛金・A店／貸：売上",
+              "72,000"
+            ],
+            [
+              "振替",
+              "302",
+              "借：仕入／貸：買掛金・B店",
+              "84,000"
+            ],
+            [
+              "振替",
+              "303",
+              "借：電子記録債権／貸：売掛金・B店",
+              "45,000"
+            ]
+          ]
+        },
+        {
+          "id": "daily-journal",
+          "caption": "仕訳日計表・入力対象（円）",
+          "headings": [
+            "借方合計",
+            "勘定科目",
+            "貸方合計"
+          ],
+          "rows": [
+            [
+              "{{s5a}}",
+              "現金",
+              "{{s5b}}"
+            ],
+            [
+              "？",
+              "売掛金",
+              "{{s6v}}"
+            ]
+          ]
+        },
+        {
+          "id": "ledger-posting",
+          "caption": "元帳への転記後残高と摘要",
+          "headings": [
+            "元帳",
+            "残高（円）",
+            "摘要"
+          ],
+          "rows": [
+            [
+              "買掛金・総勘定元帳",
+              "{{s7v}}",
+              "{{s9a}}"
+            ],
+            [
+              "A店・売掛金元帳",
+              "{{s8v}}",
+              "回収行：{{s9b}}"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "final": {
+    "instructions": [
+      "次の決算整理前残高試算表と決算整理事項から、精算表の入力欄を完成しなさい。当期はX7年4月1日～X8年3月31日。単位は円。",
+      "損益計算書欄・貸借対照表欄とも金額を記入する側を判断し、不要な側は空欄にする。両側に記入した場合は不正解。？は採点対象外の計算用欄で入力不要。精算表では繰越利益剰余金に当期損益を加減しない。"
+    ],
+    "trialBalance": [
+      [
+        "現金",
+        354000,
+        0
+      ],
+      [
+        "当座預金",
+        468000,
+        0
+      ],
+      [
+        "定期預金",
+        900000,
+        0
+      ],
+      [
+        "売掛金",
+        780000,
+        0
+      ],
+      [
+        "電子記録債権",
+        220000,
+        0
+      ],
+      [
+        "繰越商品",
+        180000,
+        0
+      ],
+      [
+        "仮払金",
+        90000,
+        0
+      ],
+      [
+        "仮払消費税",
+        150000,
+        0
+      ],
+      [
+        "建物",
+        3000000,
+        0
+      ],
+      [
+        "備品",
+        840000,
+        0
+      ],
+      [
+        "買掛金",
+        0,
+        580000
+      ],
+      [
+        "電子記録債務",
+        0,
+        260000
+      ],
+      [
+        "借入金",
+        0,
+        1200000
+      ],
+      [
+        "仮受金",
+        0,
+        76000
+      ],
+      [
+        "仮受消費税",
+        0,
+        330000
+      ],
+      [
+        "貸倒引当金",
+        0,
+        20000
+      ],
+      [
+        "建物減価償却累計額",
+        0,
+        810000
+      ],
+      [
+        "備品減価償却累計額",
+        0,
+        336000
+      ],
+      [
+        "資本金",
+        0,
+        3000000
+      ],
+      [
+        "繰越利益剰余金",
+        0,
+        13000
+      ],
+      [
+        "売上",
+        0,
+        5100000
+      ],
+      [
+        "受取手数料",
+        0,
+        372000
+      ],
+      [
+        "仕入",
+        3300000,
+        0
+      ],
+      [
+        "給料",
+        1020000,
+        0
+      ],
+      [
+        "保険料",
+        96000,
+        0
+      ],
+      [
+        "支払家賃",
+        600000,
+        0
+      ],
+      [
+        "支払利息",
+        15000,
+        0
+      ],
+      [
+        "通信費",
+        84000,
+        0
+      ]
+    ],
+    "materials": [],
+    "adjustments": [
+      "仮受金76,000円は、売掛金の回収52,000円と、翌期納品の商品に対する手付金24,000円であると判明した。",
+      "仮払金90,000円は、当期7月1日に引渡しを受けて同日使用を開始した備品の頭金である。本体価格360,000円、引取運賃12,000円を含む総額の残額は翌期に支払う契約で、取得の処理は未了である。この取引について消費税は考慮しない。",
+      "電子記録債権26,000円が満期となり当座預金口座に入金されていたが、未記帳であった。",
+      "売掛金および電子記録債権の期末残高に対し2.5％の貸倒れを見積もり、貸倒引当金を差額補充法で設定する。",
+      "期末商品は、取得原価単価1,200円の商品80個と、取得原価単価1,600円の商品70個である。売上原価は仕入勘定で算定する。",
+      "建物は残存価額を取得原価の10％、耐用年数30年。既存備品は残存価額ゼロ、耐用年数7年。上記の新備品は残存価額ゼロ、耐用年数5年とする。いずれも定額法・間接法で、既存資産は通年使用、新備品は月割計算する。",
+      "定期預金900,000円は当期中に期間1年、年利率3.65％で預け入れた。決算までの経過日数は150日で、利息は満期に受け取る。1年365日の日割計算により必要な処理を行う。",
+      "保険料は当期11月1日に向こう1年分を支払ったもので、月割計算により処理する。",
+      "受取手数料は毎年6月1日と12月1日に向こう半年分を受け取り、全額を受取手数料に記帳する。前期12月1日と当期6月1日は各144,000円、当期12月1日は料金改定により180,000円を受け取った。期首の再振替は適正に行われており、ほかに手数料取引はない。",
+      "借入金1,200,000円は当期9月1日、期間1年、年利率2.4％で借り入れ、利息は元本返済時に支払う。当該利息は未計上で、月割計算とする。試算表の支払利息は別の返済済み借入れに係る当期分である。",
+      "法人税等は90,000円と確定した。当期に中間納付はない。",
+      "消費税の決算処理を税抜方式で行う。上記の未処理事項に消費税の追加計上はない。",
+      "現金の実際有高は350,800円であった。差額の原因を調査したところ通信費2,400円の現金支払の記帳漏れが判明し、残額は原因不明であるため雑損または雑益として処理する。"
+    ],
+    "groups": [
+      {
+        "id": "f0",
+        "label": "資金の残高",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f0ad",
+            "label": "貸借対照表・現金・借方",
+            "answer": 350800,
+            "explanation": "実際有高350,800円に合わせる。差額は通信費2,400円と雑損800円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f0ac",
+            "label": "貸借対照表・現金・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f0bd",
+            "label": "貸借対照表・当座預金・借方",
+            "answer": 494000,
+            "explanation": "468,000＋26,000＝494,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f0bc",
+            "label": "貸借対照表・当座預金・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          }
+        ]
+      },
+      {
+        "id": "f1",
+        "label": "期末債権",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f1ad",
+            "label": "貸借対照表・売掛金・借方",
+            "answer": 728000,
+            "explanation": "780,000−52,000＝728,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f1ac",
+            "label": "貸借対照表・売掛金・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f1bd",
+            "label": "貸借対照表・電子記録債権・借方",
+            "answer": 194000,
+            "explanation": "220,000−26,000＝194,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f1bc",
+            "label": "貸借対照表・電子記録債権・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          }
+        ]
+      },
+      {
+        "id": "f2",
+        "label": "備品の未処理",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f2ad",
+            "label": "貸借対照表・備品・借方",
+            "answer": 1212000,
+            "explanation": "840,000＋360,000＋12,000＝1,212,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f2ac",
+            "label": "貸借対照表・備品・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f2bd",
+            "label": "貸借対照表・未払金・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f2bc",
+            "label": "貸借対照表・未払金・貸方",
+            "answer": 282000,
+            "explanation": "新備品372,000−頭金90,000＝282,000円。",
+            "type": "amount",
+            "unit": "円"
+          }
+        ]
+      },
+      {
+        "id": "f3",
+        "label": "貸倒見積り",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f3ad",
+            "label": "貸借対照表・貸倒引当金・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f3ac",
+            "label": "貸借対照表・貸倒引当金・貸方",
+            "answer": 23050,
+            "explanation": "(728,000＋194,000)×2.5％＝23,050円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f3bd",
+            "label": "損益計算書・貸倒引当金繰入・借方",
+            "answer": 3050,
+            "explanation": "必要額23,050−期首20,000＝3,050円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f3bc",
+            "label": "損益計算書・貸倒引当金繰入・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          }
+        ]
+      },
+      {
+        "id": "f4",
+        "label": "商品と仕入",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f4ad",
+            "label": "貸借対照表・繰越商品・借方",
+            "answer": 208000,
+            "explanation": "80×1,200＋70×1,600＝208,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f4ac",
+            "label": "貸借対照表・繰越商品・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f4bd",
+            "label": "損益計算書・仕入・借方",
+            "answer": 3272000,
+            "explanation": "180,000＋3,300,000−208,000＝3,272,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f4bc",
+            "label": "損益計算書・仕入・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          }
+        ]
+      },
+      {
+        "id": "f5",
+        "label": "減価償却",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f5ad",
+            "label": "損益計算書・減価償却費・借方",
+            "answer": 265800,
+            "explanation": "建物90,000＋既存備品120,000＋新備品55,800＝265,800円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f5ac",
+            "label": "損益計算書・減価償却費・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f5bd",
+            "label": "貸借対照表・建物減価償却累計額・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f5bc",
+            "label": "貸借対照表・建物減価償却累計額・貸方",
+            "answer": 900000,
+            "explanation": "810,000＋90,000＝900,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f5cd",
+            "label": "貸借対照表・備品減価償却累計額・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f5cc",
+            "label": "貸借対照表・備品減価償却累計額・貸方",
+            "answer": 511800,
+            "explanation": "336,000＋120,000＋55,800＝511,800円。新備品は372,000÷5×9/12。",
+            "type": "amount",
+            "unit": "円"
+          }
+        ]
+      },
+      {
+        "id": "f6",
+        "label": "利息の未収",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f6ad",
+            "label": "貸借対照表・未収利息・借方",
+            "answer": 13500,
+            "explanation": "900,000×3.65％×150/365＝13,500円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f6ac",
+            "label": "貸借対照表・未収利息・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f6bd",
+            "label": "損益計算書・受取利息・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f6bc",
+            "label": "損益計算書・受取利息・貸方",
+            "answer": 13500,
+            "explanation": "未収計上した利息を当期収益とする。",
+            "type": "amount",
+            "unit": "円"
+          }
+        ]
+      },
+      {
+        "id": "f7",
+        "label": "保険料の繰延べ",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f7ad",
+            "label": "貸借対照表・前払保険料・借方",
+            "answer": 56000,
+            "explanation": "翌期4～10月の7か月分。96,000×7/12＝56,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f7ac",
+            "label": "貸借対照表・前払保険料・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f7bd",
+            "label": "損益計算書・保険料・借方",
+            "answer": 40000,
+            "explanation": "96,000−56,000＝40,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f7bc",
+            "label": "損益計算書・保険料・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          }
+        ]
+      },
+      {
+        "id": "f8",
+        "label": "手数料の繰延べ",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f8ad",
+            "label": "貸借対照表・前受手数料・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f8ac",
+            "label": "貸借対照表・前受手数料・貸方",
+            "answer": 60000,
+            "explanation": "当期12月の受取180,000円のうち翌期4～5月の2か月分。180,000×2/6＝60,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f8bd",
+            "label": "損益計算書・受取手数料・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f8bc",
+            "label": "損益計算書・受取手数料・貸方",
+            "answer": 312000,
+            "explanation": "試算表372,000円には前期受取分の再振替48,000円も含む。372,000−60,000＝312,000円。",
+            "type": "amount",
+            "unit": "円"
+          }
+        ]
+      },
+      {
+        "id": "f9",
+        "label": "利息の未払",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f9ad",
+            "label": "貸借対照表・未払利息・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f9ac",
+            "label": "貸借対照表・未払利息・貸方",
+            "answer": 16800,
+            "explanation": "1,200,000×2.4％×7/12＝16,800円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f9bd",
+            "label": "損益計算書・支払利息・借方",
+            "answer": 31800,
+            "explanation": "試算表15,000＋未払16,800＝31,800円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f9bc",
+            "label": "損益計算書・支払利息・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          }
+        ]
+      },
+      {
+        "id": "f10",
+        "label": "税金の決算",
+        "points": 3,
+        "fields": [
+          {
+            "id": "f10ad",
+            "label": "貸借対照表・未払消費税・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f10ac",
+            "label": "貸借対照表・未払消費税・貸方",
+            "answer": 180000,
+            "explanation": "330,000−150,000＝180,000円。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f10bd",
+            "label": "貸借対照表・未払法人税等・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f10bc",
+            "label": "貸借対照表・未払法人税等・貸方",
+            "answer": 90000,
+            "explanation": "中間納付がないため確定額90,000円全額を未払計上。",
+            "type": "amount",
+            "unit": "円"
+          }
+        ]
+      },
+      {
+        "id": "f11",
+        "label": "当期損益の記入",
+        "points": 2,
+        "fields": [
+          {
+            "id": "f11a",
+            "label": "当期損益の区分",
+            "answer": "当期純利益",
+            "options": [
+              "当期純利益",
+              "当期純損失"
+            ],
+            "explanation": "収益5,425,500−費用5,409,850＝15,650円の利益。",
+            "type": "select"
+          },
+          {
+            "id": "f11pd",
+            "label": "損益計算書・当期損益・借方",
+            "answer": 15650,
+            "explanation": "利益は損益計算書欄の借方に記入して貸借を一致させる。",
+            "type": "amount",
+            "unit": "円"
+          },
+          {
+            "id": "f11pc",
+            "label": "損益計算書・当期損益・貸方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f11bd",
+            "label": "貸借対照表・当期損益・借方",
+            "answer": null,
+            "type": "blank",
+            "explanation": "この欄には記入しない。借方・貸方を両方に記入しない。"
+          },
+          {
+            "id": "f11bc",
+            "label": "貸借対照表・当期損益・貸方",
+            "answer": 15650,
+            "explanation": "精算表では利益を貸借対照表欄の貸方へ移記する。繰越利益剰余金にはまだ加算しない。",
+            "type": "amount",
+            "unit": "円"
+          }
+        ]
       }
-      function downloadAnswerReport() {
-        const report = createAnswerReport();
-        if (!report) return;
-        const blob = new Blob([JSON.stringify(report, null, 2)], {
-          type: "application/json;charset=utf-8",
-        });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `${report.exam.id}-answers-${report.attempt.finishedAt.replace(/[:.]/g, "-")}.json`;
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        // ダウンロードの開始前にURLを破棄しないよう、少し待って解放する。
-        setTimeout(() => URL.revokeObjectURL(url), 10000);
+    ],
+    "tables": [
+      {
+        "id": "worksheet",
+        "caption": "精算表（円）",
+        "headings": [
+          "勘定科目",
+          "試算表・借方",
+          "試算表・貸方",
+          "修正・借方",
+          "修正・貸方",
+          "損益・借方",
+          "損益・貸方",
+          "貸借・借方",
+          "貸借・貸方"
+        ],
+        "rows": [
+          [
+            "現金",
+            "354,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f0ad}}",
+            "{{f0ac}}"
+          ],
+          [
+            "当座預金",
+            "468,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f0bd}}",
+            "{{f0bc}}"
+          ],
+          [
+            "定期預金",
+            "900,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "900,000",
+            "—"
+          ],
+          [
+            "売掛金",
+            "780,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f1ad}}",
+            "{{f1ac}}"
+          ],
+          [
+            "電子記録債権",
+            "220,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f1bd}}",
+            "{{f1bc}}"
+          ],
+          [
+            "繰越商品",
+            "180,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f4ad}}",
+            "{{f4ac}}"
+          ],
+          [
+            "仮払金",
+            "90,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "仮払消費税",
+            "150,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "建物",
+            "3,000,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "3,000,000",
+            "—"
+          ],
+          [
+            "備品",
+            "840,000",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f2ad}}",
+            "{{f2ac}}"
+          ],
+          [
+            "買掛金",
+            "—",
+            "580,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "580,000"
+          ],
+          [
+            "電子記録債務",
+            "—",
+            "260,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "260,000"
+          ],
+          [
+            "借入金",
+            "—",
+            "1,200,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "1,200,000"
+          ],
+          [
+            "仮受金",
+            "—",
+            "76,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "仮受消費税",
+            "—",
+            "330,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "貸倒引当金",
+            "—",
+            "20,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f3ad}}",
+            "{{f3ac}}"
+          ],
+          [
+            "建物減価償却累計額",
+            "—",
+            "810,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f5bd}}",
+            "{{f5bc}}"
+          ],
+          [
+            "備品減価償却累計額",
+            "—",
+            "336,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f5cd}}",
+            "{{f5cc}}"
+          ],
+          [
+            "資本金",
+            "—",
+            "3,000,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "3,000,000"
+          ],
+          [
+            "繰越利益剰余金",
+            "—",
+            "13,000",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "13,000"
+          ],
+          [
+            "売上",
+            "—",
+            "5,100,000",
+            "？",
+            "？",
+            "—",
+            "5,100,000",
+            "—",
+            "—"
+          ],
+          [
+            "受取手数料",
+            "—",
+            "372,000",
+            "？",
+            "？",
+            "{{f8bd}}",
+            "{{f8bc}}",
+            "—",
+            "—"
+          ],
+          [
+            "仕入",
+            "3,300,000",
+            "—",
+            "？",
+            "？",
+            "{{f4bd}}",
+            "{{f4bc}}",
+            "—",
+            "—"
+          ],
+          [
+            "給料",
+            "1,020,000",
+            "—",
+            "？",
+            "？",
+            "1,020,000",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "保険料",
+            "96,000",
+            "—",
+            "？",
+            "？",
+            "{{f7bd}}",
+            "{{f7bc}}",
+            "—",
+            "—"
+          ],
+          [
+            "支払家賃",
+            "600,000",
+            "—",
+            "？",
+            "？",
+            "600,000",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "支払利息",
+            "15,000",
+            "—",
+            "？",
+            "？",
+            "{{f9bd}}",
+            "{{f9bc}}",
+            "—",
+            "—"
+          ],
+          [
+            "通信費",
+            "84,000",
+            "—",
+            "？",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "未払金",
+            "—",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f2bd}}",
+            "{{f2bc}}"
+          ],
+          [
+            "貸倒引当金繰入",
+            "—",
+            "—",
+            "？",
+            "？",
+            "{{f3bd}}",
+            "{{f3bc}}",
+            "—",
+            "—"
+          ],
+          [
+            "減価償却費",
+            "—",
+            "—",
+            "？",
+            "？",
+            "{{f5ad}}",
+            "{{f5ac}}",
+            "—",
+            "—"
+          ],
+          [
+            "未収利息",
+            "—",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f6ad}}",
+            "{{f6ac}}"
+          ],
+          [
+            "受取利息",
+            "—",
+            "—",
+            "？",
+            "？",
+            "{{f6bd}}",
+            "{{f6bc}}",
+            "—",
+            "—"
+          ],
+          [
+            "前払保険料",
+            "—",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f7ad}}",
+            "{{f7ac}}"
+          ],
+          [
+            "前受手数料",
+            "—",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f8ad}}",
+            "{{f8ac}}"
+          ],
+          [
+            "未払利息",
+            "—",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f9ad}}",
+            "{{f9ac}}"
+          ],
+          [
+            "未払消費税",
+            "—",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f10ad}}",
+            "{{f10ac}}"
+          ],
+          [
+            "未払法人税等",
+            "—",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "{{f10bd}}",
+            "{{f10bc}}"
+          ],
+          [
+            "前受金",
+            "—",
+            "—",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—",
+            "？"
+          ],
+          [
+            "法人税等",
+            "—",
+            "—",
+            "？",
+            "？",
+            "？",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "雑損または雑益",
+            "—",
+            "—",
+            "？",
+            "？",
+            "？",
+            "？",
+            "—",
+            "—"
+          ],
+          [
+            "{{f11a}}",
+            "—",
+            "—",
+            "—",
+            "—",
+            "{{f11pd}}",
+            "{{f11pc}}",
+            "{{f11bd}}",
+            "{{f11bc}}"
+          ],
+          [
+            "合計",
+            "12,097,000",
+            "12,097,000",
+            "？",
+            "？",
+            "？",
+            "？",
+            "？",
+            "？"
+          ]
+        ]
       }
-      function showResult() {
-        const s = scores(),
-          total = s.reduce((a, b) => a + b, 0);
-        document.getElementById("result").hidden = false;
-        const elapsed = Math.min(
+    ]
+  },
+  "checks": {
+    "profit": 15650,
+    "balanceSheetTotal": 5721450,
+    "trialTotal": 12097000
+  }
+};
+      // このファイルはビルド時に各HTMLへ埋め込み、ブラウザーから読み込まない。
+const key = `boki3-mock-2026-${examConfig.number}-v${examConfig.revision}`;
+const money = (value) => Number(value).toLocaleString("ja-JP");
+const escapeHtml = (value) =>
+  String(value).replace(
+    /[&<>"']/g,
+    (char) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        char
+      ],
+  );
+const journals = examConfig.journals;
+const secondGroups = examConfig.parts.flatMap((part) => part.groups);
+const finalGroups = examConfig.final.groups;
+const allFields = [...secondGroups, ...finalGroups].flatMap(
+  (unit) => unit.fields,
+);
+const fieldsById = new Map(allFields.map((field) => [field.id, field]));
+const accounts = [
+  ...new Set(
+    journals
+      .flatMap((q) => [...q.debit, ...q.credit].map(([account]) => account))
+      .concat([
+        "現金過不足",
+        "受取手形",
+        "支払手形",
+        "前払金",
+        "前受金",
+        "未払金",
+        "未収入金",
+        "買掛金",
+        "売掛金",
+        "仮払金",
+        "仮受金",
+        "租税公課",
+        "支払手数料",
+        "貸倒引当金繰入",
+        "貸倒引当金戻入",
+        "当座預金",
+        "普通預金",
+      ]),
+  ),
+].sort((a, b) => a.localeCompare(b, "ja"));
+const freshState = () => ({
+  status: "ready",
+  deadline: null,
+  finishedAt: null,
+  tab: 1,
+  answers: {},
+  marks: {},
+  expired: false,
+});
+let state = freshState();
+let storageAvailable = true;
+function parseAmount(value) {
+  if (typeof value !== "string" && typeof value !== "number") return null;
+  const text = String(value).normalize("NFKC").trim();
+  if (!/^(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(text)) return null;
+  const number = Number(text.replace(/,/g, ""));
+  return Number.isSafeInteger(number) && number >= 0 ? number : null;
+}
+try {
+  const saved = JSON.parse(localStorage.getItem(key));
+  if (
+    saved &&
+    ["ready", "running", "done"].includes(saved.status) &&
+    saved.answers &&
+    typeof saved.answers === "object" &&
+    !Array.isArray(saved.answers) &&
+    saved.marks &&
+    typeof saved.marks === "object" &&
+    [1, 2, 3].includes(saved.tab) &&
+    (saved.status === "ready" || Number.isFinite(saved.deadline))
+  )
+    state = { ...freshState(), ...saved };
+} catch {
+  storageAvailable = false;
+}
+function save() {
+  try {
+    localStorage.setItem(key, JSON.stringify(state));
+  } catch {
+    storageAvailable = false;
+  }
+  document.getElementById("saveWarning").hidden = storageAvailable;
+}
+const inputClass =
+  "w-full min-w-[100px] rounded-lg border border-slate-400 bg-white px-3 py-2 text-right font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100";
+function amountInput(id, label) {
+  return `<input type="text" id="${id}" data-answer="${id}" data-money="true" inputmode="numeric" autocomplete="off" maxlength="21" aria-label="${escapeHtml(label)}" class="${inputClass}" value="${escapeHtml(state.answers[id] ?? "")}" ${state.status === "done" ? "disabled" : ""}>`;
+}
+function selectInput(id, options, label) {
+  return `<select id="${id}" data-answer="${id}" aria-label="${escapeHtml(label)}" class="w-full min-w-[130px] rounded-lg border border-slate-400 bg-white px-2 py-2 text-sm focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100" ${state.status === "done" ? "disabled" : ""}><option value="">選択してください</option>${options.map((option) => `<option value="${escapeHtml(option)}" ${state.answers[id] === option ? "selected" : ""}>${escapeHtml(option)}</option>`).join("")}</select>`;
+}
+function fieldInput(field) {
+  if (field.type === "select")
+    return selectInput(field.id, field.options, field.label);
+  if (field.type === "multiple") {
+    const values = Array.isArray(state.answers[field.id])
+      ? state.answers[field.id]
+      : [];
+    return `<fieldset id="${field.id}" class="grid gap-2 md:grid-cols-2"><legend class="sr-only">${escapeHtml(field.label)}</legend>${field.options.map((option, index) => `<label class="flex items-center gap-2 rounded border border-slate-200 p-2 text-left text-sm"><input type="checkbox" id="${field.id}-${index}" data-answer="${field.id}" data-multiple="true" value="${escapeHtml(option)}" ${values.includes(option) ? "checked" : ""} ${state.status === "done" ? "disabled" : ""}>${escapeHtml(option)}</label>`).join("")}</fieldset>`;
+  }
+  return amountInput(field.id, field.label);
+}
+function tableCell(value) {
+  return escapeHtml(value).replace(/\{\{([a-zA-Z0-9]+)\}\}/g, (_, id) => {
+    const field = fieldsById.get(id);
+    if (!field) throw new Error(`解答欄が見つからない: ${id}`);
+    return fieldInput(field);
+  });
+}
+function renderTable(table) {
+  const wide = table.headings.length >= 8;
+  return `<div class="mt-5 min-w-0 max-w-full overflow-x-auto rounded-xl border ${wide ? "max-h-[70vh] overflow-auto" : ""}"><table id="${escapeHtml(table.id)}" class="w-full ${wide ? "min-w-[1500px]" : table.id === "source-trial" ? "min-w-[420px]" : "min-w-[650px]"} border-collapse text-sm"><caption class="bg-white p-4 text-left text-base font-bold">${escapeHtml(table.caption)}</caption><thead><tr class="bg-slate-100">${table.headings.map((heading,index) => `<th scope="col" class="border p-3 whitespace-nowrap ${wide ? "sticky top-0 z-10 bg-slate-100" : ""} ${wide && index===0 ? "sticky left-0 z-10 bg-slate-100" : ""}">${escapeHtml(heading)}</th>`).join("")}</tr></thead><tbody>${table.rows.map((row) => `<tr>${row.map((cell,index) => `<td class="border p-3 align-middle leading-7 ${wide && index===0 ? "sticky left-0 z-10 bg-white" : ""} ${/^[\d,]+$/.test(String(cell)) ? "text-right font-mono tabular-nums" : ""}">${tableCell(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+function gradeJournal(question, index) {
+  return [
+    ["d", question.debit],
+    ["c", question.credit],
+  ].every(([side, expected]) => {
+    const actual = [];
+    for (let row = 0; row < 4; row++) {
+      const account = state.answers[`j${index}${side}${row}a`] ?? "";
+      const raw = state.answers[`j${index}${side}${row}v`] ?? "";
+      if (account === "" && String(raw).trim() === "") continue;
+      const amount = parseAmount(raw);
+      if (
+        typeof account !== "string" ||
+        !account ||
+        amount === null ||
+        amount === 0
+      )
+        return false;
+      actual.push([account, amount]);
+    }
+    return (
+      actual.length === expected.length &&
+      new Set(actual.map(([account]) => account)).size === actual.length &&
+      expected.every(([account, amount]) =>
+        actual.some(([name, value]) => name === account && value === amount),
+      )
+    );
+  });
+}
+function isCorrect(field) {
+  const value = state.answers[field.id];
+  if (field.type === "select") return value === field.answer;
+  if (field.type === "multiple")
+    return (
+      Array.isArray(value) &&
+      value.length === field.answer.length &&
+      new Set(value).size === value.length &&
+      field.answer.every((item) => value.includes(item))
+    );
+  if (field.type === "blank")
+    return (
+      value === undefined || (typeof value === "string" && value.trim() === "")
+    );
+  return parseAmount(value ?? "") === field.answer;
+}
+const gradeGroup = (unit) => unit.fields.every(isCorrect);
+function scores() {
+  return [
+    journals.reduce(
+      (sum, question, index) => sum + (gradeJournal(question, index) ? 3 : 0),
+      0,
+    ),
+    secondGroups.reduce(
+      (sum, unit) => sum + (gradeGroup(unit) ? unit.points : 0),
+      0,
+    ),
+    finalGroups.reduce(
+      (sum, unit) => sum + (gradeGroup(unit) ? unit.points : 0),
+      0,
+    ),
+  ];
+}
+function answerText(field) {
+  if (field.type === "blank") return "空欄";
+  if (field.type === "multiple") return field.answer.join("・");
+  return field.type === "amount"
+    ? `${money(field.answer)}${field.unit || "円"}`
+    : field.answer;
+}
+function explanations(groups) {
+  if (state.status !== "done") return "";
+  return `<div class="mt-6 space-y-4">${groups.map((unit) => `<article class="rounded-xl border p-4"><h3 class="font-bold ${gradeGroup(unit) ? "text-teal-800" : "text-rose-700"}">${gradeGroup(unit) ? "○" : "×"} ${escapeHtml(unit.label)} · ${gradeGroup(unit) ? unit.points : 0} / ${unit.points}点</h3>${unit.fields.map((field) => `<div class="mt-3 text-sm leading-7"><p>${isCorrect(field) ? "○" : "×"} ${escapeHtml(field.label)}：<strong>${escapeHtml(answerText(field))}</strong></p><p class="text-slate-600">${escapeHtml(field.explanation)}</p></div>`).join("")}</article>`).join("")}</div>`;
+}
+const paragraphs = (lines) =>
+  lines
+    .map((line) => `<p class="mt-3 text-sm leading-8">${escapeHtml(line)}</p>`)
+    .join("");
+function render() {
+  document.getElementById("panel1").innerHTML =
+    `<p class="rounded-xl bg-teal-50 p-4 text-sm leading-7">各取引を仕訳しなさい。商品売買は三分法。特に指定がなければ消費税を考慮しない。勘定科目は共通の選択肢から選ぶ。同一側の同じ科目は1行にまとめ、未使用行は科目・金額とも空欄にする。各問3点。</p>` +
+    journals
+      .map(
+        (question, index) =>
+          `<article id="journal-${index}" class="min-w-0 rounded-2xl border bg-white p-5 md:p-6"><div class="flex items-center justify-between gap-3"><h2 class="font-bold text-teal-800">問${index + 1}</h2><label class="text-xs text-slate-500"><input type="checkbox" data-mark="${index}" ${state.marks[index] ? "checked" : ""} ${state.status === "done" ? "disabled" : ""}> あとで見直す</label></div><p class="mt-4 text-sm leading-8">${escapeHtml(question.question)}</p>${question.materials.map(renderTable).join("")}<div class="mt-4 overflow-x-auto"><table class="w-full min-w-[680px] border-separate border-spacing-2 text-sm"><thead><tr><th>借方科目</th><th>金額（円）</th><th>貸方科目</th><th>金額（円）</th></tr></thead><tbody>${Array.from({ length: 4 }, (_, row) => `<tr>${["d", "c"].map((side) => `<td>${selectInput(`j${index}${side}${row}a`, accounts, `問${index + 1} ${side === "d" ? "借方" : "貸方"}${row + 1}行目科目`)}</td><td>${amountInput(`j${index}${side}${row}v`, `問${index + 1} ${side === "d" ? "借方" : "貸方"}${row + 1}行目金額`)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${state.status === "done" ? `<div class="mt-5 border-t pt-4 text-sm leading-7"><p class="font-bold ${gradeJournal(question, index) ? "text-teal-800" : "text-rose-700"}">${gradeJournal(question, index) ? "○ 正解 3" : "× 不正解 0"} / 3点 · ${escapeHtml(question.topic)}</p><p>借方：${question.debit.map(([account, value]) => `${escapeHtml(account)} ${money(value)}`).join(" / ")}</p><p>貸方：${question.credit.map(([account, value]) => `${escapeHtml(account)} ${money(value)}`).join(" / ")}</p><p class="mt-2 text-slate-600">${escapeHtml(question.explanation)}</p></div>` : ""}</article>`,
+      )
+      .join("");
+  document.getElementById("panel2").innerHTML = examConfig.parts
+    .map(
+      (part) =>
+        `<article class="min-w-0 rounded-2xl border bg-white p-5 md:p-6"><h2 class="text-lg font-bold">${escapeHtml(part.title)} <span class="text-sm font-normal text-slate-500">${part.groups.reduce((sum, unit) => sum + unit.points, 0)}点</span></h2>${paragraphs(part.instructions)}${part.tables.map(renderTable).join("")}${explanations(part.groups)}</article>`,
+    )
+    .join("");
+  const trial = examConfig.final.trialBalance;
+  const total = trial.reduce((sum, row) => sum + row[1], 0);
+  const sourceTable = {
+    id: "source-trial",
+    caption: "資料1・決算整理前残高試算表（円）",
+    headings: ["借方", "勘定科目", "貸方"],
+    rows: [
+      ...trial.map(([account, debit, credit]) => [
+        debit ? money(debit) : "—",
+        account,
+        credit ? money(credit) : "—",
+      ]),
+      [money(total), "合計", money(total)],
+    ],
+  };
+  document.getElementById("panel3").innerHTML =
+    `<div class="rounded-xl bg-teal-50 p-5">${paragraphs(examConfig.final.instructions)}</div><div class="grid items-start gap-5 xl:grid-cols-2"><article class="min-w-0 rounded-2xl border bg-white p-4">${renderTable(sourceTable)}${examConfig.final.materials.map(renderTable).join("")}</article><article class="min-w-0 rounded-2xl border bg-white p-5"><h2 class="text-lg font-bold">決算整理事項等</h2><ol class="mt-4 list-decimal space-y-4 pl-6 text-sm leading-8">${examConfig.final.adjustments.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol></article></div><article class="min-w-0 rounded-2xl border bg-white p-4 md:p-6"><h2 class="text-lg font-bold">答案</h2>${examConfig.final.tables.map(renderTable).join("")}${explanations(finalGroups)}</article>`;
+  switchTab(state.tab, false);
+}
+function switchTab(tab, scroll = true) {
+  state.tab = Number(tab);
+  for (let index = 1; index <= 3; index++)
+    document.getElementById(`panel${index}`).hidden = state.tab !== index;
+  document.querySelectorAll("[data-tab]").forEach((button) => {
+    const active = Number(button.dataset.tab) === state.tab;
+    button.className = `rounded-xl px-4 py-3 font-bold ${active ? "bg-teal-800 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`;
+    button.setAttribute("aria-current", active ? "page" : "false");
+  });
+  document.getElementById("sectionEyebrow").textContent =
+    `QUESTION 0${state.tab} / ${[45, 20, 35][state.tab - 1]}点`;
+  document.getElementById("sectionTitle").textContent = [
+    "第1問 仕訳",
+    `第2問 ${examConfig.secondTitle}`,
+    `第3問 ${examConfig.thirdTitle}`,
+  ][state.tab - 1];
+  updateProgress();
+  save();
+  if (scroll)
+    document
+      .getElementById("exam")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function hasInput(field) {
+  if (field.type === "blank") return true;
+  const value = state.answers[field.id];
+  return field.type === "multiple"
+    ? Array.isArray(value) && value.length > 0
+    : typeof value === "string" && value.trim() !== "";
+}
+function counts() {
+  const answeredJournals = journals.filter((_, index) =>
+    ["d", "c"].every((side) =>
+      [0, 1, 2, 3].some(
+        (row) =>
+          Boolean(state.answers[`j${index}${side}${row}a`]) &&
+          String(state.answers[`j${index}${side}${row}v`] ?? "").trim() !== "",
+      ),
+    ),
+  ).length;
+  return [
+    answeredJournals,
+    ...[secondGroups, finalGroups].map(
+      (groups) => groups.filter((unit) => unit.fields.every(hasInput)).length,
+    ),
+  ];
+}
+function updateProgress() {
+  const values = counts();
+  document.getElementById("progress").textContent =
+    `入力済み ${values[state.tab - 1]} / ${[15, secondGroups.length, finalGroups.length][state.tab - 1]} ${state.tab === 1 ? "問" : "採点単位"} · 見直し ${Object.values(state.marks).filter(Boolean).length}件`;
+}
+function editable() {
+  if (state.status !== "running") return false;
+  if (Date.now() >= state.deadline) {
+    finish(true);
+    return false;
+  }
+  return true;
+}
+function formatInput(element) {
+  if (!editable()) return;
+  const raw = element.value;
+  element.setCustomValidity("");
+  element.removeAttribute("aria-invalid");
+  if (raw.trim() !== "") {
+    const value = parseAmount(raw);
+    if (value === null) {
+      element.setCustomValidity("0以上の整数を入力してね。");
+      element.setAttribute("aria-invalid", "true");
+      element.reportValidity();
+    } else element.value = money(value);
+  }
+  state.answers[element.dataset.answer] = element.value;
+  save();
+  updateProgress();
+}
+document.addEventListener("input", (event) => {
+  const element = event.target;
+  if (!element.dataset.answer || element.dataset.multiple || !editable())
+    return;
+  element.setCustomValidity("");
+  element.removeAttribute("aria-invalid");
+  state.answers[element.dataset.answer] = element.value;
+  save();
+  updateProgress();
+});
+document.addEventListener("change", (event) => {
+  const element = event.target;
+  if (
+    (!element.dataset.answer && element.dataset.mark === undefined) ||
+    !editable()
+  )
+    return;
+  if (element.dataset.mark !== undefined)
+    state.marks[element.dataset.mark] = element.checked;
+  else if (element.dataset.multiple)
+    state.answers[element.dataset.answer] = [
+      ...document.querySelectorAll(
+        `[data-answer="${element.dataset.answer}"]:checked`,
+      ),
+    ].map((input) => input.value);
+  else state.answers[element.dataset.answer] = element.value;
+  save();
+  updateProgress();
+});
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Enter" &&
+    !event.isComposing &&
+    event.target.dataset.money
+  ) {
+    event.preventDefault();
+    formatInput(event.target);
+  }
+});
+document.addEventListener("focusout", (event) => {
+  if (event.target.dataset.money) formatInput(event.target);
+});
+document
+  .querySelectorAll("[data-tab]")
+  .forEach((button) =>
+    button.addEventListener("click", () => switchTab(button.dataset.tab)),
+  );
+function showExam() {
+  document.getElementById("intro").hidden = true;
+  document.getElementById("exam").hidden = false;
+  document.getElementById("nav").hidden = false;
+  render();
+}
+function tick() {
+  if (state.status !== "running") return;
+  const remaining = Math.max(
+    0,
+    Math.ceil((state.deadline - Date.now()) / 1000),
+  );
+  document.getElementById("timer").textContent =
+    `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`;
+  document
+    .getElementById("timer")
+    .classList.toggle("text-rose-600", remaining <= 300);
+  if (!remaining) finish(true);
+}
+document.getElementById("start").addEventListener("click", () => {
+  if (state.status !== "ready") return;
+  state.status = "running";
+  state.deadline = Date.now() + 3600000;
+  save();
+  showExam();
+  tick();
+});
+document.getElementById("finish").addEventListener("click", () => {
+  if (state.status === "done") {
+    if (
+      window.confirm("この改訂版の解答と結果を消して、同じ問題をもう一度解く？")
+    ) {
+      state = freshState();
+      save();
+      document.getElementById("result").hidden = true;
+      document.getElementById("exam").hidden = true;
+      document.getElementById("nav").hidden = true;
+      document.getElementById("intro").hidden = false;
+      document.getElementById("finish").textContent = "解答を提出する";
+      document.getElementById("timer").textContent = "60:00";
+      window.scrollTo({ top: 0 });
+    }
+    return;
+  }
+  if (!editable()) return;
+  const values = counts();
+  document.getElementById("confirmText").textContent =
+    `入力済みは第1問${values[0]}/15問、第2問${values[1]}/${secondGroups.length}採点単位、第3問${values[2]}/${finalGroups.length}採点単位。未解答は不正解となり、提出後は変更できないよ。`;
+  document.getElementById("confirm").showModal();
+});
+document
+  .getElementById("cancelFinish")
+  .addEventListener("click", () => document.getElementById("confirm").close());
+document
+  .getElementById("confirmFinish")
+  .addEventListener("click", () => finish(Date.now() >= state.deadline));
+function finish(expired) {
+  if (state.status !== "running") return;
+  state.status = "done";
+  state.expired = Boolean(expired);
+  state.finishedAt = expired ? state.deadline : Date.now();
+  save();
+  document.getElementById("confirm").close();
+  render();
+  showResult();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function userAnswer(field) {
+  const raw = state.answers[field.id] ?? (field.type === "multiple" ? [] : "");
+  return {
+    raw,
+    value:
+      field.type === "select"
+        ? raw || null
+        : field.type === "multiple"
+          ? Array.isArray(raw)
+            ? [...raw]
+            : []
+          : parseAmount(raw),
+  };
+}
+function fieldReport(field) {
+  return {
+    id: field.id,
+    question: field.label,
+    answerType: field.type,
+    unit: field.unit ?? null,
+    choices: field.options ?? null,
+    userAnswer: userAnswer(field),
+    correctAnswer: field.answer,
+    correct: isCorrect(field),
+    explanation: field.explanation,
+  };
+}
+function groupReport(unit) {
+  return {
+    id: unit.id,
+    question: unit.label,
+    score: gradeGroup(unit) ? unit.points : 0,
+    maxScore: unit.points,
+    correct: gradeGroup(unit),
+    gradingRule: "この採点単位内の全欄が正解の場合に加点",
+    fields: unit.fields.map(fieldReport),
+  };
+}
+function createAnswerReport() {
+  if (state.status !== "done") return null;
+  const sectionScores = scores();
+  return {
+    schemaVersion: 2,
+    reportType: "boki3-answer-review",
+    exportedAt: new Date().toISOString(),
+    exam: {
+      id: `boki3-2026-${examConfig.number}`,
+      revision: examConfig.revision,
+      title: `日商簿記3級 ${examConfig.title}`,
+      fiscalYear: 2026,
+      applicableUntil: "2027-03-31",
+      durationSeconds: 3600,
+      currency: "JPY",
+      official: false,
+    },
+    attempt: {
+      status: "submitted",
+      startedAt: new Date(state.deadline - 3600000).toISOString(),
+      finishedAt: new Date(state.finishedAt ?? state.deadline).toISOString(),
+      elapsedSeconds: Math.max(
+        0,
+        Math.min(
           3600,
-          Math.max(
-            0,
-            Math.round(
-              ((state.finishedAt || Date.now()) - (state.deadline - 3600000)) /
-                1000,
-            ),
+          Math.round(
+            ((state.finishedAt ?? state.deadline) - state.deadline + 3600000) /
+              1000,
           ),
-        );
-        document.getElementById("result").innerHTML =
-          `<p class="text-teal-700 text-sm font-bold">YOUR RESULT ${state.expired ? "· 時間終了・自動提出" : ""}</p><div class="flex flex-wrap justify-between items-center gap-5 mt-4"><div><h2 class="text-4xl font-bold">${total}<span class="text-lg font-normal text-slate-500"> / 100点</span></h2><p class="mt-3 font-bold ${total >= 70 ? "text-teal-700" : "text-amber-700"}">${total >= 70 ? "合格ラインに到達！" : "合格ラインまであと" + (70 - total) + "点"}</p></div><p class="text-sm text-slate-500">解答時間 ${Math.floor(elapsed / 60)}分${elapsed % 60}秒<br>この判定は本模試の目安だよ。</p></div><div class="grid md:grid-cols-3 gap-3 mt-6">${s.map((v, i) => `<div class="bg-slate-50 rounded-xl p-4"><p class="text-sm text-slate-500">第${i + 1}問</p><p class="text-xl font-bold mt-1">${v} / ${[45, 20, 35][i]}点</p><progress class="w-full accent-teal-700 mt-2" value="${v}" max="${[45, 20, 35][i]}" aria-label="第${i + 1}問の得点"></progress></div>`).join("")}</div><p class="mt-5 text-sm leading-7">大問を切り替えると、あんじゅの解答と正解・解説を見比べられるよ。${s[0] < 30 ? "仕訳は借方・貸方と取得原価を確認しよう。 " : ""}${s[1] < 14 ? "第2問は月数と再振替を復習しよう。 " : ""}${s[2] < 25 ? "第3問は決算整理仕訳を1本ずつ書いて集計してみよう。" : ""}</p>`;
-        document
-          .getElementById("result")
-          .insertAdjacentHTML(
-            "beforeend",
-            `<div class="mt-6 border-t pt-5"><button id="exportAnswers" type="button" class="bg-teal-800 hover:bg-teal-700 text-white font-bold rounded-xl px-5 py-3">解答をJSONで保存</button><p class="mt-3 text-sm text-slate-500 leading-7">保存したJSONをぴぃこに渡して「間違えた問題を解説して」と伝えてね。問題文・あんじゅの解答・正解・得点・解説が入っているよ。</p></div>`,
-          );
-        document
-          .getElementById("exportAnswers")
-          .addEventListener("click", downloadAnswerReport);
-        document.getElementById("finish").textContent = "同じ問題でもう一度";
-        document.getElementById("timer").textContent = "終了";
-      }
-      if (!storageAvailable)
-        document.getElementById("storageNote").textContent =
-          "この環境では保存を利用できない可能性があるよ。画面を閉じずに解答してね。";
-      if (state.status !== "ready") {
-        showExam();
-        if (state.status === "done") showResult();
-        else tick();
-      }
-      setInterval(tick, 500);
+        ),
+      ),
+      submittedByTimeout: Boolean(state.expired),
+      score: sectionScores.reduce((sum, score) => sum + score, 0),
+      maxScore: 100,
+      passingScore: 70,
+    },
+    reviewGuide:
+      "あんじゅの解答と正解を比較して日本語で復習を手伝ってね。誤答理由は入力だけから断定しないこと。表の{{id}}は同じidを持つ解答欄を表す。金額のrawは入力文字列、valueは数値で空欄・不正値はnull。blank型の正解nullは空欄指定。multiple型は全選択肢の組合せで判定する。採点はこの非公式模試独自。",
+    sections: [
+      {
+        number: 1,
+        title: "仕訳",
+        score: sectionScores[0],
+        maxScore: 45,
+        instructions:
+          "三分法。指定がなければ消費税を考慮しない。各問完全正解3点、行順自由・同一側同一科目重複不可。",
+        choices: accounts,
+        questions: journals.map((question, index) => ({
+          id: `j${index}`,
+          number: index + 1,
+          topic: question.topic,
+          question: question.question,
+          sourceData: question.materials,
+          markedForReview: Boolean(state.marks[index]),
+          userAnswer: Object.fromEntries(
+            [
+              ["debit", "d"],
+              ["credit", "c"],
+            ].map(([name, side]) => [
+              name,
+              Array.from({ length: 4 }, (_, row) => ({
+                account: state.answers[`j${index}${side}${row}a`] || null,
+                amountRaw: state.answers[`j${index}${side}${row}v`] ?? "",
+                amount: parseAmount(
+                  state.answers[`j${index}${side}${row}v`] ?? "",
+                ),
+              })),
+            ]),
+          ),
+          correctAnswer: {
+            debit: question.debit.map(([account, amount]) => ({
+              account,
+              amount,
+            })),
+            credit: question.credit.map(([account, amount]) => ({
+              account,
+              amount,
+            })),
+          },
+          correct: gradeJournal(question, index),
+          score: gradeJournal(question, index) ? 3 : 0,
+          maxScore: 3,
+          explanation: question.explanation,
+        })),
+      },
+      {
+        number: 2,
+        title: examConfig.secondTitle,
+        score: sectionScores[1],
+        maxScore: 20,
+        parts: examConfig.parts.map((part) => ({
+          title: part.title,
+          instructions: part.instructions,
+          sourceData: part.tables,
+          questions: part.groups.map(groupReport),
+        })),
+      },
+      {
+        number: 3,
+        title: examConfig.thirdTitle,
+        score: sectionScores[2],
+        maxScore: 35,
+        instructions: examConfig.final.instructions,
+        trialBalance: examConfig.final.trialBalance.map(
+          ([account, debit, credit]) => ({ account, debit, credit }),
+        ),
+        materials: examConfig.final.materials,
+        adjustments: examConfig.final.adjustments,
+        answerTables: examConfig.final.tables,
+        questions: finalGroups.map(groupReport),
+      },
+    ],
+  };
+}
+function downloadAnswerReport() {
+  const report = createAnswerReport();
+  if (!report) return;
+  const blob = new Blob([JSON.stringify(report, null, 2)], {
+      type: "application/json;charset=utf-8",
+    }),
+    url = URL.createObjectURL(blob),
+    link = document.createElement("a");
+  link.href = url;
+  link.download = `${report.exam.id}-v${report.exam.revision}-answers-${report.attempt.finishedAt.replace(/[:.]/g, "-")}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+}
+function showResult() {
+  const values = scores(),
+    total = values.reduce((sum, score) => sum + score, 0),
+    elapsed = Math.max(
+      0,
+      Math.min(
+        3600,
+        Math.round(
+          ((state.finishedAt ?? state.deadline) - state.deadline + 3600000) /
+            1000,
+        ),
+      ),
+    );
+  const result = document.getElementById("result");
+  result.hidden = false;
+  result.innerHTML = `<p class="text-sm font-bold text-teal-700">YOUR RESULT ${state.expired ? "· 時間終了・自動提出" : ""}</p><div class="mt-4 flex flex-wrap items-center justify-between gap-5"><div><h2 class="text-4xl font-bold">${total}<span class="text-lg font-normal text-slate-500"> / 100点</span></h2><p class="mt-3 font-bold ${total >= 70 ? "text-teal-700" : "text-amber-700"}">${total >= 70 ? "合格ラインに到達！" : `合格ラインまであと${70 - total}点`}</p></div><p class="text-sm text-slate-500">解答時間 ${Math.floor(elapsed / 60)}分${elapsed % 60}秒<br>この判定は本模試の目安だよ。</p></div><div class="mt-6 grid gap-3 md:grid-cols-3">${values.map((value, index) => `<div class="rounded-xl bg-slate-50 p-4"><p class="text-sm text-slate-500">第${index + 1}問</p><p class="mt-1 text-xl font-bold">${value} / ${[45, 20, 35][index]}点</p><progress class="mt-2 w-full accent-teal-700" value="${value}" max="${[45, 20, 35][index]}" aria-label="第${index + 1}問の得点"></progress></div>`).join("")}</div><p class="mt-5 text-sm leading-7">大問を切り替えると、解答と正解・全問解説を見比べられるよ。複数欄の採点単位は、その全欄が合っていれば加点するよ。</p><div class="mt-6 flex flex-wrap gap-3 border-t pt-5"><button id="exportAnswers" class="rounded-xl bg-teal-800 px-5 py-3 font-bold text-white hover:bg-teal-700">解答をJSONで保存</button><a id="backToTop" href="../../../index.html" class="rounded-xl border border-teal-800 px-5 py-3 font-bold text-teal-800">模試一覧へ戻る</a></div><p class="mt-3 text-sm leading-7 text-slate-500">JSONには問題・資料・解答・正解・採点結果が入るよ。自分の端末へ保存して復習に使ってね。</p>`;
+  document
+    .getElementById("exportAnswers")
+    .addEventListener("click", downloadAnswerReport);
+  document.getElementById("finish").textContent = "同じ問題でもう一度";
+  document.getElementById("timer").textContent = "終了";
+}
+document.getElementById("saveWarning").hidden = storageAvailable;
+if (!storageAvailable)
+  document.getElementById("storageNote").textContent =
+    "保存が使えないため、受験中は画面を閉じないでね。";
+if (state.status !== "ready") {
+  showExam();
+  if (state.status === "done") showResult();
+  else tick();
+}
+setInterval(tick, 500);
+;
     </script>
   </body>
 </html>

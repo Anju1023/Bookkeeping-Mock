@@ -1,269 +1,230 @@
 import assert from "node:assert/strict";
-import fs from "node:fs";
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-// jsdomを指定して実行する。外部リソースの取得は行わない。
-const { JSDOM } = require(process.env.JSDOM_PATH || "jsdom");
-// DOM操作の検証に限定し、jsdomが未対応のTailwind CSS構文を除外する。
-const html = fs
-  .readFileSync(
-    new URL("../../../exams/2026/03/index.html", import.meta.url),
-    "utf8",
-  )
-  .replace(/<style>[\s\S]*?<\/style>/g, "");
-function create(saved) {
-  const dom = new JSDOM(html, {
-    url: "https://boki.example/",
-    runScripts: "dangerously",
-    beforeParse(window) {
-      window.localStorage.setItem(
-        "boki3-mock-2026-v1",
-        JSON.stringify({
-          status: "done",
-          deadline: 1,
-          tab: 3,
-          answers: { f0: "999" },
-          marks: {},
-        }),
-      );
-      if (saved) window.localStorage.setItem("boki3-mock-2026-03-v1", saved);
-      window.HTMLElement.prototype.scrollIntoView = () => {};
-      window.scrollTo = () => {};
-      window.HTMLDialogElement.prototype.showModal = function () {
-        this.open = true;
-      };
-      window.HTMLDialogElement.prototype.close = function () {
-        this.open = false;
-      };
-      window.HTMLInputElement.prototype.reportValidity = () => true;
-    },
-  });
-  return dom;
-}
-const dom = create();
-const w = dom.window,
-  doc = w.document;
-const evaluate = (source) => w.eval(source);
-function set(id, value) {
-  const el = doc.getElementById(id);
-  assert.ok(el, id);
-  el.value = value;
-  el.dispatchEvent(
-    new w.Event(el.tagName === "SELECT" ? "change" : "input", {
-      bubbles: true,
-    }),
-  );
-  return el;
-}
-try {
-  assert.equal(evaluate("state.status"), "ready");
-  assert.equal(evaluate("state.answers.f0"), undefined);
-  assert.equal(evaluate("createAnswerReport()"), null);
-  assert.equal(doc.getElementById("exportAnswers"), null);
-  doc.getElementById("start").click();
-  assert.equal(doc.getElementById("intro").hidden, true);
-  assert.equal(doc.querySelectorAll("[data-answer]").length, 204);
-  // 解答欄が独立した一覧へ戻らず、勘定・台帳・財務諸表の中に存在することを確認する。
-  for (const [tableId, ids] of [
-    ["rent-ledger", ["s0", "s1", "s2"]],
-    ["deferred-rent-ledger", ["s3"]],
-    ["rent-reversal", ["s4"]],
-    ["asset-register", ["s5", "s6", "s7", "s8"]],
-    ["asset-sale", ["s9"]],
-    ["income-statement", ["f0", "f1", "f2", "f3", "f4", "f5", "f6"]],
-    ["balance-sheet", ["f7", "f8", "f9", "f10", "f11", "f12", "f13"]],
-  ]) {
-    for (const id of ids) {
-      assert.equal(doc.getElementById(id).closest("table").id, tableId);
-      assert.equal(doc.querySelectorAll(`[id="${id}"]`).length, 1);
-    }
-  }
-  assert.match(doc.querySelector("#balance-sheet thead").textContent, /借方.*貸方/);
-  assert.match(doc.getElementById("f12").closest("tr").textContent, /未払法人税等/);
+import { verifyExam } from "../../helpers/mock-exam.mjs";
+import { closeAccounts } from "../../helpers/accounting.mjs";
 
-  const amount = set("j0d0v", "１２３４５６７");
-  amount.dispatchEvent(
-    new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
-  );
-  assert.equal(amount.value, "1,234,567");
-  set("j0d0v", "0");
-  amount.dispatchEvent(
-    new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
-  );
-  assert.equal(amount.value, "0");
-  set("j0d0v", "1.5");
-  amount.dispatchEvent(
-    new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
-  );
-  assert.equal(amount.getAttribute("aria-invalid"), "true");
-  set("j0d0v", "");
-  amount.dispatchEvent(new w.FocusEvent("focusout", { bubbles: true }));
-  assert.equal(amount.value, "");
-  doc.querySelector('[data-tab="2"]').click();
-  assert.equal(doc.getElementById("panel2").hidden, false);
-  assert.equal(doc.getElementById("panel1").hidden, true);
-  const interest = set("s1", "120,000");
-  interest.dispatchEvent(new w.FocusEvent("focusout", { bubbles: true }));
-  const saved = w.localStorage.getItem("boki3-mock-2026-03-v1");
-  const resumed = create(saved);
-  assert.equal(resumed.window.document.getElementById("s1").value, "120,000");
-  assert.equal(resumed.window.eval("state.tab"), 2);
-  assert.equal(
-    resumed.window.eval("state.deadline"),
-    evaluate("state.deadline"),
-  );
-  resumed.window.close();
-  // 借方・貸方の順を入れ替えた完全解答で、採点を通して確認する。
-  evaluate(
-    `state.answers={}; journals.forEach((q,i)=>['d','c'].forEach(s=>[...q[s]].reverse().forEach(([a,v],r)=>{state.answers['j'+i+s+r+'a']=a;state.answers['j'+i+s+r+'v']=money(v);}))); [...short,...finalFields].forEach(f=>state.answers[f.id]=String(f.answer));`,
-  );
-  assert.deepEqual(Array.from(evaluate("scores()")), [45, 20, 35]);
-  evaluate(`state.answers.j0d0v='11,000'`);
-  assert.equal(evaluate("scores()[0]"), 42);
-  evaluate(
-    `state.answers.j0d0v='87,000'; state.answers.j0d1a='仕入'; state.answers.j0d1v='0'`,
-  );
-  assert.equal(evaluate("gradeJournal(journals[0],0)"), false);
-  evaluate(`delete state.answers.j0d1a;delete state.answers.j0d1v`);
-  assert.equal(evaluate("gradeJournal(journals[0],0)"), true);
-  // 問題データとは独立した決算整理の集計で、利益と貸借一致を検算する。
-  const cost = 480000 + 6200000 - 560000;
-  const depreciation = 2400000 / 5 + ((360000 / 5) * 6) / 12;
-  const receivable = 1280000 - 160000;
-  const profit =
-    10800000 -
-    cost -
-    (1920000 + 64000) -
-    (960000 - 3600) -
-    (192000 * 9) / 12 -
-    (48000 + 8000) -
-    (receivable * 0.02 - 16000) -
-    depreciation -
-    260000;
-  assert.equal(profit, 757200);
-  const assets =
-    420000 +
-    3600 +
-    (2840000 + 160000) +
-    receivable * 0.98 +
-    560000 +
-    (2400000 + 360000 - 600000 - depreciation) +
-    48000;
-  const liabilitiesEquity =
-    1040000 + 1600000 + 64000 + 8000 + 140000 + 3000000 + 164000 + profit;
-  assert.equal(assets, 6773200);
-  assert.equal(assets, liabilitiesEquity);
-  assert.equal(evaluate('finalFields.find(f=>f.id==="f6").answer'), profit);
-  assert.equal(
-    evaluate('finalFields.find(f=>f.id==="f13").answer'),
-    164000 + profit,
-  );
-  // 固定資産の償却と売却を台帳から独立して計算する。
-  const annualA = 600000 / 5;
-  const accumulatedA = 240000 + annualA;
-  const annualB = ((360000 / 4) * 6) / 12;
-  assert.deepEqual(Array.from(evaluate("short.slice(5).map(f=>f.answer)")), [
-    annualA,
-    accumulatedA,
-    annualB,
-    360000 - annualB,
-    270000 - (600000 - accumulatedA),
-  ]);
-  assert.deepEqual(Array.from(evaluate("short.slice(1,4).map(f=>f.answer)")), [
-    (240000 * 3) / 6,
-    (240000 * 3) / 6,
-    (240000 * 3) / 6,
-  ]);
-  assert.equal(
-    evaluate(
-      "journals.every(q=>q.d.reduce((n,r)=>n+r[1],0)===q.c.reduce((n,r)=>n+r[1],0))",
+await verifyExam("03", (data) => {
+  const opening = {
+    現金: 354000,
+    当座預金: 468000,
+    定期預金: 900000,
+    売掛金: 780000,
+    電子記録債権: 220000,
+    繰越商品: 180000,
+    仮払金: 90000,
+    仮払消費税: 150000,
+    建物: 3000000,
+    備品: 840000,
+    買掛金: -580000,
+    電子記録債務: -260000,
+    借入金: -1200000,
+    仮受金: -76000,
+    仮受消費税: -330000,
+    貸倒引当金: -20000,
+    建物減価償却累計額: -810000,
+    備品減価償却累計額: -336000,
+    資本金: -3000000,
+    繰越利益剰余金: -13000,
+    売上: -5100000,
+    受取手数料: -372000,
+    仕入: 3300000,
+    給料: 1020000,
+    保険料: 96000,
+    支払家賃: 600000,
+    支払利息: 15000,
+    通信費: 84000,
+  };
+  assert.deepEqual(
+    Object.fromEntries(
+      data.final.trialBalance.map(([account, d, c]) => [account, d - c]),
     ),
-    true,
+    opening,
   );
-  assert.equal(evaluate("trial.reduce((n,r)=>n+r[1]-r[2],0)"), 0);
-  assert.equal(evaluate("finalFields.reduce((n,f)=>n+f.points,0)"), 35);
-  doc.getElementById("finish").click();
-  assert.equal(doc.getElementById("confirm").open, true);
-  doc.getElementById("confirmFinish").click();
-  assert.equal(evaluate("state.status"), "done");
-  assert.match(doc.getElementById("result").textContent, /100.*100点/s);
-  assert.equal(doc.querySelectorAll("[data-answer]:not(:disabled)").length, 0);
-  // 出力は問題資料・生の入力・数値・採点を含み、JSON単体で復習できる。
-  const report = JSON.parse(evaluate("JSON.stringify(createAnswerReport())"));
-  assert.equal(report.schemaVersion, 1);
-  assert.equal(report.exam.id, "boki3-2026-03");
-  assert.equal(report.attempt.score, 100);
-  assert.equal(report.sections[0].questions.length, 15);
-  assert.equal(report.sections[1].parts.length, 2);
-  assert.equal(report.sections[2].questions.length, 14);
-  assert.equal(report.sections[2].trialBalance.length, 19);
-  assert.equal(report.sections[2].adjustments.length, 9);
-  assert.match(report.sections[1].parts[0].instructions, /240,000/);
-  assert.equal(report.sections[1].parts[1].sourceData[1].cost, 360000);
-  assert.equal(
-    report.sections[2].questions.find((q) => q.id === "f6").correctAnswer,
-    757200,
+  const equipment = 360000 + 12000,
+    allowance = (780000 - 52000 + 220000 - 26000) * 0.025,
+    stock = 80 * 1200 + 70 * 1600;
+  const buildingDep = (3000000 * 0.9) / 30,
+    equipmentDep = 840000 / 7 + ((equipment / 5) * 9) / 12,
+    depositInterest = (900000 * 0.0365 * 150) / 365,
+    loanInterest = (1200000 * 0.024 * 7) / 12;
+  const entries = [
+    [
+      [["仮受金", 76000]],
+      [
+        ["売掛金", 52000],
+        ["前受金", 24000],
+      ],
+    ],
+    [
+      [["備品", equipment]],
+      [
+        ["仮払金", 90000],
+        ["未払金", equipment - 90000],
+      ],
+    ],
+    [[["当座預金", 26000]], [["電子記録債権", 26000]]],
+    [
+      [["貸倒引当金繰入", allowance - 20000]],
+      [["貸倒引当金", allowance - 20000]],
+    ],
+    [[["仕入", 180000]], [["繰越商品", 180000]]],
+    [[["繰越商品", stock]], [["仕入", stock]]],
+    [
+      [["減価償却費", buildingDep + equipmentDep]],
+      [
+        ["建物減価償却累計額", buildingDep],
+        ["備品減価償却累計額", equipmentDep],
+      ],
+    ],
+    [[["未収利息", depositInterest]], [["受取利息", depositInterest]]],
+    [[["前払保険料", (96000 * 7) / 12]], [["保険料", (96000 * 7) / 12]]],
+    [[["受取手数料", (180000 * 2) / 6]], [["前受手数料", (180000 * 2) / 6]]],
+    [[["支払利息", loanInterest]], [["未払利息", loanInterest]]],
+    [[["法人税等", 90000]], [["未払法人税等", 90000]]],
+    [
+      [["仮受消費税", 330000]],
+      [
+        ["仮払消費税", 150000],
+        ["未払消費税", 180000],
+      ],
+    ],
+    [
+      [
+        ["通信費", 2400],
+        ["雑損", 354000 - 350800 - 2400],
+      ],
+      [["現金", 354000 - 350800]],
+    ],
+  ];
+  const result = closeAccounts(
+    opening,
+    entries,
+    ["売上", "受取手数料", "受取利息"],
+    [
+      "仕入",
+      "給料",
+      "保険料",
+      "支払家賃",
+      "支払利息",
+      "通信費",
+      "貸倒引当金繰入",
+      "減価償却費",
+      "法人税等",
+      "雑損",
+    ],
   );
-  evaluate(
-    "state.answers.f0='１２３';state.answers.f1='';state.answers.f2='abc';state.marks[0]=true",
-  );
-  const mistakes = JSON.parse(evaluate("JSON.stringify(createAnswerReport())"));
-  assert.equal(mistakes.sections[2].questions[0].userAnswer.raw, "１２３");
-  assert.equal(mistakes.sections[2].questions[0].userAnswer.value, 123);
-  assert.equal(mistakes.sections[2].questions[0].correct, false);
-  assert.equal(mistakes.sections[2].questions[1].userAnswer.value, null);
-  assert.equal(mistakes.sections[2].questions[2].userAnswer.raw, "abc");
-  assert.equal(mistakes.sections[2].questions[2].userAnswer.value, null);
-  assert.equal(mistakes.sections[0].questions[0].markedForReview, true);
-  let downloadedBlob,
-    downloadName,
-    clicked = false;
-  w.URL.createObjectURL = (blob) => {
-    downloadedBlob = blob;
-    return "blob:test";
+  assert.equal(result.profit, 15650);
+  assert.equal(data.checks.trialTotal, 12097000);
+  assert.equal(data.checks.profit, result.profit);
+  assert.equal(data.checks.balanceSheetTotal, result.assets);
+  const mappings = {
+    f0a: ["現金", "d"],
+    f0b: ["当座預金", "d"],
+    f1a: ["売掛金", "d"],
+    f1b: ["電子記録債権", "d"],
+    f2a: ["備品", "d"],
+    f2b: ["未払金", "c"],
+    f3a: ["貸倒引当金", "c"],
+    f3b: ["貸倒引当金繰入", "d"],
+    f4a: ["繰越商品", "d"],
+    f4b: ["仕入", "d"],
+    f5a: ["減価償却費", "d"],
+    f5b: ["建物減価償却累計額", "c"],
+    f5c: ["備品減価償却累計額", "c"],
+    f6a: ["未収利息", "d"],
+    f6b: ["受取利息", "c"],
+    f7a: ["前払保険料", "d"],
+    f7b: ["保険料", "d"],
+    f8a: ["前受手数料", "c"],
+    f8b: ["受取手数料", "c"],
+    f9a: ["未払利息", "c"],
+    f9b: ["支払利息", "d"],
+    f10a: ["未払消費税", "c"],
+    f10b: ["未払法人税等", "c"],
   };
-  w.URL.revokeObjectURL = () => {};
-  w.HTMLAnchorElement.prototype.click = function () {
-    clicked = true;
-    downloadName = this.download;
+  const expected = {
+    f11a: "当期純利益",
+    f11pd: result.profit,
+    f11pc: null,
+    f11bd: null,
+    f11bc: result.profit,
   };
-  doc.getElementById("exportAnswers").click();
-  assert.equal(clicked, true);
-  assert.match(downloadName, /^boki3-2026-03-answers-.*\.json$/);
-  assert.equal(downloadedBlob.type, "application/json;charset=utf-8");
-  const downloadedText = await new Promise((resolve, reject) => {
-    const reader = new w.FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = () => reject(reader.error);
-    reader.readAsText(downloadedBlob);
-  });
+  for (const [id, [account, side]] of Object.entries(mappings))
+    for (const entrySide of ["d", "c"])
+      expected[id + entrySide] =
+        entrySide === side ? Math.abs(result.balances.get(account)) : null;
+  for (const field of data.final.groups.flatMap((unit) => unit.fields))
+    assert.equal(field.answer, expected[field.id], field.id);
   assert.equal(
-    JSON.parse(downloadedText).attempt.score,
-    mistakes.attempt.score,
+    (144000 * 2) / 6 + 144000 + 180000,
+    372000,
+    "手数料残高には期首再振替を含む",
   );
-  // 採点結果を再表示した場合にも保存ボタンが有効になる。
-  evaluate("showResult()");
-  clicked = false;
-  doc.getElementById("exportAnswers").click();
-  assert.equal(clicked, true);
-  const expired = JSON.parse(saved);
-  expired.deadline = Date.now() - 1000;
-  const timed = create(JSON.stringify(expired));
-  assert.equal(timed.window.eval("state.status"), "done");
-  assert.equal(timed.window.eval("state.expired"), true);
-  assert.match(
-    timed.window.document.getElementById("result").textContent,
-    /自動提出/,
-  );
-  assert.ok(timed.window.document.getElementById("exportAnswers"));
+  const reconstruction = {
+    s0a: "仕入",
+    s0v: 24000 + 56000,
+    s1a: "売上",
+    s1v: 18000 + 42000,
+    s2a: "買掛金",
+    s2v: 35000,
+    s3a: "売掛金",
+    s3v: 63000,
+    s4v: 148000 + 92000 + 42000 - 63000,
+  };
   assert.equal(
-    timed.window.eval("createAnswerReport().attempt.submittedByTimeout"),
-    true,
+    56000 + 18000 + 63000 - 24000 - 35000,
+    78000,
+    "現金元帳の貸借一致",
   );
-  timed.window.close();
-  console.log(
-    "PASS: 金額整形・全角入力・空欄/ゼロ/不正値・大問移動・復元・100点採点・誤答/重複排除・決算検算・提出/解答ロック・時間切れ・JSONの内容/ダウンロード",
+  assert.equal(96000 + 56000 - 35000, 117000, "買掛金元帳の貸借一致");
+  for (const field of data.parts[0].groups.flatMap((unit) => unit.fields))
+    assert.equal(field.answer, reconstruction[field.id]);
+  const voucherEntries = [
+    [[["現金", 48000]], [["売掛金A", 48000]]],
+    [[["現金", 32000]], [["売上", 32000]]],
+    [[["現金", 50000]], [["当座預金", 50000]]],
+    [[["買掛金", 36000]], [["現金", 36000]]],
+    [[["消耗品費", 4800]], [["現金", 4800]]],
+    [[["当座預金", 25000]], [["現金", 25000]]],
+    [[["売掛金A", 72000]], [["売上", 72000]]],
+    [[["仕入", 84000]], [["買掛金", 84000]]],
+    [[["電子記録債権", 45000]], [["売掛金B", 45000]]],
+  ];
+  const debits = {},
+    credits = {};
+  for (const [d, c] of voucherEntries) {
+    for (const [account, value] of d)
+      debits[account] = (debits[account] || 0) + value;
+    for (const [account, value] of c)
+      credits[account] = (credits[account] || 0) + value;
+  }
+  assert.equal(
+    Object.values(debits).reduce((sum, value) => sum + value, 0),
+    396800,
   );
-} finally {
-  w.close();
-}
+  assert.equal(
+    Object.values(credits).reduce((sum, value) => sum + value, 0),
+    396800,
+  );
+  const vouchers = {
+    s5a: debits.現金,
+    s5b: credits.現金,
+    s6v: credits.売掛金A + credits.売掛金B,
+    s7v: 98000 + credits.買掛金 - debits.買掛金,
+    s8v: 65000 + debits.売掛金A - credits.売掛金A,
+    s9a: "仕訳日計表",
+    s9b: "入金伝票",
+  };
+  for (const field of data.parts[1].groups.flatMap((unit) => unit.fields))
+    assert.equal(field.answer, vouchers[field.id]);
+  assert.equal(data.journals[3].debit.length, 4);
+  assert.equal(data.journals[4].credit.length, 4);
+  assert.equal(data.journals[8].debit.length, 4);
+  assert.deepEqual(data.journals[8].debit, [
+    ["現金", 110000],
+    ["備品減価償却累計額", 151200],
+    ["減価償却費", ((302400 / 6) * 3) / 12],
+    ["固定資産売却損", 302400 - 151200 - ((302400 / 6) * 3) / 12 - 110000],
+  ]);
+  assert.deepEqual(data.journals[12].debit, [["未払消費税", 176000]]);
+  console.log(`第3回貸借対照表の独立集計: ${result.assets}円`);
+});
