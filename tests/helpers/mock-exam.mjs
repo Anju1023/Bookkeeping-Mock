@@ -377,7 +377,10 @@ export async function verifyExam(number, verifyAccounting) {
     lateInput.dispatchEvent(new late.window.Event("input", { bubbles: true }));
     assert.equal(late.window.eval("state.status"), "done");
     assert.equal(late.window.eval("state.expired"), true);
-    assert.equal(late.window.eval(`state.answers['${firstAmount.id}']`), "１２３４");
+    assert.equal(
+      late.window.eval(`state.answers['${firstAmount.id}']`),
+      "１２３４",
+    );
     const unavailable = create(null, true);
     unavailable.document.getElementById("start").click();
     assert.equal(unavailable.window.eval("state.status"), "running");

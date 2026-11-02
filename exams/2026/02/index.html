@@ -5,906 +5,1016 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>日商簿記3級 第2回 模擬試験｜2026年度・改訂第2版</title>
     <!-- TAILWIND_START -->
-<style>
-/*! tailwindcss v4.2.4 | MIT License | https://tailwindcss.com */
-@layer properties;
-@layer theme, base, components, utilities;
-@layer theme {
-  :root, :host {
-    --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
-    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
-    --color-amber-50: oklch(98.7% 0.022 95.277);
-    --color-amber-300: oklch(87.9% 0.169 91.605);
-    --color-amber-700: oklch(55.5% 0.163 48.998);
-    --color-teal-50: oklch(98.4% 0.014 180.72);
-    --color-teal-100: oklch(95.3% 0.051 180.801);
-    --color-teal-600: oklch(60% 0.118 184.704);
-    --color-teal-700: oklch(51.1% 0.096 186.391);
-    --color-teal-800: oklch(43.7% 0.078 188.216);
-    --color-teal-900: oklch(38.6% 0.063 188.416);
-    --color-rose-600: oklch(58.6% 0.253 17.585);
-    --color-rose-700: oklch(51.4% 0.222 16.935);
-    --color-slate-50: oklch(98.4% 0.003 247.858);
-    --color-slate-100: oklch(96.8% 0.007 247.896);
-    --color-slate-200: oklch(92.9% 0.013 255.508);
-    --color-slate-400: oklch(70.4% 0.04 256.788);
-    --color-slate-500: oklch(55.4% 0.046 257.417);
-    --color-slate-600: oklch(44.6% 0.043 257.281);
-    --color-slate-800: oklch(27.9% 0.041 260.031);
-    --color-white: #fff;
-    --spacing: 0.25rem;
-    --container-md: 28rem;
-    --container-7xl: 80rem;
-    --text-xs: 0.75rem;
-    --text-xs--line-height: calc(1 / 0.75);
-    --text-sm: 0.875rem;
-    --text-sm--line-height: calc(1.25 / 0.875);
-    --text-base: 1rem;
-    --text-base--line-height: calc(1.5 / 1);
-    --text-lg: 1.125rem;
-    --text-lg--line-height: calc(1.75 / 1.125);
-    --text-xl: 1.25rem;
-    --text-xl--line-height: calc(1.75 / 1.25);
-    --text-2xl: 1.5rem;
-    --text-2xl--line-height: calc(2 / 1.5);
-    --text-3xl: 1.875rem;
-    --text-3xl--line-height: calc(2.25 / 1.875);
-    --text-4xl: 2.25rem;
-    --text-4xl--line-height: calc(2.5 / 2.25);
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
-    --tracking-widest: 0.1em;
-    --leading-relaxed: 1.625;
-    --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
-    --radius-2xl: 1rem;
-    --radius-3xl: 1.5rem;
-    --default-font-family: var(--font-sans);
-    --default-mono-font-family: var(--font-mono);
-  }
-}
-@layer base {
-  *, ::after, ::before, ::backdrop, ::file-selector-button {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    border: 0 solid;
-  }
-  html, :host {
-    line-height: 1.5;
-    -webkit-text-size-adjust: 100%;
-    tab-size: 4;
-    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji');
-    font-feature-settings: var(--default-font-feature-settings, normal);
-    font-variation-settings: var(--default-font-variation-settings, normal);
-    -webkit-tap-highlight-color: transparent;
-  }
-  hr {
-    height: 0;
-    color: inherit;
-    border-top-width: 1px;
-  }
-  abbr:where([title]) {
-    -webkit-text-decoration: underline dotted;
-    text-decoration: underline dotted;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-size: inherit;
-    font-weight: inherit;
-  }
-  a {
-    color: inherit;
-    -webkit-text-decoration: inherit;
-    text-decoration: inherit;
-  }
-  b, strong {
-    font-weight: bolder;
-  }
-  code, kbd, samp, pre {
-    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
-    font-feature-settings: var(--default-mono-font-feature-settings, normal);
-    font-variation-settings: var(--default-mono-font-variation-settings, normal);
-    font-size: 1em;
-  }
-  small {
-    font-size: 80%;
-  }
-  sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-  }
-  sub {
-    bottom: -0.25em;
-  }
-  sup {
-    top: -0.5em;
-  }
-  table {
-    text-indent: 0;
-    border-color: inherit;
-    border-collapse: collapse;
-  }
-  :-moz-focusring {
-    outline: auto;
-  }
-  progress {
-    vertical-align: baseline;
-  }
-  summary {
-    display: list-item;
-  }
-  ol, ul, menu {
-    list-style: none;
-  }
-  img, svg, video, canvas, audio, iframe, embed, object {
-    display: block;
-    vertical-align: middle;
-  }
-  img, video {
-    max-width: 100%;
-    height: auto;
-  }
-  button, input, select, optgroup, textarea, ::file-selector-button {
-    font: inherit;
-    font-feature-settings: inherit;
-    font-variation-settings: inherit;
-    letter-spacing: inherit;
-    color: inherit;
-    border-radius: 0;
-    background-color: transparent;
-    opacity: 1;
-  }
-  :where(select:is([multiple], [size])) optgroup {
-    font-weight: bolder;
-  }
-  :where(select:is([multiple], [size])) optgroup option {
-    padding-inline-start: 20px;
-  }
-  ::file-selector-button {
-    margin-inline-end: 4px;
-  }
-  ::placeholder {
-    opacity: 1;
-  }
-  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
-    ::placeholder {
-      color: currentcolor;
-      @supports (color: color-mix(in lab, red, red)) {
-        color: color-mix(in oklab, currentcolor 50%, transparent);
+    <style>
+      /*! tailwindcss v4.2.4 | MIT License | https://tailwindcss.com */
+      @layer properties;
+      @layer theme, base, components, utilities;
+      @layer theme {
+        :root,
+        :host {
+          --font-sans:
+            ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+            "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+          --font-mono:
+            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+            "Liberation Mono", "Courier New", monospace;
+          --color-amber-50: oklch(98.7% 0.022 95.277);
+          --color-amber-300: oklch(87.9% 0.169 91.605);
+          --color-amber-700: oklch(55.5% 0.163 48.998);
+          --color-teal-50: oklch(98.4% 0.014 180.72);
+          --color-teal-100: oklch(95.3% 0.051 180.801);
+          --color-teal-600: oklch(60% 0.118 184.704);
+          --color-teal-700: oklch(51.1% 0.096 186.391);
+          --color-teal-800: oklch(43.7% 0.078 188.216);
+          --color-teal-900: oklch(38.6% 0.063 188.416);
+          --color-rose-600: oklch(58.6% 0.253 17.585);
+          --color-rose-700: oklch(51.4% 0.222 16.935);
+          --color-slate-50: oklch(98.4% 0.003 247.858);
+          --color-slate-100: oklch(96.8% 0.007 247.896);
+          --color-slate-200: oklch(92.9% 0.013 255.508);
+          --color-slate-400: oklch(70.4% 0.04 256.788);
+          --color-slate-500: oklch(55.4% 0.046 257.417);
+          --color-slate-600: oklch(44.6% 0.043 257.281);
+          --color-slate-800: oklch(27.9% 0.041 260.031);
+          --color-white: #fff;
+          --spacing: 0.25rem;
+          --container-md: 28rem;
+          --container-7xl: 80rem;
+          --text-xs: 0.75rem;
+          --text-xs--line-height: calc(1 / 0.75);
+          --text-sm: 0.875rem;
+          --text-sm--line-height: calc(1.25 / 0.875);
+          --text-base: 1rem;
+          --text-base--line-height: calc(1.5 / 1);
+          --text-lg: 1.125rem;
+          --text-lg--line-height: calc(1.75 / 1.125);
+          --text-xl: 1.25rem;
+          --text-xl--line-height: calc(1.75 / 1.25);
+          --text-2xl: 1.5rem;
+          --text-2xl--line-height: calc(2 / 1.5);
+          --text-3xl: 1.875rem;
+          --text-3xl--line-height: calc(2.25 / 1.875);
+          --text-4xl: 2.25rem;
+          --text-4xl--line-height: calc(2.5 / 2.25);
+          --font-weight-normal: 400;
+          --font-weight-bold: 700;
+          --tracking-widest: 0.1em;
+          --leading-relaxed: 1.625;
+          --radius-lg: 0.5rem;
+          --radius-xl: 0.75rem;
+          --radius-2xl: 1rem;
+          --radius-3xl: 1.5rem;
+          --default-font-family: var(--font-sans);
+          --default-mono-font-family: var(--font-mono);
+        }
       }
-    }
-  }
-  textarea {
-    resize: vertical;
-  }
-  ::-webkit-search-decoration {
-    -webkit-appearance: none;
-  }
-  ::-webkit-date-and-time-value {
-    min-height: 1lh;
-    text-align: inherit;
-  }
-  ::-webkit-datetime-edit {
-    display: inline-flex;
-  }
-  ::-webkit-datetime-edit-fields-wrapper {
-    padding: 0;
-  }
-  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
-    padding-block: 0;
-  }
-  ::-webkit-calendar-picker-indicator {
-    line-height: 1;
-  }
-  :-moz-ui-invalid {
-    box-shadow: none;
-  }
-  button, input:where([type='button'], [type='reset'], [type='submit']), ::file-selector-button {
-    appearance: button;
-  }
-  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
-    height: auto;
-  }
-  [hidden]:where(:not([hidden='until-found'])) {
-    display: none !important;
-  }
-  *,::before,::after {
-    border-color: var(--color-slate-200);
-  }
-}
-@layer utilities {
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border-width: 0;
-  }
-  .fixed {
-    position: fixed;
-  }
-  .sticky {
-    position: sticky;
-  }
-  .inset-x-0 {
-    inset-inline: calc(var(--spacing) * 0);
-  }
-  .start {
-    inset-inline-start: var(--spacing);
-  }
-  .top-0 {
-    top: calc(var(--spacing) * 0);
-  }
-  .bottom-0 {
-    bottom: calc(var(--spacing) * 0);
-  }
-  .left-0 {
-    left: calc(var(--spacing) * 0);
-  }
-  .z-10 {
-    z-index: 10;
-  }
-  .z-20 {
-    z-index: 20;
-  }
-  .m-auto {
-    margin: auto;
-  }
-  .mx-auto {
-    margin-inline: auto;
-  }
-  .my-5 {
-    margin-block: calc(var(--spacing) * 5);
-  }
-  .mt-1 {
-    margin-top: calc(var(--spacing) * 1);
-  }
-  .mt-2 {
-    margin-top: calc(var(--spacing) * 2);
-  }
-  .mt-3 {
-    margin-top: calc(var(--spacing) * 3);
-  }
-  .mt-4 {
-    margin-top: calc(var(--spacing) * 4);
-  }
-  .mt-5 {
-    margin-top: calc(var(--spacing) * 5);
-  }
-  .mt-6 {
-    margin-top: calc(var(--spacing) * 6);
-  }
-  .mt-8 {
-    margin-top: calc(var(--spacing) * 8);
-  }
-  .mb-5 {
-    margin-bottom: calc(var(--spacing) * 5);
-  }
-  .mb-7 {
-    margin-bottom: calc(var(--spacing) * 7);
-  }
-  .flex {
-    display: flex;
-  }
-  .grid {
-    display: grid;
-  }
-  .hidden {
-    display: none;
-  }
-  .table {
-    display: table;
-  }
-  .max-h-\[70vh\] {
-    max-height: 70vh;
-  }
-  .w-11\/12 {
-    width: calc(11 / 12 * 100%);
-  }
-  .w-full {
-    width: 100%;
-  }
-  .max-w-7xl {
-    max-width: var(--container-7xl);
-  }
-  .max-w-full {
-    max-width: 100%;
-  }
-  .max-w-md {
-    max-width: var(--container-md);
-  }
-  .min-w-0 {
-    min-width: calc(var(--spacing) * 0);
-  }
-  .min-w-\[100px\] {
-    min-width: 100px;
-  }
-  .min-w-\[130px\] {
-    min-width: 130px;
-  }
-  .min-w-\[420px\] {
-    min-width: 420px;
-  }
-  .min-w-\[650px\] {
-    min-width: 650px;
-  }
-  .min-w-\[680px\] {
-    min-width: 680px;
-  }
-  .min-w-\[1500px\] {
-    min-width: 1500px;
-  }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .border-separate {
-    border-collapse: separate;
-  }
-  .border-spacing-2 {
-    --tw-border-spacing-x: calc(var(--spacing) * 2);
-    --tw-border-spacing-y: calc(var(--spacing) * 2);
-    border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
-  }
-  .cursor-pointer {
-    cursor: pointer;
-  }
-  .list-decimal {
-    list-style-type: decimal;
-  }
-  .list-disc {
-    list-style-type: disc;
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
-  }
-  .items-center {
-    align-items: center;
-  }
-  .items-end {
-    align-items: flex-end;
-  }
-  .items-start {
-    align-items: flex-start;
-  }
-  .justify-between {
-    justify-content: space-between;
-  }
-  .justify-end {
-    justify-content: flex-end;
-  }
-  .gap-2 {
-    gap: calc(var(--spacing) * 2);
-  }
-  .gap-3 {
-    gap: calc(var(--spacing) * 3);
-  }
-  .gap-4 {
-    gap: calc(var(--spacing) * 4);
-  }
-  .gap-5 {
-    gap: calc(var(--spacing) * 5);
-  }
-  .space-y-2 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-3 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-4 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-5 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .space-y-6 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
-    }
-  }
-  .overflow-auto {
-    overflow: auto;
-  }
-  .overflow-x-auto {
-    overflow-x: auto;
-  }
-  .rounded {
-    border-radius: 0.25rem;
-  }
-  .rounded-2xl {
-    border-radius: var(--radius-2xl);
-  }
-  .rounded-3xl {
-    border-radius: var(--radius-3xl);
-  }
-  .rounded-lg {
-    border-radius: var(--radius-lg);
-  }
-  .rounded-xl {
-    border-radius: var(--radius-xl);
-  }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
-  }
-  .border-t {
-    border-top-style: var(--tw-border-style);
-    border-top-width: 1px;
-  }
-  .border-b {
-    border-bottom-style: var(--tw-border-style);
-    border-bottom-width: 1px;
-  }
-  .border-amber-300 {
-    border-color: var(--color-amber-300);
-  }
-  .border-slate-200 {
-    border-color: var(--color-slate-200);
-  }
-  .border-slate-400 {
-    border-color: var(--color-slate-400);
-  }
-  .border-teal-800 {
-    border-color: var(--color-teal-800);
-  }
-  .bg-amber-50 {
-    background-color: var(--color-amber-50);
-  }
-  .bg-slate-50 {
-    background-color: var(--color-slate-50);
-  }
-  .bg-slate-100 {
-    background-color: var(--color-slate-100);
-  }
-  .bg-teal-50 {
-    background-color: var(--color-teal-50);
-  }
-  .bg-teal-800 {
-    background-color: var(--color-teal-800);
-  }
-  .bg-teal-900 {
-    background-color: var(--color-teal-900);
-  }
-  .bg-white {
-    background-color: var(--color-white);
-  }
-  .p-2 {
-    padding: calc(var(--spacing) * 2);
-  }
-  .p-3 {
-    padding: calc(var(--spacing) * 3);
-  }
-  .p-4 {
-    padding: calc(var(--spacing) * 4);
-  }
-  .p-5 {
-    padding: calc(var(--spacing) * 5);
-  }
-  .p-6 {
-    padding: calc(var(--spacing) * 6);
-  }
-  .p-7 {
-    padding: calc(var(--spacing) * 7);
-  }
-  .px-2 {
-    padding-inline: calc(var(--spacing) * 2);
-  }
-  .px-3 {
-    padding-inline: calc(var(--spacing) * 3);
-  }
-  .px-4 {
-    padding-inline: calc(var(--spacing) * 4);
-  }
-  .px-5 {
-    padding-inline: calc(var(--spacing) * 5);
-  }
-  .py-2 {
-    padding-block: calc(var(--spacing) * 2);
-  }
-  .py-3 {
-    padding-block: calc(var(--spacing) * 3);
-  }
-  .py-4 {
-    padding-block: calc(var(--spacing) * 4);
-  }
-  .pt-4 {
-    padding-top: calc(var(--spacing) * 4);
-  }
-  .pt-5 {
-    padding-top: calc(var(--spacing) * 5);
-  }
-  .pt-7 {
-    padding-top: calc(var(--spacing) * 7);
-  }
-  .pb-36 {
-    padding-bottom: calc(var(--spacing) * 36);
-  }
-  .pl-5 {
-    padding-left: calc(var(--spacing) * 5);
-  }
-  .pl-6 {
-    padding-left: calc(var(--spacing) * 6);
-  }
-  .text-left {
-    text-align: left;
-  }
-  .text-right {
-    text-align: right;
-  }
-  .align-middle {
-    vertical-align: middle;
-  }
-  .font-mono {
-    font-family: var(--font-mono);
-  }
-  .font-sans {
-    font-family: var(--font-sans);
-  }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
-  }
-  .text-3xl {
-    font-size: var(--text-3xl);
-    line-height: var(--tw-leading, var(--text-3xl--line-height));
-  }
-  .text-4xl {
-    font-size: var(--text-4xl);
-    line-height: var(--tw-leading, var(--text-4xl--line-height));
-  }
-  .text-base {
-    font-size: var(--text-base);
-    line-height: var(--tw-leading, var(--text-base--line-height));
-  }
-  .text-lg {
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
-  }
-  .text-sm {
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
-  }
-  .text-xl {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
-  }
-  .text-xs {
-    font-size: var(--text-xs);
-    line-height: var(--tw-leading, var(--text-xs--line-height));
-  }
-  .leading-6 {
-    --tw-leading: calc(var(--spacing) * 6);
-    line-height: calc(var(--spacing) * 6);
-  }
-  .leading-7 {
-    --tw-leading: calc(var(--spacing) * 7);
-    line-height: calc(var(--spacing) * 7);
-  }
-  .leading-8 {
-    --tw-leading: calc(var(--spacing) * 8);
-    line-height: calc(var(--spacing) * 8);
-  }
-  .leading-relaxed {
-    --tw-leading: var(--leading-relaxed);
-    line-height: var(--leading-relaxed);
-  }
-  .font-bold {
-    --tw-font-weight: var(--font-weight-bold);
-    font-weight: var(--font-weight-bold);
-  }
-  .font-normal {
-    --tw-font-weight: var(--font-weight-normal);
-    font-weight: var(--font-weight-normal);
-  }
-  .tracking-widest {
-    --tw-tracking: var(--tracking-widest);
-    letter-spacing: var(--tracking-widest);
-  }
-  .whitespace-nowrap {
-    white-space: nowrap;
-  }
-  .text-amber-700 {
-    color: var(--color-amber-700);
-  }
-  .text-rose-600 {
-    color: var(--color-rose-600);
-  }
-  .text-rose-700 {
-    color: var(--color-rose-700);
-  }
-  .text-slate-500 {
-    color: var(--color-slate-500);
-  }
-  .text-slate-600 {
-    color: var(--color-slate-600);
-  }
-  .text-slate-800 {
-    color: var(--color-slate-800);
-  }
-  .text-teal-100 {
-    color: var(--color-teal-100);
-  }
-  .text-teal-700 {
-    color: var(--color-teal-700);
-  }
-  .text-teal-800 {
-    color: var(--color-teal-800);
-  }
-  .text-white {
-    color: var(--color-white);
-  }
-  .tabular-nums {
-    --tw-numeric-spacing: tabular-nums;
-    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);
-  }
-  .underline {
-    text-decoration-line: underline;
-  }
-  .antialiased {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .accent-teal-700 {
-    accent-color: var(--color-teal-700);
-  }
-  .shadow-xl {
-    --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .hover\:bg-slate-200 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-slate-200);
+      @layer base {
+        *,
+        ::after,
+        ::before,
+        ::backdrop,
+        ::file-selector-button {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          border: 0 solid;
+        }
+        html,
+        :host {
+          line-height: 1.5;
+          -webkit-text-size-adjust: 100%;
+          tab-size: 4;
+          font-family: var(
+            --default-font-family,
+            ui-sans-serif,
+            system-ui,
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji"
+          );
+          font-feature-settings: var(--default-font-feature-settings, normal);
+          font-variation-settings: var(
+            --default-font-variation-settings,
+            normal
+          );
+          -webkit-tap-highlight-color: transparent;
+        }
+        hr {
+          height: 0;
+          color: inherit;
+          border-top-width: 1px;
+        }
+        abbr:where([title]) {
+          -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-size: inherit;
+          font-weight: inherit;
+        }
+        a {
+          color: inherit;
+          -webkit-text-decoration: inherit;
+          text-decoration: inherit;
+        }
+        b,
+        strong {
+          font-weight: bolder;
+        }
+        code,
+        kbd,
+        samp,
+        pre {
+          font-family: var(
+            --default-mono-font-family,
+            ui-monospace,
+            SFMono-Regular,
+            Menlo,
+            Monaco,
+            Consolas,
+            "Liberation Mono",
+            "Courier New",
+            monospace
+          );
+          font-feature-settings: var(
+            --default-mono-font-feature-settings,
+            normal
+          );
+          font-variation-settings: var(
+            --default-mono-font-variation-settings,
+            normal
+          );
+          font-size: 1em;
+        }
+        small {
+          font-size: 80%;
+        }
+        sub,
+        sup {
+          font-size: 75%;
+          line-height: 0;
+          position: relative;
+          vertical-align: baseline;
+        }
+        sub {
+          bottom: -0.25em;
+        }
+        sup {
+          top: -0.5em;
+        }
+        table {
+          text-indent: 0;
+          border-color: inherit;
+          border-collapse: collapse;
+        }
+        :-moz-focusring {
+          outline: auto;
+        }
+        progress {
+          vertical-align: baseline;
+        }
+        summary {
+          display: list-item;
+        }
+        ol,
+        ul,
+        menu {
+          list-style: none;
+        }
+        img,
+        svg,
+        video,
+        canvas,
+        audio,
+        iframe,
+        embed,
+        object {
+          display: block;
+          vertical-align: middle;
+        }
+        img,
+        video {
+          max-width: 100%;
+          height: auto;
+        }
+        button,
+        input,
+        select,
+        optgroup,
+        textarea,
+        ::file-selector-button {
+          font: inherit;
+          font-feature-settings: inherit;
+          font-variation-settings: inherit;
+          letter-spacing: inherit;
+          color: inherit;
+          border-radius: 0;
+          background-color: transparent;
+          opacity: 1;
+        }
+        :where(select:is([multiple], [size])) optgroup {
+          font-weight: bolder;
+        }
+        :where(select:is([multiple], [size])) optgroup option {
+          padding-inline-start: 20px;
+        }
+        ::file-selector-button {
+          margin-inline-end: 4px;
+        }
+        ::placeholder {
+          opacity: 1;
+        }
+        @supports (not (-webkit-appearance: -apple-pay-button)) or
+          (contain-intrinsic-size: 1px) {
+          ::placeholder {
+            color: currentcolor;
+            @supports (color: color-mix(in lab, red, red)) {
+              color: color-mix(in oklab, currentcolor 50%, transparent);
+            }
+          }
+        }
+        textarea {
+          resize: vertical;
+        }
+        ::-webkit-search-decoration {
+          -webkit-appearance: none;
+        }
+        ::-webkit-date-and-time-value {
+          min-height: 1lh;
+          text-align: inherit;
+        }
+        ::-webkit-datetime-edit {
+          display: inline-flex;
+        }
+        ::-webkit-datetime-edit-fields-wrapper {
+          padding: 0;
+        }
+        ::-webkit-datetime-edit,
+        ::-webkit-datetime-edit-year-field,
+        ::-webkit-datetime-edit-month-field,
+        ::-webkit-datetime-edit-day-field,
+        ::-webkit-datetime-edit-hour-field,
+        ::-webkit-datetime-edit-minute-field,
+        ::-webkit-datetime-edit-second-field,
+        ::-webkit-datetime-edit-millisecond-field,
+        ::-webkit-datetime-edit-meridiem-field {
+          padding-block: 0;
+        }
+        ::-webkit-calendar-picker-indicator {
+          line-height: 1;
+        }
+        :-moz-ui-invalid {
+          box-shadow: none;
+        }
+        button,
+        input:where([type="button"], [type="reset"], [type="submit"]),
+        ::file-selector-button {
+          appearance: button;
+        }
+        ::-webkit-inner-spin-button,
+        ::-webkit-outer-spin-button {
+          height: auto;
+        }
+        [hidden]:where(:not([hidden="until-found"])) {
+          display: none !important;
+        }
+        *,
+        ::before,
+        ::after {
+          border-color: var(--color-slate-200);
+        }
       }
-    }
-  }
-  .hover\:bg-teal-700 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-teal-700);
+      @layer utilities {
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
+          border-width: 0;
+        }
+        .fixed {
+          position: fixed;
+        }
+        .sticky {
+          position: sticky;
+        }
+        .inset-x-0 {
+          inset-inline: calc(var(--spacing) * 0);
+        }
+        .start {
+          inset-inline-start: var(--spacing);
+        }
+        .top-0 {
+          top: calc(var(--spacing) * 0);
+        }
+        .bottom-0 {
+          bottom: calc(var(--spacing) * 0);
+        }
+        .left-0 {
+          left: calc(var(--spacing) * 0);
+        }
+        .z-10 {
+          z-index: 10;
+        }
+        .z-20 {
+          z-index: 20;
+        }
+        .m-auto {
+          margin: auto;
+        }
+        .mx-auto {
+          margin-inline: auto;
+        }
+        .my-5 {
+          margin-block: calc(var(--spacing) * 5);
+        }
+        .mt-1 {
+          margin-top: calc(var(--spacing) * 1);
+        }
+        .mt-2 {
+          margin-top: calc(var(--spacing) * 2);
+        }
+        .mt-3 {
+          margin-top: calc(var(--spacing) * 3);
+        }
+        .mt-4 {
+          margin-top: calc(var(--spacing) * 4);
+        }
+        .mt-5 {
+          margin-top: calc(var(--spacing) * 5);
+        }
+        .mt-6 {
+          margin-top: calc(var(--spacing) * 6);
+        }
+        .mt-8 {
+          margin-top: calc(var(--spacing) * 8);
+        }
+        .mb-5 {
+          margin-bottom: calc(var(--spacing) * 5);
+        }
+        .mb-7 {
+          margin-bottom: calc(var(--spacing) * 7);
+        }
+        .flex {
+          display: flex;
+        }
+        .grid {
+          display: grid;
+        }
+        .hidden {
+          display: none;
+        }
+        .table {
+          display: table;
+        }
+        .max-h-\[70vh\] {
+          max-height: 70vh;
+        }
+        .w-11\/12 {
+          width: calc(11 / 12 * 100%);
+        }
+        .w-full {
+          width: 100%;
+        }
+        .max-w-7xl {
+          max-width: var(--container-7xl);
+        }
+        .max-w-full {
+          max-width: 100%;
+        }
+        .max-w-md {
+          max-width: var(--container-md);
+        }
+        .min-w-0 {
+          min-width: calc(var(--spacing) * 0);
+        }
+        .min-w-\[100px\] {
+          min-width: 100px;
+        }
+        .min-w-\[130px\] {
+          min-width: 130px;
+        }
+        .min-w-\[420px\] {
+          min-width: 420px;
+        }
+        .min-w-\[650px\] {
+          min-width: 650px;
+        }
+        .min-w-\[680px\] {
+          min-width: 680px;
+        }
+        .min-w-\[1500px\] {
+          min-width: 1500px;
+        }
+        .border-collapse {
+          border-collapse: collapse;
+        }
+        .border-separate {
+          border-collapse: separate;
+        }
+        .border-spacing-2 {
+          --tw-border-spacing-x: calc(var(--spacing) * 2);
+          --tw-border-spacing-y: calc(var(--spacing) * 2);
+          border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+        }
+        .cursor-pointer {
+          cursor: pointer;
+        }
+        .list-decimal {
+          list-style-type: decimal;
+        }
+        .list-disc {
+          list-style-type: disc;
+        }
+        .flex-wrap {
+          flex-wrap: wrap;
+        }
+        .items-center {
+          align-items: center;
+        }
+        .items-end {
+          align-items: flex-end;
+        }
+        .items-start {
+          align-items: flex-start;
+        }
+        .justify-between {
+          justify-content: space-between;
+        }
+        .justify-end {
+          justify-content: flex-end;
+        }
+        .gap-2 {
+          gap: calc(var(--spacing) * 2);
+        }
+        .gap-3 {
+          gap: calc(var(--spacing) * 3);
+        }
+        .gap-4 {
+          gap: calc(var(--spacing) * 4);
+        }
+        .gap-5 {
+          gap: calc(var(--spacing) * 5);
+        }
+        .space-y-2 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(
+              calc(var(--spacing) * 2) * var(--tw-space-y-reverse)
+            );
+            margin-block-end: calc(
+              calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse))
+            );
+          }
+        }
+        .space-y-3 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(
+              calc(var(--spacing) * 3) * var(--tw-space-y-reverse)
+            );
+            margin-block-end: calc(
+              calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse))
+            );
+          }
+        }
+        .space-y-4 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(
+              calc(var(--spacing) * 4) * var(--tw-space-y-reverse)
+            );
+            margin-block-end: calc(
+              calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse))
+            );
+          }
+        }
+        .space-y-5 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(
+              calc(var(--spacing) * 5) * var(--tw-space-y-reverse)
+            );
+            margin-block-end: calc(
+              calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse))
+            );
+          }
+        }
+        .space-y-6 {
+          :where(& > :not(:last-child)) {
+            --tw-space-y-reverse: 0;
+            margin-block-start: calc(
+              calc(var(--spacing) * 6) * var(--tw-space-y-reverse)
+            );
+            margin-block-end: calc(
+              calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse))
+            );
+          }
+        }
+        .overflow-auto {
+          overflow: auto;
+        }
+        .overflow-x-auto {
+          overflow-x: auto;
+        }
+        .rounded {
+          border-radius: 0.25rem;
+        }
+        .rounded-2xl {
+          border-radius: var(--radius-2xl);
+        }
+        .rounded-3xl {
+          border-radius: var(--radius-3xl);
+        }
+        .rounded-lg {
+          border-radius: var(--radius-lg);
+        }
+        .rounded-xl {
+          border-radius: var(--radius-xl);
+        }
+        .border {
+          border-style: var(--tw-border-style);
+          border-width: 1px;
+        }
+        .border-t {
+          border-top-style: var(--tw-border-style);
+          border-top-width: 1px;
+        }
+        .border-b {
+          border-bottom-style: var(--tw-border-style);
+          border-bottom-width: 1px;
+        }
+        .border-amber-300 {
+          border-color: var(--color-amber-300);
+        }
+        .border-slate-200 {
+          border-color: var(--color-slate-200);
+        }
+        .border-slate-400 {
+          border-color: var(--color-slate-400);
+        }
+        .border-teal-800 {
+          border-color: var(--color-teal-800);
+        }
+        .bg-amber-50 {
+          background-color: var(--color-amber-50);
+        }
+        .bg-slate-50 {
+          background-color: var(--color-slate-50);
+        }
+        .bg-slate-100 {
+          background-color: var(--color-slate-100);
+        }
+        .bg-teal-50 {
+          background-color: var(--color-teal-50);
+        }
+        .bg-teal-800 {
+          background-color: var(--color-teal-800);
+        }
+        .bg-teal-900 {
+          background-color: var(--color-teal-900);
+        }
+        .bg-white {
+          background-color: var(--color-white);
+        }
+        .p-2 {
+          padding: calc(var(--spacing) * 2);
+        }
+        .p-3 {
+          padding: calc(var(--spacing) * 3);
+        }
+        .p-4 {
+          padding: calc(var(--spacing) * 4);
+        }
+        .p-5 {
+          padding: calc(var(--spacing) * 5);
+        }
+        .p-6 {
+          padding: calc(var(--spacing) * 6);
+        }
+        .p-7 {
+          padding: calc(var(--spacing) * 7);
+        }
+        .px-2 {
+          padding-inline: calc(var(--spacing) * 2);
+        }
+        .px-3 {
+          padding-inline: calc(var(--spacing) * 3);
+        }
+        .px-4 {
+          padding-inline: calc(var(--spacing) * 4);
+        }
+        .px-5 {
+          padding-inline: calc(var(--spacing) * 5);
+        }
+        .py-2 {
+          padding-block: calc(var(--spacing) * 2);
+        }
+        .py-3 {
+          padding-block: calc(var(--spacing) * 3);
+        }
+        .py-4 {
+          padding-block: calc(var(--spacing) * 4);
+        }
+        .pt-4 {
+          padding-top: calc(var(--spacing) * 4);
+        }
+        .pt-5 {
+          padding-top: calc(var(--spacing) * 5);
+        }
+        .pt-7 {
+          padding-top: calc(var(--spacing) * 7);
+        }
+        .pb-36 {
+          padding-bottom: calc(var(--spacing) * 36);
+        }
+        .pl-5 {
+          padding-left: calc(var(--spacing) * 5);
+        }
+        .pl-6 {
+          padding-left: calc(var(--spacing) * 6);
+        }
+        .text-left {
+          text-align: left;
+        }
+        .text-right {
+          text-align: right;
+        }
+        .align-middle {
+          vertical-align: middle;
+        }
+        .font-mono {
+          font-family: var(--font-mono);
+        }
+        .font-sans {
+          font-family: var(--font-sans);
+        }
+        .text-2xl {
+          font-size: var(--text-2xl);
+          line-height: var(--tw-leading, var(--text-2xl--line-height));
+        }
+        .text-3xl {
+          font-size: var(--text-3xl);
+          line-height: var(--tw-leading, var(--text-3xl--line-height));
+        }
+        .text-4xl {
+          font-size: var(--text-4xl);
+          line-height: var(--tw-leading, var(--text-4xl--line-height));
+        }
+        .text-base {
+          font-size: var(--text-base);
+          line-height: var(--tw-leading, var(--text-base--line-height));
+        }
+        .text-lg {
+          font-size: var(--text-lg);
+          line-height: var(--tw-leading, var(--text-lg--line-height));
+        }
+        .text-sm {
+          font-size: var(--text-sm);
+          line-height: var(--tw-leading, var(--text-sm--line-height));
+        }
+        .text-xl {
+          font-size: var(--text-xl);
+          line-height: var(--tw-leading, var(--text-xl--line-height));
+        }
+        .text-xs {
+          font-size: var(--text-xs);
+          line-height: var(--tw-leading, var(--text-xs--line-height));
+        }
+        .leading-6 {
+          --tw-leading: calc(var(--spacing) * 6);
+          line-height: calc(var(--spacing) * 6);
+        }
+        .leading-7 {
+          --tw-leading: calc(var(--spacing) * 7);
+          line-height: calc(var(--spacing) * 7);
+        }
+        .leading-8 {
+          --tw-leading: calc(var(--spacing) * 8);
+          line-height: calc(var(--spacing) * 8);
+        }
+        .leading-relaxed {
+          --tw-leading: var(--leading-relaxed);
+          line-height: var(--leading-relaxed);
+        }
+        .font-bold {
+          --tw-font-weight: var(--font-weight-bold);
+          font-weight: var(--font-weight-bold);
+        }
+        .font-normal {
+          --tw-font-weight: var(--font-weight-normal);
+          font-weight: var(--font-weight-normal);
+        }
+        .tracking-widest {
+          --tw-tracking: var(--tracking-widest);
+          letter-spacing: var(--tracking-widest);
+        }
+        .whitespace-nowrap {
+          white-space: nowrap;
+        }
+        .text-amber-700 {
+          color: var(--color-amber-700);
+        }
+        .text-rose-600 {
+          color: var(--color-rose-600);
+        }
+        .text-rose-700 {
+          color: var(--color-rose-700);
+        }
+        .text-slate-500 {
+          color: var(--color-slate-500);
+        }
+        .text-slate-600 {
+          color: var(--color-slate-600);
+        }
+        .text-slate-800 {
+          color: var(--color-slate-800);
+        }
+        .text-teal-100 {
+          color: var(--color-teal-100);
+        }
+        .text-teal-700 {
+          color: var(--color-teal-700);
+        }
+        .text-teal-800 {
+          color: var(--color-teal-800);
+        }
+        .text-white {
+          color: var(--color-white);
+        }
+        .tabular-nums {
+          --tw-numeric-spacing: tabular-nums;
+          font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,)
+            var(--tw-numeric-figure,) var(--tw-numeric-spacing,)
+            var(--tw-numeric-fraction,);
+        }
+        .underline {
+          text-decoration-line: underline;
+        }
+        .antialiased {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        .accent-teal-700 {
+          accent-color: var(--color-teal-700);
+        }
+        .shadow-xl {
+          --tw-shadow:
+            0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+            0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+          box-shadow:
+            var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+            var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+            var(--tw-shadow);
+        }
+        .hover\:bg-slate-200 {
+          &:hover {
+            @media (hover: hover) {
+              background-color: var(--color-slate-200);
+            }
+          }
+        }
+        .hover\:bg-teal-700 {
+          &:hover {
+            @media (hover: hover) {
+              background-color: var(--color-teal-700);
+            }
+          }
+        }
+        .focus\:ring-2 {
+          &:focus {
+            --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0
+              calc(2px + var(--tw-ring-offset-width))
+              var(--tw-ring-color, currentcolor);
+            box-shadow:
+              var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+              var(--tw-ring-offset-shadow), var(--tw-ring-shadow),
+              var(--tw-shadow);
+          }
+        }
+        .focus\:ring-teal-600 {
+          &:focus {
+            --tw-ring-color: var(--color-teal-600);
+          }
+        }
+        .focus\:outline-none {
+          &:focus {
+            --tw-outline-style: none;
+            outline-style: none;
+          }
+        }
+        .disabled\:bg-slate-100 {
+          &:disabled {
+            background-color: var(--color-slate-100);
+          }
+        }
+        .md\:grid-cols-2 {
+          @media (width >= 48rem) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
+        .md\:grid-cols-3 {
+          @media (width >= 48rem) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+        .md\:p-6 {
+          @media (width >= 48rem) {
+            padding: calc(var(--spacing) * 6);
+          }
+        }
+        .md\:p-8 {
+          @media (width >= 48rem) {
+            padding: calc(var(--spacing) * 8);
+          }
+        }
+        .md\:p-10 {
+          @media (width >= 48rem) {
+            padding: calc(var(--spacing) * 10);
+          }
+        }
+        .lg\:col-span-2 {
+          @media (width >= 64rem) {
+            grid-column: span 2 / span 2;
+          }
+        }
+        .lg\:grid-cols-3 {
+          @media (width >= 64rem) {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+          }
+        }
+        .xl\:grid-cols-2 {
+          @media (width >= 80rem) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+        }
       }
-    }
-  }
-  .focus\:ring-2 {
-    &:focus {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-  .focus\:ring-teal-600 {
-    &:focus {
-      --tw-ring-color: var(--color-teal-600);
-    }
-  }
-  .focus\:outline-none {
-    &:focus {
-      --tw-outline-style: none;
-      outline-style: none;
-    }
-  }
-  .disabled\:bg-slate-100 {
-    &:disabled {
-      background-color: var(--color-slate-100);
-    }
-  }
-  .md\:grid-cols-2 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-  .md\:grid-cols-3 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-  .md\:p-6 {
-    @media (width >= 48rem) {
-      padding: calc(var(--spacing) * 6);
-    }
-  }
-  .md\:p-8 {
-    @media (width >= 48rem) {
-      padding: calc(var(--spacing) * 8);
-    }
-  }
-  .md\:p-10 {
-    @media (width >= 48rem) {
-      padding: calc(var(--spacing) * 10);
-    }
-  }
-  .lg\:col-span-2 {
-    @media (width >= 64rem) {
-      grid-column: span 2 / span 2;
-    }
-  }
-  .lg\:grid-cols-3 {
-    @media (width >= 64rem) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-  .xl\:grid-cols-2 {
-    @media (width >= 80rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-}
-@property --tw-border-spacing-x {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-border-spacing-y {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-space-y-reverse {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
-}
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
-@property --tw-leading {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-font-weight {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-tracking {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-ordinal {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-slashed-zero {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-numeric-figure {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-numeric-spacing {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-numeric-fraction {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-shadow {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0 0 #0000;
-}
-@property --tw-shadow-color {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-shadow-alpha {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 100%;
-}
-@property --tw-inset-shadow {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0 0 #0000;
-}
-@property --tw-inset-shadow-color {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-inset-shadow-alpha {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 100%;
-}
-@property --tw-ring-color {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-ring-shadow {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0 0 #0000;
-}
-@property --tw-inset-ring-color {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-inset-ring-shadow {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0 0 #0000;
-}
-@property --tw-ring-inset {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-ring-offset-width {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: 0px;
-}
-@property --tw-ring-offset-color {
-  syntax: "*";
-  inherits: false;
-  initial-value: #fff;
-}
-@property --tw-ring-offset-shadow {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0 0 #0000;
-}
-@layer properties {
-  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
-    *, ::before, ::after, ::backdrop {
-      --tw-border-spacing-x: 0;
-      --tw-border-spacing-y: 0;
-      --tw-space-y-reverse: 0;
-      --tw-border-style: solid;
-      --tw-leading: initial;
-      --tw-font-weight: initial;
-      --tw-tracking: initial;
-      --tw-ordinal: initial;
-      --tw-slashed-zero: initial;
-      --tw-numeric-figure: initial;
-      --tw-numeric-spacing: initial;
-      --tw-numeric-fraction: initial;
-      --tw-shadow: 0 0 #0000;
-      --tw-shadow-color: initial;
-      --tw-shadow-alpha: 100%;
-      --tw-inset-shadow: 0 0 #0000;
-      --tw-inset-shadow-color: initial;
-      --tw-inset-shadow-alpha: 100%;
-      --tw-ring-color: initial;
-      --tw-ring-shadow: 0 0 #0000;
-      --tw-inset-ring-color: initial;
-      --tw-inset-ring-shadow: 0 0 #0000;
-      --tw-ring-inset: initial;
-      --tw-ring-offset-width: 0px;
-      --tw-ring-offset-color: #fff;
-      --tw-ring-offset-shadow: 0 0 #0000;
-    }
-  }
-}
-
-</style>
-<!-- TAILWIND_END -->
+      @property --tw-border-spacing-x {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --tw-border-spacing-y {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --tw-space-y-reverse {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --tw-border-style {
+        syntax: "*";
+        inherits: false;
+        initial-value: solid;
+      }
+      @property --tw-leading {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-font-weight {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-tracking {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-ordinal {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-slashed-zero {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-numeric-figure {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-numeric-spacing {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-numeric-fraction {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @property --tw-shadow-color {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-shadow-alpha {
+        syntax: "<percentage>";
+        inherits: false;
+        initial-value: 100%;
+      }
+      @property --tw-inset-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @property --tw-inset-shadow-color {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-inset-shadow-alpha {
+        syntax: "<percentage>";
+        inherits: false;
+        initial-value: 100%;
+      }
+      @property --tw-ring-color {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-ring-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @property --tw-inset-ring-color {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-inset-ring-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @property --tw-ring-inset {
+        syntax: "*";
+        inherits: false;
+      }
+      @property --tw-ring-offset-width {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 0px;
+      }
+      @property --tw-ring-offset-color {
+        syntax: "*";
+        inherits: false;
+        initial-value: #fff;
+      }
+      @property --tw-ring-offset-shadow {
+        syntax: "*";
+        inherits: false;
+        initial-value: 0 0 #0000;
+      }
+      @layer properties {
+        @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or
+          ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+          *,
+          ::before,
+          ::after,
+          ::backdrop {
+            --tw-border-spacing-x: 0;
+            --tw-border-spacing-y: 0;
+            --tw-space-y-reverse: 0;
+            --tw-border-style: solid;
+            --tw-leading: initial;
+            --tw-font-weight: initial;
+            --tw-tracking: initial;
+            --tw-ordinal: initial;
+            --tw-slashed-zero: initial;
+            --tw-numeric-figure: initial;
+            --tw-numeric-spacing: initial;
+            --tw-numeric-fraction: initial;
+            --tw-shadow: 0 0 #0000;
+            --tw-shadow-color: initial;
+            --tw-shadow-alpha: 100%;
+            --tw-inset-shadow: 0 0 #0000;
+            --tw-inset-shadow-color: initial;
+            --tw-inset-shadow-alpha: 100%;
+            --tw-ring-color: initial;
+            --tw-ring-shadow: 0 0 #0000;
+            --tw-inset-ring-color: initial;
+            --tw-inset-ring-shadow: 0 0 #0000;
+            --tw-ring-inset: initial;
+            --tw-ring-offset-width: 0px;
+            --tw-ring-offset-color: #fff;
+            --tw-ring-offset-shadow: 0 0 #0000;
+          }
+        }
+      }
+    </style>
+    <!-- TAILWIND_END -->
   </head>
   <body class="bg-slate-50 text-slate-800 font-sans antialiased">
     <header class="sticky top-0 z-20 border-b bg-white">
@@ -942,13 +1052,13 @@
           <div
             class="rounded-3xl bg-teal-900 p-7 text-white md:p-10 lg:col-span-2"
           >
-            <p class="text-sm tracking-widest text-teal-100">
-              MOCK EXAM / 02
-            </p>
+            <p class="text-sm tracking-widest text-teal-100">MOCK EXAM / 02</p>
             <h1 class="mt-4 text-3xl font-bold leading-relaxed">
               資料を読み、取引をつなぐ。<br />60分の実戦練習。
             </h1>
-            <p class="mt-5 leading-8 text-teal-100">使用開始日と売却、返品・諸掛を含む移動平均法、複数債権の貸倒処理と整理後試算表。</p>
+            <p class="mt-5 leading-8 text-teal-100">
+              使用開始日と売却、返品・諸掛を含む移動平均法、複数債権の貸倒処理と整理後試算表。
+            </p>
             <p class="mt-6 text-sm">60分 / 全3問 / 100点満点 / 合格目安70点</p>
           </div>
           <aside class="rounded-3xl border bg-white p-7">
@@ -1138,2007 +1248,1524 @@
     <script>
       "use strict";
       const examConfig = {
-  "number": "02",
-  "revision": 2,
-  "title": "第2回 模擬試験",
-  "secondTitle": "固定資産台帳・商品有高帳",
-  "thirdTitle": "決算整理後残高試算表",
-  "summary": "使用開始日と売却、返品・諸掛を含む移動平均法、複数債権の貸倒処理と整理後試算表。",
-  "journals": [
-    {
-      "topic": "請求書と代金回収",
-      "question": "先月販売し売掛金を計上済みの取引について、本日、請求先から振込手数料660円（当社負担）を差し引いた残額が普通預金へ入金された。次の請求書を参照して、本日の仕訳を示しなさい。",
-      "debit": [
-        [
-          "普通預金",
-          153340
+        number: "02",
+        revision: 2,
+        title: "第2回 模擬試験",
+        secondTitle: "固定資産台帳・商品有高帳",
+        thirdTitle: "決算整理後残高試算表",
+        summary:
+          "使用開始日と売却、返品・諸掛を含む移動平均法、複数債権の貸倒処理と整理後試算表。",
+        journals: [
+          {
+            topic: "請求書と代金回収",
+            question:
+              "先月販売し売掛金を計上済みの取引について、本日、請求先から振込手数料660円（当社負担）を差し引いた残額が普通預金へ入金された。次の請求書を参照して、本日の仕訳を示しなさい。",
+            debit: [
+              ["普通預金", 153340],
+              ["支払手数料", 660],
+            ],
+            credit: [["売掛金", 154000]],
+            explanation:
+              "本日は販売ではなく回収。計上済みの税込売掛金154,000円を消し、入金153,340円と手数料660円に分ける。",
+            materials: [
+              {
+                id: "j0-invoice",
+                caption: "桜商店あて請求書（円）",
+                headings: ["品名", "税抜額", "消費税", "請求額"],
+                rows: [["商品一式", "140,000", "14,000", "154,000"]],
+              },
+            ],
+          },
+          {
+            topic: "購入目的の判断",
+            question:
+              "中古車の販売を営む当社は、転売用の車両を500,000円で仕入れ、代金は翌月支払う。引取運送費12,000円は現金で支払った。",
+            debit: [["仕入", 512000]],
+            credit: [
+              ["買掛金", 500000],
+              ["現金", 12000],
+            ],
+            explanation: "販売目的の車両は商品。引取運送費を仕入原価に含める。",
+            materials: [],
+          },
+          {
+            topic: "改良と修繕",
+            question:
+              "店舗の工事代金326,000円を普通預金から支払った。工事報告書によると、210,000円は建物の使用可能期間を延ばす改良、残額は従来の状態に戻すための通常の修繕である。",
+            debit: [
+              ["建物", 210000],
+              ["修繕費", 116000],
+            ],
+            credit: [["普通預金", 326000]],
+            explanation:
+              "改良210,000円は資産の増加、通常の修繕116,000円は費用にする。",
+            materials: [],
+          },
+          {
+            topic: "手形による貸付け",
+            question:
+              "取引先に460,000円を貸し付け、借用証書の代わりに同額の約束手形を受け取った。利息9,200円を差し引いた額を当社の普通預金から送金した。",
+            debit: [["手形貸付金", 460000]],
+            credit: [
+              ["普通預金", 450800],
+              ["受取利息", 9200],
+            ],
+            explanation:
+              "金銭貸付けの手形なので手形貸付金。送金額は460,000−9,200＝450,800円。",
+            materials: [],
+          },
+          {
+            topic: "当座借越",
+            question:
+              "買掛金145,000円の支払に小切手を振り出した。支払直前の当座預金残高は92,000円で、銀行と借越契約がある。当座預金と当座借越を区別する二勘定制を用いる。",
+            debit: [["買掛金", 145000]],
+            credit: [
+              ["当座預金", 92000],
+              ["当座借越", 53000],
+            ],
+            explanation: "預金残高を使い切り、不足53,000円を当座借越にする。",
+            materials: [],
+          },
+          {
+            topic: "社会保険料の納付",
+            question:
+              "社会保険料の納付書に従い、従業員から預かっていた46,500円と、まだ記帳していない会社負担分46,500円を普通預金から一括納付した。",
+            debit: [
+              ["社会保険料預り金", 46500],
+              ["法定福利費", 46500],
+            ],
+            credit: [["普通預金", 93000]],
+            explanation: "従業員負担は預り金の消滅、会社負担は法定福利費。",
+            materials: [],
+          },
+          {
+            topic: "敷金の精算",
+            question:
+              "事務所を退去し、差し入れていた敷金280,000円から原状回復費用96,000円が控除され、差額が普通預金に入金された。原状回復費用は修繕費とする。",
+            debit: [
+              ["普通預金", 184000],
+              ["修繕費", 96000],
+            ],
+            credit: [["差入保証金", 280000]],
+            explanation:
+              "保証金全額を消し、返還額184,000円と費用96,000円に分ける。",
+            materials: [],
+          },
+          {
+            topic: "償却済債権と仮受金",
+            question:
+              "以前、貸倒れ処理を終えていた売掛金の回収額27,000円が普通預金に入り、内容不明として仮受金に計上していた。本日、その内容が判明した。",
+            debit: [["仮受金", 27000]],
+            credit: [["償却債権取立益", 27000]],
+            explanation:
+              "入金自体は記帳済み。貸倒処理済みの債権を再び売掛金から減らさない。",
+            materials: [],
+          },
+          {
+            topic: "現金過不足",
+            question:
+              "現金実査で実際有高が帳簿残高を5,400円上回ったため、すでに現金過不足として処理していた。決算で受取手数料4,800円の記帳漏れが判明し、残額は原因不明として処理する。",
+            debit: [["現金過不足", 5400]],
+            credit: [
+              ["受取手数料", 4800],
+              ["雑益", 600],
+            ],
+            explanation:
+              "現金は実査時に修正済み。現金過不足を消し、判明分と原因不明の収益に分ける。",
+            materials: [],
+          },
+          {
+            topic: "月次決算と年間確定額",
+            question:
+              "当社は3月決算で、備品の減価償却費を4月から2月まで毎月5,300円ずつ計上済みである。年間の確定額が69,600円と計算されたので、3月末に差額を計上する。間接法を用いる。",
+            debit: [["減価償却費", 11300]],
+            credit: [["備品減価償却累計額", 11300]],
+            explanation:
+              "計上済みは5,300×11＝58,300円。年間69,600円との差は11,300円。",
+            materials: [],
+          },
+          {
+            topic: "税抜仕入返品",
+            question:
+              "先日税込57,200円で掛け仕入れした商品の全部を返品し、掛代金から差し引いた。税率10％、税抜方式である。",
+            debit: [["買掛金", 57200]],
+            credit: [
+              ["仕入", 52000],
+              ["仮払消費税", 5200],
+            ],
+            explanation: "返品は仕入時の逆仕訳。57,200÷1.1＝52,000円。",
+            materials: [],
+          },
+          {
+            topic: "増資",
+            question:
+              "増資のため1株24,000円で80株を発行し、全額の払込みを普通預金に受けた。払込額は全額を資本金とする。",
+            debit: [["普通預金", 1920000]],
+            credit: [["資本金", 1920000]],
+            explanation: "24,000×80＝1,920,000円。株式発行は収益ではない。",
+            materials: [],
+          },
+          {
+            topic: "売上集計と計上時点",
+            question:
+              "店舗の本日分の売上集計は下表のとおりである。消費税は税抜方式とし、クレジット手数料は代金の回収時に計上する。",
+            debit: [
+              ["現金", 92400],
+              ["クレジット売掛金", 61600],
+            ],
+            credit: [
+              ["売上", 140000],
+              ["仮受消費税", 14000],
+            ],
+            explanation:
+              "税抜売上140,000円、仮受消費税14,000円。販売時にはカード手数料を控除しない。",
+            materials: [
+              {
+                id: "j12-sales",
+                caption: "日計売上集計（円）",
+                headings: [
+                  "税抜売上",
+                  "消費税",
+                  "税込合計",
+                  "現金受取",
+                  "カード決済",
+                ],
+                rows: [["140,000", "14,000", "154,000", "92,400", "61,600"]],
+              },
+            ],
+          },
+          {
+            topic: "法人税等の確定",
+            question:
+              "決算で法人税等が213,000円と確定した。中間納付した84,000円は仮払法人税等に記帳している。残額は翌期に納付する。",
+            debit: [["法人税等", 213000]],
+            credit: [
+              ["仮払法人税等", 84000],
+              ["未払法人税等", 129000],
+            ],
+            explanation:
+              "費用は確定税額213,000円。中間納付を差し引いた129,000円を未払計上する。",
+            materials: [],
+          },
+          {
+            topic: "損失の振替",
+            question:
+              "決算振替後、損益勘定は借方合計4,185,000円、貸方合計4,042,000円であった。その差額を繰越利益剰余金に振り替える。",
+            debit: [["繰越利益剰余金", 143000]],
+            credit: [["損益", 143000]],
+            explanation:
+              "借方が大きいため143,000円の純損失。繰越利益剰余金を減らす。",
+            materials: [],
+          },
         ],
-        [
-          "支払手数料",
-          660
-        ]
-      ],
-      "credit": [
-        [
-          "売掛金",
-          154000
-        ]
-      ],
-      "explanation": "本日は販売ではなく回収。計上済みの税込売掛金154,000円を消し、入金153,340円と手数料660円に分ける。",
-      "materials": [
-        {
-          "id": "j0-invoice",
-          "caption": "桜商店あて請求書（円）",
-          "headings": [
-            "品名",
-            "税抜額",
-            "消費税",
-            "請求額"
+        parts: [
+          {
+            title: "（1）固定資産台帳と期中売却",
+            instructions: [
+              "当期はX7年4月1日～X8年3月31日。定額法・間接法、残存価額ゼロで月割計算する。取得日と使用開始日が異なる場合は使用開始日から償却する。",
+              "備品Aは240,000円でX5年11月20日に購入し、同年12月1日に使用を開始した。耐用年数5年。備品Bは当期首以前に取得・使用し、当期首の取得原価720,000円、累計額360,000円、耐用年数8年。当期9月30日に280,000円で売却した。売却前の当期償却は未処理である。",
+            ],
+            groups: [
+              {
+                id: "s0",
+                label: "取得初年度",
+                points: 2,
+                fields: [
+                  {
+                    id: "s0v",
+                    label: "備品AのX5年度減価償却費",
+                    answer: 16000,
+                    explanation:
+                      "使用開始X5年12月1日から4か月。240,000÷5×4/12＝16,000円。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+              {
+                id: "s1",
+                label: "当期首の累計額",
+                points: 2,
+                fields: [
+                  {
+                    id: "s1v",
+                    label: "備品AのX7年4月1日累計額",
+                    answer: 64000,
+                    explanation: "初年度16,000＋X6年度48,000＝64,000円。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+              {
+                id: "s2",
+                label: "当期末の備品A",
+                points: 2,
+                fields: [
+                  {
+                    id: "s2a",
+                    label: "備品AのX7年度末累計額",
+                    answer: 112000,
+                    explanation: "期首64,000＋当期48,000＝112,000円。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                  {
+                    id: "s2b",
+                    label: "備品AのX7年度末帳簿価額",
+                    answer: 128000,
+                    explanation: "240,000−112,000＝128,000円。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+              {
+                id: "s3",
+                label: "売却までの償却",
+                points: 2,
+                fields: [
+                  {
+                    id: "s3v",
+                    label: "備品Bの当期減価償却費",
+                    answer: 45000,
+                    explanation: "4月～9月の6か月。720,000÷8×6/12＝45,000円。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+              {
+                id: "s4",
+                label: "売却損益",
+                points: 2,
+                fields: [
+                  {
+                    id: "s4a",
+                    label: "備品Bの売却損益区分",
+                    answer: "固定資産売却損",
+                    options: ["固定資産売却益", "固定資産売却損"],
+                    explanation:
+                      "売却時帳簿価額315,000円が売却額280,000円より大きい。",
+                    type: "select",
+                  },
+                  {
+                    id: "s4v",
+                    label: "備品Bの売却損益額",
+                    answer: 35000,
+                    explanation:
+                      "720,000−360,000−45,000＝315,000円。315,000−280,000＝35,000円の損失。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+            ],
+            tables: [
+              {
+                id: "asset-register",
+                caption: "固定資産台帳・備品A（円）",
+                headings: [
+                  "年度",
+                  "当期償却費",
+                  "期首累計額",
+                  "期末累計額",
+                  "期末帳簿価額",
+                ],
+                rows: [
+                  ["X5年度", "{{s0v}}", "0", "？", "？"],
+                  ["X6年度", "？", "？", "？", "？"],
+                  ["X7年度", "？", "{{s1v}}", "{{s2a}}", "{{s2b}}"],
+                ],
+              },
+              {
+                id: "asset-disposal",
+                caption: "備品B・売却時の計算（円）",
+                headings: ["当期償却費", "損益区分", "損益額"],
+                rows: [["{{s3v}}", "{{s4a}}", "{{s4v}}"]],
+              },
+            ],
+          },
+          {
+            title: "（2）移動平均法の商品有高帳",
+            instructions: [
+              "商品Rについて下記の帳簿資料を照合し、移動平均法で空欄を完成しなさい。単価は円/個、その他の金額は円。消費税は考慮しない。",
+              "引取運賃は当社負担で取得原価に含める。13日の売上返品は10日の払出単価で受入欄に記入する。商品売買益は純売上高と売上原価の差額とする。",
+            ],
+            groups: [
+              {
+                id: "s5",
+                label: "最初の払出し",
+                points: 2,
+                fields: [
+                  {
+                    id: "s5v",
+                    label: "5月10日の払出原価",
+                    answer: 92000,
+                    explanation:
+                      "4日の仕入原価は90×980＋1,800＝90,000円。平均単価は(48,000＋90,000)÷150＝920円、100個分92,000円。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+              {
+                id: "s6",
+                label: "売上返品",
+                points: 2,
+                fields: [
+                  {
+                    id: "s6v",
+                    label: "5月13日の返品受入額",
+                    answer: 9200,
+                    explanation: "10日の払出単価920円で10個を受け入れる。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+              {
+                id: "s7",
+                label: "仕入後の平均単価",
+                points: 2,
+                fields: [
+                  {
+                    id: "s7v",
+                    label: "5月18日仕入後の平均単価",
+                    answer: 1012,
+                    explanation:
+                      "返品後60個55,200円。18日の原価40×1,100＋2,000＝46,000円。合計101,200÷100個＝1,012円。",
+                    type: "amount",
+                    unit: "円/個",
+                  },
+                ],
+              },
+              {
+                id: "s8",
+                label: "最後の払出し",
+                points: 2,
+                fields: [
+                  {
+                    id: "s8v",
+                    label: "5月25日の払出原価",
+                    answer: 70840,
+                    explanation: "70個×平均単価1,012円＝70,840円。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+              {
+                id: "s9",
+                label: "商品売買益",
+                points: 2,
+                fields: [
+                  {
+                    id: "s9v",
+                    label: "5月の商品売買益",
+                    answer: 86360,
+                    explanation:
+                      "純売上(100−10＋70)×1,500＝240,000円。売上原価92,000−9,200＋70,840＝153,640円。差額86,360円。発送費は商品売買益から控除しない。",
+                    type: "amount",
+                    unit: "円",
+                  },
+                ],
+              },
+            ],
+            tables: [
+              {
+                id: "goods-transactions",
+                caption: "5月中の商品Rの全取引",
+                headings: ["日付", "取引", "数量", "単価・金額の情報"],
+                rows: [
+                  ["5/1", "前月繰越", "60個", "原価単価800円"],
+                  ["5/4", "仕入", "90個", "仕入単価980円、引取運賃1,800円"],
+                  [
+                    "5/10",
+                    "売上",
+                    "100個",
+                    "販売単価1,500円。発送費2,000円を別途負担",
+                  ],
+                  ["5/13", "10日販売分の返品", "10個", "販売単価1,500円"],
+                  ["5/18", "仕入", "40個", "仕入単価1,100円、引取運賃2,000円"],
+                  ["5/25", "売上", "70個", "販売単価1,500円"],
+                ],
+              },
+              {
+                id: "goods-ledger",
+                caption: "商品有高帳・商品R（移動平均法）",
+                headings: [
+                  "日付",
+                  "摘要",
+                  "受入金額",
+                  "払出金額",
+                  "残高数量",
+                  "残高単価",
+                  "残高金額",
+                ],
+                rows: [
+                  ["5/1", "前月繰越", "48,000", "", "60", "800", "48,000"],
+                  ["5/4", "仕入", "？", "", "？", "？", "？"],
+                  ["5/10", "売上", "", "{{s5v}}", "？", "？", "？"],
+                  ["5/13", "売上返品", "{{s6v}}", "", "？", "？", "？"],
+                  ["5/18", "仕入", "？", "", "？", "{{s7v}}", "？"],
+                  ["5/25", "売上", "", "{{s8v}}", "？", "？", "？"],
+                  ["5/31", "次月繰越", "", "？", "", "", ""],
+                ],
+              },
+              {
+                id: "goods-profit",
+                caption: "5月の商品売買益",
+                headings: ["金額（円）"],
+                rows: [["{{s9v}}"]],
+              },
+            ],
+          },
+        ],
+        final: {
+          instructions: [
+            "次の試算表と決算整理事項に基づいて、決算整理後残高試算表と当期損益を完成しなさい。当期はX7年4月1日～X8年3月31日。単位は円。",
+            "残高ゼロと判断した入力欄には0を入力する。計算用の欄も入力できるが、採点対象外。当期損益は区分を選び、金額は絶対額で答える。決算振替仕訳はまだ行わない。",
           ],
-          "rows": [
-            [
-              "商品一式",
-              "140,000",
-              "14,000",
-              "154,000"
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "topic": "購入目的の判断",
-      "question": "中古車の販売を営む当社は、転売用の車両を500,000円で仕入れ、代金は翌月支払う。引取運送費12,000円は現金で支払った。",
-      "debit": [
-        [
-          "仕入",
-          512000
-        ]
-      ],
-      "credit": [
-        [
-          "買掛金",
-          500000
-        ],
-        [
-          "現金",
-          12000
-        ]
-      ],
-      "explanation": "販売目的の車両は商品。引取運送費を仕入原価に含める。",
-      "materials": []
-    },
-    {
-      "topic": "改良と修繕",
-      "question": "店舗の工事代金326,000円を普通預金から支払った。工事報告書によると、210,000円は建物の使用可能期間を延ばす改良、残額は従来の状態に戻すための通常の修繕である。",
-      "debit": [
-        [
-          "建物",
-          210000
-        ],
-        [
-          "修繕費",
-          116000
-        ]
-      ],
-      "credit": [
-        [
-          "普通預金",
-          326000
-        ]
-      ],
-      "explanation": "改良210,000円は資産の増加、通常の修繕116,000円は費用にする。",
-      "materials": []
-    },
-    {
-      "topic": "手形による貸付け",
-      "question": "取引先に460,000円を貸し付け、借用証書の代わりに同額の約束手形を受け取った。利息9,200円を差し引いた額を当社の普通預金から送金した。",
-      "debit": [
-        [
-          "手形貸付金",
-          460000
-        ]
-      ],
-      "credit": [
-        [
-          "普通預金",
-          450800
-        ],
-        [
-          "受取利息",
-          9200
-        ]
-      ],
-      "explanation": "金銭貸付けの手形なので手形貸付金。送金額は460,000−9,200＝450,800円。",
-      "materials": []
-    },
-    {
-      "topic": "当座借越",
-      "question": "買掛金145,000円の支払に小切手を振り出した。支払直前の当座預金残高は92,000円で、銀行と借越契約がある。当座預金と当座借越を区別する二勘定制を用いる。",
-      "debit": [
-        [
-          "買掛金",
-          145000
-        ]
-      ],
-      "credit": [
-        [
-          "当座預金",
-          92000
-        ],
-        [
-          "当座借越",
-          53000
-        ]
-      ],
-      "explanation": "預金残高を使い切り、不足53,000円を当座借越にする。",
-      "materials": []
-    },
-    {
-      "topic": "社会保険料の納付",
-      "question": "社会保険料の納付書に従い、従業員から預かっていた46,500円と、まだ記帳していない会社負担分46,500円を普通預金から一括納付した。",
-      "debit": [
-        [
-          "社会保険料預り金",
-          46500
-        ],
-        [
-          "法定福利費",
-          46500
-        ]
-      ],
-      "credit": [
-        [
-          "普通預金",
-          93000
-        ]
-      ],
-      "explanation": "従業員負担は預り金の消滅、会社負担は法定福利費。",
-      "materials": []
-    },
-    {
-      "topic": "敷金の精算",
-      "question": "事務所を退去し、差し入れていた敷金280,000円から原状回復費用96,000円が控除され、差額が普通預金に入金された。原状回復費用は修繕費とする。",
-      "debit": [
-        [
-          "普通預金",
-          184000
-        ],
-        [
-          "修繕費",
-          96000
-        ]
-      ],
-      "credit": [
-        [
-          "差入保証金",
-          280000
-        ]
-      ],
-      "explanation": "保証金全額を消し、返還額184,000円と費用96,000円に分ける。",
-      "materials": []
-    },
-    {
-      "topic": "償却済債権と仮受金",
-      "question": "以前、貸倒れ処理を終えていた売掛金の回収額27,000円が普通預金に入り、内容不明として仮受金に計上していた。本日、その内容が判明した。",
-      "debit": [
-        [
-          "仮受金",
-          27000
-        ]
-      ],
-      "credit": [
-        [
-          "償却債権取立益",
-          27000
-        ]
-      ],
-      "explanation": "入金自体は記帳済み。貸倒処理済みの債権を再び売掛金から減らさない。",
-      "materials": []
-    },
-    {
-      "topic": "現金過不足",
-      "question": "現金実査で実際有高が帳簿残高を5,400円上回ったため、すでに現金過不足として処理していた。決算で受取手数料4,800円の記帳漏れが判明し、残額は原因不明として処理する。",
-      "debit": [
-        [
-          "現金過不足",
-          5400
-        ]
-      ],
-      "credit": [
-        [
-          "受取手数料",
-          4800
-        ],
-        [
-          "雑益",
-          600
-        ]
-      ],
-      "explanation": "現金は実査時に修正済み。現金過不足を消し、判明分と原因不明の収益に分ける。",
-      "materials": []
-    },
-    {
-      "topic": "月次決算と年間確定額",
-      "question": "当社は3月決算で、備品の減価償却費を4月から2月まで毎月5,300円ずつ計上済みである。年間の確定額が69,600円と計算されたので、3月末に差額を計上する。間接法を用いる。",
-      "debit": [
-        [
-          "減価償却費",
-          11300
-        ]
-      ],
-      "credit": [
-        [
-          "備品減価償却累計額",
-          11300
-        ]
-      ],
-      "explanation": "計上済みは5,300×11＝58,300円。年間69,600円との差は11,300円。",
-      "materials": []
-    },
-    {
-      "topic": "税抜仕入返品",
-      "question": "先日税込57,200円で掛け仕入れした商品の全部を返品し、掛代金から差し引いた。税率10％、税抜方式である。",
-      "debit": [
-        [
-          "買掛金",
-          57200
-        ]
-      ],
-      "credit": [
-        [
-          "仕入",
-          52000
-        ],
-        [
-          "仮払消費税",
-          5200
-        ]
-      ],
-      "explanation": "返品は仕入時の逆仕訳。57,200÷1.1＝52,000円。",
-      "materials": []
-    },
-    {
-      "topic": "増資",
-      "question": "増資のため1株24,000円で80株を発行し、全額の払込みを普通預金に受けた。払込額は全額を資本金とする。",
-      "debit": [
-        [
-          "普通預金",
-          1920000
-        ]
-      ],
-      "credit": [
-        [
-          "資本金",
-          1920000
-        ]
-      ],
-      "explanation": "24,000×80＝1,920,000円。株式発行は収益ではない。",
-      "materials": []
-    },
-    {
-      "topic": "売上集計と計上時点",
-      "question": "店舗の本日分の売上集計は下表のとおりである。消費税は税抜方式とし、クレジット手数料は代金の回収時に計上する。",
-      "debit": [
-        [
-          "現金",
-          92400
-        ],
-        [
-          "クレジット売掛金",
-          61600
-        ]
-      ],
-      "credit": [
-        [
-          "売上",
-          140000
-        ],
-        [
-          "仮受消費税",
-          14000
-        ]
-      ],
-      "explanation": "税抜売上140,000円、仮受消費税14,000円。販売時にはカード手数料を控除しない。",
-      "materials": [
-        {
-          "id": "j12-sales",
-          "caption": "日計売上集計（円）",
-          "headings": [
-            "税抜売上",
-            "消費税",
-            "税込合計",
-            "現金受取",
-            "カード決済"
+          trialBalance: [
+            ["現金", 245000, 0],
+            ["普通預金", 670000, 0],
+            ["売掛金", 620000, 0],
+            ["電子記録債権", 280000, 0],
+            ["繰越商品", 340000, 0],
+            ["定期預金", 600000, 0],
+            ["備品", 1500000, 0],
+            ["貯蔵品", 18000, 0],
+            ["仮受金", 0, 190000],
+            ["貸倒引当金", 0, 27000],
+            ["備品減価償却累計額", 0, 690000],
+            ["資本金", 0, 1800000],
+            ["繰越利益剰余金", 0, 726000],
+            ["買掛金", 0, 460000],
+            ["借入金", 0, 700000],
+            ["売上", 0, 3600000],
+            ["受取家賃", 0, 420000],
+            ["仕入", 2400000, 0],
+            ["給料", 920000, 0],
+            ["支払家賃", 360000, 0],
+            ["租税公課", 32000, 0],
+            ["通信費", 72000, 0],
+            ["支払利息", 6000, 0],
+            ["その他の費用", 550000, 0],
           ],
-          "rows": [
-            [
-              "140,000",
-              "14,000",
-              "154,000",
-              "92,400",
-              "61,600"
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "topic": "法人税等の確定",
-      "question": "決算で法人税等が213,000円と確定した。中間納付した84,000円は仮払法人税等に記帳している。残額は翌期に納付する。",
-      "debit": [
-        [
-          "法人税等",
-          213000
-        ]
-      ],
-      "credit": [
-        [
-          "仮払法人税等",
-          84000
-        ],
-        [
-          "未払法人税等",
-          129000
-        ]
-      ],
-      "explanation": "費用は確定税額213,000円。中間納付を差し引いた129,000円を未払計上する。",
-      "materials": []
-    },
-    {
-      "topic": "損失の振替",
-      "question": "決算振替後、損益勘定は借方合計4,185,000円、貸方合計4,042,000円であった。その差額を繰越利益剰余金に振り替える。",
-      "debit": [
-        [
-          "繰越利益剰余金",
-          143000
-        ]
-      ],
-      "credit": [
-        [
-          "損益",
-          143000
-        ]
-      ],
-      "explanation": "借方が大きいため143,000円の純損失。繰越利益剰余金を減らす。",
-      "materials": []
-    }
-  ],
-  "parts": [
-    {
-      "title": "（1）固定資産台帳と期中売却",
-      "instructions": [
-        "当期はX7年4月1日～X8年3月31日。定額法・間接法、残存価額ゼロで月割計算する。取得日と使用開始日が異なる場合は使用開始日から償却する。",
-        "備品Aは240,000円でX5年11月20日に購入し、同年12月1日に使用を開始した。耐用年数5年。備品Bは当期首以前に取得・使用し、当期首の取得原価720,000円、累計額360,000円、耐用年数8年。当期9月30日に280,000円で売却した。売却前の当期償却は未処理である。"
-      ],
-      "groups": [
-        {
-          "id": "s0",
-          "label": "取得初年度",
-          "points": 2,
-          "fields": [
+          materials: [],
+          adjustments: [
+            "得意先の倒産により売掛金46,000円（前期販売分26,000円、当期販売分20,000円）が貸し倒れたが、未処理であった。",
+            "電子記録債権94,000円の満期入金が普通預金口座にあったが、未記帳であった。",
+            "仮受金190,000円のうち90,000円は売掛金回収60,000円と商品未納品の手付金30,000円、残り100,000円は下記の備品売却代金と判明した。",
+            "売掛金と電子記録債権の期末残高に対して3％の貸倒れを見積もり、貸倒引当金を差額補充法により設定する。",
+            "期末商品棚卸高は270,000円。売上原価は仕入勘定で算定する。",
+            "期首の4月1日に備品の一部（取得原価300,000円、期首減価償却累計額180,000円）を100,000円で売却したが、受取代金を仮受金とする仕訳だけを行っていた。これを修正する。",
+            "残った備品はすべて期首以前から使用し、残存価額ゼロ、耐用年数5年の定額法・間接法により償却する。当期取得はない。",
+            "試算表の貯蔵品18,000円は前期末の未使用郵便切手で、期首の再振替仕訳が未処理である。当期末の未使用切手は7,000円であり、当期購入分はすべて通信費に記帳済みである。",
+            "受取家賃は毎年1月1日に向こう1年分240,000円を受け取り、全額を受取家賃に計上する。当期首の再振替は適正に行われており、ほかに家賃取引はない。",
+            "定期預金600,000円は期間1年、年利率3.65％で当期中に預け入れた。決算までの経過日数は168日で、利息は満期に受け取る。1年365日とした日割計算で未収分を計上する。",
+            "借入金700,000円は当期2月1日に年利率3％、期間1年、利息は元本返済時払いの条件で借り入れ、利息は未計上である。月割計算とする。試算表の支払利息は別の返済済み借入れに係る当期分である。",
+            "法人税等の均等割6,000円を当期費用として計上し、未払法人税等とする。当期に中間納付はない。本問では消費税を考慮しない。",
+          ],
+          groups: [
             {
-              "id": "s0v",
-              "label": "備品AのX5年度減価償却費",
-              "answer": 16000,
-              "explanation": "使用開始X5年12月1日から4か月。240,000÷5×4/12＝16,000円。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        },
-        {
-          "id": "s1",
-          "label": "当期首の累計額",
-          "points": 2,
-          "fields": [
-            {
-              "id": "s1v",
-              "label": "備品AのX7年4月1日累計額",
-              "answer": 64000,
-              "explanation": "初年度16,000＋X6年度48,000＝64,000円。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        },
-        {
-          "id": "s2",
-          "label": "当期末の備品A",
-          "points": 2,
-          "fields": [
-            {
-              "id": "s2a",
-              "label": "備品AのX7年度末累計額",
-              "answer": 112000,
-              "explanation": "期首64,000＋当期48,000＝112,000円。",
-              "type": "amount",
-              "unit": "円"
-            },
-            {
-              "id": "s2b",
-              "label": "備品AのX7年度末帳簿価額",
-              "answer": 128000,
-              "explanation": "240,000−112,000＝128,000円。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        },
-        {
-          "id": "s3",
-          "label": "売却までの償却",
-          "points": 2,
-          "fields": [
-            {
-              "id": "s3v",
-              "label": "備品Bの当期減価償却費",
-              "answer": 45000,
-              "explanation": "4月～9月の6か月。720,000÷8×6/12＝45,000円。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        },
-        {
-          "id": "s4",
-          "label": "売却損益",
-          "points": 2,
-          "fields": [
-            {
-              "id": "s4a",
-              "label": "備品Bの売却損益区分",
-              "answer": "固定資産売却損",
-              "options": [
-                "固定資産売却益",
-                "固定資産売却損"
+              id: "f0",
+              label: "預金残高",
+              points: 3,
+              fields: [
+                {
+                  id: "f0v",
+                  label: "整理後・普通預金",
+                  answer: 764000,
+                  explanation:
+                    "670,000＋94,000＝764,000円。仮受金に計上済みの入金を二重に計上しない。",
+                  type: "amount",
+                  unit: "円",
+                },
               ],
-              "explanation": "売却時帳簿価額315,000円が売却額280,000円より大きい。",
-              "type": "select"
             },
             {
-              "id": "s4v",
-              "label": "備品Bの売却損益額",
-              "answer": 35000,
-              "explanation": "720,000−360,000−45,000＝315,000円。315,000−280,000＝35,000円の損失。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        }
-      ],
-      "tables": [
-        {
-          "id": "asset-register",
-          "caption": "固定資産台帳・備品A（円）",
-          "headings": [
-            "年度",
-            "当期償却費",
-            "期首累計額",
-            "期末累計額",
-            "期末帳簿価額"
-          ],
-          "rows": [
-            [
-              "X5年度",
-              "{{s0v}}",
-              "0",
-              "？",
-              "？"
-            ],
-            [
-              "X6年度",
-              "？",
-              "？",
-              "？",
-              "？"
-            ],
-            [
-              "X7年度",
-              "？",
-              "{{s1v}}",
-              "{{s2a}}",
-              "{{s2b}}"
-            ]
-          ]
-        },
-        {
-          "id": "asset-disposal",
-          "caption": "備品B・売却時の計算（円）",
-          "headings": [
-            "当期償却費",
-            "損益区分",
-            "損益額"
-          ],
-          "rows": [
-            [
-              "{{s3v}}",
-              "{{s4a}}",
-              "{{s4v}}"
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "title": "（2）移動平均法の商品有高帳",
-      "instructions": [
-        "商品Rについて下記の帳簿資料を照合し、移動平均法で空欄を完成しなさい。単価は円/個、その他の金額は円。消費税は考慮しない。",
-        "引取運賃は当社負担で取得原価に含める。13日の売上返品は10日の払出単価で受入欄に記入する。商品売買益は純売上高と売上原価の差額とする。"
-      ],
-      "groups": [
-        {
-          "id": "s5",
-          "label": "最初の払出し",
-          "points": 2,
-          "fields": [
+              id: "f1",
+              label: "期末債権",
+              points: 3,
+              fields: [
+                {
+                  id: "f1a",
+                  label: "整理後・売掛金",
+                  answer: 514000,
+                  explanation: "620,000−46,000−60,000＝514,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f1b",
+                  label: "整理後・電子記録債権",
+                  answer: 186000,
+                  explanation: "280,000−94,000＝186,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
             {
-              "id": "s5v",
-              "label": "5月10日の払出原価",
-              "answer": 92000,
-              "explanation": "4日の仕入原価は90×980＋1,800＝90,000円。平均単価は(48,000＋90,000)÷150＝920円、100個分92,000円。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        },
-        {
-          "id": "s6",
-          "label": "売上返品",
-          "points": 2,
-          "fields": [
+              id: "f2",
+              label: "貸倒引当金",
+              points: 3,
+              fields: [
+                {
+                  id: "f2a",
+                  label: "整理後・貸倒引当金",
+                  answer: 21000,
+                  explanation: "(514,000＋186,000)×3％＝21,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f2b",
+                  label: "整理後・貸倒引当金繰入",
+                  answer: 20000,
+                  explanation:
+                    "貸倒れ後の残高27,000−26,000＝1,000円。必要額21,000との差額20,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
             {
-              "id": "s6v",
-              "label": "5月13日の返品受入額",
-              "answer": 9200,
-              "explanation": "10日の払出単価920円で10個を受け入れる。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        },
-        {
-          "id": "s7",
-          "label": "仕入後の平均単価",
-          "points": 2,
-          "fields": [
+              id: "f3",
+              label: "棚卸と売上原価",
+              points: 3,
+              fields: [
+                {
+                  id: "f3a",
+                  label: "整理後・繰越商品",
+                  answer: 270000,
+                  explanation: "期末棚卸高270,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f3b",
+                  label: "整理後・仕入",
+                  answer: 2470000,
+                  explanation: "340,000＋2,400,000−270,000＝2,470,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
             {
-              "id": "s7v",
-              "label": "5月18日仕入後の平均単価",
-              "answer": 1012,
-              "explanation": "返品後60個55,200円。18日の原価40×1,100＋2,000＝46,000円。合計101,200÷100個＝1,012円。",
-              "type": "amount",
-              "unit": "円/個"
-            }
-          ]
-        },
-        {
-          "id": "s8",
-          "label": "最後の払出し",
-          "points": 2,
-          "fields": [
+              id: "f4",
+              label: "固定資産残高",
+              points: 3,
+              fields: [
+                {
+                  id: "f4a",
+                  label: "整理後・備品",
+                  answer: 1200000,
+                  explanation: "1,500,000−売却取得原価300,000＝1,200,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f4b",
+                  label: "整理後・備品減価償却累計額",
+                  answer: 750000,
+                  explanation: "690,000−180,000＋240,000＝750,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
             {
-              "id": "s8v",
-              "label": "5月25日の払出原価",
-              "answer": 70840,
-              "explanation": "70個×平均単価1,012円＝70,840円。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        },
-        {
-          "id": "s9",
-          "label": "商品売買益",
-          "points": 2,
-          "fields": [
+              id: "f5",
+              label: "仮受金の解消",
+              points: 3,
+              fields: [
+                {
+                  id: "f5v",
+                  label: "整理後・仮受金",
+                  answer: 0,
+                  explanation:
+                    "回収・手付金90,000円と売却代金100,000円をすべて正しい科目へ振り替え、残高はゼロ。空欄ではなく0を入力する。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
             {
-              "id": "s9v",
-              "label": "5月の商品売買益",
-              "answer": 86360,
-              "explanation": "純売上(100−10＋70)×1,500＝240,000円。売上原価92,000−9,200＋70,840＝153,640円。差額86,360円。発送費は商品売買益から控除しない。",
-              "type": "amount",
-              "unit": "円"
-            }
-          ]
-        }
-      ],
-      "tables": [
-        {
-          "id": "goods-transactions",
-          "caption": "5月中の商品Rの全取引",
-          "headings": [
-            "日付",
-            "取引",
-            "数量",
-            "単価・金額の情報"
+              id: "f6",
+              label: "家賃の期間配分",
+              points: 3,
+              fields: [
+                {
+                  id: "f6a",
+                  label: "整理後・受取家賃",
+                  answer: 240000,
+                  explanation:
+                    "期首再振替180,000＋受取240,000−期末繰延180,000＝240,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f6b",
+                  label: "整理後・前受家賃",
+                  answer: 180000,
+                  explanation:
+                    "1月から12月までの家賃のうち翌期4～12月の9か月分。240,000×9/12＝180,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
+            {
+              id: "f7",
+              label: "切手と再振替",
+              points: 3,
+              fields: [
+                {
+                  id: "f7a",
+                  label: "整理後・貯蔵品",
+                  answer: 7000,
+                  explanation: "期末の未使用切手7,000円が資産。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f7b",
+                  label: "整理後・通信費",
+                  answer: 83000,
+                  explanation:
+                    "72,000＋再振替18,000−期末未使用7,000＝83,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
+            {
+              id: "f8",
+              label: "預金利息",
+              points: 3,
+              fields: [
+                {
+                  id: "f8a",
+                  label: "整理後・未収利息",
+                  answer: 10080,
+                  explanation: "600,000×3.65％×168/365＝10,080円。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f8b",
+                  label: "整理後・受取利息",
+                  answer: 10080,
+                  explanation:
+                    "この定期預金の未収利息と同額を当期収益へ計上する。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
+            {
+              id: "f9",
+              label: "借入利息",
+              points: 3,
+              fields: [
+                {
+                  id: "f9a",
+                  label: "整理後・未払利息",
+                  answer: 3500,
+                  explanation: "700,000×3％×2/12＝3,500円。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f9b",
+                  label: "整理後・支払利息",
+                  answer: 9500,
+                  explanation: "試算表6,000＋見越し3,500＝9,500円。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
+            {
+              id: "f10",
+              label: "当期の損失と償却",
+              points: 3,
+              fields: [
+                {
+                  id: "f10a",
+                  label: "整理後・貸倒損失",
+                  answer: 20000,
+                  explanation:
+                    "当期発生債権20,000円は貸倒引当金を使用せず費用処理。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f10b",
+                  label: "整理後・固定資産売却損",
+                  answer: 20000,
+                  explanation:
+                    "売却時簿価300,000−180,000＝120,000円。売却額100,000円との差20,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+                {
+                  id: "f10c",
+                  label: "整理後・減価償却費",
+                  answer: 240000,
+                  explanation: "売却後の備品1,200,000÷5＝240,000円。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
+            {
+              id: "f11",
+              label: "当期損益",
+              points: 2,
+              fields: [
+                {
+                  id: "f11a",
+                  label: "当期損益の区分",
+                  answer: "当期純損失",
+                  options: ["当期純利益", "当期純損失"],
+                  explanation: "費用合計が収益合計を上回る。",
+                  type: "select",
+                },
+                {
+                  id: "f11v",
+                  label: "当期損益の絶対額",
+                  answer: 880420,
+                  explanation:
+                    "収益3,850,080−費用4,730,500＝△880,420円。整理後試算表の利益剰余金へはまだ加減しない。",
+                  type: "amount",
+                  unit: "円",
+                },
+              ],
+            },
           ],
-          "rows": [
-            [
-              "5/1",
-              "前月繰越",
-              "60個",
-              "原価単価800円"
-            ],
-            [
-              "5/4",
-              "仕入",
-              "90個",
-              "仕入単価980円、引取運賃1,800円"
-            ],
-            [
-              "5/10",
-              "売上",
-              "100個",
-              "販売単価1,500円。発送費2,000円を別途負担"
-            ],
-            [
-              "5/13",
-              "10日販売分の返品",
-              "10個",
-              "販売単価1,500円"
-            ],
-            [
-              "5/18",
-              "仕入",
-              "40個",
-              "仕入単価1,100円、引取運賃2,000円"
-            ],
-            [
-              "5/25",
-              "売上",
-              "70個",
-              "販売単価1,500円"
-            ]
-          ]
+          tables: [
+            {
+              id: "adjusted-trial",
+              caption: "決算整理後残高試算表（円）",
+              headings: ["借方", "勘定科目", "貸方"],
+              rows: [
+                ["245,000", "現金", ""],
+                ["{{f0v}}", "普通預金", ""],
+                ["{{f1a}}", "売掛金", ""],
+                ["{{f1b}}", "電子記録債権", ""],
+                ["{{f3a}}", "繰越商品", ""],
+                ["600,000", "定期預金", ""],
+                ["{{f4a}}", "備品", ""],
+                ["{{f7a}}", "貯蔵品", ""],
+                ["{{f8a}}", "未収利息", ""],
+                ["", "買掛金", "460,000"],
+                ["", "借入金", "700,000"],
+                ["", "前受金", "？"],
+                ["", "前受家賃", "{{f6b}}"],
+                ["", "未払利息", "{{f9a}}"],
+                ["", "未払法人税等", "？"],
+                ["", "仮受金", "{{f5v}}"],
+                ["", "貸倒引当金", "{{f2a}}"],
+                ["", "備品減価償却累計額", "{{f4b}}"],
+                ["", "資本金", "1,800,000"],
+                ["", "繰越利益剰余金", "726,000"],
+                ["", "売上", "3,600,000"],
+                ["", "受取家賃", "{{f6a}}"],
+                ["", "受取利息", "{{f8b}}"],
+                ["{{f3b}}", "仕入", ""],
+                ["920,000", "給料", ""],
+                ["360,000", "支払家賃", ""],
+                ["32,000", "租税公課", ""],
+                ["{{f7b}}", "通信費", ""],
+                ["{{f9b}}", "支払利息", ""],
+                ["550,000", "その他の費用", ""],
+                ["{{f10a}}", "貸倒損失", ""],
+                ["{{f2b}}", "貸倒引当金繰入", ""],
+                ["{{f10b}}", "固定資産売却損", ""],
+                ["{{f10c}}", "減価償却費", ""],
+                ["？", "法人税等", ""],
+                ["？", "合計", "？"],
+              ],
+            },
+            {
+              id: "net-result",
+              caption: "当期損益",
+              headings: ["区分", "金額（円・絶対額）"],
+              rows: [["{{f11a}}", "{{f11v}}"]],
+            },
+          ],
         },
-        {
-          "id": "goods-ledger",
-          "caption": "商品有高帳・商品R（移動平均法）",
-          "headings": [
-            "日付",
-            "摘要",
-            "受入金額",
-            "払出金額",
-            "残高数量",
-            "残高単価",
-            "残高金額"
-          ],
-          "rows": [
-            [
-              "5/1",
-              "前月繰越",
-              "48,000",
-              "",
-              "60",
-              "800",
-              "48,000"
-            ],
-            [
-              "5/4",
-              "仕入",
-              "？",
-              "",
-              "？",
-              "？",
-              "？"
-            ],
-            [
-              "5/10",
-              "売上",
-              "",
-              "{{s5v}}",
-              "？",
-              "？",
-              "？"
-            ],
-            [
-              "5/13",
-              "売上返品",
-              "{{s6v}}",
-              "",
-              "？",
-              "？",
-              "？"
-            ],
-            [
-              "5/18",
-              "仕入",
-              "？",
-              "",
-              "？",
-              "{{s7v}}",
-              "？"
-            ],
-            [
-              "5/25",
-              "売上",
-              "",
-              "{{s8v}}",
-              "？",
-              "？",
-              "？"
-            ],
-            [
-              "5/31",
-              "次月繰越",
-              "",
-              "？",
-              "",
-              "",
-              ""
-            ]
-          ]
+        checks: {
+          profit: -880420,
+          balanceSheetTotal: 3025080,
+          trialTotal: 8613000,
         },
-        {
-          "id": "goods-profit",
-          "caption": "5月の商品売買益",
-          "headings": [
-            "金額（円）"
-          ],
-          "rows": [
-            [
-              "{{s9v}}"
-            ]
-          ]
-        }
-      ]
-    }
-  ],
-  "final": {
-    "instructions": [
-      "次の試算表と決算整理事項に基づいて、決算整理後残高試算表と当期損益を完成しなさい。当期はX7年4月1日～X8年3月31日。単位は円。",
-      "残高ゼロと判断した入力欄には0を入力する。計算用の欄も入力できるが、採点対象外。当期損益は区分を選び、金額は絶対額で答える。決算振替仕訳はまだ行わない。"
-    ],
-    "trialBalance": [
-      [
-        "現金",
-        245000,
-        0
-      ],
-      [
-        "普通預金",
-        670000,
-        0
-      ],
-      [
-        "売掛金",
-        620000,
-        0
-      ],
-      [
-        "電子記録債権",
-        280000,
-        0
-      ],
-      [
-        "繰越商品",
-        340000,
-        0
-      ],
-      [
-        "定期預金",
-        600000,
-        0
-      ],
-      [
-        "備品",
-        1500000,
-        0
-      ],
-      [
-        "貯蔵品",
-        18000,
-        0
-      ],
-      [
-        "仮受金",
-        0,
-        190000
-      ],
-      [
-        "貸倒引当金",
-        0,
-        27000
-      ],
-      [
-        "備品減価償却累計額",
-        0,
-        690000
-      ],
-      [
-        "資本金",
-        0,
-        1800000
-      ],
-      [
-        "繰越利益剰余金",
-        0,
-        726000
-      ],
-      [
-        "買掛金",
-        0,
-        460000
-      ],
-      [
-        "借入金",
-        0,
-        700000
-      ],
-      [
-        "売上",
-        0,
-        3600000
-      ],
-      [
-        "受取家賃",
-        0,
-        420000
-      ],
-      [
-        "仕入",
-        2400000,
-        0
-      ],
-      [
-        "給料",
-        920000,
-        0
-      ],
-      [
-        "支払家賃",
-        360000,
-        0
-      ],
-      [
-        "租税公課",
-        32000,
-        0
-      ],
-      [
-        "通信費",
-        72000,
-        0
-      ],
-      [
-        "支払利息",
-        6000,
-        0
-      ],
-      [
-        "その他の費用",
-        550000,
-        0
-      ]
-    ],
-    "materials": [],
-    "adjustments": [
-      "得意先の倒産により売掛金46,000円（前期販売分26,000円、当期販売分20,000円）が貸し倒れたが、未処理であった。",
-      "電子記録債権94,000円の満期入金が普通預金口座にあったが、未記帳であった。",
-      "仮受金190,000円のうち90,000円は売掛金回収60,000円と商品未納品の手付金30,000円、残り100,000円は下記の備品売却代金と判明した。",
-      "売掛金と電子記録債権の期末残高に対して3％の貸倒れを見積もり、貸倒引当金を差額補充法により設定する。",
-      "期末商品棚卸高は270,000円。売上原価は仕入勘定で算定する。",
-      "期首の4月1日に備品の一部（取得原価300,000円、期首減価償却累計額180,000円）を100,000円で売却したが、受取代金を仮受金とする仕訳だけを行っていた。これを修正する。",
-      "残った備品はすべて期首以前から使用し、残存価額ゼロ、耐用年数5年の定額法・間接法により償却する。当期取得はない。",
-      "試算表の貯蔵品18,000円は前期末の未使用郵便切手で、期首の再振替仕訳が未処理である。当期末の未使用切手は7,000円であり、当期購入分はすべて通信費に記帳済みである。",
-      "受取家賃は毎年1月1日に向こう1年分240,000円を受け取り、全額を受取家賃に計上する。当期首の再振替は適正に行われており、ほかに家賃取引はない。",
-      "定期預金600,000円は期間1年、年利率3.65％で当期中に預け入れた。決算までの経過日数は168日で、利息は満期に受け取る。1年365日とした日割計算で未収分を計上する。",
-      "借入金700,000円は当期2月1日に年利率3％、期間1年、利息は元本返済時払いの条件で借り入れ、利息は未計上である。月割計算とする。試算表の支払利息は別の返済済み借入れに係る当期分である。",
-      "法人税等の均等割6,000円を当期費用として計上し、未払法人税等とする。当期に中間納付はない。本問では消費税を考慮しない。"
-    ],
-    "groups": [
-      {
-        "id": "f0",
-        "label": "預金残高",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f0v",
-            "label": "整理後・普通預金",
-            "answer": 764000,
-            "explanation": "670,000＋94,000＝764,000円。仮受金に計上済みの入金を二重に計上しない。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f1",
-        "label": "期末債権",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f1a",
-            "label": "整理後・売掛金",
-            "answer": 514000,
-            "explanation": "620,000−46,000−60,000＝514,000円。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f1b",
-            "label": "整理後・電子記録債権",
-            "answer": 186000,
-            "explanation": "280,000−94,000＝186,000円。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f2",
-        "label": "貸倒引当金",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f2a",
-            "label": "整理後・貸倒引当金",
-            "answer": 21000,
-            "explanation": "(514,000＋186,000)×3％＝21,000円。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f2b",
-            "label": "整理後・貸倒引当金繰入",
-            "answer": 20000,
-            "explanation": "貸倒れ後の残高27,000−26,000＝1,000円。必要額21,000との差額20,000円。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f3",
-        "label": "棚卸と売上原価",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f3a",
-            "label": "整理後・繰越商品",
-            "answer": 270000,
-            "explanation": "期末棚卸高270,000円。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f3b",
-            "label": "整理後・仕入",
-            "answer": 2470000,
-            "explanation": "340,000＋2,400,000−270,000＝2,470,000円。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f4",
-        "label": "固定資産残高",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f4a",
-            "label": "整理後・備品",
-            "answer": 1200000,
-            "explanation": "1,500,000−売却取得原価300,000＝1,200,000円。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f4b",
-            "label": "整理後・備品減価償却累計額",
-            "answer": 750000,
-            "explanation": "690,000−180,000＋240,000＝750,000円。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f5",
-        "label": "仮受金の解消",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f5v",
-            "label": "整理後・仮受金",
-            "answer": 0,
-            "explanation": "回収・手付金90,000円と売却代金100,000円をすべて正しい科目へ振り替え、残高はゼロ。空欄ではなく0を入力する。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f6",
-        "label": "家賃の期間配分",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f6a",
-            "label": "整理後・受取家賃",
-            "answer": 240000,
-            "explanation": "期首再振替180,000＋受取240,000−期末繰延180,000＝240,000円。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f6b",
-            "label": "整理後・前受家賃",
-            "answer": 180000,
-            "explanation": "1月から12月までの家賃のうち翌期4～12月の9か月分。240,000×9/12＝180,000円。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f7",
-        "label": "切手と再振替",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f7a",
-            "label": "整理後・貯蔵品",
-            "answer": 7000,
-            "explanation": "期末の未使用切手7,000円が資産。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f7b",
-            "label": "整理後・通信費",
-            "answer": 83000,
-            "explanation": "72,000＋再振替18,000−期末未使用7,000＝83,000円。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f8",
-        "label": "預金利息",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f8a",
-            "label": "整理後・未収利息",
-            "answer": 10080,
-            "explanation": "600,000×3.65％×168/365＝10,080円。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f8b",
-            "label": "整理後・受取利息",
-            "answer": 10080,
-            "explanation": "この定期預金の未収利息と同額を当期収益へ計上する。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f9",
-        "label": "借入利息",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f9a",
-            "label": "整理後・未払利息",
-            "answer": 3500,
-            "explanation": "700,000×3％×2/12＝3,500円。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f9b",
-            "label": "整理後・支払利息",
-            "answer": 9500,
-            "explanation": "試算表6,000＋見越し3,500＝9,500円。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f10",
-        "label": "当期の損失と償却",
-        "points": 3,
-        "fields": [
-          {
-            "id": "f10a",
-            "label": "整理後・貸倒損失",
-            "answer": 20000,
-            "explanation": "当期発生債権20,000円は貸倒引当金を使用せず費用処理。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f10b",
-            "label": "整理後・固定資産売却損",
-            "answer": 20000,
-            "explanation": "売却時簿価300,000−180,000＝120,000円。売却額100,000円との差20,000円。",
-            "type": "amount",
-            "unit": "円"
-          },
-          {
-            "id": "f10c",
-            "label": "整理後・減価償却費",
-            "answer": 240000,
-            "explanation": "売却後の備品1,200,000÷5＝240,000円。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      },
-      {
-        "id": "f11",
-        "label": "当期損益",
-        "points": 2,
-        "fields": [
-          {
-            "id": "f11a",
-            "label": "当期損益の区分",
-            "answer": "当期純損失",
-            "options": [
-              "当期純利益",
-              "当期純損失"
-            ],
-            "explanation": "費用合計が収益合計を上回る。",
-            "type": "select"
-          },
-          {
-            "id": "f11v",
-            "label": "当期損益の絶対額",
-            "answer": 880420,
-            "explanation": "収益3,850,080−費用4,730,500＝△880,420円。整理後試算表の利益剰余金へはまだ加減しない。",
-            "type": "amount",
-            "unit": "円"
-          }
-        ]
-      }
-    ],
-    "tables": [
-      {
-        "id": "adjusted-trial",
-        "caption": "決算整理後残高試算表（円）",
-        "headings": [
-          "借方",
-          "勘定科目",
-          "貸方"
-        ],
-        "rows": [
-          [
-            "245,000",
-            "現金",
-            ""
-          ],
-          [
-            "{{f0v}}",
-            "普通預金",
-            ""
-          ],
-          [
-            "{{f1a}}",
-            "売掛金",
-            ""
-          ],
-          [
-            "{{f1b}}",
-            "電子記録債権",
-            ""
-          ],
-          [
-            "{{f3a}}",
-            "繰越商品",
-            ""
-          ],
-          [
-            "600,000",
-            "定期預金",
-            ""
-          ],
-          [
-            "{{f4a}}",
-            "備品",
-            ""
-          ],
-          [
-            "{{f7a}}",
-            "貯蔵品",
-            ""
-          ],
-          [
-            "{{f8a}}",
-            "未収利息",
-            ""
-          ],
-          [
-            "",
-            "買掛金",
-            "460,000"
-          ],
-          [
-            "",
-            "借入金",
-            "700,000"
-          ],
-          [
-            "",
-            "前受金",
-            "？"
-          ],
-          [
-            "",
-            "前受家賃",
-            "{{f6b}}"
-          ],
-          [
-            "",
-            "未払利息",
-            "{{f9a}}"
-          ],
-          [
-            "",
-            "未払法人税等",
-            "？"
-          ],
-          [
-            "",
-            "仮受金",
-            "{{f5v}}"
-          ],
-          [
-            "",
-            "貸倒引当金",
-            "{{f2a}}"
-          ],
-          [
-            "",
-            "備品減価償却累計額",
-            "{{f4b}}"
-          ],
-          [
-            "",
-            "資本金",
-            "1,800,000"
-          ],
-          [
-            "",
-            "繰越利益剰余金",
-            "726,000"
-          ],
-          [
-            "",
-            "売上",
-            "3,600,000"
-          ],
-          [
-            "",
-            "受取家賃",
-            "{{f6a}}"
-          ],
-          [
-            "",
-            "受取利息",
-            "{{f8b}}"
-          ],
-          [
-            "{{f3b}}",
-            "仕入",
-            ""
-          ],
-          [
-            "920,000",
-            "給料",
-            ""
-          ],
-          [
-            "360,000",
-            "支払家賃",
-            ""
-          ],
-          [
-            "32,000",
-            "租税公課",
-            ""
-          ],
-          [
-            "{{f7b}}",
-            "通信費",
-            ""
-          ],
-          [
-            "{{f9b}}",
-            "支払利息",
-            ""
-          ],
-          [
-            "550,000",
-            "その他の費用",
-            ""
-          ],
-          [
-            "{{f10a}}",
-            "貸倒損失",
-            ""
-          ],
-          [
-            "{{f2b}}",
-            "貸倒引当金繰入",
-            ""
-          ],
-          [
-            "{{f10b}}",
-            "固定資産売却損",
-            ""
-          ],
-          [
-            "{{f10c}}",
-            "減価償却費",
-            ""
-          ],
-          [
-            "？",
-            "法人税等",
-            ""
-          ],
-          [
-            "？",
-            "合計",
-            "？"
-          ]
-        ]
-      },
-      {
-        "id": "net-result",
-        "caption": "当期損益",
-        "headings": [
-          "区分",
-          "金額（円・絶対額）"
-        ],
-        "rows": [
-          [
-            "{{f11a}}",
-            "{{f11v}}"
-          ]
-        ]
-      }
-    ]
-  },
-  "checks": {
-    "profit": -880420,
-    "balanceSheetTotal": 3025080,
-    "trialTotal": 8613000
-  }
-};
+      };
       // このファイルはビルド時に各HTMLへ埋め込み、ブラウザーから読み込まない。
-const key = `boki3-mock-2026-${examConfig.number}-v${examConfig.revision}`;
-const money = (value) => Number(value).toLocaleString("ja-JP");
-const escapeHtml = (value) =>
-  String(value).replace(
-    /[&<>"']/g,
-    (char) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        char
-      ],
-  );
-const journals = examConfig.journals;
-const secondGroups = examConfig.parts.flatMap((part) => part.groups);
-const finalGroups = examConfig.final.groups;
-const allFields = [...secondGroups, ...finalGroups].flatMap(
-  (unit) => unit.fields,
-);
-const fieldsById = new Map(allFields.map((field) => [field.id, field]));
-const accounts = [
-  ...new Set(
-    journals
-      .flatMap((q) => [...q.debit, ...q.credit].map(([account]) => account))
-      .concat([
-        "現金過不足",
-        "受取手形",
-        "支払手形",
-        "前払金",
-        "前受金",
-        "未払金",
-        "未収入金",
-        "買掛金",
-        "売掛金",
-        "仮払金",
-        "仮受金",
-        "租税公課",
-        "支払手数料",
-        "貸倒引当金繰入",
-        "貸倒引当金戻入",
-        "当座預金",
-        "普通預金",
-      ]),
-  ),
-].sort((a, b) => a.localeCompare(b, "ja"));
-const freshState = () => ({
-  status: "ready",
-  deadline: null,
-  finishedAt: null,
-  tab: 1,
-  answers: {},
-  marks: {},
-  expired: false,
-});
-let state = freshState();
-let storageAvailable = true;
-function parseAmount(value) {
-  if (typeof value !== "string" && typeof value !== "number") return null;
-  const text = String(value).normalize("NFKC").trim();
-  if (!/^(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(text)) return null;
-  const number = Number(text.replace(/,/g, ""));
-  return Number.isSafeInteger(number) && number >= 0 ? number : null;
-}
-try {
-  const saved = JSON.parse(localStorage.getItem(key));
-  if (
-    saved &&
-    ["ready", "running", "done"].includes(saved.status) &&
-    saved.answers &&
-    typeof saved.answers === "object" &&
-    !Array.isArray(saved.answers) &&
-    saved.marks &&
-    typeof saved.marks === "object" &&
-    [1, 2, 3].includes(saved.tab) &&
-    (saved.status === "ready" || Number.isFinite(saved.deadline))
-  )
-    state = { ...freshState(), ...saved };
-} catch {
-  storageAvailable = false;
-}
-function save() {
-  try {
-    localStorage.setItem(key, JSON.stringify(state));
-  } catch {
-    storageAvailable = false;
-  }
-  document.getElementById("saveWarning").hidden = storageAvailable;
-}
-const inputClass =
-  "w-full min-w-[100px] rounded-lg border border-slate-400 bg-white px-3 py-2 text-right font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100";
-function amountInput(id, label) {
-  return `<input type="text" id="${id}" data-answer="${id}" data-money="true" inputmode="numeric" autocomplete="off" maxlength="21" aria-label="${escapeHtml(label)}" class="${inputClass}" value="${escapeHtml(state.answers[id] ?? "")}" ${state.status === "done" ? "disabled" : ""}>`;
-}
-function selectInput(id, options, label) {
-  return `<select id="${id}" data-answer="${id}" aria-label="${escapeHtml(label)}" class="w-full min-w-[130px] rounded-lg border border-slate-400 bg-white px-2 py-2 text-sm focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100" ${state.status === "done" ? "disabled" : ""}><option value="">選択してください</option>${options.map((option) => `<option value="${escapeHtml(option)}" ${state.answers[id] === option ? "selected" : ""}>${escapeHtml(option)}</option>`).join("")}</select>`;
-}
-function fieldInput(field) {
-  if (field.type === "select")
-    return selectInput(field.id, field.options, field.label);
-  if (field.type === "multiple") {
-    const values = Array.isArray(state.answers[field.id])
-      ? state.answers[field.id]
-      : [];
-    return `<fieldset id="${field.id}" class="grid gap-2 md:grid-cols-2"><legend class="sr-only">${escapeHtml(field.label)}</legend>${field.options.map((option, index) => `<label class="flex items-center gap-2 rounded border border-slate-200 p-2 text-left text-sm"><input type="checkbox" id="${field.id}-${index}" data-answer="${field.id}" data-multiple="true" value="${escapeHtml(option)}" ${values.includes(option) ? "checked" : ""} ${state.status === "done" ? "disabled" : ""}>${escapeHtml(option)}</label>`).join("")}</fieldset>`;
-  }
-  return amountInput(field.id, field.label);
-}
-function tableCell(value, table, rowIndex, columnIndex) {
-  if (value === "？") {
-    const id = `work-${table.id}-${rowIndex}-${columnIndex}`;
-    return amountInput(id, `${table.caption} ${rowIndex + 1}行目 ${table.headings[columnIndex]}（計算用・採点対象外）`);
-  }
-  return escapeHtml(value).replace(/\{\{([a-zA-Z0-9]+)\}\}/g, (_, id) => {
-    const field = fieldsById.get(id);
-    if (!field) throw new Error(`解答欄が見つからない: ${id}`);
-    return fieldInput(field);
-  });
-}
-function renderTable(table) {
-  const wide = table.headings.length >= 8;
-  return `<div class="mt-5 min-w-0 max-w-full overflow-x-auto rounded-xl border ${wide ? "max-h-[70vh] overflow-auto" : ""}"><table id="${escapeHtml(table.id)}" class="w-full ${wide ? "min-w-[1500px]" : table.id === "source-trial" ? "min-w-[420px]" : "min-w-[650px]"} border-collapse text-sm"><caption class="bg-white p-4 text-left text-base font-bold">${escapeHtml(table.caption)}</caption><thead><tr class="bg-slate-100">${table.headings.map((heading,index) => `<th scope="col" class="border p-3 whitespace-nowrap ${wide ? "sticky top-0 z-10 bg-slate-100" : ""} ${wide && index===0 ? "sticky left-0 z-10 bg-slate-100" : ""}">${escapeHtml(heading)}</th>`).join("")}</tr></thead><tbody>${table.rows.map((row, rowIndex) => `<tr>${row.map((cell,index) => `<td class="border p-3 align-middle leading-7 ${wide && index===0 ? "sticky left-0 z-10 bg-white" : ""} ${/^[\d,]+$/.test(String(cell)) ? "text-right font-mono tabular-nums" : ""}">${tableCell(cell, table, rowIndex, index)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
-}
-function gradeJournal(question, index) {
-  return [
-    ["d", question.debit],
-    ["c", question.credit],
-  ].every(([side, expected]) => {
-    const actual = [];
-    for (let row = 0; row < 4; row++) {
-      const account = state.answers[`j${index}${side}${row}a`] ?? "";
-      const raw = state.answers[`j${index}${side}${row}v`] ?? "";
-      if (account === "" && String(raw).trim() === "") continue;
-      const amount = parseAmount(raw);
-      if (
-        typeof account !== "string" ||
-        !account ||
-        amount === null ||
-        amount === 0
-      )
-        return false;
-      actual.push([account, amount]);
-    }
-    return (
-      actual.length === expected.length &&
-      new Set(actual.map(([account]) => account)).size === actual.length &&
-      expected.every(([account, amount]) =>
-        actual.some(([name, value]) => name === account && value === amount),
-      )
-    );
-  });
-}
-function isCorrect(field) {
-  const value = state.answers[field.id];
-  if (field.type === "select") return value === field.answer;
-  if (field.type === "multiple")
-    return (
-      Array.isArray(value) &&
-      value.length === field.answer.length &&
-      new Set(value).size === value.length &&
-      field.answer.every((item) => value.includes(item))
-    );
-  if (field.type === "blank")
-    return (
-      value === undefined || (typeof value === "string" && value.trim() === "")
-    );
-  return parseAmount(value ?? "") === field.answer;
-}
-const gradeGroup = (unit) => unit.fields.every(isCorrect);
-function scores() {
-  return [
-    journals.reduce(
-      (sum, question, index) => sum + (gradeJournal(question, index) ? 3 : 0),
-      0,
-    ),
-    secondGroups.reduce(
-      (sum, unit) => sum + (gradeGroup(unit) ? unit.points : 0),
-      0,
-    ),
-    finalGroups.reduce(
-      (sum, unit) => sum + (gradeGroup(unit) ? unit.points : 0),
-      0,
-    ),
-  ];
-}
-function answerText(field) {
-  if (field.type === "blank") return "空欄";
-  if (field.type === "multiple") return field.answer.join("・");
-  return field.type === "amount"
-    ? `${money(field.answer)}${field.unit || "円"}`
-    : field.answer;
-}
-function explanations(groups) {
-  if (state.status !== "done") return "";
-  return `<div class="mt-6 space-y-4">${groups.map((unit) => `<article class="rounded-xl border p-4"><h3 class="font-bold ${gradeGroup(unit) ? "text-teal-800" : "text-rose-700"}">${gradeGroup(unit) ? "○" : "×"} ${escapeHtml(unit.label)} · ${gradeGroup(unit) ? unit.points : 0} / ${unit.points}点</h3>${unit.fields.map((field) => `<div class="mt-3 text-sm leading-7"><p>${isCorrect(field) ? "○" : "×"} ${escapeHtml(field.label)}：<strong>${escapeHtml(answerText(field))}</strong></p><p class="text-slate-600">${escapeHtml(field.explanation)}</p></div>`).join("")}</article>`).join("")}</div>`;
-}
-const paragraphs = (lines) =>
-  lines
-    .map((line) => `<p class="mt-3 text-sm leading-8">${escapeHtml(line)}</p>`)
-    .join("");
-function render() {
-  document.getElementById("panel1").innerHTML =
-    `<p class="rounded-xl bg-teal-50 p-4 text-sm leading-7">各取引を仕訳しなさい。商品売買は三分法。特に指定がなければ消費税を考慮しない。勘定科目は共通の選択肢から選ぶ。同一側の同じ科目は1行にまとめ、未使用行は科目・金額とも空欄にする。各問3点。</p>` +
-    journals
-      .map(
-        (question, index) =>
-          `<article id="journal-${index}" class="min-w-0 rounded-2xl border bg-white p-5 md:p-6"><div class="flex items-center justify-between gap-3"><h2 class="font-bold text-teal-800">問${index + 1}</h2><label class="text-xs text-slate-500"><input type="checkbox" data-mark="${index}" ${state.marks[index] ? "checked" : ""} ${state.status === "done" ? "disabled" : ""}> あとで見直す</label></div><p class="mt-4 text-sm leading-8">${escapeHtml(question.question)}</p>${question.materials.map(renderTable).join("")}<div class="mt-4 overflow-x-auto"><table class="w-full min-w-[680px] border-separate border-spacing-2 text-sm"><thead><tr><th>借方科目</th><th>金額（円）</th><th>貸方科目</th><th>金額（円）</th></tr></thead><tbody>${Array.from({ length: 4 }, (_, row) => `<tr>${["d", "c"].map((side) => `<td>${selectInput(`j${index}${side}${row}a`, accounts, `問${index + 1} ${side === "d" ? "借方" : "貸方"}${row + 1}行目科目`)}</td><td>${amountInput(`j${index}${side}${row}v`, `問${index + 1} ${side === "d" ? "借方" : "貸方"}${row + 1}行目金額`)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${state.status === "done" ? `<div class="mt-5 border-t pt-4 text-sm leading-7"><p class="font-bold ${gradeJournal(question, index) ? "text-teal-800" : "text-rose-700"}">${gradeJournal(question, index) ? "○ 正解 3" : "× 不正解 0"} / 3点 · ${escapeHtml(question.topic)}</p><p>借方：${question.debit.map(([account, value]) => `${escapeHtml(account)} ${money(value)}`).join(" / ")}</p><p>貸方：${question.credit.map(([account, value]) => `${escapeHtml(account)} ${money(value)}`).join(" / ")}</p><p class="mt-2 text-slate-600">${escapeHtml(question.explanation)}</p></div>` : ""}</article>`,
-      )
-      .join("");
-  document.getElementById("panel2").innerHTML = examConfig.parts
-    .map(
-      (part) =>
-        `<article class="min-w-0 rounded-2xl border bg-white p-5 md:p-6"><h2 class="text-lg font-bold">${escapeHtml(part.title)} <span class="text-sm font-normal text-slate-500">${part.groups.reduce((sum, unit) => sum + unit.points, 0)}点</span></h2>${paragraphs(part.instructions)}${part.tables.map(renderTable).join("")}${explanations(part.groups)}</article>`,
-    )
-    .join("");
-  const trial = examConfig.final.trialBalance;
-  const total = trial.reduce((sum, row) => sum + row[1], 0);
-  const sourceTable = {
-    id: "source-trial",
-    caption: "資料1・決算整理前残高試算表（円）",
-    headings: ["借方", "勘定科目", "貸方"],
-    rows: [
-      ...trial.map(([account, debit, credit]) => [
-        debit ? money(debit) : "—",
-        account,
-        credit ? money(credit) : "—",
-      ]),
-      [money(total), "合計", money(total)],
-    ],
-  };
-  document.getElementById("panel3").innerHTML =
-    `<div class="rounded-xl bg-teal-50 p-5">${paragraphs(examConfig.final.instructions)}</div><div class="grid items-start gap-5 xl:grid-cols-2"><article class="min-w-0 rounded-2xl border bg-white p-4">${renderTable(sourceTable)}${examConfig.final.materials.map(renderTable).join("")}</article><article class="min-w-0 rounded-2xl border bg-white p-5"><h2 class="text-lg font-bold">決算整理事項等</h2><ol class="mt-4 list-decimal space-y-4 pl-6 text-sm leading-8">${examConfig.final.adjustments.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol></article></div><article class="min-w-0 rounded-2xl border bg-white p-4 md:p-6"><h2 class="text-lg font-bold">答案</h2>${examConfig.final.tables.map(renderTable).join("")}${explanations(finalGroups)}</article>`;
-  switchTab(state.tab, false);
-}
-function switchTab(tab, scroll = true) {
-  state.tab = Number(tab);
-  for (let index = 1; index <= 3; index++)
-    document.getElementById(`panel${index}`).hidden = state.tab !== index;
-  document.querySelectorAll("[data-tab]").forEach((button) => {
-    const active = Number(button.dataset.tab) === state.tab;
-    button.className = `rounded-xl px-4 py-3 font-bold ${active ? "bg-teal-800 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`;
-    button.setAttribute("aria-current", active ? "page" : "false");
-  });
-  document.getElementById("sectionEyebrow").textContent =
-    `QUESTION 0${state.tab} / ${[45, 20, 35][state.tab - 1]}点`;
-  document.getElementById("sectionTitle").textContent = [
-    "第1問 仕訳",
-    `第2問 ${examConfig.secondTitle}`,
-    `第3問 ${examConfig.thirdTitle}`,
-  ][state.tab - 1];
-  updateProgress();
-  save();
-  if (scroll)
-    document
-      .getElementById("exam")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
-}
-function hasInput(field) {
-  if (field.type === "blank") return true;
-  const value = state.answers[field.id];
-  return field.type === "multiple"
-    ? Array.isArray(value) && value.length > 0
-    : typeof value === "string" && value.trim() !== "";
-}
-function counts() {
-  const answeredJournals = journals.filter((_, index) =>
-    ["d", "c"].every((side) =>
-      [0, 1, 2, 3].some(
-        (row) =>
-          Boolean(state.answers[`j${index}${side}${row}a`]) &&
-          String(state.answers[`j${index}${side}${row}v`] ?? "").trim() !== "",
-      ),
-    ),
-  ).length;
-  return [
-    answeredJournals,
-    ...[secondGroups, finalGroups].map(
-      (groups) => groups.filter((unit) => unit.fields.every(hasInput)).length,
-    ),
-  ];
-}
-function updateProgress() {
-  const values = counts();
-  document.getElementById("progress").textContent =
-    `入力済み ${values[state.tab - 1]} / ${[15, secondGroups.length, finalGroups.length][state.tab - 1]} ${state.tab === 1 ? "問" : "採点単位"} · 見直し ${Object.values(state.marks).filter(Boolean).length}件`;
-}
-function editable() {
-  if (state.status !== "running") return false;
-  if (Date.now() >= state.deadline) {
-    finish(true);
-    return false;
-  }
-  return true;
-}
-function formatInput(element) {
-  if (!editable()) return;
-  const raw = element.value;
-  element.setCustomValidity("");
-  element.removeAttribute("aria-invalid");
-  if (raw.trim() !== "") {
-    const value = parseAmount(raw);
-    if (value === null) {
-      element.setCustomValidity("0以上の整数を入力してね。");
-      element.setAttribute("aria-invalid", "true");
-      element.reportValidity();
-    } else element.value = money(value);
-  }
-  state.answers[element.dataset.answer] = element.value;
-  save();
-  updateProgress();
-}
-document.addEventListener("input", (event) => {
-  const element = event.target;
-  if (!element.dataset.answer || element.dataset.multiple || !editable())
-    return;
-  element.setCustomValidity("");
-  element.removeAttribute("aria-invalid");
-  state.answers[element.dataset.answer] = element.value;
-  save();
-  updateProgress();
-});
-document.addEventListener("change", (event) => {
-  const element = event.target;
-  if (
-    (!element.dataset.answer && element.dataset.mark === undefined) ||
-    !editable()
-  )
-    return;
-  if (element.dataset.mark !== undefined)
-    state.marks[element.dataset.mark] = element.checked;
-  else if (element.dataset.multiple)
-    state.answers[element.dataset.answer] = [
-      ...document.querySelectorAll(
-        `[data-answer="${element.dataset.answer}"]:checked`,
-      ),
-    ].map((input) => input.value);
-  else state.answers[element.dataset.answer] = element.value;
-  save();
-  updateProgress();
-});
-document.addEventListener("keydown", (event) => {
-  if (
-    event.key === "Enter" &&
-    !event.isComposing &&
-    event.target.dataset.money
-  ) {
-    event.preventDefault();
-    formatInput(event.target);
-  }
-});
-document.addEventListener("focusout", (event) => {
-  if (event.target.dataset.money) formatInput(event.target);
-});
-document
-  .querySelectorAll("[data-tab]")
-  .forEach((button) =>
-    button.addEventListener("click", () => switchTab(button.dataset.tab)),
-  );
-function showExam() {
-  document.getElementById("intro").hidden = true;
-  document.getElementById("exam").hidden = false;
-  document.getElementById("nav").hidden = false;
-  render();
-}
-function tick() {
-  if (state.status !== "running") return;
-  const remaining = Math.max(
-    0,
-    Math.ceil((state.deadline - Date.now()) / 1000),
-  );
-  document.getElementById("timer").textContent =
-    `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`;
-  document
-    .getElementById("timer")
-    .classList.toggle("text-rose-600", remaining <= 300);
-  if (!remaining) finish(true);
-}
-document.getElementById("start").addEventListener("click", () => {
-  if (state.status !== "ready") return;
-  state.status = "running";
-  state.deadline = Date.now() + 3600000;
-  save();
-  showExam();
-  tick();
-});
-document.getElementById("finish").addEventListener("click", () => {
-  if (state.status === "done") {
-    if (
-      window.confirm("この改訂版の解答と結果を消して、同じ問題をもう一度解く？")
-    ) {
-      state = freshState();
-      save();
-      document.getElementById("result").hidden = true;
-      document.getElementById("exam").hidden = true;
-      document.getElementById("nav").hidden = true;
-      document.getElementById("intro").hidden = false;
-      document.getElementById("finish").textContent = "解答を提出する";
-      document.getElementById("timer").textContent = "60:00";
-      window.scrollTo({ top: 0 });
-    }
-    return;
-  }
-  if (!editable()) return;
-  const values = counts();
-  document.getElementById("confirmText").textContent =
-    `入力済みは第1問${values[0]}/15問、第2問${values[1]}/${secondGroups.length}採点単位、第3問${values[2]}/${finalGroups.length}採点単位。未解答は不正解となり、提出後は変更できないよ。`;
-  document.getElementById("confirm").showModal();
-});
-document
-  .getElementById("cancelFinish")
-  .addEventListener("click", () => document.getElementById("confirm").close());
-document
-  .getElementById("confirmFinish")
-  .addEventListener("click", () => finish(Date.now() >= state.deadline));
-function finish(expired) {
-  if (state.status !== "running") return;
-  state.status = "done";
-  state.expired = Boolean(expired);
-  state.finishedAt = expired ? state.deadline : Date.now();
-  save();
-  document.getElementById("confirm").close();
-  render();
-  showResult();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-function userAnswer(field) {
-  const raw = state.answers[field.id] ?? (field.type === "multiple" ? [] : "");
-  return {
-    raw,
-    value:
-      field.type === "select"
-        ? raw || null
-        : field.type === "multiple"
-          ? Array.isArray(raw)
-            ? [...raw]
-            : []
-          : parseAmount(raw),
-  };
-}
-function fieldReport(field) {
-  return {
-    id: field.id,
-    question: field.label,
-    answerType: field.type,
-    unit: field.unit ?? null,
-    choices: field.options ?? null,
-    userAnswer: userAnswer(field),
-    correctAnswer: field.answer,
-    correct: isCorrect(field),
-    explanation: field.explanation,
-  };
-}
-function groupReport(unit) {
-  return {
-    id: unit.id,
-    question: unit.label,
-    score: gradeGroup(unit) ? unit.points : 0,
-    maxScore: unit.points,
-    correct: gradeGroup(unit),
-    gradingRule: "この採点単位内の全欄が正解の場合に加点",
-    fields: unit.fields.map(fieldReport),
-  };
-}
-function createAnswerReport() {
-  if (state.status !== "done") return null;
-  const sectionScores = scores();
-  return {
-    schemaVersion: 2,
-    reportType: "boki3-answer-review",
-    calculationNotes: Object.entries(state.answers)
-      .filter(([id]) => id.startsWith("work-"))
-      .map(([id, raw]) => ({ id, raw, value: parseAmount(raw), graded: false })),
-    exportedAt: new Date().toISOString(),
-    exam: {
-      id: `boki3-2026-${examConfig.number}`,
-      revision: examConfig.revision,
-      title: `日商簿記3級 ${examConfig.title}`,
-      fiscalYear: 2026,
-      applicableUntil: "2027-03-31",
-      durationSeconds: 3600,
-      currency: "JPY",
-      official: false,
-    },
-    attempt: {
-      status: "submitted",
-      startedAt: new Date(state.deadline - 3600000).toISOString(),
-      finishedAt: new Date(state.finishedAt ?? state.deadline).toISOString(),
-      elapsedSeconds: Math.max(
-        0,
-        Math.min(
-          3600,
-          Math.round(
-            ((state.finishedAt ?? state.deadline) - state.deadline + 3600000) /
-              1000,
-          ),
-        ),
-      ),
-      submittedByTimeout: Boolean(state.expired),
-      score: sectionScores.reduce((sum, score) => sum + score, 0),
-      maxScore: 100,
-      passingScore: 70,
-    },
-    reviewGuide:
-      "あんじゅの解答と正解を比較して日本語で復習を手伝ってね。誤答理由は入力だけから断定しないこと。表の{{id}}は同じidを持つ解答欄を表す。金額のrawは入力文字列、valueは数値で空欄・不正値はnull。blank型の正解nullは空欄指定。multiple型は全選択肢の組合せで判定する。採点はこの非公式模試独自。",
-    sections: [
-      {
-        number: 1,
-        title: "仕訳",
-        score: sectionScores[0],
-        maxScore: 45,
-        instructions:
-          "三分法。指定がなければ消費税を考慮しない。各問完全正解3点、行順自由・同一側同一科目重複不可。",
-        choices: accounts,
-        questions: journals.map((question, index) => ({
-          id: `j${index}`,
-          number: index + 1,
-          topic: question.topic,
-          question: question.question,
-          sourceData: question.materials,
-          markedForReview: Boolean(state.marks[index]),
-          userAnswer: Object.fromEntries(
-            [
-              ["debit", "d"],
-              ["credit", "c"],
-            ].map(([name, side]) => [
-              name,
-              Array.from({ length: 4 }, (_, row) => ({
-                account: state.answers[`j${index}${side}${row}a`] || null,
-                amountRaw: state.answers[`j${index}${side}${row}v`] ?? "",
-                amount: parseAmount(
-                  state.answers[`j${index}${side}${row}v`] ?? "",
-                ),
-              })),
+      const key = `boki3-mock-2026-${examConfig.number}-v${examConfig.revision}`;
+      const money = (value) => Number(value).toLocaleString("ja-JP");
+      const escapeHtml = (value) =>
+        String(value).replace(
+          /[&<>"']/g,
+          (char) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[char],
+        );
+      const journals = examConfig.journals;
+      const secondGroups = examConfig.parts.flatMap((part) => part.groups);
+      const finalGroups = examConfig.final.groups;
+      const allFields = [...secondGroups, ...finalGroups].flatMap(
+        (unit) => unit.fields,
+      );
+      const fieldsById = new Map(allFields.map((field) => [field.id, field]));
+      const accounts = [
+        ...new Set(
+          journals
+            .flatMap((q) =>
+              [...q.debit, ...q.credit].map(([account]) => account),
+            )
+            .concat([
+              "現金過不足",
+              "受取手形",
+              "支払手形",
+              "前払金",
+              "前受金",
+              "未払金",
+              "未収入金",
+              "買掛金",
+              "売掛金",
+              "仮払金",
+              "仮受金",
+              "租税公課",
+              "支払手数料",
+              "貸倒引当金繰入",
+              "貸倒引当金戻入",
+              "当座預金",
+              "普通預金",
             ]),
+        ),
+      ].sort((a, b) => a.localeCompare(b, "ja"));
+      const freshState = () => ({
+        status: "ready",
+        deadline: null,
+        finishedAt: null,
+        tab: 1,
+        answers: {},
+        marks: {},
+        expired: false,
+      });
+      let state = freshState();
+      let storageAvailable = true;
+      function parseAmount(value) {
+        if (typeof value !== "string" && typeof value !== "number") return null;
+        const text = String(value).normalize("NFKC").trim();
+        if (!/^(?:\d+|\d{1,3}(?:,\d{3})+)$/.test(text)) return null;
+        const number = Number(text.replace(/,/g, ""));
+        return Number.isSafeInteger(number) && number >= 0 ? number : null;
+      }
+      try {
+        const saved = JSON.parse(localStorage.getItem(key));
+        if (
+          saved &&
+          ["ready", "running", "done"].includes(saved.status) &&
+          saved.answers &&
+          typeof saved.answers === "object" &&
+          !Array.isArray(saved.answers) &&
+          saved.marks &&
+          typeof saved.marks === "object" &&
+          [1, 2, 3].includes(saved.tab) &&
+          (saved.status === "ready" || Number.isFinite(saved.deadline))
+        )
+          state = { ...freshState(), ...saved };
+      } catch {
+        storageAvailable = false;
+      }
+      function save() {
+        try {
+          localStorage.setItem(key, JSON.stringify(state));
+        } catch {
+          storageAvailable = false;
+        }
+        document.getElementById("saveWarning").hidden = storageAvailable;
+      }
+      const inputClass =
+        "w-full min-w-[100px] rounded-lg border border-slate-400 bg-white px-3 py-2 text-right font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100";
+      function amountInput(id, label) {
+        return `<input type="text" id="${id}" data-answer="${id}" data-money="true" inputmode="numeric" autocomplete="off" maxlength="21" aria-label="${escapeHtml(label)}" class="${inputClass}" value="${escapeHtml(state.answers[id] ?? "")}" ${state.status === "done" ? "disabled" : ""}>`;
+      }
+      function selectInput(id, options, label) {
+        return `<select id="${id}" data-answer="${id}" aria-label="${escapeHtml(label)}" class="w-full min-w-[130px] rounded-lg border border-slate-400 bg-white px-2 py-2 text-sm focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100" ${state.status === "done" ? "disabled" : ""}><option value="">選択してください</option>${options.map((option) => `<option value="${escapeHtml(option)}" ${state.answers[id] === option ? "selected" : ""}>${escapeHtml(option)}</option>`).join("")}</select>`;
+      }
+      function fieldInput(field) {
+        if (field.type === "select")
+          return selectInput(field.id, field.options, field.label);
+        if (field.type === "multiple") {
+          const values = Array.isArray(state.answers[field.id])
+            ? state.answers[field.id]
+            : [];
+          return `<fieldset id="${field.id}" class="grid gap-2 md:grid-cols-2"><legend class="sr-only">${escapeHtml(field.label)}</legend>${field.options.map((option, index) => `<label class="flex items-center gap-2 rounded border border-slate-200 p-2 text-left text-sm"><input type="checkbox" id="${field.id}-${index}" data-answer="${field.id}" data-multiple="true" value="${escapeHtml(option)}" ${values.includes(option) ? "checked" : ""} ${state.status === "done" ? "disabled" : ""}>${escapeHtml(option)}</label>`).join("")}</fieldset>`;
+        }
+        return amountInput(field.id, field.label);
+      }
+      function tableCell(value, table, rowIndex, columnIndex) {
+        if (value === "？") {
+          const id = `work-${table.id}-${rowIndex}-${columnIndex}`;
+          return amountInput(
+            id,
+            `${table.caption} ${rowIndex + 1}行目 ${table.headings[columnIndex]}（計算用・採点対象外）`,
+          );
+        }
+        return escapeHtml(value).replace(/\{\{([a-zA-Z0-9]+)\}\}/g, (_, id) => {
+          const field = fieldsById.get(id);
+          if (!field) throw new Error(`解答欄が見つからない: ${id}`);
+          return fieldInput(field);
+        });
+      }
+      function renderTable(table) {
+        const wide = table.headings.length >= 8;
+        return `<div class="mt-5 min-w-0 max-w-full overflow-x-auto rounded-xl border ${wide ? "max-h-[70vh] overflow-auto" : ""}"><table id="${escapeHtml(table.id)}" class="w-full ${wide ? "min-w-[1500px]" : table.id === "source-trial" ? "min-w-[420px]" : "min-w-[650px]"} border-collapse text-sm"><caption class="bg-white p-4 text-left text-base font-bold">${escapeHtml(table.caption)}</caption><thead><tr class="bg-slate-100">${table.headings.map((heading, index) => `<th scope="col" class="border p-3 whitespace-nowrap ${wide ? "sticky top-0 z-10 bg-slate-100" : ""} ${wide && index === 0 ? "sticky left-0 z-10 bg-slate-100" : ""}">${escapeHtml(heading)}</th>`).join("")}</tr></thead><tbody>${table.rows.map((row, rowIndex) => `<tr>${row.map((cell, index) => `<td class="border p-3 align-middle leading-7 ${wide && index === 0 ? "sticky left-0 z-10 bg-white" : ""} ${/^[\d,]+$/.test(String(cell)) ? "text-right font-mono tabular-nums" : ""}">${tableCell(cell, table, rowIndex, index)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+      }
+      function gradeJournal(question, index) {
+        return [
+          ["d", question.debit],
+          ["c", question.credit],
+        ].every(([side, expected]) => {
+          const actual = [];
+          for (let row = 0; row < 4; row++) {
+            const account = state.answers[`j${index}${side}${row}a`] ?? "";
+            const raw = state.answers[`j${index}${side}${row}v`] ?? "";
+            if (account === "" && String(raw).trim() === "") continue;
+            const amount = parseAmount(raw);
+            if (
+              typeof account !== "string" ||
+              !account ||
+              amount === null ||
+              amount === 0
+            )
+              return false;
+            actual.push([account, amount]);
+          }
+          return (
+            actual.length === expected.length &&
+            new Set(actual.map(([account]) => account)).size ===
+              actual.length &&
+            expected.every(([account, amount]) =>
+              actual.some(
+                ([name, value]) => name === account && value === amount,
+              ),
+            )
+          );
+        });
+      }
+      function isCorrect(field) {
+        const value = state.answers[field.id];
+        if (field.type === "select") return value === field.answer;
+        if (field.type === "multiple")
+          return (
+            Array.isArray(value) &&
+            value.length === field.answer.length &&
+            new Set(value).size === value.length &&
+            field.answer.every((item) => value.includes(item))
+          );
+        if (field.type === "blank")
+          return (
+            value === undefined ||
+            (typeof value === "string" && value.trim() === "")
+          );
+        return parseAmount(value ?? "") === field.answer;
+      }
+      const gradeGroup = (unit) => unit.fields.every(isCorrect);
+      function scores() {
+        return [
+          journals.reduce(
+            (sum, question, index) =>
+              sum + (gradeJournal(question, index) ? 3 : 0),
+            0,
           ),
-          correctAnswer: {
-            debit: question.debit.map(([account, amount]) => ({
+          secondGroups.reduce(
+            (sum, unit) => sum + (gradeGroup(unit) ? unit.points : 0),
+            0,
+          ),
+          finalGroups.reduce(
+            (sum, unit) => sum + (gradeGroup(unit) ? unit.points : 0),
+            0,
+          ),
+        ];
+      }
+      function answerText(field) {
+        if (field.type === "blank") return "空欄";
+        if (field.type === "multiple") return field.answer.join("・");
+        return field.type === "amount"
+          ? `${money(field.answer)}${field.unit || "円"}`
+          : field.answer;
+      }
+      function explanations(groups) {
+        if (state.status !== "done") return "";
+        return `<div class="mt-6 space-y-4">${groups.map((unit) => `<article class="rounded-xl border p-4"><h3 class="font-bold ${gradeGroup(unit) ? "text-teal-800" : "text-rose-700"}">${gradeGroup(unit) ? "○" : "×"} ${escapeHtml(unit.label)} · ${gradeGroup(unit) ? unit.points : 0} / ${unit.points}点</h3>${unit.fields.map((field) => `<div class="mt-3 text-sm leading-7"><p>${isCorrect(field) ? "○" : "×"} ${escapeHtml(field.label)}：<strong>${escapeHtml(answerText(field))}</strong></p><p class="text-slate-600">${escapeHtml(field.explanation)}</p></div>`).join("")}</article>`).join("")}</div>`;
+      }
+      const paragraphs = (lines) =>
+        lines
+          .map(
+            (line) =>
+              `<p class="mt-3 text-sm leading-8">${escapeHtml(line)}</p>`,
+          )
+          .join("");
+      function render() {
+        document.getElementById("panel1").innerHTML =
+          `<p class="rounded-xl bg-teal-50 p-4 text-sm leading-7">各取引を仕訳しなさい。商品売買は三分法。特に指定がなければ消費税を考慮しない。勘定科目は共通の選択肢から選ぶ。同一側の同じ科目は1行にまとめ、未使用行は科目・金額とも空欄にする。各問3点。</p>` +
+          journals
+            .map(
+              (question, index) =>
+                `<article id="journal-${index}" class="min-w-0 rounded-2xl border bg-white p-5 md:p-6"><div class="flex items-center justify-between gap-3"><h2 class="font-bold text-teal-800">問${index + 1}</h2><label class="text-xs text-slate-500"><input type="checkbox" data-mark="${index}" ${state.marks[index] ? "checked" : ""} ${state.status === "done" ? "disabled" : ""}> あとで見直す</label></div><p class="mt-4 text-sm leading-8">${escapeHtml(question.question)}</p>${question.materials.map(renderTable).join("")}<div class="mt-4 overflow-x-auto"><table class="w-full min-w-[680px] border-separate border-spacing-2 text-sm"><thead><tr><th>借方科目</th><th>金額（円）</th><th>貸方科目</th><th>金額（円）</th></tr></thead><tbody>${Array.from({ length: 4 }, (_, row) => `<tr>${["d", "c"].map((side) => `<td>${selectInput(`j${index}${side}${row}a`, accounts, `問${index + 1} ${side === "d" ? "借方" : "貸方"}${row + 1}行目科目`)}</td><td>${amountInput(`j${index}${side}${row}v`, `問${index + 1} ${side === "d" ? "借方" : "貸方"}${row + 1}行目金額`)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${state.status === "done" ? `<div class="mt-5 border-t pt-4 text-sm leading-7"><p class="font-bold ${gradeJournal(question, index) ? "text-teal-800" : "text-rose-700"}">${gradeJournal(question, index) ? "○ 正解 3" : "× 不正解 0"} / 3点 · ${escapeHtml(question.topic)}</p><p>借方：${question.debit.map(([account, value]) => `${escapeHtml(account)} ${money(value)}`).join(" / ")}</p><p>貸方：${question.credit.map(([account, value]) => `${escapeHtml(account)} ${money(value)}`).join(" / ")}</p><p class="mt-2 text-slate-600">${escapeHtml(question.explanation)}</p></div>` : ""}</article>`,
+            )
+            .join("");
+        document.getElementById("panel2").innerHTML = examConfig.parts
+          .map(
+            (part) =>
+              `<article class="min-w-0 rounded-2xl border bg-white p-5 md:p-6"><h2 class="text-lg font-bold">${escapeHtml(part.title)} <span class="text-sm font-normal text-slate-500">${part.groups.reduce((sum, unit) => sum + unit.points, 0)}点</span></h2>${paragraphs(part.instructions)}${part.tables.map(renderTable).join("")}${explanations(part.groups)}</article>`,
+          )
+          .join("");
+        const trial = examConfig.final.trialBalance;
+        const total = trial.reduce((sum, row) => sum + row[1], 0);
+        const sourceTable = {
+          id: "source-trial",
+          caption: "資料1・決算整理前残高試算表（円）",
+          headings: ["借方", "勘定科目", "貸方"],
+          rows: [
+            ...trial.map(([account, debit, credit]) => [
+              debit ? money(debit) : "—",
               account,
-              amount,
+              credit ? money(credit) : "—",
+            ]),
+            [money(total), "合計", money(total)],
+          ],
+        };
+        document.getElementById("panel3").innerHTML =
+          `<div class="rounded-xl bg-teal-50 p-5">${paragraphs(examConfig.final.instructions)}</div><div class="grid items-start gap-5 xl:grid-cols-2"><article class="min-w-0 rounded-2xl border bg-white p-4">${renderTable(sourceTable)}${examConfig.final.materials.map(renderTable).join("")}</article><article class="min-w-0 rounded-2xl border bg-white p-5"><h2 class="text-lg font-bold">決算整理事項等</h2><ol class="mt-4 list-decimal space-y-4 pl-6 text-sm leading-8">${examConfig.final.adjustments.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ol></article></div><article class="min-w-0 rounded-2xl border bg-white p-4 md:p-6"><h2 class="text-lg font-bold">答案</h2>${examConfig.final.tables.map(renderTable).join("")}${explanations(finalGroups)}</article>`;
+        switchTab(state.tab, false);
+      }
+      function switchTab(tab, scroll = true) {
+        state.tab = Number(tab);
+        for (let index = 1; index <= 3; index++)
+          document.getElementById(`panel${index}`).hidden = state.tab !== index;
+        document.querySelectorAll("[data-tab]").forEach((button) => {
+          const active = Number(button.dataset.tab) === state.tab;
+          button.className = `rounded-xl px-4 py-3 font-bold ${active ? "bg-teal-800 text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`;
+          button.setAttribute("aria-current", active ? "page" : "false");
+        });
+        document.getElementById("sectionEyebrow").textContent =
+          `QUESTION 0${state.tab} / ${[45, 20, 35][state.tab - 1]}点`;
+        document.getElementById("sectionTitle").textContent = [
+          "第1問 仕訳",
+          `第2問 ${examConfig.secondTitle}`,
+          `第3問 ${examConfig.thirdTitle}`,
+        ][state.tab - 1];
+        updateProgress();
+        save();
+        if (scroll)
+          document
+            .getElementById("exam")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      function hasInput(field) {
+        if (field.type === "blank") return true;
+        const value = state.answers[field.id];
+        return field.type === "multiple"
+          ? Array.isArray(value) && value.length > 0
+          : typeof value === "string" && value.trim() !== "";
+      }
+      function counts() {
+        const answeredJournals = journals.filter((_, index) =>
+          ["d", "c"].every((side) =>
+            [0, 1, 2, 3].some(
+              (row) =>
+                Boolean(state.answers[`j${index}${side}${row}a`]) &&
+                String(
+                  state.answers[`j${index}${side}${row}v`] ?? "",
+                ).trim() !== "",
+            ),
+          ),
+        ).length;
+        return [
+          answeredJournals,
+          ...[secondGroups, finalGroups].map(
+            (groups) =>
+              groups.filter((unit) => unit.fields.every(hasInput)).length,
+          ),
+        ];
+      }
+      function updateProgress() {
+        const values = counts();
+        document.getElementById("progress").textContent =
+          `入力済み ${values[state.tab - 1]} / ${[15, secondGroups.length, finalGroups.length][state.tab - 1]} ${state.tab === 1 ? "問" : "採点単位"} · 見直し ${Object.values(state.marks).filter(Boolean).length}件`;
+      }
+      function editable() {
+        if (state.status !== "running") return false;
+        if (Date.now() >= state.deadline) {
+          finish(true);
+          return false;
+        }
+        return true;
+      }
+      function formatInput(element) {
+        if (!editable()) return;
+        const raw = element.value;
+        element.setCustomValidity("");
+        element.removeAttribute("aria-invalid");
+        if (raw.trim() !== "") {
+          const value = parseAmount(raw);
+          if (value === null) {
+            element.setCustomValidity("0以上の整数を入力してね。");
+            element.setAttribute("aria-invalid", "true");
+            element.reportValidity();
+          } else element.value = money(value);
+        }
+        state.answers[element.dataset.answer] = element.value;
+        save();
+        updateProgress();
+      }
+      document.addEventListener("input", (event) => {
+        const element = event.target;
+        if (!element.dataset.answer || element.dataset.multiple || !editable())
+          return;
+        element.setCustomValidity("");
+        element.removeAttribute("aria-invalid");
+        state.answers[element.dataset.answer] = element.value;
+        save();
+        updateProgress();
+      });
+      document.addEventListener("change", (event) => {
+        const element = event.target;
+        if (
+          (!element.dataset.answer && element.dataset.mark === undefined) ||
+          !editable()
+        )
+          return;
+        if (element.dataset.mark !== undefined)
+          state.marks[element.dataset.mark] = element.checked;
+        else if (element.dataset.multiple)
+          state.answers[element.dataset.answer] = [
+            ...document.querySelectorAll(
+              `[data-answer="${element.dataset.answer}"]:checked`,
+            ),
+          ].map((input) => input.value);
+        else state.answers[element.dataset.answer] = element.value;
+        save();
+        updateProgress();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "Enter" &&
+          !event.isComposing &&
+          event.target.dataset.money
+        ) {
+          event.preventDefault();
+          formatInput(event.target);
+        }
+      });
+      document.addEventListener("focusout", (event) => {
+        if (event.target.dataset.money) formatInput(event.target);
+      });
+      document
+        .querySelectorAll("[data-tab]")
+        .forEach((button) =>
+          button.addEventListener("click", () => switchTab(button.dataset.tab)),
+        );
+      function showExam() {
+        document.getElementById("intro").hidden = true;
+        document.getElementById("exam").hidden = false;
+        document.getElementById("nav").hidden = false;
+        render();
+      }
+      function tick() {
+        if (state.status !== "running") return;
+        const remaining = Math.max(
+          0,
+          Math.ceil((state.deadline - Date.now()) / 1000),
+        );
+        document.getElementById("timer").textContent =
+          `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`;
+        document
+          .getElementById("timer")
+          .classList.toggle("text-rose-600", remaining <= 300);
+        if (!remaining) finish(true);
+      }
+      document.getElementById("start").addEventListener("click", () => {
+        if (state.status !== "ready") return;
+        state.status = "running";
+        state.deadline = Date.now() + 3600000;
+        save();
+        showExam();
+        tick();
+      });
+      document.getElementById("finish").addEventListener("click", () => {
+        if (state.status === "done") {
+          if (
+            window.confirm(
+              "この改訂版の解答と結果を消して、同じ問題をもう一度解く？",
+            )
+          ) {
+            state = freshState();
+            save();
+            document.getElementById("result").hidden = true;
+            document.getElementById("exam").hidden = true;
+            document.getElementById("nav").hidden = true;
+            document.getElementById("intro").hidden = false;
+            document.getElementById("finish").textContent = "解答を提出する";
+            document.getElementById("timer").textContent = "60:00";
+            window.scrollTo({ top: 0 });
+          }
+          return;
+        }
+        if (!editable()) return;
+        const values = counts();
+        document.getElementById("confirmText").textContent =
+          `入力済みは第1問${values[0]}/15問、第2問${values[1]}/${secondGroups.length}採点単位、第3問${values[2]}/${finalGroups.length}採点単位。未解答は不正解となり、提出後は変更できないよ。`;
+        document.getElementById("confirm").showModal();
+      });
+      document
+        .getElementById("cancelFinish")
+        .addEventListener("click", () =>
+          document.getElementById("confirm").close(),
+        );
+      document
+        .getElementById("confirmFinish")
+        .addEventListener("click", () => finish(Date.now() >= state.deadline));
+      function finish(expired) {
+        if (state.status !== "running") return;
+        state.status = "done";
+        state.expired = Boolean(expired);
+        state.finishedAt = expired ? state.deadline : Date.now();
+        save();
+        document.getElementById("confirm").close();
+        render();
+        showResult();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      function userAnswer(field) {
+        const raw =
+          state.answers[field.id] ?? (field.type === "multiple" ? [] : "");
+        return {
+          raw,
+          value:
+            field.type === "select"
+              ? raw || null
+              : field.type === "multiple"
+                ? Array.isArray(raw)
+                  ? [...raw]
+                  : []
+                : parseAmount(raw),
+        };
+      }
+      function fieldReport(field) {
+        return {
+          id: field.id,
+          question: field.label,
+          answerType: field.type,
+          unit: field.unit ?? null,
+          choices: field.options ?? null,
+          userAnswer: userAnswer(field),
+          correctAnswer: field.answer,
+          correct: isCorrect(field),
+          explanation: field.explanation,
+        };
+      }
+      function groupReport(unit) {
+        return {
+          id: unit.id,
+          question: unit.label,
+          score: gradeGroup(unit) ? unit.points : 0,
+          maxScore: unit.points,
+          correct: gradeGroup(unit),
+          gradingRule: "この採点単位内の全欄が正解の場合に加点",
+          fields: unit.fields.map(fieldReport),
+        };
+      }
+      function createAnswerReport() {
+        if (state.status !== "done") return null;
+        const sectionScores = scores();
+        return {
+          schemaVersion: 2,
+          reportType: "boki3-answer-review",
+          calculationNotes: Object.entries(state.answers)
+            .filter(([id]) => id.startsWith("work-"))
+            .map(([id, raw]) => ({
+              id,
+              raw,
+              value: parseAmount(raw),
+              graded: false,
             })),
-            credit: question.credit.map(([account, amount]) => ({
-              account,
-              amount,
-            })),
+          exportedAt: new Date().toISOString(),
+          exam: {
+            id: `boki3-2026-${examConfig.number}`,
+            revision: examConfig.revision,
+            title: `日商簿記3級 ${examConfig.title}`,
+            fiscalYear: 2026,
+            applicableUntil: "2027-03-31",
+            durationSeconds: 3600,
+            currency: "JPY",
+            official: false,
           },
-          correct: gradeJournal(question, index),
-          score: gradeJournal(question, index) ? 3 : 0,
-          maxScore: 3,
-          explanation: question.explanation,
-        })),
-      },
-      {
-        number: 2,
-        title: examConfig.secondTitle,
-        score: sectionScores[1],
-        maxScore: 20,
-        parts: examConfig.parts.map((part) => ({
-          title: part.title,
-          instructions: part.instructions,
-          sourceData: part.tables,
-          questions: part.groups.map(groupReport),
-        })),
-      },
-      {
-        number: 3,
-        title: examConfig.thirdTitle,
-        score: sectionScores[2],
-        maxScore: 35,
-        instructions: examConfig.final.instructions,
-        trialBalance: examConfig.final.trialBalance.map(
-          ([account, debit, credit]) => ({ account, debit, credit }),
-        ),
-        materials: examConfig.final.materials,
-        adjustments: examConfig.final.adjustments,
-        answerTables: examConfig.final.tables,
-        questions: finalGroups.map(groupReport),
-      },
-    ],
-  };
-}
-function downloadAnswerReport() {
-  const report = createAnswerReport();
-  if (!report) return;
-  const blob = new Blob([JSON.stringify(report, null, 2)], {
-      type: "application/json;charset=utf-8",
-    }),
-    url = URL.createObjectURL(blob),
-    link = document.createElement("a");
-  link.href = url;
-  link.download = `${report.exam.id}-v${report.exam.revision}-answers-${report.attempt.finishedAt.replace(/[:.]/g, "-")}.json`;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 10000);
-}
-function showResult() {
-  const values = scores(),
-    total = values.reduce((sum, score) => sum + score, 0),
-    elapsed = Math.max(
-      0,
-      Math.min(
-        3600,
-        Math.round(
-          ((state.finishedAt ?? state.deadline) - state.deadline + 3600000) /
-            1000,
-        ),
-      ),
-    );
-  const result = document.getElementById("result");
-  result.hidden = false;
-  result.innerHTML = `<p class="text-sm font-bold text-teal-700">YOUR RESULT ${state.expired ? "· 時間終了・自動提出" : ""}</p><div class="mt-4 flex flex-wrap items-center justify-between gap-5"><div><h2 class="text-4xl font-bold">${total}<span class="text-lg font-normal text-slate-500"> / 100点</span></h2><p class="mt-3 font-bold ${total >= 70 ? "text-teal-700" : "text-amber-700"}">${total >= 70 ? "合格ラインに到達！" : `合格ラインまであと${70 - total}点`}</p></div><p class="text-sm text-slate-500">解答時間 ${Math.floor(elapsed / 60)}分${elapsed % 60}秒<br>この判定は本模試の目安だよ。</p></div><div class="mt-6 grid gap-3 md:grid-cols-3">${values.map((value, index) => `<div class="rounded-xl bg-slate-50 p-4"><p class="text-sm text-slate-500">第${index + 1}問</p><p class="mt-1 text-xl font-bold">${value} / ${[45, 20, 35][index]}点</p><progress class="mt-2 w-full accent-teal-700" value="${value}" max="${[45, 20, 35][index]}" aria-label="第${index + 1}問の得点"></progress></div>`).join("")}</div><p class="mt-5 text-sm leading-7">大問を切り替えると、解答と正解・全問解説を見比べられるよ。複数欄の採点単位は、その全欄が合っていれば加点するよ。</p><div class="mt-6 flex flex-wrap gap-3 border-t pt-5"><button id="exportAnswers" class="rounded-xl bg-teal-800 px-5 py-3 font-bold text-white hover:bg-teal-700">解答をJSONで保存</button><a id="backToTop" href="../../../index.html" class="rounded-xl border border-teal-800 px-5 py-3 font-bold text-teal-800">模試一覧へ戻る</a></div><p class="mt-3 text-sm leading-7 text-slate-500">JSONには問題・資料・解答・正解・採点結果が入るよ。自分の端末へ保存して復習に使ってね。</p>`;
-  document
-    .getElementById("exportAnswers")
-    .addEventListener("click", downloadAnswerReport);
-  document.getElementById("finish").textContent = "同じ問題でもう一度";
-  document.getElementById("timer").textContent = "終了";
-}
-document.getElementById("saveWarning").hidden = storageAvailable;
-if (!storageAvailable)
-  document.getElementById("storageNote").textContent =
-    "保存が使えないため、受験中は画面を閉じないでね。";
-if (state.status !== "ready") {
-  showExam();
-  if (state.status === "done") showResult();
-  else tick();
-}
-setInterval(tick, 500);
-;
+          attempt: {
+            status: "submitted",
+            startedAt: new Date(state.deadline - 3600000).toISOString(),
+            finishedAt: new Date(
+              state.finishedAt ?? state.deadline,
+            ).toISOString(),
+            elapsedSeconds: Math.max(
+              0,
+              Math.min(
+                3600,
+                Math.round(
+                  ((state.finishedAt ?? state.deadline) -
+                    state.deadline +
+                    3600000) /
+                    1000,
+                ),
+              ),
+            ),
+            submittedByTimeout: Boolean(state.expired),
+            score: sectionScores.reduce((sum, score) => sum + score, 0),
+            maxScore: 100,
+            passingScore: 70,
+          },
+          reviewGuide:
+            "あんじゅの解答と正解を比較して日本語で復習を手伝ってね。誤答理由は入力だけから断定しないこと。表の{{id}}は同じidを持つ解答欄を表す。金額のrawは入力文字列、valueは数値で空欄・不正値はnull。blank型の正解nullは空欄指定。multiple型は全選択肢の組合せで判定する。採点はこの非公式模試独自。",
+          sections: [
+            {
+              number: 1,
+              title: "仕訳",
+              score: sectionScores[0],
+              maxScore: 45,
+              instructions:
+                "三分法。指定がなければ消費税を考慮しない。各問完全正解3点、行順自由・同一側同一科目重複不可。",
+              choices: accounts,
+              questions: journals.map((question, index) => ({
+                id: `j${index}`,
+                number: index + 1,
+                topic: question.topic,
+                question: question.question,
+                sourceData: question.materials,
+                markedForReview: Boolean(state.marks[index]),
+                userAnswer: Object.fromEntries(
+                  [
+                    ["debit", "d"],
+                    ["credit", "c"],
+                  ].map(([name, side]) => [
+                    name,
+                    Array.from({ length: 4 }, (_, row) => ({
+                      account: state.answers[`j${index}${side}${row}a`] || null,
+                      amountRaw: state.answers[`j${index}${side}${row}v`] ?? "",
+                      amount: parseAmount(
+                        state.answers[`j${index}${side}${row}v`] ?? "",
+                      ),
+                    })),
+                  ]),
+                ),
+                correctAnswer: {
+                  debit: question.debit.map(([account, amount]) => ({
+                    account,
+                    amount,
+                  })),
+                  credit: question.credit.map(([account, amount]) => ({
+                    account,
+                    amount,
+                  })),
+                },
+                correct: gradeJournal(question, index),
+                score: gradeJournal(question, index) ? 3 : 0,
+                maxScore: 3,
+                explanation: question.explanation,
+              })),
+            },
+            {
+              number: 2,
+              title: examConfig.secondTitle,
+              score: sectionScores[1],
+              maxScore: 20,
+              parts: examConfig.parts.map((part) => ({
+                title: part.title,
+                instructions: part.instructions,
+                sourceData: part.tables,
+                questions: part.groups.map(groupReport),
+              })),
+            },
+            {
+              number: 3,
+              title: examConfig.thirdTitle,
+              score: sectionScores[2],
+              maxScore: 35,
+              instructions: examConfig.final.instructions,
+              trialBalance: examConfig.final.trialBalance.map(
+                ([account, debit, credit]) => ({ account, debit, credit }),
+              ),
+              materials: examConfig.final.materials,
+              adjustments: examConfig.final.adjustments,
+              answerTables: examConfig.final.tables,
+              questions: finalGroups.map(groupReport),
+            },
+          ],
+        };
+      }
+      function downloadAnswerReport() {
+        const report = createAnswerReport();
+        if (!report) return;
+        const blob = new Blob([JSON.stringify(report, null, 2)], {
+            type: "application/json;charset=utf-8",
+          }),
+          url = URL.createObjectURL(blob),
+          link = document.createElement("a");
+        link.href = url;
+        link.download = `${report.exam.id}-v${report.exam.revision}-answers-${report.attempt.finishedAt.replace(/[:.]/g, "-")}.json`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
+      }
+      function showResult() {
+        const values = scores(),
+          total = values.reduce((sum, score) => sum + score, 0),
+          elapsed = Math.max(
+            0,
+            Math.min(
+              3600,
+              Math.round(
+                ((state.finishedAt ?? state.deadline) -
+                  state.deadline +
+                  3600000) /
+                  1000,
+              ),
+            ),
+          );
+        const result = document.getElementById("result");
+        result.hidden = false;
+        result.innerHTML = `<p class="text-sm font-bold text-teal-700">YOUR RESULT ${state.expired ? "· 時間終了・自動提出" : ""}</p><div class="mt-4 flex flex-wrap items-center justify-between gap-5"><div><h2 class="text-4xl font-bold">${total}<span class="text-lg font-normal text-slate-500"> / 100点</span></h2><p class="mt-3 font-bold ${total >= 70 ? "text-teal-700" : "text-amber-700"}">${total >= 70 ? "合格ラインに到達！" : `合格ラインまであと${70 - total}点`}</p></div><p class="text-sm text-slate-500">解答時間 ${Math.floor(elapsed / 60)}分${elapsed % 60}秒<br>この判定は本模試の目安だよ。</p></div><div class="mt-6 grid gap-3 md:grid-cols-3">${values.map((value, index) => `<div class="rounded-xl bg-slate-50 p-4"><p class="text-sm text-slate-500">第${index + 1}問</p><p class="mt-1 text-xl font-bold">${value} / ${[45, 20, 35][index]}点</p><progress class="mt-2 w-full accent-teal-700" value="${value}" max="${[45, 20, 35][index]}" aria-label="第${index + 1}問の得点"></progress></div>`).join("")}</div><p class="mt-5 text-sm leading-7">大問を切り替えると、解答と正解・全問解説を見比べられるよ。複数欄の採点単位は、その全欄が合っていれば加点するよ。</p><div class="mt-6 flex flex-wrap gap-3 border-t pt-5"><button id="exportAnswers" class="rounded-xl bg-teal-800 px-5 py-3 font-bold text-white hover:bg-teal-700">解答をJSONで保存</button><a id="backToTop" href="../../../index.html" class="rounded-xl border border-teal-800 px-5 py-3 font-bold text-teal-800">模試一覧へ戻る</a></div><p class="mt-3 text-sm leading-7 text-slate-500">JSONには問題・資料・解答・正解・採点結果が入るよ。自分の端末へ保存して復習に使ってね。</p>`;
+        document
+          .getElementById("exportAnswers")
+          .addEventListener("click", downloadAnswerReport);
+        document.getElementById("finish").textContent = "同じ問題でもう一度";
+        document.getElementById("timer").textContent = "終了";
+      }
+      document.getElementById("saveWarning").hidden = storageAvailable;
+      if (!storageAvailable)
+        document.getElementById("storageNote").textContent =
+          "保存が使えないため、受験中は画面を閉じないでね。";
+      if (state.status !== "ready") {
+        showExam();
+        if (state.status === "done") showResult();
+        else tick();
+      }
+      setInterval(tick, 500);
     </script>
   </body>
 </html>
