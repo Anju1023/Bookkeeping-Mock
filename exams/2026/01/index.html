@@ -375,6 +375,9 @@
         .hidden {
           display: none;
         }
+        .inline-block {
+          display: inline-block;
+        }
         .table {
           display: table;
         }
@@ -1110,6 +1113,11 @@
         hidden
         class="mb-7 rounded-3xl border bg-white p-6 md:p-8"
         aria-live="polite"
+      ></section>
+      <section
+        id="history"
+        class="mb-7 rounded-3xl border bg-white p-6 md:p-8"
+        aria-label="この模試の受験履歴"
       ></section>
       <section id="exam" hidden>
         <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
@@ -2588,11 +2596,12 @@
         if (state.status === "done") {
           if (
             window.confirm(
-              "この改訂版の解答と結果を消して、同じ問題をもう一度解く？",
+              "得点履歴を残して解答をリセットし、同じ問題をもう一度解く？",
             )
           ) {
             state = freshState();
             save();
+            renderHistory();
             document.getElementById("result").hidden = true;
             document.getElementById("exam").hidden = true;
             document.getElementById("nav").hidden = true;
@@ -2808,6 +2817,115 @@
         link.remove();
         setTimeout(() => URL.revokeObjectURL(url), 10000);
       }
+      // 履歴は解答の保存とは分け、再受験で上書きしない。
+      const historyKey = `${key}-history-v1`;
+      let historySaved = true;
+      function readHistory() {
+        try {
+          const records = JSON.parse(localStorage.getItem(historyKey) || "[]");
+          if (!Array.isArray(records)) return [];
+          return records.filter(
+            (record) =>
+              record &&
+              typeof record.id === "string" &&
+              Number.isFinite(record.finishedAt) &&
+              Number.isFinite(record.score) &&
+              record.score >= 0 &&
+              record.score <= 100 &&
+              Array.isArray(record.sections) &&
+              record.sections.length === 3 &&
+              record.sections.every(
+                (score, index) =>
+                  Number.isFinite(score) &&
+                  score >= 0 &&
+                  score <= [45, 20, 35][index],
+              ) &&
+              record.sections.reduce((sum, score) => sum + score, 0) ===
+                record.score,
+          );
+        } catch {
+          return [];
+        }
+      }
+      function recordResult() {
+        const sections = scores();
+        const record = {
+          id: `${state.deadline}`,
+          finishedAt: state.finishedAt ?? state.deadline,
+          score: sections.reduce((sum, score) => sum + score, 0),
+          sections,
+        };
+        const records = readHistory().filter((item) => item.id !== record.id);
+        records.push(record);
+        records.sort((a, b) => b.finishedAt - a.finishedAt);
+        try {
+          localStorage.setItem(historyKey, JSON.stringify(records));
+          historySaved = true;
+        } catch {
+          historySaved = false;
+        }
+        renderHistory(records);
+      }
+      function renderHistory(records = readHistory()) {
+        const previous =
+          state.status === "done"
+            ? records.filter((record) => record.id !== `${state.deadline}`)[0]
+            : null;
+        const difference = previous
+          ? scores().reduce((sum, score) => sum + score, 0) - previous.score
+          : null;
+        document.getElementById("history").innerHTML =
+          `<h2 class="text-xl font-bold">この模試の受験履歴</h2>
+    <p class="mt-3 text-sm leading-7 text-slate-500">同じブラウザに点数と受験日時を自動保存するよ。再受験しても履歴は残るよ。ブラウザのデータ削除で消えるので、大切な解答はJSONでも保存してね。別の端末・ブラウザには引き継がれないよ。</p>
+    ${historySaved ? "" : '<p role="alert" class="mt-3 font-bold text-amber-700">今回の履歴を保存できなかったよ。解答をJSONで保存してね。</p>'}
+    ${previous ? `<p class="mt-3 font-bold text-teal-700">前回 ${previous.score}点 → 今回 ${previous.score + difference}点（${difference > 0 ? "+" : ""}${difference}点）</p>` : ""}
+    ${records.length ? `<div class="mt-4 overflow-x-auto"><table class="w-full text-left text-sm"><caption class="sr-only">${escapeHtml(examConfig.title)}の得点履歴</caption><thead><tr>${["受験日時", "合計", "第1問", "第2問", "第3問"].map((label) => `<th scope="col" class="whitespace-nowrap border-b p-3">${label}</th>`).join("")}</tr></thead><tbody>${records.map((record) => `<tr><th scope="row" class="whitespace-nowrap border-b p-3 font-normal">${escapeHtml(new Date(record.finishedAt).toLocaleString("ja-JP"))}</th>${[record.score, ...record.sections].map((score) => `<td class="border-b p-3">${score}点</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : '<p class="mt-4 text-sm">まだ受験履歴はないよ。採点するとここに記録されるよ。</p>'}`;
+      }
+      function weaknessSummary() {
+        const topics = new Map();
+        function add(topic, earned, possible, target) {
+          const item = topics.get(topic) || {
+            topic,
+            earned: 0,
+            possible: 0,
+            target,
+          };
+          item.earned += earned;
+          item.possible += possible;
+          topics.set(topic, item);
+        }
+        journals.forEach((question, index) =>
+          add(
+            `仕訳：${question.topic}`,
+            gradeJournal(question, index) ? 3 : 0,
+            3,
+            1,
+          ),
+        );
+        examConfig.parts.forEach((part) =>
+          part.groups.forEach((unit) =>
+            add(part.title, gradeGroup(unit) ? unit.points : 0, unit.points, 2),
+          ),
+        );
+        finalGroups.forEach((unit) =>
+          add(
+            `決算：${unit.label}`,
+            gradeGroup(unit) ? unit.points : 0,
+            unit.points,
+            3,
+          ),
+        );
+        return [...topics.values()].sort(
+          (a, b) =>
+            a.earned / a.possible - b.earned / b.possible ||
+            b.possible - b.earned - (a.possible - a.earned),
+        );
+      }
+      function renderWeakness() {
+        const topics = weaknessSummary();
+        const missed = topics.filter((topic) => topic.earned < topic.possible);
+        return `<section class="mt-6 rounded-xl bg-slate-50 p-5" aria-label="苦手分野の振り返り"><h3 class="text-xl font-bold">苦手分野の振り返り</h3><p class="mt-3 text-sm leading-7">今回の得点率が低い分野から並べているよ。未解答も失点に含むため、苦手と断定せず復習の目安にしてね。複数欄の問題は採点単位ごとの判定だよ。</p>${missed.length ? `<ul class="mt-4 space-y-3">${missed.map((item) => `<li class="rounded-lg border bg-white p-3"><button type="button" data-review-section="${item.target}" class="text-left font-bold text-teal-800 underline">${escapeHtml(item.topic)}</button><p class="mt-2 text-sm">${item.earned} / ${item.possible}点・得点率 ${Math.round((item.earned / item.possible) * 100)}%</p><p class="mt-2 text-sm text-slate-500">第${item.target}問の解答と解説を見比べよう。</p></li>`).join("")}</ul>` : '<p class="mt-4 font-bold text-teal-700">今回は全分野で満点！ 日をあけてもう一度解いてみよう。</p>'}<a href="../../../study/index.html" class="mt-4 inline-block font-bold text-teal-800 underline">勘定科目と仕訳のルール帳で復習する</a></section>`;
+      }
       function showResult() {
         const values = scores(),
           total = values.reduce((sum, score) => sum + score, 0),
@@ -2826,12 +2944,25 @@
         const result = document.getElementById("result");
         result.hidden = false;
         result.innerHTML = `<p class="text-sm font-bold text-teal-700">YOUR RESULT ${state.expired ? "· 時間終了・自動提出" : ""}</p><div class="mt-4 flex flex-wrap items-center justify-between gap-5"><div><h2 class="text-4xl font-bold">${total}<span class="text-lg font-normal text-slate-500"> / 100点</span></h2><p class="mt-3 font-bold ${total >= 70 ? "text-teal-700" : "text-amber-700"}">${total >= 70 ? "合格ラインに到達！" : `合格ラインまであと${70 - total}点`}</p></div><p class="text-sm text-slate-500">解答時間 ${Math.floor(elapsed / 60)}分${elapsed % 60}秒<br>この判定は本模試の目安だよ。</p></div><div class="mt-6 grid gap-3 md:grid-cols-3">${values.map((value, index) => `<div class="rounded-xl bg-slate-50 p-4"><p class="text-sm text-slate-500">第${index + 1}問</p><p class="mt-1 text-xl font-bold">${value} / ${[45, 20, 35][index]}点</p><progress class="mt-2 w-full accent-teal-700" value="${value}" max="${[45, 20, 35][index]}" aria-label="第${index + 1}問の得点"></progress></div>`).join("")}</div><p class="mt-5 text-sm leading-7">大問を切り替えると、解答と正解・全問解説を見比べられるよ。複数欄の採点単位は、その全欄が合っていれば加点するよ。</p><div class="mt-6 flex flex-wrap gap-3 border-t pt-5"><button id="exportAnswers" class="rounded-xl bg-teal-800 px-5 py-3 font-bold text-white hover:bg-teal-700">解答をJSONで保存</button><a id="backToTop" href="../../../index.html" class="rounded-xl border border-teal-800 px-5 py-3 font-bold text-teal-800">模試一覧へ戻る</a></div><p class="mt-3 text-sm leading-7 text-slate-500">JSONには問題・資料・解答・正解・採点結果が入るよ。自分の端末へ保存して復習に使ってね。</p>`;
+        result.insertAdjacentHTML("beforeend", renderWeakness());
+        result.querySelectorAll("[data-review-section]").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.tab = Number(button.dataset.reviewSection);
+            save();
+            render();
+            document
+              .getElementById("exam")
+              .scrollIntoView({ behavior: "smooth" });
+          });
+        });
+        recordResult();
         document
           .getElementById("exportAnswers")
           .addEventListener("click", downloadAnswerReport);
         document.getElementById("finish").textContent = "同じ問題でもう一度";
         document.getElementById("timer").textContent = "終了";
       }
+      renderHistory();
       document.getElementById("saveWarning").hidden = storageAvailable;
       if (!storageAvailable)
         document.getElementById("storageNote").textContent =

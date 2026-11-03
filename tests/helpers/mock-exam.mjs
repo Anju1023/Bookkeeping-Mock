@@ -14,7 +14,7 @@ export async function verifyExam(number, verifyAccounting) {
     legacyKey =
       number === "01" ? "boki3-mock-2026-v1" : `boki3-mock-2026-${number}-v1`;
   const opened = [];
-  function create(saved, blocked = false) {
+  function create(saved, blocked = false, history = null) {
     const errors = [],
       console = new VirtualConsole();
     console.on("jsdomError", (error) => errors.push(error));
@@ -45,6 +45,7 @@ export async function verifyExam(number, verifyAccounting) {
         );
         window.localStorage.setItem("boki3-mock-2026-99-v2", "他の回");
         if (saved) window.localStorage.setItem(key, saved);
+        if (history) window.localStorage.setItem(`${key}-history-v1`, history);
         if (blocked) {
           const fail = () => {
             throw new window.DOMException("保存禁止", "SecurityError");
@@ -389,6 +390,61 @@ export async function verifyExam(number, verifyAccounting) {
     assert.equal(
       unavailable.document.getElementById("saveWarning").hidden,
       false,
+    );
+    // 履歴は結果復元で重複せず、再受験後も残る。
+    const historyKey = `${key}-history-v1`;
+    const history = w.localStorage.getItem(historyKey);
+    assert.equal(JSON.parse(history).length, 1);
+    assert.equal(JSON.parse(history)[0].score, 100);
+    const historyResume = create(w.localStorage.getItem(key), false, history);
+    assert.equal(
+      JSON.parse(historyResume.window.localStorage.getItem(historyKey)).length,
+      1,
+    );
+    historyResume.document.getElementById("finish").click();
+    assert.equal(historyResume.window.eval("state.status"), "ready");
+    assert.equal(
+      JSON.parse(historyResume.window.localStorage.getItem(historyKey)).length,
+      1,
+    );
+    assert.match(
+      historyResume.document.getElementById("history").textContent,
+      /100点/,
+    );
+    historyResume.document.getElementById("start").click();
+    historyResume.window.eval("state.deadline += 1000; finish(false)");
+    const attempts = JSON.parse(
+      historyResume.window.localStorage.getItem(historyKey),
+    );
+    assert.equal(attempts.length, 2);
+    assert.equal(attempts[0].score, 0);
+    assert.match(
+      historyResume.document.getElementById("history").textContent,
+      /前回 100点 → 今回 0点（-100点）/,
+    );
+    assert.ok(
+      historyResume.document.querySelectorAll("[data-review-section]").length >
+        0,
+    );
+    historyResume.document.querySelector('[data-review-section="3"]').click();
+    assert.equal(historyResume.window.eval("state.tab"), 3);
+    assert.equal(
+      historyResume.document.querySelectorAll("[data-answer]:not(:disabled)")
+        .length,
+      0,
+    );
+    assert.match(
+      doc.getElementById("result").textContent,
+      /今回は全分野で満点/,
+    );
+    assert.match(
+      unavailable.document.getElementById("history").textContent,
+      /履歴を保存できなかった/,
+    );
+    const corruptHistory = create(null, false, "{broken");
+    assert.match(
+      corruptHistory.document.getElementById("history").textContent,
+      /まだ受験履歴はない/,
     );
     assert.ok(w.localStorage.getItem(legacyKey));
     assert.equal(w.localStorage.getItem("boki3-mock-2026-99-v2"), "他の回");
