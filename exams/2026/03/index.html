@@ -2898,9 +2898,12 @@
       function tableCell(value, table, rowIndex, columnIndex) {
         if (value === "？") {
           const id = `work-${table.id}-${rowIndex}-${columnIndex}`;
+          const label = `${table.caption} ${rowIndex + 1}行目 ${table.headings[columnIndex]}（計算用・採点対象外）`;
+          if (table.headings[columnIndex] === "摘要")
+            return `<input type="text" id="${id}" data-answer="${id}" autocomplete="off" aria-label="${escapeHtml(label)}" class="w-full min-w-[130px] rounded-lg border border-slate-400 bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-600 disabled:bg-slate-100" value="${escapeHtml(state.answers[id] ?? "")}" ${state.status === "done" ? "disabled" : ""}>`;
           return amountInput(
             id,
-            `${table.caption} ${rowIndex + 1}行目 ${table.headings[columnIndex]}（計算用・採点対象外）`,
+            label,
           );
         }
         return escapeHtml(value).replace(/\{\{([a-zA-Z0-9]+)\}\}/g, (_, id) => {

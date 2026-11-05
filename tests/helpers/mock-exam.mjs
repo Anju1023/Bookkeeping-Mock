@@ -100,12 +100,28 @@ export async function verifyExam(number, verifyAccounting) {
     });
     doc.getElementById("start").click();
     // 計算用欄も通常の解答と同様に整形・保存し、採点からは独立させる。
-    const workInput = doc.querySelector('[data-answer^="work-"]');
+    const workInput = doc.querySelector('[data-answer^="work-"][data-money]');
     assert.ok(workInput);
     workInput.value = "１２３４";
     workInput.dispatchEvent(new w.Event("input", { bubbles: true }));
     workInput.dispatchEvent(new w.FocusEvent("focusout", { bubbles: true }));
     assert.equal(workInput.value, "1,234");
+    // 摘要の補助欄は日本語を保存し、金額として整形しない。
+    const textNotes = number === "03"
+      ? [["work-cash-ledger-1-4", "買掛金"], ["work-cash-ledger-2-1", "売掛金"]]
+      : [];
+    for (const [id, value] of textNotes) {
+      const input = doc.getElementById(id);
+      assert.ok(input);
+      assert.equal(input.hasAttribute("data-money"), false);
+      assert.notEqual(input.inputMode, "numeric");
+      input.value = value;
+      input.dispatchEvent(new w.Event("input", { bubbles: true }));
+      input.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+      input.dispatchEvent(new w.FocusEvent("focusout", { bubbles: true }));
+      assert.equal(input.value, value);
+      assert.equal(JSON.parse(w.localStorage.getItem(key)).answers[id], value);
+    }
     const deadline = ev("state.deadline");
     assert.ok(deadline > Date.now() + 3590000);
     assert.deepEqual(Array.from(ev("scores()")), [0, 0, 0]);
@@ -173,6 +189,8 @@ export async function verifyExam(number, verifyAccounting) {
     const saved = w.localStorage.getItem(key),
       resumed = create(saved);
     assert.equal(resumed.document.getElementById(workInput.id).value, "1,234");
+    for (const [id, value] of textNotes)
+      assert.equal(resumed.document.getElementById(id).value, value);
     assert.equal(resumed.window.eval("state.deadline"), deadline);
     assert.equal(resumed.window.eval("state.tab"), 2);
     assert.equal(
@@ -182,6 +200,7 @@ export async function verifyExam(number, verifyAccounting) {
     assert.equal(resumed.window.eval("state.marks[0]"), true);
     // 行を逆順で入力し、4科目の仕訳もDOMの4行目を使って採点する。
     ev("state.answers={}");
+    for (const [id, value] of textNotes) set(id, value);
     data.journals.forEach((q, index) =>
       [
         ["d", q.debit],
@@ -297,6 +316,12 @@ export async function verifyExam(number, verifyAccounting) {
       data.parts[0].tables,
     );
     const restored = create(w.localStorage.getItem(key));
+    for (const [id, value] of textNotes) {
+      const input = restored.document.getElementById(id);
+      assert.equal(input.value, value);
+      assert.equal(input.disabled, true);
+      assert.equal(report.calculationNotes.find((note) => note.id === id).raw, value);
+    }
     assert.equal(
       restored.window.eval("createAnswerReport().attempt.score"),
       100,
