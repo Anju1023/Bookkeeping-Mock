@@ -4,15 +4,17 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const { JSDOM, VirtualConsole } = require(process.env.JSDOM_PATH || "jsdom");
 
-export async function verifyExam(number, verifyAccounting) {
+export async function verifyExam(number, verifyAccounting, revision = 2) {
   const html = fs.readFileSync(
     new URL(`../../exams/2026/${number}/index.html`, import.meta.url),
     "utf8",
   );
   const clean = html.replace(/<style>[\s\S]*?<\/style>/g, "");
-  const key = `boki3-mock-2026-${number}-v2`,
+  const key = `boki3-mock-2026-${number}-v${revision}`,
     legacyKey =
-      number === "01" ? "boki3-mock-2026-v1" : `boki3-mock-2026-${number}-v1`;
+      number === "01"
+        ? "boki3-mock-2026-v1"
+        : `boki3-mock-2026-${number}-v${revision === 1 ? 99 : 1}`;
   const opened = [];
   function create(saved, blocked = false, history = null) {
     const errors = [],
@@ -66,7 +68,7 @@ export async function verifyExam(number, verifyAccounting) {
     assert.equal(ev("createAnswerReport()"), null);
     assert.match(html, /tailwindcss v4\.2\.4/i);
     assert.doesNotMatch(html, /<(?:script|link)[^>]+(?:src|href)=/i);
-    assert.equal(data.revision, 2);
+    assert.equal(data.revision, revision);
     assert.equal(data.journals.length, 15);
     assert.equal(new Set(data.journals.map((q) => q.question)).size, 15);
     assert.equal(data.parts.flatMap((part) => part.groups).length, 10);
@@ -107,9 +109,13 @@ export async function verifyExam(number, verifyAccounting) {
     workInput.dispatchEvent(new w.FocusEvent("focusout", { bubbles: true }));
     assert.equal(workInput.value, "1,234");
     // 摘要の補助欄は日本語を保存し、金額として整形しない。
-    const textNotes = number === "03"
-      ? [["work-cash-ledger-1-4", "買掛金"], ["work-cash-ledger-2-1", "売掛金"]]
-      : [];
+    const textNotes =
+      number === "03"
+        ? [
+            ["work-cash-ledger-1-4", "買掛金"],
+            ["work-cash-ledger-2-1", "売掛金"],
+          ]
+        : [];
     for (const [id, value] of textNotes) {
       const input = doc.getElementById(id);
       assert.ok(input);
@@ -117,7 +123,9 @@ export async function verifyExam(number, verifyAccounting) {
       assert.notEqual(input.inputMode, "numeric");
       input.value = value;
       input.dispatchEvent(new w.Event("input", { bubbles: true }));
-      input.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true }));
+      input.dispatchEvent(
+        new w.KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
+      );
       input.dispatchEvent(new w.FocusEvent("focusout", { bubbles: true }));
       assert.equal(input.value, value);
       assert.equal(JSON.parse(w.localStorage.getItem(key)).answers[id], value);
@@ -295,7 +303,7 @@ export async function verifyExam(number, verifyAccounting) {
     );
     const report = JSON.parse(ev("JSON.stringify(createAnswerReport())"));
     assert.equal(report.schemaVersion, 2);
-    assert.equal(report.exam.revision, 2);
+    assert.equal(report.exam.revision, revision);
     assert.equal(report.exam.id, `boki3-2026-${number}`);
     assert.equal(report.attempt.score, 100);
     assert.equal(report.sections[0].questions.length, 15);
@@ -320,7 +328,10 @@ export async function verifyExam(number, verifyAccounting) {
       const input = restored.document.getElementById(id);
       assert.equal(input.value, value);
       assert.equal(input.disabled, true);
-      assert.equal(report.calculationNotes.find((note) => note.id === id).raw, value);
+      assert.equal(
+        report.calculationNotes.find((note) => note.id === id).raw,
+        value,
+      );
     }
     assert.equal(
       restored.window.eval("createAnswerReport().attempt.score"),
@@ -364,7 +375,7 @@ export async function verifyExam(number, verifyAccounting) {
     assert.equal(clicked, true);
     assert.match(
       name,
-      new RegExp(`^boki3-2026-${number}-v2-answers-.*\\.json$`),
+      new RegExp(`^boki3-2026-${number}-v${revision}-answers-.*\\.json$`),
     );
     const downloaded = await new Promise((resolve, reject) => {
       const reader = new w.FileReader();
