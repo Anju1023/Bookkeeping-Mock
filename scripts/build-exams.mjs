@@ -10,7 +10,7 @@ const runtime = await fs.readFile(
   "utf8",
 );
 const numbers =
-  process.argv.length > 2 ? process.argv.slice(2) : ["01", "02", "03", "04"];
+  process.argv.length > 2 ? process.argv.slice(2) : ["01", "02", "03", "04", "05"];
 for (const number of numbers) {
   const { default: exam } = await import(`./exams/2026/${number}.mjs`);
   const fields = [
@@ -32,10 +32,10 @@ for (const number of numbers) {
   const replacements = {
     __EXAM_TITLE__: exam.title,
     __EXAM_EDITION__: exam.revision === 1 ? "第1版" : "改訂第2版",
-    __EXAM_CONFIRMED__: number === "04" ? "2026年11月5日" : "2026年11月2日",
+    __EXAM_CONFIRMED__: exam.confirmed || (number === "04" ? "2026年11月5日" : "2026年11月2日"),
     __EXAM_NOTICE__:
-      number === "04"
-        ? "第4回は新作のオリジナル模試だよ。保存データはほかの回と分けて管理するよ。"
+      exam.revision === 1
+        ? `第${Number(number)}回は新作のオリジナル模試だよ。保存データはほかの回と分けて管理するよ。`
         : "問題を全面改訂したため、旧版の解答は引き継がず新しく開始するよ。旧版の保存領域は削除しないよ。",
     __EXAM_NUMBER__: number,
     __EXAM_SUMMARY__: exam.summary,
